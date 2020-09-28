@@ -37,7 +37,77 @@
 
 <body>
 
-<?php include 'index.php';?>
+<?php include 'templsidebar.php';?>
+
+<div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Dashboard</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    จัดการผู้ใช้งาน
+                </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                    <tr>
+                                        <th>ชื่อผู้ใช้</th>
+                                        <th>รหัสผ่าน</th>
+                                        <th>ชื่อ/สกุล</th>
+                                        <th>แก้ไข</th>
+                                        <th>ลบ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="odd gradeA">
+                                        <td>WK852741963</td>
+                                        <td>password</td>
+                                        <td>Dee Makmak</td>
+                                        <td><input class='btn btn-primary' type='button' value='แก้ไข'/></td>
+                                        <td><input class='btn btn-danger' type='button' value='ลบ'/></td>
+                                    </tr>
+                                    <tr class="odd gradeA">
+                                        <td>XXXXXXXXXXXXXX</td>
+                                        <td>XXXXXXX</td>
+                                        <td>XXX</td>
+                                        <td><input class='btn btn-primary' type='button' value='แก้ไข'/></td>
+                                        <td><input class='btn btn-danger' type='button' value='ลบ'/></td>
+                                    </tr>
+                                    <tr class="odd gradeA">
+                                        <td>XXXXXXXXXXXXXX</td>
+                                        <td>XXXXXXX</td>
+                                        <td>XXX</td>
+                                        <td><input class='btn btn-primary' type='button' value='แก้ไข'/></td>
+                                        <td><input class='btn btn-danger' type='button' value='ลบ'/></td>
+                                    </tr>
+                                    <tr class="odd gradeA">
+                                        <td>XXXXXXXXXXXXXX</td>
+                                        <td>XXXX</td>
+                                        <td>XXX</td>
+                                        <td><input class='btn btn-primary' type='button' value='แก้ไข'/></td>
+                                        <td><input class='btn btn-danger' type='button' value='ลบ'/></td>
+                                    </tr>
+                                    <tr class="odd gradeA">
+                                        <td>XXXXXXXXXXXXXX</td>
+                                        <td>XXXX XX</td>
+                                        <td>XXX</td>
+                                        <td><input class='btn btn-primary' type='button' value='แก้ไข'/></td>
+                                        <td><input class='btn btn-danger' type='button' value='ลบ'/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+        </div>
+        <!-- /#page-wrapper -->
 
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
