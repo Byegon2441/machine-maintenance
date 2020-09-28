@@ -90,7 +90,7 @@
                                     <a href="TypeMachine.php">ประเภทเครื่องจักร</a>
                                 </li>
                                 <li>
-                                    <a href="ListVehicle.php">เครื่องจักร</a>
+                                    <a href="Machine.php">เครื่องจักร</a>
                                 </li>
                                 <li>
                                     <a href="JobSite.php">ไซต์งาน</a>
