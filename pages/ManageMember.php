@@ -46,7 +46,8 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">จัดการผู้ใช้งาน</h1>
+                    <h1 class="page-header">จัดการผู้ใช้งาน <button type="button" class="btn btn-success btn-circle" style="float: right;"><i class="fa fa-plus"></i>
+                            </button></h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -56,6 +57,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                                 จัดการผู้ใช้งาน
+                                
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
