@@ -60,7 +60,8 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <div class="table-responsive">
+                            <table width="120%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
                                         <th>รหัสเครื่องจักร</th>
@@ -144,6 +145,7 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            </div>
                             <!-- /.table-responsive -->
                         </div>
                         <!-- /.panel-body -->
