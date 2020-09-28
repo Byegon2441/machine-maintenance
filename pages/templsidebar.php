@@ -87,19 +87,19 @@
                             <a href="#"><i class="fa fa-edit fa-fw"></i> กำหนดค่า<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="TypeMachine.php">ประเภทเครื่องจักร</a>
+                                    <a href="ListTypeMachine.php">ประเภทเครื่องจักร</a>
                                 </li>
                                 <li>
-                                    <a href="Machine.php">เครื่องจักร</a>
+                                    <a href="ListMachine.php">เครื่องจักร</a>
                                 </li>
                                 <li>
-                                    <a href="JobSite.php">ไซต์งาน</a>
+                                    <a href="ListJobSite.php">ไซต์งาน</a>
                                 </li>
                                 <li>
-                                    <a href="Parts.php">อะไหล่</a>
+                                    <a href="ListParts.php">อะไหล่</a>
                                 </li>
                                 <li>
-                                    <a href="Staff.php">พนักงาน</a>
+                                    <a href="ListStaff.php">พนักงาน</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
