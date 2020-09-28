@@ -78,10 +78,10 @@
                     <ul class="nav" id="side-menu">
 
                         <li>
-                            <a href="#"><i class="fa fa-th-list fa-fw"></i> ใบแจ้งซ่อม</a>
+                            <a href="Job.php"><i class="fa fa-th-list fa-fw"></i> ใบแจ้งซ่อม</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-check fa-fw"></i> ปิดงาน</a>
+                            <a href="Finish.php"><i class="fa fa-check fa-fw"></i> ปิดงาน</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-edit fa-fw"></i> กำหนดค่า<span class="fa arrow"></span></a>
@@ -105,7 +105,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-user fa-fw"></i> จัดการผู้ใช้งาน</a>
+                            <a href="ManageMember.php"><i class="fa fa-user fa-fw"></i> จัดการผู้ใช้งาน</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-file-o fa-fw"></i> รายงาน</a>
