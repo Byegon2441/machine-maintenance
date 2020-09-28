@@ -93,13 +93,13 @@
                                     <a href="ListMachine.php">เครื่องจักร</a>
                                 </li>
                                 <li>
-                                    <a href="ListJobSite.php">ไซต์งาน</a>
+                                    <a href="ListDepartment.php">ไซต์งาน</a>
                                 </li>
                                 <li>
-                                    <a href="ListParts.php">อะไหล่</a>
+                                    <a href="ListMachineParts.php">อะไหล่</a>
                                 </li>
                                 <li>
-                                    <a href="ListStaff.php">พนักงาน</a>
+                                    <a href="ListEmployee.php">พนักงาน</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
