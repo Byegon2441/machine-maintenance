@@ -63,24 +63,23 @@
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>ชื่อผู้ใช้</th>
-                                        <th>รหัสผ่าน</th>
-                                        <th>ชื่อ/สกุล</th>
+                                        <th>รหัสไซต์งาน</th>
+                                        <th>ชื่อไซต์งาน</th>
+                                        <th>เลขที่</th>
+                                        <th>ตำบล</th>
+                                        <th>อำเภอ</th>
+                                        <th>จังหวัด</th>
                                         <th>แก้ไข</th>
                                         <th>ลบ</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr class="odd gradeA">
-                                        <td>WK852741963</td>
-                                        <td>password</td>
-                                        <td>Dee Makmak</td>
-                                        <td><input class='btn btn-primary' type='button' value='แก้ไข'/></td>
-                                        <td><input class='btn btn-danger' type='button' value='ลบ'/></td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
+                                    <td>XXXXXXXXXXXXXX</td>
                                         <td>XXXXXXX</td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
                                         <td>XXX</td>
                                         <td><input class='btn btn-primary' type='button' value='แก้ไข'/></td>
                                         <td><input class='btn btn-danger' type='button' value='ลบ'/></td>
@@ -88,6 +87,19 @@
                                     <tr class="odd gradeA">
                                         <td>XXXXXXXXXXXXXX</td>
                                         <td>XXXXXXX</td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
+                                        <td><input class='btn btn-primary' type='button' value='แก้ไข'/></td>
+                                        <td><input class='btn btn-danger' type='button' value='ลบ'/></td>
+                                    </tr>
+                                    <tr class="odd gradeA">
+                                        <td>XXXXXXXXXXXXXX</td>
+                                        <td>XXXXXXX</td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
                                         <td>XXX</td>
                                         <td><input class='btn btn-primary' type='button' value='แก้ไข'/></td>
                                         <td><input class='btn btn-danger' type='button' value='ลบ'/></td>
@@ -96,12 +108,18 @@
                                         <td>XXXXXXXXXXXXXX</td>
                                         <td>XXXX</td>
                                         <td>XXX</td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
                                         <td><input class='btn btn-primary' type='button' value='แก้ไข'/></td>
                                         <td><input class='btn btn-danger' type='button' value='ลบ'/></td>
                                     </tr>
                                     <tr class="odd gradeA">
                                         <td>XXXXXXXXXXXXXX</td>
                                         <td>XXXX XX</td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
                                         <td>XXX</td>
                                         <td><input class='btn btn-primary' type='button' value='แก้ไข'/></td>
                                         <td><input class='btn btn-danger' type='button' value='ลบ'/></td>
