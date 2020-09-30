@@ -52,15 +52,20 @@
                         <div class="panel-body">
                             <form class="form">
                                 <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                    <label for="inputEmail4">ชื่อประเภทเครื่องจักรใหม่</label>
-                                    <input type="text" class="form-control nameof" id="nameof" style="width:100%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT">
+                                    <div class="form-group">   
+                                            <div class="col-lg-5">   
+                                                <label for="inputEmail4">ชื่อประเภทเครื่องจักรใหม่ : </label>
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <input type="text" class="form-control nameof" id="nameof" style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT">
+                                            </div>
                                     </div>
-                                </div>
+                                
                                 <div class="col-sm-12" align="right">
                                     <button type="Reset" class="btn btn-danger" id="btn1"> <span class="fa fa-times"></span> Reset  </button> 
                                     <button type="submit" class="btn btn-success" id="btn"> <span class="fa fa-check"></span> Save  </button>  
                                 </div> 
+
                             </form>
                         </div>
                         <!-- /.panel-body -->
