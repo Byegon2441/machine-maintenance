@@ -43,8 +43,8 @@
 <?php include 'templCRUD.php'?>
 
     <div class="container">
-        <div class="col-md-6">
-                    <p><div class="panel panel-default">
+        <div class="col-sm-6 col-sm-offset-3">
+                    <p><div class="panel panel-primary">
                         <div class="panel-heading">
                                 ไซต์งาน
                         </div>
