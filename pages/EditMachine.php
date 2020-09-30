@@ -52,99 +52,126 @@
                         <div class="panel-body">
                             <form class="form">
                                 <div class="form-row">
-                                    <div class="form-group">   
-                                            <div class="col-lg-5">   
+                                    <div class="form-group">
+                                            <div class="col-lg-5">
                                                 <label for="inputEmail4">รหัสเครื่องจักร : </label>
                                             </div>
                                                     <div class="form-group col-lg-6">
                                                         <input type="disable" class="form-control nameof" id="nameof" name="XVVehCode" style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT">
                                                     </div>
-                                                            <div class="col-lg-5">   
+                                                            <div class="col-lg-5">
                                                                 <label for="inputEmail4">ชื่อเครื่องจักร : </label>
                                                             </div>
                                                             <div class="form-group col-lg-6">
                                                                 <input type="text" class="form-control nameof" id="nameof1" name="XVVehName" style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT">
                                                             </div>
-                                                                    
-                                                                <div class="col-lg-5">   
+
+                                                                <div class="col-lg-5">
                                                                     <label for="inputEmail4">ทะเบียนรถ : </label>
                                                                 </div>
                                                                 <div class="form-group col-lg-6">
                                                                     <input type="text" class="form-control nameof" id="nameof2" name="XVVehRegistration" style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT">
                                                                 </div>
 
-                                                                    <div class="col-lg-5">   
-                                                                        <label for="inputEmail4">เบอร์รถ : </label>
+                                                                    <div class="col-lg-5">
+                                                                        <label for="inputEmail4">ทะเบียนรถ : </label>
                                                                     </div>
                                                                     <div class="form-group col-lg-6">
                                                                         <input type="text" class="form-control nameof" id="nameof3" name="XVVehNumber" style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT">
                                                                     </div>
 
-                                                                        <div class="col-lg-5">   
-                                                                            <label for="inputEmail4">เลขทะเบียน MANGO : </label>
+                                                                        <div class="col-lg-5">
+                                                                            <label for="inputEmail4">เบอร์รถ : </label>
                                                                         </div>
                                                                         <div class="form-group col-lg-6">
                                                                             <input type="text" class="form-control nameof" id="nameof4" name="XVVehMango"  style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT">
                                                                         </div>
 
-                                                                                <div class="col-lg-5">   
+                                                                                <div class="col-lg-5">
                                                                                     <label for="inputEmail4">ยี่ห้อ : </label>
                                                                                 </div>
                                                                                 <div class="form-group col-lg-6">
                                                                                     <input type="text" class="form-control nameof" id="nameof5" name="XVVehBrand" style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT">
                                                                                 </div>
 
-                                                                                    <div class="col-lg-5">   
-                                                                                        <label for="inputEmail4">รุ่นรถ : </label>
+                                                                                    <div class="col-lg-5">
+                                                                                        <label for="inputEmail4">ยี่ห้อ : </label>
                                                                                     </div>
                                                                                     <div class="form-group col-lg-6">
                                                                                         <input type="text" class="form-control nameof" id="nameof6" name="XVVehModel" style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT">
                                                                                     </div>
 
-
-                                                                                        <div class="col-lg-5">   
-                                                                                            <label for="inputEmail4">เลขคัทซี : </label>
+                                                                                        <div class="col-lg-5">
+                                                                                            <label for="inputEmail4">รุ่นรถ : </label>
                                                                                         </div>
                                                                                         <div class="form-group col-lg-6">
                                                                                             <input type="text" class="form-control nameof" id="nameof7" name="XVVehChassisNumber" style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT">
                                                                                         </div>
 
-                                                                                                <div class="col-lg-5">   
+                                                                                                <div class="col-lg-5">
                                                                                                     <label for="inputEmail4">เลขเครื่อง : </label>
                                                                                                 </div>
                                                                                                 <div class="form-group col-lg-6">
                                                                                                     <input type="text" class="form-control nameof" id="nameof8" name="XVVehEngineNumber" style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT">
                                                                                                 </div>
 
-                                                                                                    <div class="col-lg-5">   
+                                                                                                    <div class="col-lg-5">
                                                                                                         <label for="inputEmail4">=ชื่อประเภทเครื่องจักร : </label>
                                                                                                     </div>
                                                                                                     <div class="form-group col-lg-6">
                                                                                                         <input type="text" class="form-control nameof" id="nameof9" name="XVVehTypeCode" style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT">
                                                                                                     </div>
-                                                            
+
+                                                                                                        <div class="col-lg-5">
+                                                                                                            <label for="inputEmail4">รหัสประเภทเครื่องจักร : </label>
+                                                                                                        </div>
+                                                                                                        <div class="form-group col-lg-6">
+                                                                                                            <input type="text" class="form-control nameof" id="nameof" name="XVVehTypeCode" style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT">
+                                                                                                        </div>
+
+                                        </div>
+
+                                    <div class="col-sm-12" align="right">
+                                        <button type="Reset" class="btn btn-danger" id="btn1"> <span class="fa fa-times"></span> Reset  </button>
+                                        <button type="submit" class="btn btn-success" id="btn"> <span class="fa fa-check"></span> Save  </button>
                                     </div>
-                                
-                                <div class="col-sm-12" align="right">
-                                    <button type="Reset" class="btn btn-danger" id="btn1"> <span class="fa fa-times"></span> Reset  </button> 
-                                    <button type="submit" class="btn btn-success" id="btn"> <span class="fa fa-check"></span> Save  </button>  
-                                </div> 
 
-                            </form>
+                                </form>
+                            </div>
+                            <!-- /.panel-body -->
                         </div>
-                        <!-- /.panel-body -->
+                        <!-- /.panel -->
                     </div>
-                    <!-- /.panel -->
+                    <!-- /.col-lg-6 -->
                 </div>
-                <!-- /.col-lg-6 -->
+                <!-- /.row -->
             </div>
-            <!-- /.row -->
+            <!-- /#page-wrapper -->
+
         </div>
-        <!-- /#page-wrapper -->
+        <!-- /#wrapper -->
 
-    </div>
-    <!-- /#wrapper -->
+      </form>
 
+<?php
+error_reporting( error_reporting() & ~E_NOTICE );
+      include '../database/connect.php';
+$XVVehName = $_POST["XVVehName"];
+$XVVehRegistration = $_POST["XVVehRegistration"];
+$XVVehNumber = $_POST["XVVehNumber"];
+$XVVehMango = $_POST["XVVehMango"];
+$XVVehBrand = $_POST["XVVehBrand"];
+$XVVehModel = $_POST["XVVehModel"];
+$XVVehChassisNumber = $_POST["XVVehChassisNumber"];
+$XVVehEngineNumber = $_POST["XVVehEngineNumber"];
+$XVVehTypeCode = $_POST["XVVehTypeCode"];
+$sql = "INSERT INTO TMstVehicle VALUES (NULL,'".$XVVehName."','".$XVVehRegistration."','".$XVVehNumber."','".$XVVehMango."','".$XVVehBrand."','".$XVVehModel."','".$XVVehChassisNumber."','".$XVVehEngineNumber."',$XVVehTypeCode)";
+$result = mysqli_query($connect,$sql);
+if($result){
+  header("refresh:1;url=EditMachine.php");
+}
+mysqli_close($connect);
+ ?>
 
     <!-- DataTables JavaScript -->'
     <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
