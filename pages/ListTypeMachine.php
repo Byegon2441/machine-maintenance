@@ -127,15 +127,27 @@
                                 id="dataTables-example">
                                 <thead>
                                     <tr>
+                                        <th>ลำดับที่</th>
                                         <th>รหัสประเภทเครื่องจักร</th>
                                         <th>ชื่อประเภทเครื่องจักร</th>
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
                                         <th>แก้ไข</th>
                                         <th>ลบ</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+
+                                    <?php
+    $sql = " SELECT vt.XVVehTypeCode,vt.XVVehTypeName
+    FROM tmstmvehicletype vt";
+    $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+    while ($row=mysqli_fetch_array($result)){
+?>
                                     <tr class="odd gradeA">
+<<<<<<< Updated upstream
                                         <td>XXXXXXXXXXXXXX</td>
                                         <td>XXXXXXX</td>
 
@@ -170,7 +182,15 @@
 
                                         <td><input class='btn btn-primary' type='button' value='แก้ไข' /></td>
                                         <td><input class='btn btn-danger' type='button' value='ลบ' /></td>
+=======
+                                        <td>x</td>
+                                        <td><?php echo $row["XVVehTypeCode"];?></td>
+                                        <td><?php echo $row["XVVehTypeName"];?></td>
+                                        <td> <a class='btn btn-primary' href="EditMachine.php">แก้ไข</a> </td>
+                                        <td> <a class='btn btn-danger' href="DeleteMachine.php">ลบ</a> </td>
+>>>>>>> Stashed changes
                                     </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->
