@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2020 at 04:52 PM
+-- Generation Time: Sep 30, 2020 at 11:01 AM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.2
+-- PHP Version: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -201,6 +200,15 @@ CREATE TABLE `tmstmvehicletype` (
   `XVVehTypeName` varchar(100) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Dumping data for table `tmstmvehicletype`
+--
+
+INSERT INTO `tmstmvehicletype` (`XVVehTypeCode`, `XVVehTypeName`) VALUES
+(2, 'กระบะตอนเดียว'),
+(3, 'กระบะตอนครึ่ง'),
+(4, 'รถเก๋ง');
+
 -- --------------------------------------------------------
 
 --
@@ -219,6 +227,14 @@ CREATE TABLE `tmstvehicle` (
   `XVVehEngineNumber` varchar(50) COLLATE utf8_bin NOT NULL,
   `XVVehTypeCode` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `tmstvehicle`
+--
+
+INSERT INTO `tmstvehicle` (`XVVehCode`, `XVVehName`, `XVVehRegistration`, `XVVehNumber`, `XVVehMango`, `XVVehBrand`, `XVVehModel`, `XVVehChassisNumber`, `XVVehEngineNumber`, `XVVehTypeCode`) VALUES
+(2, 'รถกระบะ', 'บล-8953', 'CT04', 'บล-8953', 'TOYOTA', 'TGN16R-TRMDKT A8', 'MR0CX12G900108711', '2TR-7581404', 2),
+(3, 'รถเก๋ง สีดำเงา', 'กน-2168รบ', 'CT42', 'MR2BT9F3X01181813', 'TOYOTA', 'VIOS', 'MR2BT9F3X01181813', '1NZZ216809', 4);
 
 -- --------------------------------------------------------
 
@@ -367,13 +383,13 @@ ALTER TABLE `tmstmtemployee`
 -- AUTO_INCREMENT for table `tmstmvehicletype`
 --
 ALTER TABLE `tmstmvehicletype`
-  MODIFY `XVVehTypeCode` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `XVVehTypeCode` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tmstvehicle`
 --
 ALTER TABLE `tmstvehicle`
-  MODIFY `XVVehCode` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `XVVehCode` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
