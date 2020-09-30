@@ -40,7 +40,8 @@
 
 <body>
 
-<?php include 'templsidebar.php'?>
+<?php include 'templsidebar.php';
+      include '../database/connect.php';?>
 
     <div id="wrapper">
         <div id="page-wrapper">
@@ -55,7 +56,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                                 เครื่องจักร    
+                                 เครื่องจักร
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -85,9 +86,9 @@
                                         <td>XXX</td>
                                         <td>XXXXXX</td>
                                         <td>XXXXXXX</td>
-                                  
+
                                         <td><input class='btn btn-primary' type='button' value='รายละเอียด'/></td>
-                                      
+
                                     </tr>
                                     <tr class="odd gradeA">
                                     <td>XXXXXXXXXXXXXX</td>
@@ -99,9 +100,9 @@
                                         <td>XXX</td>
                                         <td>XXXXXX</td>
                                         <td>XXXXXXX</td>
-                                  
+
                                         <td><input class='btn btn-primary' type='button' value='รายละเอียด'/></td>
-                                      
+
                                     </tr>
                                     <tr class="odd gradeA">
                                     <td>XXXXXXXXXXXXXX</td>
@@ -113,9 +114,9 @@
                                         <td>XXX</td>
                                         <td>XXXXXX</td>
                                         <td>XXXXXXX</td>
-                                  
+
                                         <td><input class='btn btn-primary' type='button' value='รายละเอียด'/></td>
-                                      
+
                                     </tr>
                                     <tr class="odd gradeA">
                                     <td>XXXXXXXXXXXXXX</td>
@@ -127,9 +128,9 @@
                                         <td>XXX</td>
                                         <td>XXXXXX</td>
                                         <td>XXXXXXX</td>
-                                  
+
                                         <td><input class='btn btn-primary' type='button' value='รายละเอียด'/></td>
-                                      
+
                                     </tr>
                                     <tr class="odd gradeA">
                                     <td>XXXXXXXXXXXXXX</td>
@@ -141,9 +142,9 @@
                                         <td>XXX</td>
                                         <td>XXXXXX</td>
                                         <td>XXXXXXX</td>
-                                  
+
                                         <td><input class='btn btn-primary' type='button' value='รายละเอียด'/></td>
-                                      
+
                                     </tr>
                                 </tbody>
                             </table>
