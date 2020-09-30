@@ -64,13 +64,17 @@
                             <table width="120%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
+                                    <th>ลำดับที่ </th>
                                         <th>รหัสเครื่องจักร</th>
                                         <th>ชื่อเครื่องจักร</th>
-                                        <th>หมายเลขเครื่องยนต์</th>
-                                        <th>ชื่อไซต์งาน</th>
-                                        <th>ชื่อประเภทเครื่องจักร</th>
-                                        <th>ผู้รับผิดชอบ</th>
-                                        <th>สถานะ</th>
+                                        <th>ทะเบียนรถ</th>
+                                        <th>เบอร์รถ</th>
+                                        <th>เลขทะเบียน MANGO</th>
+                                        <th>ยี่ห้อ</th>
+                                        <th>รุ่นรถ</th>
+                                        <th>เลขคัทซี</th>
+                                        <th>เลขเครื่อง</th>
+                                        <th>รหัสประเภทเครื่องจักร</th>
                                         <th>แก้ไข</th>
                                         <th>ลบ</th>
                                     </tr>
@@ -78,6 +82,7 @@
                                 <tbody>
                                     
                                     <tr class="odd gradeA">
+                                        <td>1</td>
                                         <td>XXXXXXXXXXXXXX</td>
                                         <td>XXXXXXX</td>
                                         <td>XXX</td>
@@ -85,9 +90,13 @@
                                         <td>XXX</td>
                                         <td>XXX</td>
                                         <td>XXX</td>
-                                        <td><a class='btn btn-primary' href="EditMachine.php">แก้ไข</a></td>
-                                        <td><a class='btn btn-danger' href="DeleteMachine.php" >ลบ</a></td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
+                                        <td> <a class='btn btn-primary' href="EditMachine.php">แก้ไข</a> </td>
+                                        <td > <a class='btn btn-danger' href="DeleteMachine.php">ลบ</a> </td>
                                     </tr>
+                                 
                                     
                                 </tbody>
                             </table>
