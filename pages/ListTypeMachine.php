@@ -40,7 +40,9 @@
 
 <body>
 
-    <?php include 'templsidebar.php'?>
+    <?php include 'templsidebar.php';
+    include "../database/connect.php";
+    ?>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
