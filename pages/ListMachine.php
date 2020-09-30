@@ -40,7 +40,9 @@
 
 <body>
 
-<?php include 'templsidebar.php'?>
+<?php include 'templsidebar.php';
+    include '../database/connect.php';
+?>
 
     <div id="wrapper">
         <div id="page-wrapper">
@@ -61,7 +63,7 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="table-responsive">
-                            <table width="120%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <table width="180%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
                                     <th>ลำดับที่ </th>
@@ -81,53 +83,35 @@
                                 </thead>
                                 <tbody>
                                     
+       <?php
+          $sql = " SELECT v.XVVehCode,v.XVVehName,v.XVVehRegistration,v.XVVehNumber,v.XVVehMango,v.XVVehBrand,v.XVVehModel,v.XVVehChassisNumber,v.XVVehEngineNumber,vt.XVVehTypeName
+          FROM tmstvehicle v,tmstmvehicletype vt
+          WHERE v.XVVehCode = vt.XVVehTypeCode";
+    $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+    while ($row=mysqli_fetch_array($result)){
+
+    
+
+
+      ?>
+
                                     <tr class="odd gradeA">
-                                        <td>1</td>
-                                        <td>XXXXXX</td>
-                                        <td>XXXXXXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
+                                        <td>x</td>
+                                        <td><?php echo $row["XVVehCode"];?></td>
+                                        <td><?php echo $row["XVVehName"];?></td>
+                                        <td><?php echo $row["XVVehRegistration"];?></td>
+                                        <td><?php echo $row["XVVehNumber"];?></td>
+                                        <td><?php echo $row["XVVehMango"];?></td>
+                                        <td><?php echo $row["XVVehBrand"];?></td>
+                                        <td><?php echo $row["XVVehModel"];?></td>
+                                        <td><?php echo $row["XVVehChassisNumber"];?></td>
+                                        <td><?php echo $row["XVVehEngineNumber"];?></td>
+                                        <td><?php echo $row["XVVehTypeName"];?></td>
                                         <td> <a class='btn btn-primary' href="EditMachine.php">แก้ไข</a> </td>
                                         <td > <a class='btn btn-danger' href="DeleteMachine.php">ลบ</a> </td>
                                     </tr>
                                   
-                                    <tr class="odd gradeA">
-                                        <td>1</td>
-                                        <td>XXXXXX</td>
-                                        <td>XXXXXXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td> <a class='btn btn-primary' href="EditMachine.php">แก้ไข</a> </td>
-                                        <td > <a class='btn btn-danger' href="DeleteMachine.php">ลบ</a> </td>
-                                    </tr>
-                                  
-                                    <tr class="odd gradeA">
-                                        <td>1</td>
-                                        <td>XXXXXX</td>
-                                        <td>XXXXXXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td> <a class='btn btn-primary' href="EditMachine.php">แก้ไข</a> </td>
-                                        <td > <a class='btn btn-danger' href="DeleteMachine.php">ลบ</a> </td>
-                                    </tr>
+    <?php } ?>                         
                                  
                                     
                                 </tbody>
