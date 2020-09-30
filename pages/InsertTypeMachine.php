@@ -46,43 +46,21 @@
         <div class="col-sm-6 col-sm-offset-3">
                     <p><div class="panel panel-primary">
                         <div class="panel-heading">
-                                ไซต์งาน
+                                เพิ่มประเภทเครื่องจักรใหม่
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                        <form>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                <label for="inputEmail4">Email</label>
-                                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                            <form>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                    <label for="inputEmail4">ชื่อประเภทเครื่องจักรใหม่</label>
+                                    <input type="text" class="form-control" id="xx" style="width:100%" minlength="1" maxlength="100">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                <label for="inputCity">City</label>
-                                <input type="text" class="form-control" id="inputCity">
-                                </div>
-                                <div class="form-group col-md-4">
-                                <label for="inputState">State</label>
-                                <select id="inputState" class="form-control">
-                                    <option selected>Choose...</option>
-                                    <option>...</option>
-                                </select>
-                                </div>
-                                <div class="form-group col-md-2">
-                                <label for="inputZip">Zip</label>
-                                <input type="text" class="form-control" id="inputZip">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="gridCheck">
-                                <label class="form-check-label" for="gridCheck">
-                                    Check me out
-                                </label>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Sign in</button>
+                                <div class="col-sm-12" align="right">
+                                    <button type="Reset" class="btn btn-danger" id="btn1"> <span class="fa fa-times"></span> Reset  </button> 
+                                    <button type="submit" class="btn btn-success" id="btn"> <span class="fa fa-check"></span> Save  </button>  
+                                </div> 
                             </form>
                         </div>
                         <!-- /.panel-body -->
