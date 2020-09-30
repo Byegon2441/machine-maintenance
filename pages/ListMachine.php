@@ -76,6 +76,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    
                                     <tr class="odd gradeA">
                                         <td>XXXXXXXXXXXXXX</td>
                                         <td>XXXXXXX</td>
@@ -84,65 +85,10 @@
                                         <td>XXX</td>
                                         <td>XXX</td>
                                         <td>XXX</td>
-                                        <td><input class='btn btn-primary' type='button' value='แก้ไข'/></td>
-                                        <td><input class='btn btn-danger' type='button' value='ลบ'/></td>
+                                        <td><a class='btn btn-primary' href="EditMachine.php">แก้ไข</a></td>
+                                        <td><a class='btn btn-danger' href="DeleteMachine.php" >ลบ</a></td>
                                     </tr>
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXXXXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td><input class='btn btn-primary' type='button' value='แก้ไข'/></td>
-                                        <td><input class='btn btn-danger' type='button' value='ลบ'/></td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXXXXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td><input class='btn btn-primary' type='button' value='แก้ไข'/></td>
-                                        <td><input class='btn btn-danger' type='button' value='ลบ'/></td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td><input class='btn btn-primary' type='button' value='แก้ไข'/></td>
-                                        <td><input class='btn btn-danger' type='button' value='ลบ'/></td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXX XX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td><input class='btn btn-primary' type='button' value='แก้ไข'/></td>
-                                        <td><input class='btn btn-danger' type='button' value='ลบ'/></td>
-                                    </tr>
-
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXX XX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td>XXX</td>
-                                        <td><input class='btn btn-primary' type='button' value='แก้ไข'/></td>
-                                        <td><input class='btn btn-danger' type='button' value='ลบ'/></td>
-                                    </tr>
+                                    
                                 </tbody>
                             </table>
                             </div>
