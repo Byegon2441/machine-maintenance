@@ -64,38 +64,6 @@
                                     required>
                             </div>
                         </div>
-                        <!-- <div class="form-group">
-                            <label for="email" class="col-sm-3 control-label">
-                                <span class="required">*</span> Email: </label>
-                            <div class="col-sm-9">
-                                <input type="email" class="form-control" id="email" name="email"
-                                    placeholder="you@domain.com" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="col-sm-3 control-label">
-                                <span class="required">*</span> Message:</label>
-                            <div class="col-sm-9">
-                                <textarea name="message" rows="4" required class="form-control" id="message"
-                                    placeholder="Comments"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="human" class="col-sm-3 control-label">
-                                <span class="required">*</span> Human or Bot:</label>
-                            <div class="col-sm-4">
-                                <h3 class="human">Six + 6 = ?</h3>
-                                <input type="number" class="form-control" id="human" name="human"
-                                    placeholder="Enter sum in digits">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-6 col-sm-offset-3">
-                                <button type="submit" id="submit" name="submit"
-                                    class="btn-lg btn-primary">SUBMIT</button>
-                            </div>
-                        </div> -->
-                        <!--end Form-->
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -127,6 +95,9 @@
                                     required>
                             </div>
                         </div>
+                        
+                        <!-- ตัวฟอร์มที่สมบูรณ์ห้ามลบ เผื่อใช้ในอนาคต !!! -->
+
                         <!-- <div class="form-group">
                             <label for="email" class="col-sm-3 control-label">
                                 <span class="required">*</span> Email: </label>
@@ -214,9 +185,11 @@
                                         <td>x</td>
                                         <td><?php echo $row["XVVehTypeCode"];?></td>
                                         <td><?php echo $row["XVVehTypeName"];?></td>
-                                        <td><input class='btn btn-primary' type='button' value='แก้ไข'
+                                        
+                                        <td align="center"><input class='btn btn-primary' type='button' value='แก้ไข'
                                                 data-toggle="modal" data-target="#exampleModal"></td>
-                                        <td><input class='btn btn-danger' type='button' value='ลบ' /></td>
+                                        <td align="center"><a href="../database/deleteTypeMc.php?id=<?php echo $row["XVVehTypeCode"];?>" class='btn btn-danger'>ลบ</a></td>
+                                        <!-- <td><input class='btn btn-danger' type='button' value='ลบ' /></td> -->
                                     </tr>
                                     <?php } ?>
                                 </tbody>
