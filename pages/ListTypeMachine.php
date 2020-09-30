@@ -40,7 +40,9 @@
 
 <body>
 
-    <?php include 'templsidebar.php'?>
+    <?php include 'templsidebar.php';
+    include "../database/connect.php";
+    ?>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -127,50 +129,30 @@
                                 id="dataTables-example">
                                 <thead>
                                     <tr>
+                                        <th>ลำดับที่</th>
                                         <th>รหัสประเภทเครื่องจักร</th>
                                         <th>ชื่อประเภทเครื่องจักร</th>
-
                                         <th>แก้ไข</th>
                                         <th>ลบ</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXXXXX</td>
 
+                                    <?php
+    $sql = " SELECT vt.XVVehTypeCode,vt.XVVehTypeName
+    FROM tmstmvehicletype vt";
+    $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+    while ($row=mysqli_fetch_array($result)){
+?>
+                                    <tr class="odd gradeA">
+                                        <td>x</td>
+                                        <td><?php echo $row["XVVehTypeCode"];?></td>
+                                        <td><?php echo $row["XVVehTypeName"];?></td>
                                         <td><input class='btn btn-primary' type='button' value='แก้ไข'
                                                 data-toggle="modal" data-target="#exampleModal"></td>
                                         <td><input class='btn btn-danger' type='button' value='ลบ' /></td>
                                     </tr>
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXXXXX</td>
-
-                                        <td><input class='btn btn-primary' type='button' value='แก้ไข' /></td>
-                                        <td><input class='btn btn-danger' type='button' value='ลบ' /></td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXXXXX</td>
-
-                                        <td><input class='btn btn-primary' type='button' value='แก้ไข' /></td>
-                                        <td><input class='btn btn-danger' type='button' value='ลบ' /></td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXX</td>
-
-                                        <td><input class='btn btn-primary' type='button' value='แก้ไข' /></td>
-                                        <td><input class='btn btn-danger' type='button' value='ลบ' /></td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXX XX</td>
-
-                                        <td><input class='btn btn-primary' type='button' value='แก้ไข' /></td>
-                                        <td><input class='btn btn-danger' type='button' value='ลบ' /></td>
-                                    </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->

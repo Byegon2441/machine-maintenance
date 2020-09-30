@@ -40,7 +40,7 @@
 
 <body>
 
-<?php include 'templsidebar.php';
+    <?php include 'templsidebar.php';
     include '../database/connect.php';
 ?>
 
@@ -48,8 +48,9 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">เครื่องจักร<button type="button" class="btn btn-success btn-circle" style="float: right;"><i class="fa fa-plus"></i>
-                            </button></h1>
+                    <h1 class="page-header">เครื่องจักร<button type="button" class="btn btn-success btn-circle"
+                            style="float: right;"><i class="fa fa-plus"></i>
+                        </button></h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -63,59 +64,56 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="table-responsive">
-                            <table width="180%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                <thead>
-                                    <tr>
-                                    <th>ลำดับที่ </th>
-                                        <th>รหัสเครื่องจักร</th>
-                                        <th>ชื่อเครื่องจักร</th>
-                                        <th>ทะเบียนรถ</th>
-                                        <th>เบอร์รถ</th>
-                                        <th>เลขทะเบียน MANGO</th>
-                                        <th>ยี่ห้อ</th>
-                                        <th>รุ่นรถ</th>
-                                        <th>เลขคัทซี</th>
-                                        <th>เลขเครื่อง</th>
-                                        <th>รหัสประเภทเครื่องจักร</th>
-                                        <th>แก้ไข</th>
-                                        <th>ลบ</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    
-       <?php
+                                <table width="180%" class="table table-striped table-bordered table-hover"
+                                    id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>ลำดับที่ </th>
+                                            <th>รหัสเครื่องจักร</th>
+                                            <th>ชื่อเครื่องจักร</th>
+                                            <th>ทะเบียนรถ</th>
+                                            <th>เบอร์รถ</th>
+                                            <th>เลขทะเบียน MANGO</th>
+                                            <th>ยี่ห้อ</th>
+                                            <th>รุ่นรถ</th>
+                                            <th>เลขคัทซี</th>
+                                            <th>เลขเครื่อง</th>
+                                            <th>รหัสประเภทเครื่องจักร</th>
+                                            <th>แก้ไข</th>
+                                            <th>ลบ</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <?php
           $sql = " SELECT v.XVVehCode,v.XVVehName,v.XVVehRegistration,v.XVVehNumber,v.XVVehMango,v.XVVehBrand,v.XVVehModel,v.XVVehChassisNumber,v.XVVehEngineNumber,vt.XVVehTypeName
           FROM tmstvehicle v,tmstmvehicletype vt
           WHERE v.XVVehCode = vt.XVVehTypeCode";
     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
     while ($row=mysqli_fetch_array($result)){
-
-    
-
-
       ?>
 
-                                    <tr class="odd gradeA">
-                                        <td>x</td>
-                                        <td><?php echo $row["XVVehCode"];?></td>
-                                        <td><?php echo $row["XVVehName"];?></td>
-                                        <td><?php echo $row["XVVehRegistration"];?></td>
-                                        <td><?php echo $row["XVVehNumber"];?></td>
-                                        <td><?php echo $row["XVVehMango"];?></td>
-                                        <td><?php echo $row["XVVehBrand"];?></td>
-                                        <td><?php echo $row["XVVehModel"];?></td>
-                                        <td><?php echo $row["XVVehChassisNumber"];?></td>
-                                        <td><?php echo $row["XVVehEngineNumber"];?></td>
-                                        <td><?php echo $row["XVVehTypeName"];?></td>
-                                        <td> <a class='btn btn-primary' href="EditMachine.php">แก้ไข</a> </td>
-                                        <td > <a class='btn btn-danger' href="DeleteMachine.php">ลบ</a> </td>
-                                    </tr>
-                                  
-    <?php } ?>                         
-                                 
-                                    
-                                </tbody>
-                            </table>
+                                        <tr class="odd gradeA">
+                                            <td>x</td>
+                                            <td><?php echo $row["XVVehCode"];?></td>
+                                            <td><?php echo $row["XVVehName"];?></td>
+                                            <td><?php echo $row["XVVehRegistration"];?></td>
+                                            <td><?php echo $row["XVVehNumber"];?></td>
+                                            <td><?php echo $row["XVVehMango"];?></td>
+                                            <td><?php echo $row["XVVehBrand"];?></td>
+                                            <td><?php echo $row["XVVehModel"];?></td>
+                                            <td><?php echo $row["XVVehChassisNumber"];?></td>
+                                            <td><?php echo $row["XVVehEngineNumber"];?></td>
+                                            <td><?php echo $row["XVVehTypeName"];?></td>
+                                            <td> <a class='btn btn-primary' href="EditMachine.php">แก้ไข</a> </td>
+                                            <td> <a class='btn btn-danger' href="DeleteMachine.php">ลบ</a> </td>
+                                        </tr>
+
+                                        <?php } ?>
+
+
+                                    </tbody>
+                                </table>
                             </div>
                             <!-- /.table-responsive -->
                         </div>
