@@ -50,11 +50,11 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <form>
+                            <form class="form">
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
                                     <label for="inputEmail4">ชื่อประเภทเครื่องจักรใหม่</label>
-                                    <input type="text" class="form-control" id="xx" style="width:100%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100">
+                                    <input type="text" class="form-control nameof" id="nameof" style="width:100%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT">
                                     </div>
                                 </div>
                                 <div class="col-sm-12" align="right">
@@ -77,7 +77,7 @@
     <!-- /#wrapper -->
 
 
-    <!-- DataTables JavaScript -->
+    <!-- DataTables JavaScript -->'
     <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
     <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
@@ -89,6 +89,25 @@
             responsive: true
         });
     });
+    </script>
+    <script>
+    let nameof = document.querySelectorAll('.nameof')
+let form = document.querySelector('.form')
+
+
+function check(e) {
+        let tooLong=false
+        nameof.forEach((answ) => {
+            if(answ.value.length < 1){
+                tooLong=true
+            }
+        })
+                if(tooLong){
+                    alert('สั้นเกินไปหรือเปล่าจ๊ะ ?')
+                }
+}
+
+form.addEventListener('submit' , check)
     </script>
 
 </body>
