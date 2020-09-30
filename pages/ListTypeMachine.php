@@ -106,12 +106,78 @@
         </div>
     </div>
 
+    <!--  modal เพิ่มประเภทเครื่องจักร -->
+    <div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <form class="form-horizontal" role="form" method="post" action="../database/insertTypeMc.php ">
+                        <div class="form-group">
+                            <label for="name" class="col-sm-4 control-label">
+                                <span class="required"></span> เพิ่มประเภทเครื่องจักร:</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="First & Last"
+                                    required>
+                            </div>
+                        </div>
+                        <!-- <div class="form-group">
+                            <label for="email" class="col-sm-3 control-label">
+                                <span class="required">*</span> Email: </label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control" id="email" name="email"
+                                    placeholder="you@domain.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="col-sm-3 control-label">
+                                <span class="required">*</span> Message:</label>
+                            <div class="col-sm-9">
+                                <textarea name="message" rows="4" required class="form-control" id="message"
+                                    placeholder="Comments"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="human" class="col-sm-3 control-label">
+                                <span class="required">*</span> Human or Bot:</label>
+                            <div class="col-sm-4">
+                                <h3 class="human">Six + 6 = ?</h3>
+                                <input type="number" class="form-control" id="human" name="human"
+                                    placeholder="Enter sum in digits">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-6 col-sm-offset-3">
+                                <button type="submit" id="submit" name="submit"
+                                    class="btn-lg btn-primary">SUBMIT</button>
+                            </div>
+                        </div> -->
+                        <!--end Form-->
+                        <!-- <input type="submit" value="ยืนยัน"> -->
+                        <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <input type="submit" value="ยืนยัน" class="btn btn-primary">
+                </div>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- จบการสร้าง Modal -->
+
     <div id="wrapper">
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">ประเภทเครื่องจักร<button type="button" class="btn btn-success btn-circle"
-                            style="float: right;"><i class="fa fa-plus"></i>
+                            style="float: right;" data-toggle="modal" data-target="#insertModal"><i class="fa fa-plus" ></i>
                         </button></h1>
                 </div>
                 <!-- /.col-lg-12 -->
