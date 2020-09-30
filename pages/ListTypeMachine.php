@@ -132,10 +132,6 @@
                                         <th>ลำดับที่</th>
                                         <th>รหัสประเภทเครื่องจักร</th>
                                         <th>ชื่อประเภทเครื่องจักร</th>
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
                                         <th>แก้ไข</th>
                                         <th>ลบ</th>
                                     </tr>
@@ -149,48 +145,12 @@
     while ($row=mysqli_fetch_array($result)){
 ?>
                                     <tr class="odd gradeA">
-<<<<<<< Updated upstream
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXXXXX</td>
-
-                                        <td><input class='btn btn-primary' type='button' value='แก้ไข'
-                                                data-toggle="modal" data-target="#exampleModal"></td>
-                                        <td><input class='btn btn-danger' type='button' value='ลบ' /></td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXXXXX</td>
-
-                                        <td><input class='btn btn-primary' type='button' value='แก้ไข' /></td>
-                                        <td><input class='btn btn-danger' type='button' value='ลบ' /></td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXXXXX</td>
-
-                                        <td><input class='btn btn-primary' type='button' value='แก้ไข' /></td>
-                                        <td><input class='btn btn-danger' type='button' value='ลบ' /></td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXX</td>
-
-                                        <td><input class='btn btn-primary' type='button' value='แก้ไข' /></td>
-                                        <td><input class='btn btn-danger' type='button' value='ลบ' /></td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXX XX</td>
-
-                                        <td><input class='btn btn-primary' type='button' value='แก้ไข' /></td>
-                                        <td><input class='btn btn-danger' type='button' value='ลบ' /></td>
-=======
                                         <td>x</td>
                                         <td><?php echo $row["XVVehTypeCode"];?></td>
                                         <td><?php echo $row["XVVehTypeName"];?></td>
-                                        <td> <a class='btn btn-primary' href="EditMachine.php">แก้ไข</a> </td>
-                                        <td> <a class='btn btn-danger' href="DeleteMachine.php">ลบ</a> </td>
->>>>>>> Stashed changes
+                                        <td><input class='btn btn-primary' type='button' value='แก้ไข'
+                                                data-toggle="modal" data-target="#exampleModal"></td>
+                                        <td><input class='btn btn-danger' type='button' value='ลบ' /></td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>
