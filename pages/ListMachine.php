@@ -83,7 +83,39 @@
                                     
                                     <tr class="odd gradeA">
                                         <td>1</td>
-                                        <td>XXXXXXXXXXXXXX</td>
+                                        <td>XXXXXX</td>
+                                        <td>XXXXXXX</td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
+                                        <td> <a class='btn btn-primary' href="EditMachine.php">แก้ไข</a> </td>
+                                        <td > <a class='btn btn-danger' href="DeleteMachine.php">ลบ</a> </td>
+                                    </tr>
+                                  
+                                    <tr class="odd gradeA">
+                                        <td>1</td>
+                                        <td>XXXXXX</td>
+                                        <td>XXXXXXX</td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
+                                        <td>XXX</td>
+                                        <td> <a class='btn btn-primary' href="EditMachine.php">แก้ไข</a> </td>
+                                        <td > <a class='btn btn-danger' href="DeleteMachine.php">ลบ</a> </td>
+                                    </tr>
+                                  
+                                    <tr class="odd gradeA">
+                                        <td>1</td>
+                                        <td>XXXXXX</td>
                                         <td>XXXXXXX</td>
                                         <td>XXX</td>
                                         <td>XXX</td>
@@ -126,7 +158,7 @@
     <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-            responsive: true
+            responsive: false
         });
     });
     </script>
