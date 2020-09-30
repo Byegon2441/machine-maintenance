@@ -54,7 +54,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
                                     <label for="inputEmail4">ชื่อประเภทเครื่องจักรใหม่</label>
-                                    <input type="text" class="form-control" id="xx" style="width:100%" minlength="1" maxlength="100">
+                                    <input type="text" class="form-control" id="xx" style="width:100%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100">
                                     </div>
                                 </div>
                                 <div class="col-sm-12" align="right">
