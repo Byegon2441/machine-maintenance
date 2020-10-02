@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2020 at 11:01 AM
+-- Generation Time: Oct 02, 2020 at 08:36 AM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -205,9 +206,7 @@ CREATE TABLE `tmstmvehicletype` (
 --
 
 INSERT INTO `tmstmvehicletype` (`XVVehTypeCode`, `XVVehTypeName`) VALUES
-(2, 'กระบะตอนเดียว'),
-(3, 'กระบะตอนครึ่ง'),
-(4, 'รถเก๋ง');
+(21, 'รถไฟไอน้ำปู้นๆ');
 
 -- --------------------------------------------------------
 
@@ -227,14 +226,6 @@ CREATE TABLE `tmstvehicle` (
   `XVVehEngineNumber` varchar(50) COLLATE utf8_bin NOT NULL,
   `XVVehTypeCode` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `tmstvehicle`
---
-
-INSERT INTO `tmstvehicle` (`XVVehCode`, `XVVehName`, `XVVehRegistration`, `XVVehNumber`, `XVVehMango`, `XVVehBrand`, `XVVehModel`, `XVVehChassisNumber`, `XVVehEngineNumber`, `XVVehTypeCode`) VALUES
-(2, 'รถกระบะ', 'บล-8953', 'CT04', 'บล-8953', 'TOYOTA', 'TGN16R-TRMDKT A8', 'MR0CX12G900108711', '2TR-7581404', 2),
-(3, 'รถเก๋ง สีดำเงา', 'กน-2168รบ', 'CT42', 'MR2BT9F3X01181813', 'TOYOTA', 'VIOS', 'MR2BT9F3X01181813', '1NZZ216809', 4);
 
 -- --------------------------------------------------------
 
@@ -383,7 +374,7 @@ ALTER TABLE `tmstmtemployee`
 -- AUTO_INCREMENT for table `tmstmvehicletype`
 --
 ALTER TABLE `tmstmvehicletype`
-  MODIFY `XVVehTypeCode` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `XVVehTypeCode` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `tmstvehicle`
@@ -446,7 +437,7 @@ ALTER TABLE `tmstmmachine_parts`
 -- Constraints for table `tmstvehicle`
 --
 ALTER TABLE `tmstvehicle`
-  ADD CONSTRAINT `FK_Vehicle_VehicleType` FOREIGN KEY (`XVVehTypeCode`) REFERENCES `tmstmvehicletype` (`XVVehTypeCode`);
+  ADD CONSTRAINT `FK_Vehicle_VehicleType` FOREIGN KEY (`XVVehTypeCode`) REFERENCES `tmstmvehicletype` (`XVVehTypeCode`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tsysuser`
