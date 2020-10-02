@@ -46,27 +46,29 @@
 
     <!--  modal แก้ไขเครื่องจักร -->
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">แก้ไขเครื่องจักร</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body mx-3">
-                    <form class="form-horizontal" role="form" method="post" action="form_to_email_script.php ">
+                    <form class="form-horizontal" role="form" method="post" action="../database/insertaMachine.php  ">
                         <div class="form-group">
 
+
                             <div class="col-lg-5">
-                                <label for="name">รหัสเครื่องจักร : </label>
+                                <label for="inputEmail4">ชื่อประเภทเครื่องจักร : </label>
                             </div>
                             <div class="form-group col-lg-6">
-                                <input type="text" class="form-control nameof" id="nameof1" name="XVVehCode"
-                                    style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100"
-                                    title="YOUR_WARNING_TEXT" disabled>
+                                <select id="cars" name="cars">
+                                    <option value="volvo">Volvo</option>
+
+                                </select>
                             </div>
 
                             <div class="col-lg-5">
@@ -141,23 +143,6 @@
                                     title="YOUR_WARNING_TEXT">
                             </div>
 
-                            <div class="col-lg-5">
-                                <label for="inputEmail4">ชื่อประเภทเครื่องจักร : </label>
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <input type="text" class="form-control nameof" id="nameof9" name="XVVehTypeName"
-                                    style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100"
-                                    title="YOUR_WARNING_TEXT">
-                            </div>
-
-                            <div class="col-lg-5">
-                                <label for="inputEmail4">รหัสประเภทเครื่องจักร : </label>
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <input type="text" class="form-control nameof" id="nameof" name="XVVehTypeCode"
-                                    style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100"
-                                    title="YOUR_WARNING_TEXT">
-                            </div>
 
                         </div>
 
@@ -166,12 +151,12 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                <button type="button" class="btn btn-primary">ยืนยัน</button>
             </div>
         </div>
     </div>
-    </div>
+    </div> -->
 
     <!--  modal เพิ่มประเภทเครื่องจักร -->
     <div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -179,28 +164,46 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">เพิ่มเครื่องจักร</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body mx-3">
-                    <form class="form-horizontal" role="form" method="post" action="../database/insertTypeMc.php ">
+                    <form class="form-horizontal" role="form" method="post" action="../database/insertMachine.php ">
                         <div class="form-group">
+
+
+
+
                             <div class="col-lg-5">
-                                <label for="name">รหัสเครื่องจักร : </label>
+                                <label for="inputEmail4">ชื่อประเภทเครื่องจักร : </label>
                             </div>
                             <div class="form-group col-lg-6">
-                                <input type="text" class="form-control nameof" id="nameof1" name="XVVehCode"
-                                    style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100"
-                                    title="YOUR_WARNING_TEXT">
+                                <select id="cars" name="XVVehTypeName">
+                                    <?php 
+                                     include 'connect.php';
+                                     $sql = "select * from tmstmvehicletype; ";
+                                     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+                                     while ($row=mysqli_fetch_array($result)){
+                                         ?>
+                                    <option value="<?php echo $row["XVVehTypeCode"];?>">
+                                        <?php echo $row["XVVehTypeName"]; ?></option>
+                                    <?php
+                                     }
+
+
+
+                                ?>
+
+                                </select>
                             </div>
 
                             <div class="col-lg-5">
                                 <label for="inputEmail4">ชื่อเครื่องจักร : </label>
                             </div>
                             <div class="form-group col-lg-6">
-                                <input type="text" class="form-control nameof" id="nameof2" name="XVVehName"
+                                <input type="text" class="form-control nameof" id="XVVehName" name="XVVehName"
                                     style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100"
                                     title="YOUR_WARNING_TEXT">
                             </div>
@@ -209,16 +212,16 @@
                                 <label for="inputEmail4">ทะเบียนรถ : </label>
                             </div>
                             <div class="form-group col-lg-6">
-                                <input type="text" class="form-control nameof" id="nameof3" name="XVVehRegistration"
-                                    style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100"
-                                    title="YOUR_WARNING_TEXT">
+                                <input type="text" class="form-control nameof" id="XVVehRegistration"
+                                    name="XVVehRegistration" style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1"
+                                    maxlength="100" title="YOUR_WARNING_TEXT">
                             </div>
 
                             <div class="col-lg-5">
                                 <label for="inputEmail4">เบอร์รถ : </label>
                             </div>
                             <div class="form-group col-lg-6">
-                                <input type="text" class="form-control nameof" id="nameof4" name="XVVehNumber"
+                                <input type="text" class="form-control nameof" id="XVVehNumber" name="XVVehNumber"
                                     style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100"
                                     title="YOUR_WARNING_TEXT">
                             </div>
@@ -227,7 +230,7 @@
                                 <label for="inputEmail4">เลขทะเบียน MANGO : </label>
                             </div>
                             <div class="form-group col-lg-6">
-                                <input type="text" class="form-control nameof" id="nameof5" name="XVVehMango"
+                                <input type="text" class="form-control nameof" id="XVVehMango" name="XVVehMango"
                                     style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100"
                                     title="YOUR_WARNING_TEXT">
                             </div>
@@ -236,7 +239,7 @@
                                 <label for="inputEmail4">ยี่ห้อ : </label>
                             </div>
                             <div class="form-group col-lg-6">
-                                <input type="text" class="form-control nameof" id="nameof6" name="XVVehBrand"
+                                <input type="text" class="form-control nameof" id="XVVehBrand" name="XVVehBrand"
                                     style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100"
                                     title="YOUR_WARNING_TEXT">
                             </div>
@@ -245,7 +248,7 @@
                                 <label for="inputEmail4">รุ่นรถ : </label>
                             </div>
                             <div class="form-group col-lg-6">
-                                <input type="text" class="form-control nameof" id="nameof7" name="XVVehModel"
+                                <input type="text" class="form-control nameof" id="XVVehModel" name="XVVehModel"
                                     style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100"
                                     title="YOUR_WARNING_TEXT">
                             </div>
@@ -254,44 +257,27 @@
                                 <label for="inputEmail4">เลขคัทซี : </label>
                             </div>
                             <div class="form-group col-lg-6">
-                                <input type="text" class="form-control nameof" id="nameof7" name="XVVehChassisNumber"
-                                    style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100"
-                                    title="YOUR_WARNING_TEXT">
+                                <input type="text" class="form-control nameof" id="XVVehChassisNumber"
+                                    name="XVVehChassisNumber" style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1"
+                                    maxlength="100" title="YOUR_WARNING_TEXT">
                             </div>
 
                             <div class="col-lg-5">
                                 <label for="inputEmail4">เลขเครื่อง : </label>
                             </div>
                             <div class="form-group col-lg-6">
-                                <input type="text" class="form-control nameof" id="nameof8" name="XVVehEngineNumber"
-                                    style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100"
-                                    title="YOUR_WARNING_TEXT">
+                                <input type="text" class="form-control nameof" id="XVVehEngineNumber"
+                                    name="XVVehEngineNumber" style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1"
+                                    maxlength="100" title="YOUR_WARNING_TEXT">
                             </div>
 
-                            <div class="col-lg-5">
-                                <label for="inputEmail4">ชื่อประเภทเครื่องจักร : </label>
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <input type="text" class="form-control nameof" id="nameof9" name="XVVehTypeName"
-                                    style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100"
-                                    title="YOUR_WARNING_TEXT">
-                            </div>
-
-                            <div class="col-lg-5">
-                                <label for="inputEmail4">รหัสประเภทเครื่องจักร : </label>
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <input type="text" class="form-control nameof" id="nameof" name="XVVehTypeCode"
-                                    style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100"
-                                    title="YOUR_WARNING_TEXT">
-                            </div>
 
                         </div>
                 </div>
 
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
                     <input type="submit" value="ยืนยัน" class="btn btn-primary">
                 </div>
                 </form>
@@ -337,12 +323,13 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table width="170%" class="table table-striped table-bordered table-hover"
+                                <table width="180%" class="table table-striped table-bordered table-hover"
                                     id="dataTables-example">
                                     <thead>
                                         <tr>
                                             <th>ลำดับที่ </th>
-                                            <th>รหัสเครื่องจักร</th>
+                                            <th>รหัสประเภทเครื่องจักร </th>
+                                            <th>ชื่อประเภทเครื่องจักร</th>
                                             <th>ชื่อเครื่องจักร</th>
                                             <th>ทะเบียนรถ</th>
                                             <th>เบอร์รถ</th>
@@ -351,7 +338,6 @@
                                             <th>รุ่นรถ</th>
                                             <th>เลขคัทซี</th>
                                             <th>เลขเครื่อง</th>
-                                            <th>รหัสประเภทเครื่องจักร</th>
                                             <th>แก้ไข</th>
                                             <th>ลบ</th>
                                         </tr>
@@ -361,7 +347,7 @@
                                         <?php
           $sql = " SELECT v.XVVehCode,v.XVVehName,v.XVVehRegistration,v.XVVehNumber,v.XVVehMango,v.XVVehBrand,v.XVVehModel,v.XVVehChassisNumber,v.XVVehEngineNumber,vt.XVVehTypeName
           FROM tmstvehicle v,tmstmvehicletype vt
-          WHERE v.XVVehCode = vt.XVVehTypeCode";
+          WHERE v.XVVehTypeCode = vt.XVVehTypeCode";
     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
     $count = 1;
     while ($row=mysqli_fetch_array($result)){
