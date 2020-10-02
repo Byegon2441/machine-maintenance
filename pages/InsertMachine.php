@@ -40,8 +40,7 @@
 
 <body>
 
-<?php include 'templsidebar.php';
-      include '../database/connect.php';?>
+<?php include 'templsidebar.php';?>
 
     <div id="wrapper">
         <div id="page-wrapper">

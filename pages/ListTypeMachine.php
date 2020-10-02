@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>ระบบซ่อมบำรุงเครื่องจักร : ประเภทเครื่องจักร</title>
 
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
@@ -150,13 +150,14 @@
                                 <tbody>
 
                                     <?php
-                                        $sql = " SELECT vt.XVVehTypeCode,vt.XVVehTypeName
-                                        FROM tmstmvehicletype vt";
-                                        $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-                                        while ($row=mysqli_fetch_array($result)){
-                                    ?>
+    $sql = " SELECT vt.XVVehTypeCode,vt.XVVehTypeName
+    FROM tmstmvehicletype vt";
+    $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+    $count = 1;
+    while ($row=mysqli_fetch_array($result)){
+?>
                                     <tr class="odd gradeA">
-                                        <td>x</td>
+                                        <td><?php echo $count;?></td>
                                         <td><?php echo $row["XVVehTypeCode"];?></td>
                                         <td><?php echo $row["XVVehTypeName"];?></td>
 
@@ -165,7 +166,7 @@
                                         <td align="center"><input class='btn btn-danger deletebtn' type='button'
                                                 value='ลบ'></td>
                                     </tr>
-                                    <?php } ?>
+                                    <?php $count++;} ?>
                                 </tbody>
                             </table>
                         </div>
