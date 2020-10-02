@@ -11,68 +11,18 @@
 
     <title>SB Admin 2 - Bootstrap Admin Theme</title>
 
-    <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-
-    <!-- DataTables CSS -->
     <link href="../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
-
-    <!-- DataTables Responsive CSS -->
     <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 
 <body>
-
     <?php include 'templsidebar.php';
     include "../database/connect.php";
     ?>
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body mx-3">
-                    <form class="form-horizontal" role="form" method="post" action="form_to_email_script.php ">
-                        <div class="form-group">
-                            <label for="name" class="col-sm-4 control-label">
-                                <span class="required"></span> ชื่อประเภทเครื่องจักร:</label>
-                            <div class="col-sm-7">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="First & Last"
-                                    required>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!--  modal เพิ่มประเภทเครื่องจักร -->
     <div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -80,87 +30,111 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">เพิ่มประเภทเครื่องจักร</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body mx-3">
-                    <form class="form-horizontal" role="form" method="post" action="../database/insertTypeMc.php ">
+                <form class="form-horizontal" id="insert" role="form" method="POST"
+                    action="../database/insertTypeMc.php" enctype="multipart/form-data">
+                    <div class="modal-body mx-3">
                         <div class="form-group">
                             <label for="name" class="col-sm-4 control-label">
-                                <span class="required"></span> เพิ่มประเภทเครื่องจักร:</label>
+                                <span class="required"></span> เพิ่มชื่อประเภทเครื่องจักร:</label>
                             <div class="col-sm-7">
                                 <input type="text" class="form-control" id="name" name="name" placeholder="First & Last"
                                     required>
                             </div>
                         </div>
-                        
-                        <!-- ตัวฟอร์มที่สมบูรณ์ห้ามลบ เผื่อใช้ในอนาคต !!! -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                        <input type="submit" value="ยืนยัน" class="btn btn-primary">
+                    </div>
+                </form>
 
-                        <!-- <div class="form-group">
-                            <label for="email" class="col-sm-3 control-label">
-                                <span class="required">*</span> Email: </label>
-                            <div class="col-sm-9">
-                                <input type="email" class="form-control" id="email" name="email"
-                                    placeholder="you@domain.com" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="col-sm-3 control-label">
-                                <span class="required">*</span> Message:</label>
-                            <div class="col-sm-9">
-                                <textarea name="message" rows="4" required class="form-control" id="message"
-                                    placeholder="Comments"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="human" class="col-sm-3 control-label">
-                                <span class="required">*</span> Human or Bot:</label>
-                            <div class="col-sm-4">
-                                <h3 class="human">Six + 6 = ?</h3>
-                                <input type="number" class="form-control" id="human" name="human"
-                                    placeholder="Enter sum in digits">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-6 col-sm-offset-3">
-                                <button type="submit" id="submit" name="submit"
-                                    class="btn-lg btn-primary">SUBMIT</button>
-                            </div>
-                        </div> -->
-                        <!--end Form-->
-                        <!-- <input type="submit" value="ยืนยัน"> -->
-                        <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <input type="submit" value="ยืนยัน" class="btn btn-primary">
-                </div>
-                    </form>
-                </div>
-                
             </div>
         </div>
     </div>
     <!-- จบการสร้าง Modal -->
+
+    <!--  modal แก้ไขชื่อเครื่องจักร -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">แก้ไขชื่อ</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form class="form-horizontal" id="insert" role="form" method="POST"
+                    action="../database/updateTypeMc.php" enctype="multipart/form-data">
+                    <div class="modal-body mx-3">
+                        <input type="hidden" name="update_id" id="update_id">
+                        <div class="form-group">
+                            <label for="name" class="col-sm-5 control-label">
+                                <span class="required"></span> แก้ไขชื่อประเภทเครื่องจักร:</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="XVVehTypeName" name="XVVehTypeName"
+                                    placeholder="First & Last" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                        <input type="submit" value="แก้ไข" name="updatedata" class="btn btn-primary">
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <!-- จบการสร้าง Modal -->
+
+    <!-- ลบ -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">ลบประเภทเครื่องจักร</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="../database/deleteTypeMc.php" method="POST">
+                <div class="modal-body">
+                    <input type="hidden" name="delete_id" id="delete_id">
+                    ท่านต้องการลบประเภทเครื่องจักรนี้หรือไม่?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                    <button type="submit" class="btn btn-danger" name="deletedata">ลบประเภทเครื่องจักร</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- จบลบ -->
 
     <div id="wrapper">
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">ประเภทเครื่องจักร<button type="button" class="btn btn-success btn-circle"
-                            style="float: right;" data-toggle="modal" data-target="#insertModal"><i class="fa fa-plus" ></i>
+                            style="float: right;" data-toggle="modal" data-target="#insertModal"><i
+                                class="fa fa-plus"></i>
                         </button></h1>
                 </div>
-                <!-- /.col-lg-12 -->
             </div>
-            <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             ประเภทเครื่องจักร
                         </div>
-                        <!-- /.panel-heading -->
                         <div class="panel-body">
                             <table width="100%" class="table table-striped table-bordered table-hover"
                                 id="dataTables-example">
@@ -176,54 +150,70 @@
                                 <tbody>
 
                                     <?php
-    $sql = " SELECT vt.XVVehTypeCode,vt.XVVehTypeName
-    FROM tmstmvehicletype vt";
-    $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-    while ($row=mysqli_fetch_array($result)){
-?>
+                                        $sql = " SELECT vt.XVVehTypeCode,vt.XVVehTypeName
+                                        FROM tmstmvehicletype vt";
+                                        $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+                                        while ($row=mysqli_fetch_array($result)){
+                                    ?>
                                     <tr class="odd gradeA">
                                         <td>x</td>
                                         <td><?php echo $row["XVVehTypeCode"];?></td>
                                         <td><?php echo $row["XVVehTypeName"];?></td>
-                                        
-                                        <td align="center"><input class='btn btn-primary' type='button' value='แก้ไข'
-                                                data-toggle="modal" data-target="#exampleModal"></td>
-                                        <td align="center"><a href="../database/deleteTypeMc.php?id=<?php echo $row["XVVehTypeCode"];?>" class='btn btn-danger'>ลบ</a></td>
-                                        <!-- <td><input class='btn btn-danger' type='button' value='ลบ' /></td> -->
+
+                                        <td align="center"><input class='btn btn-primary editbtn' type='button'
+                                                value='แก้ไข'></td>
+                                        <td align="center"><input class='btn btn-danger deletebtn' type='button'
+                                                value='ลบ'></td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>
                             </table>
-                            <!-- /.table-responsive -->
                         </div>
-                        <!-- /.panel-body -->
                     </div>
-                    <!-- /.panel -->
                 </div>
-                <!-- /.col-lg-6 -->
             </div>
-            <!-- /.row -->
         </div>
-        <!-- /#page-wrapper -->
-
     </div>
-    <!-- /#wrapper -->
 
-
-    <!-- DataTables JavaScript -->
     <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
     <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
 
-    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
             responsive: true
         });
     });
+
+    $(document).ready(function() {
+        $('.editbtn').on('click', function() {
+            $('#editModal').modal('show')
+            $tr = $(this).closest('tr')
+
+            var data = $tr.children("td").map(function() {
+                return $(this).text()
+            }).get()
+
+            console.log(data)
+            $('#update_id').val(data[1])
+            $('#XVVehTypeName').val(data[2])
+        })
+    })
+    $(document).ready(function() {
+        $('.deletebtn').on('click', function() {
+            $('#deleteModal').modal('show')
+            $tr = $(this).closest('tr')
+
+            var data = $tr.children("td").map(function() {
+                return $(this).text()
+            }).get()
+
+            console.log(data)
+            $('#delete_id').val(data[1])
+        })
+    })
     </script>
 
 </body>
-
 </html>

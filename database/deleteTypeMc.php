@@ -1,8 +1,22 @@
 <?php
-    include 'connect.php';
-    $id = $_GET['id'];
-    $query = "delete FROM tmstmvehicletype WHERE XVVehTypeCode = $id;";
-    $sql = mysqli_query($connect,$query);
-    mysqli_close($connect);
-    echo "<script>window.location='../pages/ListTypeMachine.php'</script>";
+include 'connect.php';
+if ( isset( $_POST['deletedata'] ) ) {
+    $id = $_POST['delete_id'];
+    // $name = $_POST['XVVehTypeName'];
+    $sql = "DELETE FROM tmstmvehicletype WHERE XVVehTypeCode = '$id'";
+    $result = mysqli_query( $connect, $sql );
+
+    if ( $result ) {
+        echo '<script>';
+        echo "alert('ทำการลบประเภทเครื่องจักรเรียบร้อยแล้วครับ !!!');";
+        echo "window.location='../pages/ListTypeMachine.php';";
+        echo '</script>';
+    } else {
+        echo '<script>';
+        echo "alert('ไม่สามารถทำการลบประเภทเครื่องจักรได้ครับ !!!');";
+        echo "window.location='../pages/ListTypeMachine.php';";
+        echo '</script>';
+    }
+}
+
 ?>
