@@ -322,7 +322,7 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div class="table-responsive">
+                            <div class="table">
                                 <table width="180%" class="table table-striped table-bordered table-hover"
                                     id="dataTables-example">
                                     <thead>
