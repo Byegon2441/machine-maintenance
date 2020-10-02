@@ -318,11 +318,12 @@
           FROM tmstvehicle v,tmstmvehicletype vt
           WHERE v.XVVehCode = vt.XVVehTypeCode";
     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+    $count = 1;
     while ($row=mysqli_fetch_array($result)){
       ?>
 
                                         <tr class="odd gradeA">
-                                            <td>x</td>
+                                            <td><?php echo $count;?></td>
                                             <td><?php echo $row["XVVehCode"];?></td>
                                             <td><?php echo $row["XVVehName"];?></td>
                                             <td><?php echo $row["XVVehRegistration"];?></td>
@@ -339,11 +340,11 @@
                                                 data-toggle="modal" data-target="#exampleModal"></td>
 
                                             <!--ลบ -->
-                                        <td align="center"><a href="../database/deleteTypeMc.php?id=<?php echo $row["XVVehTypeCode"];?>" class='btn btn-danger'>ลบ</a></td>
+                                        <td align="center"><a href="../database/DeleteMachine.php?id=<?php echo $row["XVVehCode"];?>" class='btn btn-danger'>ลบ</a></td>
                                         
                                         </tr>
 
-                                        <?php } ?>
+                                        <?php $count++;} ?>
 
 
                                     </tbody>
