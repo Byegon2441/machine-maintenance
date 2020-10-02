@@ -108,7 +108,7 @@
                                             <td><?php echo $row["XVVehEngineNumber"];?></td>
                                             <td><?php echo $row["XVVehTypeName"];?></td>
                                             <td> <a class='btn btn-primary' href="EditMachine.php">แก้ไข</a> </td>
-                                            <td> <a class='btn btn-danger' href="DeleteMachine.php">ลบ</a> </td>
+                                            <td align="center"><a href="../database/DeleteMachine.php?id=<?php echo $row["XVVehCode"];?>" class='btn btn-danger'>ลบ</a></td>
                                         </tr>
                                        
                                         <?php  $count++; } ?>
