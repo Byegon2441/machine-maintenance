@@ -408,7 +408,8 @@
     <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-            responsive: false
+            "scrollY": true,
+            "scrollX": true
         });
     });
     </script>

@@ -183,7 +183,8 @@
     <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-            responsive: true
+            "scrollY": true,
+            "scrollX": true
         });
     });
 
