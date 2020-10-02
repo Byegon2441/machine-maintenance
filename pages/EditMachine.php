@@ -117,11 +117,11 @@
                                                                                                         <select class="custom-select" id="inputGroupSelect01">
                                                                                                           <option selected>ค้าหาประเภทเครื่องจักร</option>
                                                                                                               <?php
-                                                                                                              include 'connect.php';
+                                                                                                              include '../database/connect.php';
                                                                                                               $sql = "SELECT XVVehTypeCode,XVVehTypeName FROM TMstMVehicleType";
                                                                                                               $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
                                                                                                               while ($row=mysqli_fetch_array($result)) {
-                                                                                                                echo "<option value="$row["XVVehTypeCode"]">"$row["XVVehTypeName"]"</option>";
+                                                                                                                 echo "<option value="$row["XVVehTypeCode"]">"$row["XVVehTypeName"]"</option>";
                                                                                                               }
                                                                                                               mysqli_close($connect);
                                                                                                                ?>

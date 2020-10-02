@@ -41,7 +41,6 @@
 <body>
 
     <?php include 'templsidebar.php';
-    include '../database/connect.php';
 ?>
 
     <!--  modal แก้ไขเครื่องจักร -->
@@ -181,8 +180,8 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <select id="cars" name="XVVehTypeName">
-                                    <?php 
-                                     include 'connect.php';
+                                    <?php
+                                     include '../database/connect.php';
                                      $sql = "select * from tmstmvehicletype; ";
                                      $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
                                      while ($row=mysqli_fetch_array($result)){
@@ -191,7 +190,7 @@
                                         <?php echo $row["XVVehTypeName"]; ?></option>
                                     <?php
                                      }
-
+mysqli_close($connect);
 
 
                                 ?>
@@ -345,9 +344,11 @@
                                     <tbody>
 
                                         <?php
+          include '../database/connect.php';
           $sql = " SELECT v.XVVehCode,v.XVVehName,v.XVVehRegistration,v.XVVehNumber,v.XVVehMango,v.XVVehBrand,v.XVVehModel,v.XVVehChassisNumber,v.XVVehEngineNumber,vt.XVVehTypeName
-          FROM tmstvehicle v,tmstmvehicletype vt
-          WHERE v.XVVehTypeCode = vt.XVVehTypeCode";
+          FROM tmstvehicle v
+          LEFT JOIN tmstmvehicletype vt
+          ON  v.XVVehTypeCode = vt.XVVehTypeCode";
     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
     $count = 1;
     while ($row=mysqli_fetch_array($result)){
@@ -377,7 +378,9 @@
 
                                         </tr>
 
-                                        <?php $count++;} ?>
+                                        <?php $count++;}
+                                        mysqli_close($connect);
+                                        ?>
 
 
                                     </tbody>
