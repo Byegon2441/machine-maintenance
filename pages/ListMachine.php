@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ระบบซ่อมบำรุงเครื่องจักร : เครื่องจักร</title>
+    <title>SB Admin 2 - Bootstrap Admin Theme</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -334,11 +334,17 @@
                                             <td><?php echo $row["XVVehChassisNumber"];?></td>
                                             <td><?php echo $row["XVVehEngineNumber"];?></td>
                                             <td><?php echo $row["XVVehTypeName"];?></td>
-                                            <td> <a class='btn btn-primary' href="EditMachine.php">แก้ไข</a> </td>
-                                            <td align="center"><a href="../database/DeleteMachine.php?id=<?php echo $row["XVVehCode"];?>" class='btn btn-danger'>ลบ</a></td>
+
+                                            <!-- แก้ไข -->
+                                            <td align="center"><input class='btn btn-primary' type='button' value='แก้ไข'
+                                                data-toggle="modal" data-target="#exampleModal"></td>
+
+                                            <!--ลบ -->
+                                        <td align="center"><a href="../database/DeleteMachine.php?id=<?php echo $row["XVVehCode"];?>" class='btn btn-danger'>ลบ</a></td>
+                                        
                                         </tr>
-                                       
-                                        <?php  $count++; } ?>
+
+                                        <?php $count++;} ?>
 
 
                                     </tbody>
