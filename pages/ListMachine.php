@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>ระบบซ่อมบำรุงเครื่องจักร : เครื่องจักร</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -91,11 +91,12 @@
           FROM tmstvehicle v,tmstmvehicletype vt
           WHERE v.XVVehCode = vt.XVVehTypeCode";
     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+    $count = 1;
     while ($row=mysqli_fetch_array($result)){
       ?>
 
                                         <tr class="odd gradeA">
-                                            <td>x</td>
+                                            <td><?php echo $count;?></td>
                                             <td><?php echo $row["XVVehCode"];?></td>
                                             <td><?php echo $row["XVVehName"];?></td>
                                             <td><?php echo $row["XVVehRegistration"];?></td>
@@ -109,8 +110,8 @@
                                             <td> <a class='btn btn-primary' href="EditMachine.php">แก้ไข</a> </td>
                                             <td> <a class='btn btn-danger' href="DeleteMachine.php">ลบ</a> </td>
                                         </tr>
-
-                                        <?php } ?>
+                                       
+                                        <?php  $count++; } ?>
 
 
                                     </tbody>
