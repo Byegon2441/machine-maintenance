@@ -361,7 +361,7 @@
                                         <?php
           $sql = " SELECT v.XVVehCode,v.XVVehName,v.XVVehRegistration,v.XVVehNumber,v.XVVehMango,v.XVVehBrand,v.XVVehModel,v.XVVehChassisNumber,v.XVVehEngineNumber,vt.XVVehTypeName
           FROM tmstvehicle v,tmstmvehicletype vt
-          WHERE v.XVVehCode = vt.XVVehTypeCode";
+          WHERE v.XVVehTypeCode = vt.XVVehTypeCode";
     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
     $count = 1;
     while ($row=mysqli_fetch_array($result)){
