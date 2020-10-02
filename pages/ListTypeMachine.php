@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ระบบซ่อมบำรุงเครื่องจักร : ประเภทเครื่องจักร</title>
+    <title>SB Admin 2 - Bootstrap Admin Theme</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -95,7 +95,7 @@
                                     required>
                             </div>
                         </div>
-                        
+
                         <!-- ตัวฟอร์มที่สมบูรณ์ห้ามลบ เผื่อใช้ในอนาคต !!! -->
 
                         <!-- <div class="form-group">
@@ -132,23 +132,67 @@
                         <!--end Form-->
                         <!-- <input type="submit" value="ยืนยัน"> -->
                         <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <input type="submit" value="ยืนยัน" class="btn btn-primary">
-                </div>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input type="submit" value="ยืนยัน" class="btn btn-primary">
+                        </div>
                     </form>
                 </div>
-                
+
             </div>
         </div>
     </div>
     <!-- จบการสร้าง Modal -->
+
+    <!-- Modal แก้ไข -->
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <form class="form-horizontal" role="form" method="post" action="../database/updateTypeMc.php ">
+                        <div class="form-group">
+                            <label for="name" class="col-sm-5 control-label">
+                                <span class="required"></span> รหัสประเภทเครื่องจักร:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="รหัสประเภทเครื่องจักร"
+                                disabled required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name" class="col-sm-5 control-label">
+                                <span class="required"></span> แก้ไขชื่อประเภทเครื่องจักร:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="ชื่อประเภทเครื่องจักร"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input type="submit" value="ยืนยัน" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- จบ Modal แก้ไข -->
 
     <div id="wrapper">
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">ประเภทเครื่องจักร<button type="button" class="btn btn-success btn-circle"
-                            style="float: right;" data-toggle="modal" data-target="#insertModal"><i class="fa fa-plus" ></i>
+                            style="float: right;" data-toggle="modal" data-target="#insertModal"><i
+                                class="fa fa-plus"></i>
                         </button></h1>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -179,20 +223,21 @@
     $sql = " SELECT vt.XVVehTypeCode,vt.XVVehTypeName
     FROM tmstmvehicletype vt";
     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-    $count = 1;
     while ($row=mysqli_fetch_array($result)){
 ?>
                                     <tr class="odd gradeA">
-                                        <td><?php echo $count;?></td>
+                                        <td>x</td>
                                         <td><?php echo $row["XVVehTypeCode"];?></td>
                                         <td><?php echo $row["XVVehTypeName"];?></td>
-                                        
+
                                         <td align="center"><input class='btn btn-primary' type='button' value='แก้ไข'
-                                                data-toggle="modal" data-target="#exampleModal"></td>
-                                        <td align="center"><a href="../database/deleteTypeMc.php?id=<?php echo $row["XVVehTypeCode"];?>" class='btn btn-danger'>ลบ</a></td>
+                                                data-toggle="modal" data-target="#updateModal"></td>
+                                        <td align="center"><a
+                                                href="../database/deleteTypeMc.php?id=<?php echo $row["XVVehTypeCode"];?>"
+                                                class='btn btn-danger'>ลบ</a></td>
                                         <!-- <td><input class='btn btn-danger' type='button' value='ลบ' /></td> -->
                                     </tr>
-                                    <?php $count++;} ?>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->
