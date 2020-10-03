@@ -59,7 +59,7 @@
 
 
                     <div class="modal-body mx-3">
-                        <input type="hidden" name="update_id" id="update_id" value="">
+                        <input type="text" name="update_id" id="update_id" value="">
                         <div class="form-group">
                         <div class="col-lg-5">
                                 <label for="inputEmail4">ชื่อประเภทเครื่องจักร : </label>
