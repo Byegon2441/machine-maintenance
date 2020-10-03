@@ -1,9 +1,7 @@
 <?php
-include 'connect.php';
+include '../database/connect.php';
 if ( isset( $_POST['updatedata'] ) ) {
     $id = $_POST['update_id'];
-
-
     $XVVehName = $_POST['XVVehName'];
     $XVVehRegistration = $_POST['XVVehRegistration'];
     $XVVehNumber = $_POST['XVVehNumber'];
@@ -24,19 +22,7 @@ if ( isset( $_POST['updatedata'] ) ) {
      XVVehChassisNumber ='$XVVehChassisNumber',
      XVVehEngineNumber ='$XVVehEngineNumber',
      XVVehTypeCode ='$XVVehTypeCode';
-    
-    
-    
      WHERE XVVehCode = '$id',
-     
-     
-     
-     
-     
-     
-     
-     
-     
      ";
     $result = mysqli_query( $connect, $sql );
 
@@ -52,9 +38,5 @@ if ( isset( $_POST['updatedata'] ) ) {
         echo '</script>';
     }
 }
-
+mysqli_close($connect);
 ?>
-
-
-
-
