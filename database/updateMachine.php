@@ -11,9 +11,8 @@ if ( isset( $_POST['updatedata'] ) ) {
     $XVVehChassisNumber = $_POST['XVVehChassisNumber'];
     $XVVehEngineNumber = $_POST['XVVehEngineNumber'];
     $XVVehTypeCode = $_POST['XVVehTypeName'];
-    $sql = "UPDATE tmstvehicle
-     SET XVVehName='$name',
-     XVVehName ='$XVVehName',
+  $sql = "UPDATE tmstvehicle
+     SET  XVVehName ='$XVVehName',
      XVVehRegistration ='$XVVehRegistration',
      XVVehNumber ='$XVVehNumber',
      XVVehMango ='$XVVehMango',
@@ -21,12 +20,11 @@ if ( isset( $_POST['updatedata'] ) ) {
      XVVehModel ='$XVVehModel',
      XVVehChassisNumber ='$XVVehChassisNumber',
      XVVehEngineNumber ='$XVVehEngineNumber',
-     XVVehTypeCode ='$XVVehTypeCode';
-     WHERE XVVehCode = '$id',
+     XVVehTypeCode ='$XVVehTypeCode'
+     WHERE XVVehCode = $id;
      ";
-    $result = mysqli_query( $connect, $sql );
-
-    if ( $result ) {
+    $result = mysqli_query($connect,$sql);
+   if ( $result ) {
         echo '<script>';
         echo "alert('ทำการแก้ไขชื่อเครื่องจักรเรียบร้อย');";
         echo "window.location='../pages/ListMachine.php';";

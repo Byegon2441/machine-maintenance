@@ -59,7 +59,7 @@
 
 
                     <div class="modal-body mx-3">
-                        <input type="hidden" name="update_id" id="update_id">
+                        <input type="text" name="update_id" id="update_id" value="">
                         <div class="form-group">
                         <div class="col-lg-5">
                                 <label for="inputEmail4">ชื่อประเภทเครื่องจักร : </label>
@@ -383,8 +383,12 @@
                                             <td><?php echo $row["XVVehTypeName"];?></td>
 
                                             <!-- แก้ไข -->
-                                            <td align="center"><input class='btn btn-primary' type='button'
-                                                    value='แก้ไข' data-toggle="modal" data-target="#exampleModal"></td>
+
+                                            <td align="center">
+
+                                                <button class='btn btn-primary' type='submit' onclick="PUSH_ID(this.id)" name="su_mit"
+                                                data-toggle="modal" data-target="#exampleModal" id="<?php echo $row["XVVehCode"];?>">แก้ไข</button>
+                                                  </td>
 
                                             <!--ลบ -->
                                             <td align="center"><a
@@ -430,8 +434,11 @@
             "scrollX": true
         });
     });
+    var c_g = document.getElementById('update_id');
+    function PUSH_ID(c) {
+      c_g.value = c;
+    }
     </script>
-
 </body>
 
 </html>
