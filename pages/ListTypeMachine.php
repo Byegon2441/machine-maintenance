@@ -74,6 +74,7 @@
                     <div class="modal-body mx-3">
                         <input type="hidden" name="update_id" id="update_id">
                         <div class="form-group">
+                        
                             <label for="name" class="col-sm-5 control-label">
                                 <span class="required"></span> แก้ไขชื่อประเภทเครื่องจักร:</label>
                             <div class="col-sm-7">
