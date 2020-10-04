@@ -30,19 +30,19 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">เพิ่มประเภทเครื่องจักร</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">เพิ่มข้อมูลประเภทเครื่องจักร</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form class="form-horizontal" id="insert" role="form" method="POST"
+                <form class="form-horizontal" id="iืืnsert" role="form" method="POST"
                     action="../database/insertTypeMc.php" enctype="multipart/form-data">
                     <div class="modal-body mx-3">
                         <div class="form-group">
                             <label for="name" class="col-sm-4 control-label">
-                                <span class="required"></span> เพิ่มชื่อประเภทเครื่องจักร:</label>
+                                <span class="required"></span> ชื่อประเภทเครื่องจักร:</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="First & Last"
+                                <input type="text" class="form-control" id="name" name="name" placeholder=""
                                     required>
                             </div>
                         </div>
@@ -64,7 +64,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">แก้ไขชื่อ</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">แก้ไขข้อมูลประเภทเครื่องจักร</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -76,10 +76,10 @@
                         <div class="form-group">
                         
                             <label for="name" class="col-sm-5 control-label">
-                                <span class="required"></span> แก้ไขชื่อประเภทเครื่องจักร:</label>
+                                <span class="required"></span> ชื่อประเภทเครื่องจักร:</label>
                             <div class="col-sm-7">
                                 <input type="text" class="form-control" id="XVVehTypeName" name="XVVehTypeName"
-                                    placeholder="First & Last" required>
+                                    placeholder="" required>
                             </div>
                         </div>
                     </div>

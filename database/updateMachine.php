@@ -1,7 +1,7 @@
 <?php
 include '../database/connect.php';
 if ( isset( $_POST['updatedata'] ) ) {
-    $id = $_POST['update_id'];
+    $id = $_POST['XVVehCode'];
     $XVVehName = $_POST['XVVehName'];
     $XVVehRegistration = $_POST['XVVehRegistration'];
     $XVVehNumber = $_POST['XVVehNumber'];

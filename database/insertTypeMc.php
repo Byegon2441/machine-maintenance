@@ -8,7 +8,7 @@ $num=mysqli_num_rows($result);
 
 if($num > 0){
     echo '<script>';
-    echo "alert('รายชื่อนี้มีการลงทะเบียนไปแล้วครับ !!!');";
+    echo "alert('รายชื่อนี้มีการลงทะเบียนไปแล้ว !!!');";
     echo "window.location='../pages/ListTypeMachine.php';";
     echo '</script>';
 }else{
@@ -16,7 +16,7 @@ if($num > 0){
     $sql = mysqli_query( $connect, $query );
     mysqli_close( $connect );
     echo '<script>';
-    echo "alert('ทำการเพิ่มประเภทเครื่องจักรเรียบร้อยแล้วครับ !!!');";
+    echo "alert('ทำการเพิ่มประเภทเครื่องจักรเรียบร้อยแล้ว !!!');";
     echo "window.location='../pages/ListTypeMachine.php';";
     echo '</script>';
 }

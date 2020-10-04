@@ -8,12 +8,12 @@ if ( isset( $_POST['updatedata'] ) ) {
 
     if ( $result ) {
         echo '<script>';
-        echo "alert('ทำการแก้ไขชื่อประเภทเครื่องจักรเรียบร้อยแล้วครับ !!!');";
+        echo "alert('ทำการแก้ไขชื่อประเภทเครื่องจักรเรียบร้อยแล้ว !!!');";
         echo "window.location='../pages/ListTypeMachine.php';";
         echo '</script>';
     } else {
         echo '<script>';
-        echo "alert('ไม่สามารถทำการแก้ไขชื่อประเภทเครื่องจักรได้ครับ !!!');";
+        echo "alert('ไม่สามารถทำการแก้ไขชื่อประเภทเครื่องจักรได้ !!!');";
         echo "window.location='../pages/ListTypeMachine.php';";
         echo '</script>';
     }

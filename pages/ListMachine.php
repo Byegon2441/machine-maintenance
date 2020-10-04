@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>ระบบซ่อมบำรุงเครื่องจักร : เครื่องจักร</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -45,7 +45,7 @@
 
      <!-- modal แก้ไขเครื่องจักร -->
 
-     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -59,20 +59,29 @@
 
 
                     <div class="modal-body mx-3">
-                        <input type="hidden" name="update_id" id="update_id" value="">
+                        <input type="hidden" name="XVVehCode" id="XVVehCode" value="">
                         <div class="form-group">
                         <div class="col-lg-5">
                                 <label for="inputEmail4">ชื่อประเภทเครื่องจักร : </label>
                             </div>
                             <div class="form-group col-lg-6">
-                                <select id="cars" name="XVVehTypeName">
+
+                                <select id="XVVehTypeName" name="XVVehTypeName" class="form-control" >
                                     <?php
                                      include '../database/connect.php';
                                      $sql = "select * from tmstmvehicletype; ";
                                      $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+
+                                  
+                                   
                                      while ($row=mysqli_fetch_array($result)){
+                                        
+                                        
                                          ?>
-                                    <option value="<?php echo $row["XVVehTypeCode"];?>">
+
+                                     
+
+                                    <option value="<?php echo $row["XVVehTypeCode"];?>" >
                                         <?php echo $row["XVVehTypeName"]; ?></option>
                                     <?php
                                      }
@@ -92,7 +101,7 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <input type="text" class="form-control nameof" id="XVVehName" name="XVVehName"
-                                    style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100"
+                                    style="width:120%"  minlength="1" maxlength="100"
                                     title="YOUR_WARNING_TEXT">
                             </div>
 
@@ -101,7 +110,7 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <input type="text" class="form-control nameof" id="XVVehRegistration"
-                                    name="XVVehRegistration" style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1"
+                                    name="XVVehRegistration" style="width:120%"  minlength="1"
                                     maxlength="100" title="YOUR_WARNING_TEXT">
                             </div>
 
@@ -110,7 +119,7 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <input type="text" class="form-control nameof" id="XVVehNumber" name="XVVehNumber"
-                                    style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100"
+                                    style="width:120%"  minlength="1" maxlength="100"
                                     title="YOUR_WARNING_TEXT">
                             </div>
 
@@ -119,7 +128,7 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <input type="text" class="form-control nameof" id="XVVehMango" name="XVVehMango"
-                                    style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100"
+                                    style="width:120%"  minlength="1" maxlength="100"
                                     title="YOUR_WARNING_TEXT">
                             </div>
 
@@ -128,7 +137,7 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <input type="text" class="form-control nameof" id="XVVehBrand" name="XVVehBrand"
-                                    style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100"
+                                    style="width:120%"  minlength="1" maxlength="100"
                                     title="YOUR_WARNING_TEXT">
                             </div>
 
@@ -137,7 +146,7 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <input type="text" class="form-control nameof" id="XVVehModel" name="XVVehModel"
-                                    style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100"
+                                    style="width:120%"  minlength="1" maxlength="100"
                                     title="YOUR_WARNING_TEXT">
                             </div>
 
@@ -146,7 +155,7 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <input type="text" class="form-control nameof" id="XVVehChassisNumber"
-                                    name="XVVehChassisNumber" style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1"
+                                    name="XVVehChassisNumber" style="width:120%"  minlength="1"
                                     maxlength="100" title="YOUR_WARNING_TEXT">
                             </div>
 
@@ -155,7 +164,7 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <input type="text" class="form-control nameof" id="XVVehEngineNumber"
-                                    name="XVVehEngineNumber" style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1"
+                                    name="XVVehEngineNumber" style="width:120%"  minlength="1"
                                     maxlength="100" title="YOUR_WARNING_TEXT">
                             </div>
 
@@ -174,13 +183,13 @@
         </div>
     </div>
 
-    <!--  modal เพิ่มประเภทเครื่องจักร -->
+    <!--  modal เพิ่มเครื่องจักร -->
     <div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">เพิ่มเครื่องจักร</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">เพิ่มข้อมูลเครื่องจักร</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -193,7 +202,7 @@
                                 <label for="inputEmail4">ชื่อประเภทเครื่องจักร : </label>
                             </div>
                             <div class="form-group col-lg-6">
-                                <select id="cars" name="XVVehTypeName">
+                                <select id="cars" name="XVVehTypeName" class="form-control" >
                                     <?php
                                      include '../database/connect.php';
                                      $sql = "select * from tmstmvehicletype; ";
@@ -217,7 +226,7 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <input type="text" class="form-control nameof" id="XVVehName" name="XVVehName"
-                                    style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100"
+                                    style="width:120%"  minlength="1" maxlength="100"
                                     title="YOUR_WARNING_TEXT">
                             </div>
 
@@ -226,7 +235,7 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <input type="text" class="form-control nameof" id="XVVehRegistration"
-                                    name="XVVehRegistration" style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1"
+                                    name="XVVehRegistration" style="width:120%"  minlength="1"
                                     maxlength="100" title="YOUR_WARNING_TEXT">
                             </div>
 
@@ -235,7 +244,7 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <input type="text" class="form-control nameof" id="XVVehNumber" name="XVVehNumber"
-                                    style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100"
+                                    style="width:120%"  minlength="1" maxlength="100"
                                     title="YOUR_WARNING_TEXT">
                             </div>
 
@@ -244,7 +253,7 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <input type="text" class="form-control nameof" id="XVVehMango" name="XVVehMango"
-                                    style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100"
+                                    style="width:120%"  minlength="1" maxlength="100"
                                     title="YOUR_WARNING_TEXT">
                             </div>
 
@@ -253,7 +262,7 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <input type="text" class="form-control nameof" id="XVVehBrand" name="XVVehBrand"
-                                    style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100"
+                                    style="width:120%"  minlength="1" maxlength="100"
                                     title="YOUR_WARNING_TEXT">
                             </div>
 
@@ -262,7 +271,7 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <input type="text" class="form-control nameof" id="XVVehModel" name="XVVehModel"
-                                    style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1" maxlength="100"
+                                    style="width:120%"  minlength="1" maxlength="100"
                                     title="YOUR_WARNING_TEXT">
                             </div>
 
@@ -271,7 +280,7 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <input type="text" class="form-control nameof" id="XVVehChassisNumber"
-                                    name="XVVehChassisNumber" style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1"
+                                    name="XVVehChassisNumber" style="width:120%"  minlength="1"
                                     maxlength="100" title="YOUR_WARNING_TEXT">
                             </div>
 
@@ -280,7 +289,7 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <input type="text" class="form-control nameof" id="XVVehEngineNumber"
-                                    name="XVVehEngineNumber" style="width:120%" pattern="^[a-zA-Z0-9]+$" minlength="1"
+                                    name="XVVehEngineNumber" style="width:120%"  minlength="1"
                                     maxlength="100" title="YOUR_WARNING_TEXT">
                             </div>
 
@@ -302,7 +311,31 @@
     <!-- จบการสร้าง Modal -->
 
 
-
+ <!-- ลบ -->
+ <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">ลบประเภทเครื่องจักร</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="../database/DeleteMachine.php" method="POST">
+                <div class="modal-body">
+                    <input type="hidden" name="delete_id" id="delete_id">
+                    ท่านต้องการลบข้อมูลเครื่องจักรนี้หรือไม่?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                    <button type="submit" class="btn btn-danger" name="deletedata">ลบข้อมูลเครื่องจักร</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- จบลบ -->
 
 
     <div id="wrapper">
@@ -384,16 +417,12 @@
 
                                             <!-- แก้ไข -->
 
-                                            <td align="center">
-
-                                                <button class='btn btn-primary' type='submit' onclick="PUSH_ID(this.id)" name="su_mit"
-                                                data-toggle="modal" data-target="#exampleModal" id="<?php echo $row["XVVehCode"];?>">แก้ไข</button>
-                                                  </td>
+                                            <td align="center"><input class='btn btn-primary editbtn' type='button'
+                                                value='แก้ไข'></td>
 
                                             <!--ลบ -->
-                                            <td align="center"><a
-                                                    href="../database/DeleteMachine.php?id=<?php echo $row["XVVehCode"];?>"
-                                                    class='btn btn-danger'>ลบ</a></td>
+                                            <td align="center"><input class='btn btn-danger deletebtn' type='button'
+                                                value='ลบ'></td>
 
                                         </tr>
 
@@ -438,6 +467,50 @@
     function PUSH_ID(c) {
       c_g.value = c;
     }
+
+    $(document).ready(function() {
+        $('.deletebtn').on('click', function() {
+            $('#deleteModal').modal('show')
+            $tr = $(this).closest('tr')
+
+            var data = $tr.children("td").map(function() {
+                return $(this).text()
+            }).get()
+
+            console.log(data)
+            $('#delete_id').val(data[1])
+        })
+    })
+
+    $(document).ready(function() {
+        $('.editbtn').on('click', function() {
+            $('#editModal').modal('show')
+            $tr = $(this).closest('tr')
+
+            var data = $tr.children("td").map(function() {
+                return $(this).text()
+            }).get()
+
+            console.log(data)
+            $('#XVVehCode').val(data[1])
+            $('#XVVehName').val(data[2])
+            $('#XVVehRegistration').val(data[3])
+            $('#XVVehNumber').val(data[4])
+            $('#XVVehMango').val(data[5])
+            $('#XVVehBrand').val(data[6])
+            $('#XVVehModel').val(data[7])
+            $('#XVVehChassisNumber').val(data[8])
+            $('#XVVehEngineNumber').val(data[9])
+          
+            
+        
+
+            })
+
+        })
+    })
+
+
     </script>
 </body>
 
