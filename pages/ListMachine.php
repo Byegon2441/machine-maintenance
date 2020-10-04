@@ -59,7 +59,11 @@
 
 
                     <div class="modal-body mx-3">
+<<<<<<< HEAD
                         <input type="hidden" name="XVVehCode" id="XVVehCode" value="">
+=======
+                        <input type="hidden " name="update_id" id="update_id" value="">
+>>>>>>> 2a9da6bf924e4266e0c7dcb010c904b38c4d03df
                         <div class="form-group">
                         <div class="col-lg-5">
                                 <label for="inputEmail4">ชื่อประเภทเครื่องจักร : </label>
@@ -508,7 +512,7 @@
             })
 
         })
-    })
+  
 
 
     </script>
