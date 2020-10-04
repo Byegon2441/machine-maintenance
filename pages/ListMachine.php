@@ -69,17 +69,17 @@
                                 <select id="XVVehTypeName" name="XVVehTypeName" class="form-control" >
                                     <?php
                                      include '../database/connect.php';
-                                     $sql = "select * from tmstmvehicletype; ";
+                                     $sql = "select * from tmstmvehicletype";
                                      $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
 
-                                  
-                                   
+
+
                                      while ($row=mysqli_fetch_array($result)){
-                                        
-                                        
+
+
                                          ?>
 
-                                     
+
 
                                     <option value="<?php echo $row["XVVehTypeCode"];?>" >
                                         <?php echo $row["XVVehTypeName"]; ?></option>
@@ -89,7 +89,7 @@
 
 
                                     ?>
-
+                                     <option value="" selected>echo มา</option>
                                 </select>
                             </div>
 
@@ -463,10 +463,6 @@
             "scrollX": true
         });
     });
-    var c_g = document.getElementById('update_id');
-    function PUSH_ID(c) {
-      c_g.value = c;
-    }
 
     $(document).ready(function() {
         $('.deletebtn').on('click', function() {
@@ -501,14 +497,10 @@
             $('#XVVehModel').val(data[7])
             $('#XVVehChassisNumber').val(data[8])
             $('#XVVehEngineNumber').val(data[9])
-          
-            
-        
-
             })
 
         })
-  
+
 
 
     </script>
