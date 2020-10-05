@@ -55,7 +55,7 @@
                     </button>
                 </div>
                 <form class="form-horizontal" id="insert" role="form" method="POST"
-                    action="../database/insertEmp.php" enctype="multipart/form-data">
+                    action="insertEmp.php" enctype="multipart/form-data">
                     <div class="modal-body mx-3">
                         <div class="form-group">
                             <label for="name" class="col-sm-4 control-label">
@@ -123,7 +123,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="../database/deleteEmp.php" method="POST">
+                <form action="deleteEmp.php" method="POST">
                     <div class="modal-body">
                         <input type="hidden" name="delete_id" id="delete_id">
                         ท่านต้องการลบพนักงานนี้หรือไม่?
@@ -150,7 +150,7 @@
                     </button>
                 </div>
                 <form class="form-horizontal" id="insert" role="form" method="POST"
-                    action="../database/updateEmp.php" enctype="multipart/form-data">
+                    action="updateEmp.php" enctype="multipart/form-data">
                     <div class="modal-body mx-3">
                         <input type="hidden" name="XVEpyCode" id="XVEpyCode">
                         <div class="form-group">

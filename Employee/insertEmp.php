@@ -1,5 +1,5 @@
 <?php
-include 'connect.php';
+include '../database/connect.php';
 $fname = $_POST['fname'];
 $lname = $_POST['lname'];
 $number = $_POST['number'];
@@ -11,12 +11,12 @@ $sql = mysqli_query( $connect, $query );
 if($sql){
     echo '<script>';
     echo "alert('ทำการเพิ่มพนักงาน !!!');";
-    echo "window.location='../pages/ListEmployee.php';";
+    echo "window.location='ListEmployee.php';";
     echo '</script>';
 }else{
     echo '<script>';
     echo "alert('ทำการเพิ่มพนักงานไม่สำเร็จ !!!');".mysqli_error($connect);
-    echo "window.location='../pages/ListEmployee.php';";
+    echo "window.location='ListEmployee.php';";
     echo '</script>';
 }
 

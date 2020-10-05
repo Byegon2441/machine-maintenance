@@ -18,12 +18,12 @@ if ( isset( $_POST['updatedata'] ) ) {
    if ( $result ) {
         echo '<script>';
         echo "alert('ทำการแก้ไขข้อมูลพนักงานได้');";
-        echo "window.location='../pages/ListEmployee.php';";
+        echo "window.location='ListEmployee.php';";
         echo '</script>';
     } else {
         echo '<script>';
-        echo "alert('ไม่สามารถทำการแก้ไขข้อมูลพนักงานได้');".echo mysqli_error($connect);
-        echo "window.location='../pages/ListEmployee.php';";
+        echo "alert('ไม่สามารถทำการแก้ไขข้อมูลพนักงานได้');".mysqli_error($connect);
+        echo "window.location='ListEmployee.php';";
         echo '</script>';
     }
 }

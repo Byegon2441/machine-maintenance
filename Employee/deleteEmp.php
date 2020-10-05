@@ -1,5 +1,5 @@
 <?php
-include 'connect.php';
+include '../database/connect.php';
 if ( isset( $_POST['deletedata'] ) ) {
     $id = $_POST['delete_id'];
     // $name = $_POST['XVVehTypeName'];
@@ -9,12 +9,12 @@ if ( isset( $_POST['deletedata'] ) ) {
     if ( $result ) {
         echo '<script>';
         echo "alert('ทำการลบข้อมูลพนักงานเรียบร้อยแล้ว !!!');";
-        echo "window.location='../pages/ListEmployee.php';";
+        echo "window.location='ListEmployee.php';";
         echo '</script>';
     } else {
         echo '<script>';
         echo "alert('ไม่สามารถทำการลบข้อมูลพนักงานได้ !!!');";
-        echo "window.location='../pages/ListEmployee.php';";
+        echo "window.location='ListEmployee.php';";
         echo '</script>';
     }
 }
