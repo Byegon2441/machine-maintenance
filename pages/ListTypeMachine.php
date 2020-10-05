@@ -35,7 +35,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form class="form-horizontal" id="iืืnsert" role="form" method="POST"
+                <form class="form-horizontal" id="insert" role="form" method="POST"
                     action="../database/insertTypeMc.php" enctype="multipart/form-data">
                     <div class="modal-body mx-3">
                         <div class="form-group">
