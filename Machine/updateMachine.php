@@ -27,12 +27,12 @@ if ( isset( $_POST['updatedata'] ) ) {
    if ( $result ) {
         echo '<script>';
         echo "alert('ทำการแก้ไขชื่อเครื่องจักรเรียบร้อย');";
-        echo "window.location='../pages/ListMachine.php';";
+        echo "window.location='ListMachine.php';";
         echo '</script>';
     } else {
         echo '<script>';
         echo "alert('ไม่สามารถทำการแก้ไขชื่อเครื่องจักรได้!!!');";
-        echo "window.location='../pages/ListMachine.php';";
+        echo "window.location='ListMachine.php';";
         echo '</script>';
     }
 }

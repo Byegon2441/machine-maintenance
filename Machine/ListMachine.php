@@ -19,7 +19,7 @@
 
 <body>
 
-    <?php include 'templsidebar.php';
+    <?php include '../Template/templsidebar.php';
 ?>
 
     <!-- modal แก้ไขเครื่องจักร -->
@@ -35,7 +35,7 @@
                     </button>
                 </div>
                 <form class="form-horizontal" id="insert" role="form" method="POST"
-                    action="../database/updateMachine.php" enctype="multipart/form-data">
+                    action="updateMachine.php" enctype="multipart/form-data">
 
 
                     <div class="modal-body mx-3">
@@ -151,7 +151,7 @@
                     </button>
                 </div>
                 <div class="modal-body mx-3">
-                    <form class="form-horizontal" role="form" method="post" action="../database/insertMachine.php ">
+                    <form class="form-horizontal" role="form" method="post" action="insertMachine.php ">
                         <div class="form-group">
 
                             <div class="col-lg-5">
@@ -266,7 +266,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="../database/DeleteMachine.php" method="POST">
+                <form action="DeleteMachine.php" method="POST">
                     <div class="modal-body">
                         <input type="hidden" name="delete_id" id="delete_id">
                         ท่านต้องการลบข้อมูลเครื่องจักรนี้หรือไม่?
@@ -347,7 +347,7 @@
                                             <td><?php echo $row["XVVehModel"];?></td>
                                             <td><?php echo $row["XVVehChassisNumber"];?></td>
                                             <td><?php echo $row["XVVehEngineNumber"];?></td>
-                                            <td><?php echo $row["XVVehTypeName"];?></td>
+                                            <td><?php if($row['XVVehTypeCode']==NULL){echo "ไม่สามารถระบุประเภทได้";}else {echo $row["XVVehTypeName"];}?></td>
                                             <td style="display:none;"><?php echo $row["XVVehTypeCode"];?></td>
 
                                             <td align="center"><input class='btn btn-primary editbtn' type='button'

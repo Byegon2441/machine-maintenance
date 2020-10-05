@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>ระบบซ่อมบำรุงเครื่องจักร : อะไหล่</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -40,13 +40,14 @@
 
 <body>
 
-<?php include 'templsidebar.php';?>
+<?php include '../Template/templsidebar.php';?>
 
     <div id="wrapper">
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">เครื่องจักร</h1>
+                    <h1 class="page-header">อะไหล่<button type="button" class="btn btn-success btn-circle" style="float: right;"><i class="fa fa-plus"></i>
+                            </button></h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -55,23 +56,18 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                                 เครื่องจักร
+                                อะไหล่
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>รหัสเครื่องจักร</th>
-                                        <th>ชื่อเครื่องจักร</th>
-                                        <th>ทะเบียนรถ</th>
-                                        <th>เบอร์รถ</th>
-                                        <th>เลขทะเบียน MANGO</th>
-                                        <th>ยี่ห้อ</th>
-                                        <th>รุ่นรถ</th>
-                                        <th>เลขคัทซี</th>
-                                        <th>เลขเครื่อง</th>
-                                        <th>รหัสประเภทเครื่องจักร</th>
+                                        <th>รหัสอะไหล่</th>
+                                        <th>ชื่ออะไหล่</th>
+                                        <th>ชื่อประเภทอะไหล่</th>
+                                        <th>แก้ไข</th>
+                                        <th>ลบ</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -79,71 +75,36 @@
                                     <td>XXXXXXXXXXXXXX</td>
                                         <td>XXXXXXX</td>
                                         <td>XXX</td>
-                                        <td>XXXXXX</td>
-                                        <td>แจ้งซ่อม</td>
-                                        <td>XXXXXXX</td>
-                                        <td>XXX</td>
-                                        <td>XXXXXX</td>
-                                        <td>XXXXXXX</td>
-
-                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด'/></td>
-
+                                        <td><input class='btn btn-primary' type='button' value='แก้ไข'/></td>
+                                        <td><input class='btn btn-danger' type='button' value='ลบ'/></td>
                                     </tr>
                                     <tr class="odd gradeA">
-                                    <td>XXXXXXXXXXXXXX</td>
+                                        <td>XXXXXXXXXXXXXX</td>
                                         <td>XXXXXXX</td>
                                         <td>XXX</td>
-                                        <td>XXXXXX</td>
-                                        <td>แจ้งซ่อม</td>
-                                        <td>XXXXXXX</td>
-                                        <td>XXX</td>
-                                        <td>XXXXXX</td>
-                                        <td>XXXXXXX</td>
-
-                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด'/></td>
-
+                                        <td><input class='btn btn-primary' type='button' value='แก้ไข'/></td>
+                                        <td><input class='btn btn-danger' type='button' value='ลบ'/></td>
                                     </tr>
                                     <tr class="odd gradeA">
-                                    <td>XXXXXXXXXXXXXX</td>
+                                        <td>XXXXXXXXXXXXXX</td>
                                         <td>XXXXXXX</td>
                                         <td>XXX</td>
-                                        <td>XXXXXX</td>
-                                        <td>แจ้งซ่อม</td>
-                                        <td>XXXXXXX</td>
-                                        <td>XXX</td>
-                                        <td>XXXXXX</td>
-                                        <td>XXXXXXX</td>
-
-                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด'/></td>
-
+                                        <td><input class='btn btn-primary' type='button' value='แก้ไข'/></td>
+                                        <td><input class='btn btn-danger' type='button' value='ลบ'/></td>
                                     </tr>
                                     <tr class="odd gradeA">
-                                    <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXXXXX</td>
+                                        <td>XXXXXXXXXXXXXX</td>
+                                        <td>XXXX</td>
                                         <td>XXX</td>
-                                        <td>XXXXXX</td>
-                                        <td>XXXXXXX</td>
-                                        <td>XXXXXXX</td>
-                                        <td>XXX</td>
-                                        <td>XXXXXX</td>
-                                        <td>XXXXXXX</td>
-
-                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด'/></td>
-
+                                        <td><input class='btn btn-primary' type='button' value='แก้ไข'/></td>
+                                        <td><input class='btn btn-danger' type='button' value='ลบ'/></td>
                                     </tr>
                                     <tr class="odd gradeA">
-                                    <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXXXXX</td>
+                                        <td>XXXXXXXXXXXXXX</td>
+                                        <td>XXXX XX</td>
                                         <td>XXX</td>
-                                        <td>XXXXXX</td>
-                                        <td>XXXXXXX</td>
-                                        <td>XXXXXXX</td>
-                                        <td>XXX</td>
-                                        <td>XXXXXX</td>
-                                        <td>XXXXXXX</td>
-
-                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด'/></td>
-
+                                        <td><input class='btn btn-primary' type='button' value='แก้ไข'/></td>
+                                        <td><input class='btn btn-danger' type='button' value='ลบ'/></td>
                                     </tr>
                                 </tbody>
                             </table>

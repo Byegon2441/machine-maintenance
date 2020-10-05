@@ -48,7 +48,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">TEXT</a>
+                <a class="navbar-brand" href="../index.html">ระบบซ่อมบำรุงเครื่องจักร</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -78,37 +78,37 @@
                     <ul class="nav" id="side-menu">
 
                         <li>
-                            <a href="Job.php"><i class="fa fa-th-list fa-fw"></i> ใบแจ้งซ่อม</a>
+                            <a href="../Job/Job.php"><i class="fa fa-th-list fa-fw"></i> ใบแจ้งซ่อม</a>
                         </li>
                         <li>
-                            <a href="Finish.php"><i class="fa fa-check fa-fw"></i> ปิดงาน</a>
+                            <a href="../Job/Finish.php"><i class="fa fa-check fa-fw"></i> ปิดงาน</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-edit fa-fw"></i> กำหนดค่า<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="ListTypeMachine.php">ประเภทเครื่องจักร</a>
+                                    <a href="../TypeMachine/ListTypeMachine.php">ประเภทเครื่องจักร</a>
                                 </li>
                                 <li>
-                                    <a href="ListMachine.php">เครื่องจักร</a>
+                                    <a href="../Machine/ListMachine.php">เครื่องจักร</a>
                                 </li>
                                 <li>
-                                    <a href="ListDepartment.php">ไซต์งาน</a>
+                                    <a href="../Department/ListDepartment.php">ไซต์งาน</a>
                                 </li>
                                 <li>
-                                    <a href="ListMachineParts.php">อะไหล่</a>
+                                    <a href="../MachineParts/ListMachineParts.php">อะไหล่</a>
                                 </li>
                                 <li>
-                                    <a href="ListEmployee.php">พนักงาน</a>
+                                    <a href="../Employee/ListEmployee.php">พนักงาน</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="ManageMember.php"><i class="fa fa-user fa-fw"></i> จัดการผู้ใช้งาน</a>
+                            <a href="../User/ManageMember.php"><i class="fa fa-user fa-fw"></i> จัดการผู้ใช้งาน</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-file-o fa-fw"></i> รายงาน</a>
+                            <a href="../Report/AdminReport.php"><i class="fa fa-file-o fa-fw"></i> รายงาน</a>
                         </li>
                     </ul>
                 </div>

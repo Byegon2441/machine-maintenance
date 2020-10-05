@@ -1,6 +1,6 @@
 <?php
 //ลบข้อมูลเครื่องจักร
-    include 'connect.php';
+    include '../database/connect.php';
     if ( isset( $_POST['deletedata'] ) ) {
     $id = $_POST['delete_id'];
     $query = "delete FROM tmstvehicle WHERE XVVehCode = $id;";
@@ -9,12 +9,12 @@
     if ( $sql ) {
         echo '<script>';
         echo "alert('ทำการลบเครื่องจักรเรียบร้อยแล้ว !!!');";
-        echo "window.location='../pages/ListMachine.php';";
+        echo "window.location='ListMachine.php';";
         echo '</script>';
     } else {
         echo '<script>';
         echo "alert('ไม่สามารถทำการลบเครื่องจักรได้ !!!');";
-         echo "window.location='../pages/ListMachine.php';";
+         echo "window.location='ListMachine.php';";
         echo '</script>';
     }
 }

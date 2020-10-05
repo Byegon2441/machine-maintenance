@@ -1,5 +1,5 @@
 <?php
-include 'connect.php';
+include '../database/connect.php';
 if ( isset( $_POST['deletedata'] ) ) {
     $id = $_POST['delete_id'];
     // $name = $_POST['XVVehTypeName'];
@@ -9,12 +9,12 @@ if ( isset( $_POST['deletedata'] ) ) {
     if ( $result ) {
         echo '<script>';
         echo "alert('ทำการลบประเภทเครื่องจักรเรียบร้อยแล้ว !!!');";
-        echo "window.location='../pages/ListTypeMachine.php';";
+        echo "window.location='ListTypeMachine.php';";
         echo '</script>';
     } else {
         echo '<script>';
         echo "alert('ไม่สามารถทำการลบประเภทเครื่องจักรได้ !!!');";
-        echo "window.location='../pages/ListTypeMachine.php';";
+        echo "window.location='ListTypeMachine.php';";
         echo '</script>';
     }
 }

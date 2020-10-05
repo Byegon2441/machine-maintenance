@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <?php include 'templsidebar.php';
+    <?php include '../Template/templsidebar.php';
     include "../database/connect.php";
     ?>
 
@@ -36,7 +36,7 @@
                     </button>
                 </div>
                 <form class="form-horizontal" id="insert" role="form" method="POST"
-                    action="../database/insertTypeMc.php" enctype="multipart/form-data">
+                    action="insertTypeMc.php" enctype="multipart/form-data">
                     <div class="modal-body mx-3">
                         <div class="form-group">
                             <label for="name" class="col-sm-4 control-label">
@@ -70,7 +70,7 @@
                     </button>
                 </div>
                 <form class="form-horizontal" id="insert" role="form" method="POST"
-                    action="../database/updateTypeMc.php" enctype="multipart/form-data">
+                    action="updateTypeMc.php" enctype="multipart/form-data">
                     <div class="modal-body mx-3">
                         <input type="hidden" name="update_id" id="update_id">
                         <div class="form-group">
@@ -105,10 +105,11 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="../database/deleteTypeMc.php" method="POST">
+                <form action="deleteTypeMc.php" method="POST">
                 <div class="modal-body">
                     <input type="hidden" name="delete_id" id="delete_id">
-                    ท่านต้องการลบประเภทเครื่องจักรนี้หรือไม่?
+                    ท่านต้องการลบประเภทเครื่องจักรนี้หรือไม่?<br>
+                   
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>

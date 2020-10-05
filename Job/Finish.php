@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>ระบบซ่อมบำรุงเครื่องจักร : ปิดงาน</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -40,31 +40,13 @@
 
 <body>
 
-<?php include 'templsidebar.php'?>
+<?php include '../Template/templsidebar.php';?>
 
     <div id="wrapper">
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">รายงาน
-                    </h1>
-                        <div class="form-group col-md-2 center">
-                            <select name="month" id="month" class="form-control form-control-sm"> 
-                                <option value="มกราคม">มกราคม</option>
-                                <option value="กุมพาพันธ์">กุมพาพันธ์</option>
-                                <option value="มีนาคม">มีนาคม</option>
-                                <option value="เมษายน">เมษายน</option>
-                                <option value="พฤษภาคม">พฤษภาคม</option>
-                                <option value="มิถุนาคม">มิถุนาคม</option>
-                                <option value="กรกฎาคม">กรกฎาคม</option>
-                                <option value="สิงหาคม">สิงหาคม</option>
-                                <option value="กันยายน">กันยายน</option>
-                                <option value="ตุลาคม">ตุลาคม</option>
-                                <option value="พฤศจิกายน">พฤศจิกายน</option>
-                                <option value="ธันวาคม">ธันวาคม</option>
-                            </select>
-                        </div>
-                       
+                    <h1 class="page-header">ปิดงาน</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -73,12 +55,12 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                                ใบแจ้งซ่อม
+                                ปิดงาน
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                <thead>
+                            <thead>
                                     <tr>
                                         <th>เลขที่ใบแจ้งซ่อม</th>
                                         <th>วันที่แจ้ง</th>
@@ -94,7 +76,7 @@
                                         <td>XXXXXXX</td>
                                         <td>XXX</td>
                                         <td>XXXXXX</td>
-                                        <td>แจ้งซ่อม</td>
+                                        <td>รอปิดงาน</td>
                                   
                                         <td><input class='btn btn-primary' type='button' value='รายละเอียด'/></td>
                                       
@@ -104,7 +86,7 @@
                                         <td>XXXXXXX</td>
                                         <td>XXX</td>
                                         <td>XXXXXX</td>
-                                        <td>แจ้งซ่อม</td>
+                                        <td>รอปิดงาน</td>
                                   
                                         <td><input class='btn btn-primary' type='button' value='รายละเอียด'/></td>
                                       
@@ -114,7 +96,7 @@
                                         <td>XXXXXXX</td>
                                         <td>XXX</td>
                                         <td>XXXXXX</td>
-                                        <td>แจ้งซ่อม</td>
+                                        <td>รอปิดงาน</td>
                                   
                                         <td><input class='btn btn-primary' type='button' value='รายละเอียด'/></td>
                                       

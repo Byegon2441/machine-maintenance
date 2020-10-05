@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>ระบบซ่อมบำรุงเครื่องจักร : ไซต์งาน</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -40,7 +40,7 @@
 
 <body>
 
-<?php include 'templsidebar.php'?>
+<?php include '../Template/templsidebar.php';?>
 
     <div id="wrapper">
         <div id="page-wrapper">

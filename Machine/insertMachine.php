@@ -1,5 +1,5 @@
 <?php
-    include 'connect.php';
+    include '../database/connect.php';
     // $XVVehCode = $_POST['XVVehCode'];
     $XVVehName = $_POST['XVVehName'];
     $XVVehRegistration = $_POST['XVVehRegistration'];
@@ -14,12 +14,18 @@
      VALUES ('$XVVehName','$XVVehRegistration','$XVVehNumber','$XVVehMango','$XVVehBrand','$XVVehModel','$XVVehChassisNumber','$XVVehEngineNumber','$XVVehTypeCode');";  
 
     if(mysqli_query($connect,$query)){
-        echo "YeaH";
-    }else{
-        echo 'fail'.mysqli_error($connect);
-    }
+        echo '<script>';
+        echo "alert('ทำการเพิ่มเครื่องจักรเรียบร้อยแล้ว !!!');";
+        echo "window.location='ListMachine.php';";
+        echo '</script>';
+      }else{
+        echo '<script>';
+        echo "alert('ไม่สามารถทำการเพิ่มเครื่องจักรได้  !!!');";
+        echo "window.location='ListMachine.php';";
+        echo '</script>';
+      }
     mysqli_close($connect);
-     echo "<script>window.location='../pages/ListMachine.php'</script>";
+    
 ?>
 
 
