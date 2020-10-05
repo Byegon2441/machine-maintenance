@@ -13,7 +13,7 @@ if ( isset( $_POST['deletedata'] ) ) {
         echo '</script>';
     } else {
         echo '<script>';
-        echo "alert('ไม่สามารถทำการลบประเภทเครื่องจักรได้ !!!');";
+        echo "alert('ไม่สามารถทำการลบประเภทเครื่องจักรได้ !!!');".mysqli_error($connect);
         echo "window.location='../pages/ListTypeMachine.php';";
         echo '</script>';
     }

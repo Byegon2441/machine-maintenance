@@ -123,7 +123,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="../database/#" method="POST">
+                <form action="../database/deleteEmp.php" method="POST">
                     <div class="modal-body">
                         <input type="hidden" name="delete_id" id="delete_id">
                         ท่านต้องการลบพนักงานนี้หรือไม่?
