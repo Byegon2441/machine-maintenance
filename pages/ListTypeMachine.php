@@ -24,7 +24,7 @@
     include "../database/connect.php";
     ?>
 
-    <!--  modal เพิ่มประเภทเครื่องจักร -->
+<!--  modal เพิ่มประเภทเครื่องจักร -->
     <div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -56,9 +56,9 @@
             </div>
         </div>
     </div>
-    <!-- จบการสร้าง Modal -->
+<!-- จบการสร้าง Modal -->
 
-    <!--  modal แก้ไขชื่อเครื่องจักร -->
+<!--  modal แก้ไขชื่อเครื่องจักร -->
     <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -92,9 +92,9 @@
             </div>
         </div>
     </div>
-    <!-- จบการสร้าง Modal -->
+<!-- จบการสร้าง Modal -->
 
-    <!-- ลบ -->
+<!-- ลบ -->
     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -118,7 +118,7 @@
             </div>
         </div>
     </div>
-    <!-- จบลบ -->
+<!-- จบลบ -->
 
     <div id="wrapper">
         <div id="page-wrapper">
@@ -181,7 +181,7 @@
     <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
     <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
 
-    <script>
+<script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
             "scrollY": true,
@@ -216,7 +216,7 @@
             $('#delete_id').val(data[1])
         })
     })
-    </script>
+</script>
 
 </body>
 </html>
