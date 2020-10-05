@@ -55,13 +55,13 @@
                     </button>
                 </div>
                 <form class="form-horizontal" id="insert" role="form" method="POST"
-                    action="../database/insertTypeMc.php" enctype="multipart/form-data">
+                    action="../database/insertEmp.php" enctype="multipart/form-data">
                     <div class="modal-body mx-3">
                         <div class="form-group">
                             <label for="name" class="col-sm-4 control-label">
                                 <span class="required"></span> รหัสประจำตัว :</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="AUTO-GEN"
+                                <input type="text" class="form-control" id="id" name="id" placeholder="AUTO-GEN"
                                     required disabled>
                             </div>
                         </div>
@@ -69,32 +69,34 @@
                             <label for="name" class="col-sm-4 control-label">
                                 <span class="required"></span> ชื่อ :</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="" required>
+                                <input type="text" class="form-control" id="fname" name="fname" placeholder="" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="name" class="col-sm-4 control-label">
                                 <span class="required"></span> นามสกุล :</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="" required>
+                                <input type="text" class="form-control" id="lname" name="lname" placeholder="" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="name" class="col-sm-4 control-label">
                                 <span class="required"></span> เลขที่บัตรประชาชน :</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="" required>
+                                <input type="text" class="form-control" id="number" name="number" placeholder="" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="name" class="col-sm-4 control-label">
                                 <span class="required"></span> ตำแหน่ง :</label>
                             <div class="col-sm-7">
-                                <select id="cars" name="XVVehTypeName" class="form-control">
-                                    <option value="" selected>Choose...</option>
-                                    <option value="" >1</option>
-                                    <option value="" >2</option>
-                                    <option value="" >3</option>
+                                <select id="role" name="role" class="form-control">
+                                    <option value="0" selected>Choose...</option>
+                                    <option value="ช่าง" >ช่าง</option>
+                                    <option value="ธุรการ" >ธุรการ</option>
+                                    <option value="แอดมิน" >แอดมิน</option>
+                                    <option value="หัวหน้าช่าง" >หัวหน้าช่าง</option>
+                                    <option value="ผู้บริหาร" >ผู้บริหาร</option>
                                 </select>
                             </div>
                         </div>
@@ -121,7 +123,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="../database/#" method="POST">
+                <form action="../database/deleteEmp.php" method="POST">
                     <div class="modal-body">
                         <input type="hidden" name="delete_id" id="delete_id">
                         ท่านต้องการลบพนักงานนี้หรือไม่?
@@ -148,14 +150,14 @@
                     </button>
                 </div>
                 <form class="form-horizontal" id="insert" role="form" method="POST"
-                    action="../database/#" enctype="multipart/form-data">
+                    action="../database/updateEmp.php" enctype="multipart/form-data">
                     <div class="modal-body mx-3">
-                        <input type="hidden" name="update_id" id="update_id">
+                        <input type="hidden" name="XVEpyCode" id="XVEpyCode">
                         <div class="form-group">
                             <label for="name" class="col-sm-4 control-label">
                                 <span class="required"></span> ชื่อ:</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="XVVehTypeName" name="XVVehTypeName"
+                                <input type="text" class="form-control" id="XVEpyFirstname" name="XVEpyFirstname"
                                     placeholder="" required>
                             </div>
                         </div>
@@ -163,7 +165,7 @@
                             <label for="name" class="col-sm-4 control-label">
                                 <span class="required"></span> นามสกุล:</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="XVVehTypeName" name="XVVehTypeName"
+                                <input type="text" class="form-control" id="XVpyLastname" name="XVpyLastname"
                                     placeholder="" required>
                             </div>
                         </div>
@@ -171,15 +173,7 @@
                             <label for="name" class="col-sm-4 control-label">
                                 <span class="required"></span> เลขที่บัตรประชาชน:</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="XVVehTypeName" name="XVVehTypeName"
-                                    placeholder="" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="name" class="col-sm-4 control-label">
-                                <span class="required"></span> ชื่อประเภทเครื่องจักร:</label>
-                            <div class="col-sm-7">
-                                <input type="text" class="form-control" id="XVVehTypeName" name="XVVehTypeName"
+                                <input type="text" class="form-control" id="XVIdCardNumber" name="XVIdCardNumber"
                                     placeholder="" required>
                             </div>
                         </div>
@@ -187,15 +181,13 @@
                             <label for="name" class="col-sm-4 control-label">
                                 <span class="required"></span> ตำแหน่ง :</label>
                             <div class="col-sm-7">
-                            <select id="cars" name="XVVehTypeName" class="form-control">
-                                    <?php
-                                     $sqls = "select * from tmstmvehicletype; ";
-                                     $results = mysqli_query($connect,$sqls) or die(mysqli_query($connect));
-                                     while ($rows=mysqli_fetch_array($results)){
-                                         ?>
-                                    <option value="<?php echo $rows["XVVehTypeCode"];?>">
-                                        <?php echo $rows["XVVehTypeName"]; ?></option>
-                                    <?php } ?>
+                            <select id="role" name="XVEpyJobPosition" class="form-control">
+                                    <option value="0" selected>Choose...</option>
+                                    <option value="ช่าง" >ช่าง</option>
+                                    <option value="ธุรการ" >ธุรการ</option>
+                                    <option value="แอดมิน" >แอดมิน</option>
+                                    <option value="หัวหน้าช่าง" >หัวหน้าช่าง</option>
+                                    <option value="ผู้บริหาร" >ผู้บริหาร</option>
                                 </select>
                             </div>
                         </div>
@@ -309,8 +301,11 @@
             }).get()
 
             console.log(data)
-            $('#update_id').val(data[1])
-            $('#XVVehTypeName').val(data[2])
+            $('#XVEpyCode').val(data[1])
+            $('#XVEpyFirstname').val(data[2])
+            $('#XVpyLastname').val(data[3])
+            $('#XVIdCardNumber').val(data[4])
+            $('#XVEpyJobPosition').val(data[5])
         })
     })
     $(document).ready(function() {

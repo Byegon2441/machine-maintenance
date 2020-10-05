@@ -22,7 +22,7 @@
     <?php include '../Template/templsidebar.php';
 ?>
 
-    <!-- modal แก้ไขเครื่องจักร -->
+<!-- modal แก้ไขเครื่องจักร -->
 
     <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -139,7 +139,7 @@
         </div>
     </div>
 
-    <!--  modal เพิ่มเครื่องจักร -->
+<!--  modal เพิ่มเครื่องจักร -->
     <div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -253,9 +253,10 @@
         </div>
     </div>
     </div>
-    <!-- จบการสร้าง Modal -->
 
-    <!-- ลบ -->
+<!-- จบเพิ่ม -->
+
+<!-- ลบ -->
     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -279,7 +280,7 @@
             </div>
         </div>
     </div>
-    <!-- จบลบ -->
+<!-- จบลบ -->
 
     <div id="wrapper">
         <div id="page-wrapper">
