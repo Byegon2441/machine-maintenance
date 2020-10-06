@@ -4,6 +4,7 @@ $fname = $_POST['fname'];
 $lname = $_POST['lname'];
 $number = $_POST['number'];
 $role = $_POST['role'];
+
 $query = "INSERT INTO tmstmtemployee(XVEpyFirstname,XVpyLastname,XVIdCardNumber,XVEpyJobPosition) VALUES ('$fname','$lname','$number','$role');";
 $sql = mysqli_query( $connect, $query );
 
@@ -18,6 +19,7 @@ if($sql){
     echo "window.location='ListEmployee.php';";
     echo '</script>';
 }
+
 mysqli_close( $connect );
 
 ?>

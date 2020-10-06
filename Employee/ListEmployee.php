@@ -40,7 +40,8 @@
 
 <body>
 
-    <?php include '../Template/templsidebar.php';?>
+    <?php include '../Template/templsidebar.php';
+    include '../database/connect.php';?>
 
 <!-- model emp insert -->
     <div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -90,7 +91,7 @@
                                 <span class="required"></span> ตำแหน่ง :</label>
                             <div class="col-sm-7">
                                 <select id="role" name="role" class="form-control">
-                                    <option selected>เลือกตำแหน่ง...</option>
+                                    <option value="0" selected>Choose...</option>
                                     <option value="ช่าง" >ช่าง</option>
                                     <option value="ธุรการ" >ธุรการ</option>
                                     <option value="แอดมิน" >แอดมิน</option>
@@ -181,7 +182,7 @@
                                 <span class="required"></span> ตำแหน่ง :</label>
                             <div class="col-sm-7">
                             <select id="role" name="XVEpyJobPosition" class="form-control">
-                                    <option selected>แก้ไขตำแหน่ง...</option>
+                                    <option value="0" selected>Choose...</option>
                                     <option value="ช่าง" >ช่าง</option>
                                     <option value="ธุรการ" >ธุรการ</option>
                                     <option value="แอดมิน" >แอดมิน</option>
@@ -236,9 +237,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
+                                
 <?php
-    include '../database/connect.php';
     $sql = " SELECT *
     FROM tmstmtemployee";
     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
@@ -252,6 +252,7 @@
                                         <td><?php echo $row["XVpyLastname"];?></td>
                                         <td><?php echo $row["XVIdCardNumber"];?></td>
                                         <td><?php echo $row["XVEpyJobPosition"];?></td>
+
                                         <td align="center"><input class='btn btn-primary editbtn' type='button'
                                                 value='แก้ไข'></td>
                                         <td align="center"><input class='btn btn-danger deletebtn' type='button'
@@ -285,8 +286,8 @@
     <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-             "scrollY": true,
-             "scrollX": true
+            // "scrollY": true,
+            // "scrollX": true
         });
     });
 
