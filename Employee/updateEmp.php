@@ -6,7 +6,6 @@ if ( isset( $_POST['updatedata'] ) ) {
     $XVpyLastname = $_POST['XVpyLastname'];
     $XVIdCardNumber = $_POST['XVIdCardNumber'];
     $XVEpyJobPosition = $_POST['XVEpyJobPosition'];
-
   $sql = "UPDATE tmstmtemployee
      SET  XVEpyFirstname ='$XVEpyFirstname',
      XVpyLastname ='$XVpyLastname',

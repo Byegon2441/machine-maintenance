@@ -2,7 +2,6 @@
 include '../database/connect.php';
 if ( isset( $_POST['deletedata'] ) ) {
     $id = $_POST['delete_id'];
-    // $name = $_POST['XVVehTypeName'];
     $sql = "DELETE FROM tmstmtemployee WHERE XVEpyCode = '$id'";
     $result = mysqli_query( $connect, $sql );
 
@@ -18,5 +17,4 @@ if ( isset( $_POST['deletedata'] ) ) {
         echo '</script>';
     }
 }
-
 ?>
