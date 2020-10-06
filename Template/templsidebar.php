@@ -96,6 +96,9 @@
                                     <a href="../Department/ListDepartment.php">ไซต์งาน</a>
                                 </li>
                                 <li>
+                                    <a href="../TypeMachineParts/ListTypeMachineParts.php">ประเภทอะไหล่</a>
+                                </li>
+                                <li>
                                     <a href="../MachineParts/ListMachineParts.php">อะไหล่</a>
                                 </li>
                                 <li>
