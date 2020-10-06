@@ -1,0 +1,9 @@
+สำหรับคน ไม่ต้องการให้ข้อมูลที่พิมในเบสหาย
+---------------------------- TIME 6/10/2563 05:45 ----------------------------
+ALTER TABLE tmstmmachine_parts MODIFY  XVMachinePartsTypeCode int(5) NULL ; 
+---------------------------- TIME 6/10/2563 05:52 ----------------------------
+ALTER TABLE tmstmmachine_parts DROP FOREIGN KEY FK_Machinepartstype_Machineparts; 
+ALTER TABLE tmstmmachine_parts ADD CONSTRAINT FK_Machinepartstype_Machineparts 
+FOREIGN KEY (XVMachinePartsTypeCode) REFERENCES tmstmmachine_parts_type`(XVMachinePartsTypeCode`) ON DELETE SET NULL ON UPDATE CASCADE;
+---------------------------- TIME 6/10/2563 15:32 ----------------------------
+ALTER TABLE tmstmtemployee CHANGE XVIdCardNumber XVIdCardNumber BIGINT(13) NOT NULL;
