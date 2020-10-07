@@ -40,14 +40,65 @@
 
 <body>
 
-<?php include '../Template/templsidebar.php';?>
+    <?php include '../Template/templsidebar.php';?>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label>ใบแจ้งซ่อม</label>
+                    <div class="row">
+                        <div class="col-md-7"></div>
+                        <div class="col-md-5 ml-auto">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="numb">เลขที่ :
+                                <input type="text" name="numb" ></label></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6 ml-auto">
+                            &nbsp;<label for="numb">เลขที่ใบแจ้งซ่อม :
+                                <input type="text" name="numb" ></label></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6 ml-auto">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="numb">วันที่แจ้งซ่อม :
+                                <input type="text" name="numb" class="form-control"></label></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="numb">ชื่องานหรือชื่อเครื่องจักร :<input type="text" name="numb" class="form-control"></label>
+                        </div>
+                        <div class="col-md-6 ml-auto">
+                            <label for="numb">หมายเลขเครื่องจักร :<input type="text" name="numb" class="form-control"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div id="wrapper">
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">ใบแจ้งซ่อม<button type="button" class="btn btn-success btn-circle" style="float: right;"><i class="fa fa-plus"></i>
-                            </button></h1>
+                    <h1 class="page-header">ใบแจ้งซ่อม<button type="button" class="btn btn-success btn-circle"
+                            style="float: right;"><i class="fa fa-plus"></i>
+                        </button></h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -56,11 +107,12 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                                ใบแจ้งซ่อม
+                            ใบแจ้งซ่อม
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <table width="100%" class="table table-striped table-bordered table-hover"
+                                id="dataTables-example">
                                 <thead>
                                     <tr>
                                         <th>เลขที่ใบแจ้งซ่อม</th>
@@ -73,13 +125,14 @@
                                 </thead>
                                 <tbody>
                                     <tr class="odd gradeA">
-                                    <td>XXXXXXXXXXXXXX</td>
+                                        <td>XXXXXXXXXXXXXX</td>
                                         <td>XXXXXXX</td>
                                         <td>XXX</td>
                                         <td>XXXXXX</td>
                                         <td>แจ้งซ่อม</td>
 
-                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด'/></td>
+                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด'
+                                                data-toggle="modal" data-target=".bd-example-modal-lg"></td>
 
                                     </tr>
                                 </tbody>
