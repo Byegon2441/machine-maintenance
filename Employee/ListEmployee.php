@@ -177,7 +177,6 @@
                                     <option value="">Choose...</option>
                                     <option value="ช่าง" >ช่าง</option>
                                     <option value="ธุรการ" >ธุรการ</option>
-                                    <option value="แอดมิน" >แอดมิน</option>
                                     <option value="หัวหน้าช่าง" >หัวหน้าช่าง</option>
                                     <option value="ผู้บริหาร" >ผู้บริหาร</option>
                                 </select>
