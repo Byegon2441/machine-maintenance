@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 06, 2020 at 10:05 AM
+-- Generation Time: Oct 07, 2020 at 10:54 AM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.2
+-- PHP Version: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -238,8 +237,8 @@ CREATE TABLE `tmstmvehicletype` (
 --
 
 INSERT INTO `tmstmvehicletype` (`XVVehTypeCode`, `XVVehTypeName`) VALUES
-(3, 'ไอฝุ่น'),
-(4, 'ไอน้ำ');
+(4, 'ไอน้ำ'),
+(3, 'ไอฝุ่น');
 
 -- --------------------------------------------------------
 
@@ -343,6 +342,7 @@ ALTER TABLE `tmstmdepartment`
 --
 ALTER TABLE `tmstmmachine_parts`
   ADD PRIMARY KEY (`XVMachinePartsCode`),
+  ADD UNIQUE KEY `XVMachinePartsName_UQ` (`XVMachinePartsName`),
   ADD KEY `FK_Machinepartstype_Machineparts` (`XVMachinePartsTypeCode`);
 
 --
@@ -355,26 +355,34 @@ ALTER TABLE `tmstmmachine_parts_type`
 -- Indexes for table `tmstmtemployee`
 --
 ALTER TABLE `tmstmtemployee`
-  ADD PRIMARY KEY (`XVEpyCode`);
+  ADD PRIMARY KEY (`XVEpyCode`),
+  ADD UNIQUE KEY `XVIdCardNumber_UQ` (`XVIdCardNumber`);
 
 --
 -- Indexes for table `tmstmvehicletype`
 --
 ALTER TABLE `tmstmvehicletype`
-  ADD PRIMARY KEY (`XVVehTypeCode`);
+  ADD PRIMARY KEY (`XVVehTypeCode`),
+  ADD UNIQUE KEY `XVVehTypeName_UQ` (`XVVehTypeName`);
 
 --
 -- Indexes for table `tmstvehicle`
 --
 ALTER TABLE `tmstvehicle`
   ADD PRIMARY KEY (`XVVehCode`),
+  ADD UNIQUE KEY `XVVehRegistration_UQ` (`XVVehRegistration`),
+  ADD UNIQUE KEY `XVVehNumber_UQ` (`XVVehNumber`),
+  ADD UNIQUE KEY `XVVehMango_UQ` (`XVVehMango`),
+  ADD UNIQUE KEY `XVVehChassisNumber_UQ` (`XVVehChassisNumber`),
+  ADD UNIQUE KEY `XVVehEngineNumber_UQ` (`XVVehEngineNumber`),
   ADD KEY `FK_tmstvehicle_tmstvehicletype` (`XVVehTypeCode`);
 
 --
 -- Indexes for table `tsysuser`
 --
 ALTER TABLE `tsysuser`
-  ADD PRIMARY KEY (`XVEpyCode`);
+  ADD PRIMARY KEY (`XVEpyCode`),
+  ADD UNIQUE KEY `XVUsrName_UQ` (`XVUsrName`);
 
 --
 -- AUTO_INCREMENT for dumped tables
