@@ -55,32 +55,30 @@
                 <div class="modal-body">
                     <label>ใบแจ้งซ่อม</label>
                     <div class="row">
-                        <div class="col-md-7"></div>
-                        <div class="col-md-5 ml-auto">
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="numb">เลขที่ :
-                                <input type="text" name="numb" ></label></div>
+                        <label for="name" class="col-sm-5">ชื่อประเภทเครื่องจักร:</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="XVVehTypeName" name="XVVehTypeName"
+                                placeholder="" required>
+                        </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6"></div>
-                        <div class="col-md-6 ml-auto">
-                            &nbsp;<label for="numb">เลขที่ใบแจ้งซ่อม :
-                                <input type="text" name="numb" ></label></div>
+                        <div class="col-12 col-md-8"></div>
+                        <div class="col-6 col-md-4">
+                            <label for="numb">เลขที่ใบแจ้งซ่อม :<input type="text" name="numb"></label>
+                        </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-6"></div>
-                        <div class="col-md-6 ml-auto">
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="numb">วันที่แจ้งซ่อม :
-                                <input type="text" name="numb" class="form-control"></label></div>
-                    </div>
+                        
 
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="numb">ชื่องานหรือชื่อเครื่องจักร :<input type="text" name="numb" class="form-control"></label>
+                            <label for="numb">ชื่องานหรือชื่อเครื่องจักร :<input type="text" name="numb"
+                                    class="form-control"></label>
                         </div>
                         <div class="col-md-6 ml-auto">
-                            <label for="numb">หมายเลขเครื่องจักร :<input type="text" name="numb" class="form-control"></label>
+                            <label for="numb">หมายเลขเครื่องจักร :<input type="text" name="numb"
+                                    class="form-control"></label>
                         </div>
                     </div>
                 </div>
@@ -96,12 +94,15 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">ใบแจ้งซ่อม<button type="button" class="btn btn-success btn-circle"
-                            style="float: right;"><i class="fa fa-plus"></i>
+                    <h1 class="page-header">ใบแจ้งซ่อม
+                    <button type="button" class="btn btn-success btn-circle" style="float: right;"
+                            data-toggle="modal" data-target="#insertModal"><i class="fa fa-plus"></i>
+                        </button>
+
+
                         </button></h1>
                 </div>
-                <!-- /.col-lg-12 -->
-            </div>
+            
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
@@ -123,18 +124,43 @@
                                         <th>จัดการ</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXXXXX</td>
-                                        <td>XXX</td>
-                                        <td>XXXXXX</td>
-                                        <td>แจ้งซ่อม</td>
+                                <?php
+          include '../database/connect.php';
+          $sql = " SELECT vj.XVMajDocNo , vj.XVMajWhoInformant, vj.XVMajStatus, vj.XVMaCarStatus,vj.XVMajFinishRmk, v.XVVehCode, vp.XVDptCode 
+          FROM  tdoctmajob vj , tmstmdepartment vp , tmstvehicle v
+          where  vj.XVMajDocNo = v.XVVehCode
+          and vj.XVMajDocNo = vp.XVDptCode";
+         
+          
+          $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+          $count = 1;
+          while ($row=mysqli_fetch_array($result)){
+          ?>
 
-                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด'
-                                                data-toggle="modal" data-target=".bd-example-modal-lg"></td>
+                                        <tr class="odd gradeA">
+                                            <td><?php echo $count;?></td>
+                                            <td><?php echo $row["XVMajDocNo"];?></td>
+                                            <td><?php echo $row["XVMajWhoInformant"];?></td>
+                                            <td><?php echo $row["XVMajStatus"];?></td>
+                                            <td><?php echo $row["XVMaCarStatus"];?></td>
+                                            <td><?php echo $row["XVMajFinishRmk"];?></td>
+                                            <td><?php echo $row["XVVehCode"];?></td>
+                                            <td><?php echo $row["XVDptCode"];?></td>
+                                            <td><?php if($row['XVVehCode']==NULL){echo "ไม่สามารถระบุเครื่องจักรได้";}else {echo $row["XVVehName"];}?></td>
+                                            <td style="display:none;"><?php echo $row["XVVehCode"];?></td>
 
-                                    </tr>
+                                            <td><?php if($row['XVDptCode']==NULL){echo "ไม่สามารถระบุไซต์งานได้";}else {echo $row["XVDptName"];}?></td>
+                                            <td style="display:none;"><?php echo $row["XVVehCode"];?></td>
+
+                                            <td align="center"><input class='btn btn-primary editbtn' type='button'
+                                                    value='แก้ไข'></td>
+                                            <td align="center"><input class='btn btn-danger deletebtn' type='button'
+                                                    value='ลบ'></td>
+
+                                        </tr>
+                                        <?php $count++;}
+                                        mysqli_close($connect);
+                                        ?>
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->
