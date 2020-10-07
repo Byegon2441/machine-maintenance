@@ -59,14 +59,6 @@
                     <div class="modal-body mx-3">
                         <div class="form-group">
                             <label for="name" class="col-sm-4 control-label">
-                                <span class="required"></span> รหัสประจำตัว :</label>
-                            <div class="col-sm-7">
-                                <input type="text" class="form-control" id="id" name="id" placeholder="AUTO-GEN"
-                                    required disabled>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="name" class="col-sm-4 control-label">
                                 <span class="required"></span> ชื่อ :</label>
                             <div class="col-sm-7">
                                 <input type="text" class="form-control" id="fname" name="fname" placeholder="" required>
@@ -181,8 +173,8 @@
                             <label for="name" class="col-sm-4 control-label">
                                 <span class="required"></span> ตำแหน่ง :</label>
                             <div class="col-sm-7">
-                            <select id="role" name="XVEpyJobPosition" class="form-control">
-                                    <option value="0" selected>Choose...</option>
+                            <select id="XVEpyJobPosition" name="XVEpyJobPosition" class="form-control">
+                                    <option value="">Choose...</option>
                                     <option value="ช่าง" >ช่าง</option>
                                     <option value="ธุรการ" >ธุรการ</option>
                                     <option value="แอดมิน" >แอดมิน</option>
