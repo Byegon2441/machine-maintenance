@@ -104,9 +104,6 @@
                                 <li>
                                     <a href="../Employee/ListEmployee.php">พนักงาน</a>
                                 </li>
-                                <li>
-                                    <a href="../Job/ListJob.php">ใบแจ้งซ่อม</a>
-                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
