@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 02, 2020 at 08:36 AM
+-- Generation Time: Oct 06, 2020 at 10:05 AM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.3
+-- PHP Version: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -153,6 +153,13 @@ CREATE TABLE `tmstmdepartment` (
   `XVDptname` varchar(100) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Dumping data for table `tmstmdepartment`
+--
+
+INSERT INTO `tmstmdepartment` (`XVDptCode`, `XVDptNumber`, `XVDptSub-district`, `XVDptDistrict`, `XVDptProvince`, `XVDptname`) VALUES
+(2, 'aaa', 'aaa', 'aaa', 'aaa', 'aaa');
+
 -- --------------------------------------------------------
 
 --
@@ -162,8 +169,17 @@ CREATE TABLE `tmstmdepartment` (
 CREATE TABLE `tmstmmachine_parts` (
   `XVMachinePartsCode` int(5) NOT NULL,
   `XVMachinePartsName` varchar(100) COLLATE utf8_bin NOT NULL,
-  `XVMachinePartsTypeCode` int(5) NOT NULL
+  `XVMachinePartsTypeCode` int(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `tmstmmachine_parts`
+--
+
+INSERT INTO `tmstmmachine_parts` (`XVMachinePartsCode`, `XVMachinePartsName`, `XVMachinePartsTypeCode`) VALUES
+(3, 'แบตเตอรี่ 40v', 2),
+(4, 'ผ้าลินิน116', 1),
+(5, 'แบตเตอรี่ 15v', 2);
 
 -- --------------------------------------------------------
 
@@ -176,6 +192,14 @@ CREATE TABLE `tmstmmachine_parts_type` (
   `XVMachinePartsTypeName` varchar(100) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Dumping data for table `tmstmmachine_parts_type`
+--
+
+INSERT INTO `tmstmmachine_parts_type` (`XVMachinePartsTypeCode`, `XVMachinePartsTypeName`) VALUES
+(1, 'ผ้าเบรค1'),
+(2, 'แบตเตอรี่');
+
 -- --------------------------------------------------------
 
 --
@@ -186,9 +210,17 @@ CREATE TABLE `tmstmtemployee` (
   `XVEpyCode` int(5) NOT NULL,
   `XVEpyFirstname` varchar(100) COLLATE utf8_bin NOT NULL,
   `XVpyLastname` varchar(100) COLLATE utf8_bin NOT NULL,
-  `XVIdCardNumber` int(13) NOT NULL,
+  `XVIdCardNumber` bigint(13) NOT NULL,
   `XVEpyJobPosition` varchar(50) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `tmstmtemployee`
+--
+
+INSERT INTO `tmstmtemployee` (`XVEpyCode`, `XVEpyFirstname`, `XVpyLastname`, `XVIdCardNumber`, `XVEpyJobPosition`) VALUES
+(2, 'aaaa', 'aaaaa', 2147483647, 'aaaaa'),
+(4, 'naratip', 'naratip', 1730201338337, '0');
 
 -- --------------------------------------------------------
 
@@ -206,7 +238,8 @@ CREATE TABLE `tmstmvehicletype` (
 --
 
 INSERT INTO `tmstmvehicletype` (`XVVehTypeCode`, `XVVehTypeName`) VALUES
-(21, 'รถไฟไอน้ำปู้นๆ');
+(3, 'ไอฝุ่น'),
+(4, 'ไอน้ำ');
 
 -- --------------------------------------------------------
 
@@ -224,8 +257,15 @@ CREATE TABLE `tmstvehicle` (
   `XVVehModel` varchar(50) COLLATE utf8_bin NOT NULL,
   `XVVehChassisNumber` varchar(50) COLLATE utf8_bin NOT NULL,
   `XVVehEngineNumber` varchar(50) COLLATE utf8_bin NOT NULL,
-  `XVVehTypeCode` int(5) NOT NULL
+  `XVVehTypeCode` int(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `tmstvehicle`
+--
+
+INSERT INTO `tmstvehicle` (`XVVehCode`, `XVVehName`, `XVVehRegistration`, `XVVehNumber`, `XVVehMango`, `XVVehBrand`, `XVVehModel`, `XVVehChassisNumber`, `XVVehEngineNumber`, `XVVehTypeCode`) VALUES
+(1, 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 3);
 
 -- --------------------------------------------------------
 
@@ -328,7 +368,7 @@ ALTER TABLE `tmstmvehicletype`
 --
 ALTER TABLE `tmstvehicle`
   ADD PRIMARY KEY (`XVVehCode`),
-  ADD KEY `FK_Vehicle_VehicleType` (`XVVehTypeCode`);
+  ADD KEY `FK_tmstvehicle_tmstvehicletype` (`XVVehTypeCode`);
 
 --
 -- Indexes for table `tsysuser`
@@ -350,37 +390,37 @@ ALTER TABLE `sqrun`
 -- AUTO_INCREMENT for table `tmstmdepartment`
 --
 ALTER TABLE `tmstmdepartment`
-  MODIFY `XVDptCode` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `XVDptCode` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tmstmmachine_parts`
 --
 ALTER TABLE `tmstmmachine_parts`
-  MODIFY `XVMachinePartsCode` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `XVMachinePartsCode` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tmstmmachine_parts_type`
 --
 ALTER TABLE `tmstmmachine_parts_type`
-  MODIFY `XVMachinePartsTypeCode` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `XVMachinePartsTypeCode` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tmstmtemployee`
 --
 ALTER TABLE `tmstmtemployee`
-  MODIFY `XVEpyCode` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `XVEpyCode` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tmstmvehicletype`
 --
 ALTER TABLE `tmstmvehicletype`
-  MODIFY `XVVehTypeCode` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `XVVehTypeCode` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tmstvehicle`
 --
 ALTER TABLE `tmstvehicle`
-  MODIFY `XVVehCode` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `XVVehCode` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -431,13 +471,13 @@ ALTER TABLE `tdoctmarepair_tnc`
 -- Constraints for table `tmstmmachine_parts`
 --
 ALTER TABLE `tmstmmachine_parts`
-  ADD CONSTRAINT `FK_Machinepartstype_Machineparts` FOREIGN KEY (`XVMachinePartsTypeCode`) REFERENCES `tmstmmachine_parts_type` (`XVMachinePartsTypeCode`);
+  ADD CONSTRAINT `FK_Machinepartstype_Machineparts` FOREIGN KEY (`XVMachinePartsTypeCode`) REFERENCES `tmstmmachine_parts_type` (`XVMachinePartsTypeCode`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tmstvehicle`
 --
 ALTER TABLE `tmstvehicle`
-  ADD CONSTRAINT `FK_Vehicle_VehicleType` FOREIGN KEY (`XVVehTypeCode`) REFERENCES `tmstmvehicletype` (`XVVehTypeCode`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `FK_tmstvehicle_tmstvehicletype` FOREIGN KEY (`XVVehTypeCode`) REFERENCES `tmstmvehicletype` (`XVVehTypeCode`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tsysuser`
