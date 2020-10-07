@@ -78,7 +78,7 @@
                     <ul class="nav" id="side-menu">
 
                         <li>
-                            <a href="../Job/Job.php"><i class="fa fa-th-list fa-fw"></i> ใบแจ้งซ่อม</a>
+                            <a href="../Job/ListJob.php"><i class="fa fa-th-list fa-fw"></i> ใบแจ้งซ่อม</a>
                         </li>
                         <li>
                             <a href="../Job/Finish.php"><i class="fa fa-check fa-fw"></i> ปิดงาน</a>
@@ -95,9 +95,7 @@
                                 <li>
                                     <a href="../Department/ListDepartment.php">ไซต์งาน</a>
                                 </li>
-                                <li>
-                                    <a href="../TypeMachineParts/ListTypeMachineParts.php">ประเภทอะไหล่</a>
-                                </li>
+                                
                                 <li>
                                     <a href="../MachineParts/ListMachineParts.php">อะไหล่</a>
                                 </li>

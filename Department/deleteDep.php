@@ -13,7 +13,7 @@ if ( isset( $_POST['deletedata'] ) ) {
         echo '</script>';
     } else {
         echo '<script>';
-        echo "alert('ไม่สามารถทำการลบไซต์งานจักรได้ !!!');";
+        echo "alert('ไม่สามารถทำการลบไซต์งานได้ !!!');";
         echo "window.location='ListDepartment.php';";
         echo '</script>';
     }
