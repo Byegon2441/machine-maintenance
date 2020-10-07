@@ -87,9 +87,16 @@
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="col-7">
-                                <label for="numb">เลขที่ : <input type="text" name="numb" class="form-control"></label>
+                        <div class="row">
+                            <div class="col-md-6">
+                            <label for="numb">เลขที่ : <input type="text" name="numb" class="form-control"></label>
+
+                            </div>
+                            <div class="col-md-6 ml-auto">
+                                <div class="col text-right">
+                                    <label for="numb">เลขที่ : <input type="text" name="numb"
+                                            class="form-control"></label>
+                                </div>
                             </div>
                         </div>
                         
