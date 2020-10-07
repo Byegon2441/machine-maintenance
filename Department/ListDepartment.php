@@ -195,7 +195,7 @@ include "../database/connect.php";?>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                    <button type="submit" class="btn btn-danger" name="deletedata">ลบลบไซต์งาน</button>
+                    <button type="submit" class="btn btn-danger" name="deletedata">ลบไซต์งาน</button>
                 </div>
                 </form>
             </div>
@@ -229,8 +229,8 @@ include "../database/connect.php";?>
                                         <th>รหัสไซต์งาน</th>
                                         <th>ชื่อไซต์งาน</th>
                                         <th>เลขที่</th>
-                                        <th>อำเภอ</th>
                                         <th>ตำบล</th>
+                                        <th>อำเภอ</th>
                                         <th>จังหวัด</th>
                                         <th>แก้ไข</th>
                                         <th>ลบ</th>
