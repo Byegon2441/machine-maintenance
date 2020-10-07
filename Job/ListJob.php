@@ -94,12 +94,15 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">ใบแจ้งซ่อม<button type="button" class="btn btn-success btn-circle"
-                            style="float: right;"><i class="fa fa-plus"></i>
+                    <h1 class="page-header">ใบแจ้งซ่อม
+                    <button type="button" class="btn btn-success btn-circle" style="float: right;"
+                            data-toggle="modal" data-target="#insertModal"><i class="fa fa-plus"></i>
+                        </button>
+
+
                         </button></h1>
                 </div>
-                <!-- /.col-lg-12 -->
-            </div>
+            
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
