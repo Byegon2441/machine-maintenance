@@ -54,8 +54,6 @@
                 </div>
                 <div class="modal-body">
                     <label>ใบแจ้งซ่อม</label>
-
-
                     <form action="" class="form-inline">
                         <div class="row">
                             <div class="col-md-6"></div>
@@ -71,7 +69,7 @@
                             <div class="col-md-6"></div>
                             <div class="col-md-6 ml-auto">
                                 <div class="col text-right">
-                                    <label for="numb">เลขที่ : <input type="text" name="numb"
+                                    <label for="numb">เลขที่ใบแจ้งซ่อม : <input type="text" name="numb"
                                             class="form-control"></label>
                                 </div>
                             </div>
@@ -81,28 +79,55 @@
                             <div class="col-md-6"></div>
                             <div class="col-md-6 ml-auto">
                                 <div class="col text-right">
-                                    <label for="numb">เลขที่ : <input type="text" name="numb"
+                                    <label for="numb">วันที่แจ้งซ่อม : <input type="text" name="numb"
                                             class="form-control"></label>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">
-                            <label for="numb">เลขที่ : <input type="text" name="numb" class="form-control"></label>
-
-                            </div>
-                            <div class="col-md-6 ml-auto">
+                            <div class="col-md-7">
                                 <div class="col text-right">
-                                    <label for="numb">เลขที่ : <input type="text" name="numb"
+                                    <label for="numb">ชื่องานหรือชื่อเครื่องจักร : <input type="text" size="30"
+                                            name="numb" class="form-control"></label>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="col text-right">
+                                    <label for="numb">หมายเลขเครื่องจักร : <input type="text" size="17" name="numb"
                                             class="form-control"></label>
                                 </div>
                             </div>
                         </div>
-                        
 
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="col text-right">
+                                    <label for="numb">ชื่อหน่วยงาน : <input type="text" size="30" name="numb"
+                                            class="form-control"></label>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="col text-right">
+                                    <label for="numb">หมายเลขหน่วยงาน : <input type="text" size="17" name="numb"
+                                            class="form-control"></label>
+                                </div>
+                            </div>
+                        </div>
 
-
+                        <div class="form-row">
+                            <div class="col">
+                                    <label for="numb">ตำแหน่งเครื่องจักร ณ ปัจจุบัน เลขที่ : 
+                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb"
+                                            class="form-control">
+                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb"
+                                            class="form-control">
+                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb"
+                                            class="form-control">
+                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb"
+                                            class="form-control"></label>
+                            </div>
+                        </div>
 
 
                         <div class="modal-footer">
