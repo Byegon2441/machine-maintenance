@@ -55,32 +55,30 @@
                 <div class="modal-body">
                     <label>ใบแจ้งซ่อม</label>
                     <div class="row">
-                        <div class="col-md-7"></div>
-                        <div class="col-md-5 ml-auto">
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="numb">เลขที่ :
-                                <input type="text" name="numb" ></label></div>
+                        <label for="name" class="col-sm-5">ชื่อประเภทเครื่องจักร:</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="XVVehTypeName" name="XVVehTypeName"
+                                placeholder="" required>
+                        </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6"></div>
-                        <div class="col-md-6 ml-auto">
-                            &nbsp;<label for="numb">เลขที่ใบแจ้งซ่อม :
-                                <input type="text" name="numb" ></label></div>
+                        <div class="col-12 col-md-8"></div>
+                        <div class="col-6 col-md-4">
+                            <label for="numb">เลขที่ใบแจ้งซ่อม :<input type="text" name="numb"></label>
+                        </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-6"></div>
-                        <div class="col-md-6 ml-auto">
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="numb">วันที่แจ้งซ่อม :
-                                <input type="text" name="numb" class="form-control"></label></div>
-                    </div>
+                        
 
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="numb">ชื่องานหรือชื่อเครื่องจักร :<input type="text" name="numb" class="form-control"></label>
+                            <label for="numb">ชื่องานหรือชื่อเครื่องจักร :<input type="text" name="numb"
+                                    class="form-control"></label>
                         </div>
                         <div class="col-md-6 ml-auto">
-                            <label for="numb">หมายเลขเครื่องจักร :<input type="text" name="numb" class="form-control"></label>
+                            <label for="numb">หมายเลขเครื่องจักร :<input type="text" name="numb"
+                                    class="form-control"></label>
                         </div>
                     </div>
                 </div>
