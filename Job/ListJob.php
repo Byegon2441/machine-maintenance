@@ -55,39 +55,48 @@
                 <div class="modal-body">
                     <label>ใบแจ้งซ่อม</label>
 
-                  
+
                     <form action="" class="form-inline">
                         <div class="row">
                             <div class="col-md-6"></div>
                             <div class="col-md-6 ml-auto">
-                            <div class="col text-right">
-                               <label for="numb">เลขที่ : <input type="text" name="numb" class="form-control"></label></div>
+                                <div class="col text-right">
+                                    <label for="numb">เลขที่ : <input type="text" name="numb"
+                                            class="form-control"></label>
+                                </div>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6"></div>
                             <div class="col-md-6 ml-auto">
-                            <div class="col text-right">
-                               <label for="numb">เลขที่ : <input type="text" name="numb" class="form-control"></label></div>
+                                <div class="col text-right">
+                                    <label for="numb">เลขที่ : <input type="text" name="numb"
+                                            class="form-control"></label>
+                                </div>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6"></div>
                             <div class="col-md-6 ml-auto">
-                            <div class="col text-right">
-                               <label for="numb">เลขที่ : <input type="text" name="numb" class="form-control"></label></div>
+                                <div class="col text-right">
+                                    <label for="numb">เลขที่ : <input type="text" name="numb"
+                                            class="form-control"></label>
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-row">
-                            <div class="col">
-                            <label for="numb">เลขที่ : <input type="text" name="numb" class="form-control"></label>
+                            <div class="col-7">
+                                <label for="numb">เลขที่ : <input type="text" name="numb" class="form-control"></label>
                             </div>
                         </div>
-
                         
+
+
+
+
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -130,43 +139,18 @@
                                         <th>จัดการ</th>
                                     </tr>
                                 </thead>
-                                <?php
-          include '../database/connect.php';
-          $sql = " SELECT vj.XVMajDocNo , vj.XVMajWhoInformant, vj.XVMajStatus, vj.XVMaCarStatus,vj.XVMajFinishRmk, v.XVVehCode, vp.XVDptCode 
-          FROM  tdoctmajob vj , tmstmdepartment vp , tmstvehicle v
-          where  vj.XVMajDocNo = v.XVVehCode
-          and vj.XVMajDocNo = vp.XVDptCode";
-         
-          
-          $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-          $count = 1;
-          while ($row=mysqli_fetch_array($result)){
-          ?>
+                                <tbody>
+                                    <tr class="odd gradeA">
+                                        <td>XXXXXXXXXXXXXX</td>
+                                        <td>XXXXXXX</td>
+                                        <td>XXX</td>
+                                        <td>XXXXXX</td>
+                                        <td>แจ้งซ่อม</td>
 
-                                        <tr class="odd gradeA">
-                                            <td><?php echo $count;?></td>
-                                            <td><?php echo $row["XVMajDocNo"];?></td>
-                                            <td><?php echo $row["XVMajWhoInformant"];?></td>
-                                            <td><?php echo $row["XVMajStatus"];?></td>
-                                            <td><?php echo $row["XVMaCarStatus"];?></td>
-                                            <td><?php echo $row["XVMajFinishRmk"];?></td>
-                                            <td><?php echo $row["XVVehCode"];?></td>
-                                            <td><?php echo $row["XVDptCode"];?></td>
-                                            <td><?php if($row['XVVehCode']==NULL){echo "ไม่สามารถระบุเครื่องจักรได้";}else {echo $row["XVVehName"];}?></td>
-                                            <td style="display:none;"><?php echo $row["XVVehCode"];?></td>
+                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด'
+                                                data-toggle="modal" data-target=".bd-example-modal-lg"></td>
 
-                                            <td><?php if($row['XVDptCode']==NULL){echo "ไม่สามารถระบุไซต์งานได้";}else {echo $row["XVDptName"];}?></td>
-                                            <td style="display:none;"><?php echo $row["XVVehCode"];?></td>
-
-                                            <td align="center"><input class='btn btn-primary editbtn' type='button'
-                                                    value='แก้ไข'></td>
-                                            <td align="center"><input class='btn btn-danger deletebtn' type='button'
-                                                    value='ลบ'></td>
-
-                                        </tr>
-                                        <?php $count++;}
-                                        mysqli_close($connect);
-                                        ?>
+                                    </tr>
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->
