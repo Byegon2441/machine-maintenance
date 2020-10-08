@@ -111,7 +111,7 @@
                             </div>
 
                             <div class="col-lg-5">
-                                <label for="inputEmail4">เลขคัทซี : </label>
+                                <label for="inputEmail4">หมายเลขคัทซี : </label>
                             </div>
                             <div class="form-group col-lg-6">
                                 <input type="text" class="form-control nameof" id="XVVehChassisNumber"
@@ -120,7 +120,7 @@
                             </div>
 
                             <div class="col-lg-5">
-                                <label for="inputEmail4">เลขเครื่อง : </label>
+                                <label for="inputEmail4">หมายเลขเครื่อง : </label>
                             </div>
                             <div class="form-group col-lg-6">
                                 <input type="text" class="form-control nameof" id="XVVehEngineNumber"
@@ -224,7 +224,7 @@
                             </div>
 
                             <div class="col-lg-5">
-                                <label for="inputEmail4">เลขคัทซี : </label>
+                                <label for="inputEmail4">หมายเลขคัทซี : </label>
                             </div>
                             <div class="form-group col-lg-6">
                                 <input type="text" class="form-control nameof" id="XVVehChassisNumber"
@@ -233,7 +233,7 @@
                             </div>
 
                             <div class="col-lg-5">
-                                <label for="inputEmail4">เลขเครื่อง : </label>
+                                <label for="inputEmail4">หมายเลขเครื่อง : </label>
                             </div>
                             <div class="form-group col-lg-6">
                                 <input type="text" class="form-control nameof" id="XVVehEngineNumber"
@@ -316,8 +316,8 @@
                                             <th>เลขทะเบียน MANGO</th>
                                             <th>ยี่ห้อ</th>
                                             <th>รุ่นรถ</th>
-                                            <th>เลขคัทซี</th>
-                                            <th>เลขเครื่อง</th>
+                                            <th>หมายเลขคัทซี</th>
+                                            <th>หมายเลขเครื่อง</th>
                                             <th>ชื่อประเภทเครื่องจักร</th>
                                             <th style="display:none;">ชื่อประเภทเครื่องจักร</th>
                                             <th>แก้ไข</th>
