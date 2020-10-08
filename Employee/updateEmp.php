@@ -15,16 +15,22 @@ if ( isset( $_POST['updatedata'] ) ) {
      WHERE XVEpyCode = $XVEpyCode;
      ";
     $result = mysqli_query($connect,$sql);
+
    if ( $result ) {
         echo '<script>';
-        echo "alert('ทำการแก้ไขข้อมูลพนักงานได้');";
+        echo "alert('ทำการแก้ไขข้อมูลพนักงานเรียบร้อย');";
         echo "window.location='ListEmployee.php';";
         echo '</script>';
     } else {
-        echo '<script>';
-        echo "alert('ไม่สามารถทำการแก้ไขข้อมูลพนักงานได้');".mysqli_error($connect);
-        echo "window.location='ListEmployee.php';";
-        echo '</script>';
+
+         $error_detail = mysqli_error($connect);
+        if(strpos($error_detail, "XVIdCardNumber_UQ")){
+            echo '<script>';
+            echo "alert('ไม่สามารถทำการแก้ไขข้อมูลพนักงานได้ ".'\n'."รหัสบัตรประชาชน ($XVIdCardNumber) มีการลงทะเบียนแล้ว');";
+            echo "window.location='ListEmployee.php';";
+            echo '</script>';
+        }
+        
     }
 }
 mysqli_close($connect);

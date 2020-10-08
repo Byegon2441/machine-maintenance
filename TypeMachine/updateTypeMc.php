@@ -8,14 +8,19 @@ if ( isset( $_POST['updatedata'] ) ) {
 
     if ( $result ) {
         echo '<script>';
-        echo "alert('ทำการแก้ไขชื่อประเภทเครื่องจักรเรียบร้อยแล้ว !!!');";
+        echo "alert('ทำการแก้ไขชื่อประเภทเครื่องจักรเรียบร้อย');";
         echo "window.location='ListTypeMachine.php';";
         echo '</script>';
     } else {
-        echo '<script>';
-        echo "alert('ไม่สามารถทำการแก้ไขชื่อประเภทเครื่องจักรได้ !!!');";
-        echo "window.location='ListTypeMachine.php';";
-        echo '</script>';
+        
+         $error_detail = mysqli_error($connect);
+        if(strpos($error_detail, "XVVehTypeName_UQ")){
+            echo '<script>';
+            echo "alert('ไม่สามารถทำการแก้ไขชื่อประเภทเครื่องจักรได้ ".'\n'."ประเภทเครื่องจักร ($name) มีการลงทะเบียนแล้ว');";
+             echo "window.location='ListTypeMachine.php';";
+            echo '</script>';
+        }
+       
     }
 }
 

@@ -11,14 +11,21 @@ if ( isset( $_POST['updatedata'] ) ) {
     $result = mysqli_query($connect,$sql);
    if ( $result ) {
         echo '<script>';
-        echo "alert('ทำการแก้ไขชื่อรายการอะไหล่เรียบร้อย');";
+        echo "alert('ทำการแก้ไขข้อมูลอะไหล่เรียบร้อย');";
         echo "window.location='ListMachineParts.php';";
         echo '</script>';
     } else {
-        echo '<script>';
-        echo "alert('ไม่สามารถทำการแก้ไขรายการอะไหล่ได้!!!');";
-        echo "window.location='ListMachineParts.php';";
-        echo '</script>';
+
+        $error_detail = mysqli_error($connect);
+        if(strpos($error_detail, "XVMachinePartsName_UQ")){
+            echo '<script>';
+            echo "alert('ไม่สามารถทำการแก้ไขข้อมูอะไหล่ได้ ".'\n'."อะไหล่ ($XVMachinePartsName) มีการลงทะเบียนแล้ว');";
+            echo "window.location='ListMachineParts.php';";
+            echo '</script>';
+        }
+
+
+     
     }
 }
 mysqli_close($connect);
