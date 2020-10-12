@@ -13,7 +13,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link  href="../vendor/css/datepicker.css" rel="stylesheet">
+    <link href="../vendor/css/datepicker.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
@@ -36,6 +36,24 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+    table td {
+        position: relative;
+    }
+
+    table td input {
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+        border: none;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+    </style>
 
 </head>
 
@@ -60,8 +78,8 @@
                             <div class="col-md-6"></div>
                             <div class="col-md-6 ml-auto">
                                 <div class="col text-right">
-                                    <label for="numb">เลขที่ : <input type="text" name="numb"
-                                            class="form-control" disabled></label>
+                                    <label for="numb">เลขที่ : <input type="text" name="numb" class="form-control"
+                                            disabled></label>
                                 </div>
                             </div>
                         </div>
@@ -90,20 +108,21 @@
                             <div class="col-md-7">
                                 <div class="col text-right">
                                     <label for="numb">ชื่อเครื่องจักร :</label>
-                                    <select id="XVVehTypeName" name="XVVehTypeName" class="form-control" style="width:60%">
-                                    <?php
+                                    <select id="XVVehTypeName" name="XVVehTypeName" class="form-control"
+                                        style="width:60%">
+                                        <?php
                                      include '../database/connect.php';
                                      $sql = "select * from tmstmvehicletype; ";
                                      $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
                                      while ($row=mysqli_fetch_array($result)){
                                          ?>
-                                    <option value="<?php echo $row["XVVehTypeCode"];?>">
-                                        <?php echo $row["XVVehTypeName"]; ?></option>
-                                    <?php
+                                        <option value="<?php echo $row["XVVehTypeCode"];?>">
+                                            <?php echo $row["XVVehTypeName"]; ?></option>
+                                        <?php
                                      }
                                     mysqli_close($connect);
                                     ?>
-                                </select>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-5">
@@ -148,9 +167,7 @@
                                 <h3 class="panel-title">รายละเอียดการแจ้งซ่อม</h3>
                             </div>
                             <div class="panel-body" style="margin:0px;">
-                                <input type="text" size="40" class="form-control">
-                                <input type="text" size="55" class="form-control">
-                                <button type="button" class="btn btn-success btn-circle" style="float: right;"><i
+                                <button type="button" class="btn btn-success btn-circle" style="float:right;" title="คลิกเพื่อเพิ่มแถว"><i
                                         class="fa fa-plus"></i>
                                 </button>
                             </div>
@@ -162,18 +179,20 @@
                                 </tr>
                                 <tr>
                                     <td>1</td>
-                                    <td>97</td>
-                                    <td>1</td>
+                                    <td><input type="text" placeholder="กรุณากรอกเรื่องที่แจ้ง"></td>
+                                    <td><input type="text" placeholder="กรุณากรอกสาเหตุ"></td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
-                                    <td>83</td>
-                                    <td>2</td>
+                                    <td><input type="text" placeholder="กรุณากรอกเรื่องที่แจ้ง"></td>
+                                    <td><input type="text" placeholder="กรุณากรอกสาเหตุ"></td>
+
                                 </tr>
                                 <tr>
                                     <td>3</td>
-                                    <td>70</td>
-                                    <td>3</td>
+                                    <td><input type="text" placeholder="กรุณากรอกเรื่องที่แจ้ง"></td>
+                                    <td><input type="text" placeholder="กรุณากรอกสาเหตุ"></td>
+
                                 </tr>
                             </table>
                         </div>
@@ -205,7 +224,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="col text-right">
-                                    <button type="button" class="btn btn-success" data-dismiss="modal">บันทึก</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">บันทึก</button>
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">ส่ง</button>
                                 </div>
                             </div>
                         </div>
