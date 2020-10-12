@@ -30,10 +30,10 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">เพิ่มข้อมูลประเภทเครื่องจักร</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
+                    <h5 class="modal-title" id="exampleModalLabel">เพิ่มข้อมูลประเภทเครื่องจักร</h5>
                 </div>
                 <form class="form-horizontal" id="insert" role="form" method="POST"
                     action="insertTypeMc.php" enctype="multipart/form-data">
@@ -64,18 +64,17 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">แก้ไขข้อมูลประเภทเครื่องจักร</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
+                    <h5 class="modal-title" id="exampleModalLabel">แก้ไขข้อมูลประเภทเครื่องจักร</h5>
                 </div>
                 <form class="form-horizontal" id="insert" role="form" method="POST"
                     action="updateTypeMc.php" enctype="multipart/form-data">
                     <div class="modal-body mx-3">
                         <input type="hidden" name="update_id" id="update_id">
                         <div class="form-group">
-                        
-                            <label for="name" class="col-sm-5 control-label">
+                            <label for="name" class="col-sm-4 control-label">
                                 <span class="required"></span> ชื่อประเภทเครื่องจักร:</label>
                             <div class="col-sm-7">
                                 <input type="text" class="form-control" id="XVVehTypeName" name="XVVehTypeName"
@@ -100,10 +99,10 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">ลบประเภทเครื่องจักร</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
+                    <h5 class="modal-title" id="exampleModalLabel">ลบประเภทเครื่องจักร</h5>
                 </div>
                 <form action="deleteTypeMc.php" method="POST">
                 <div class="modal-body">
