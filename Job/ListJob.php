@@ -47,7 +47,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">รายละเอียดใบแจ้งซ่อม</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -74,7 +74,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
 
                         <div class="row">
                             <div class="col-md-6"></div>
@@ -85,7 +84,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
 
                         <div class="row">
                             <div class="col-md-7">
@@ -119,28 +117,85 @@
 
                         <div class="form-row">
                             <div class="col">
-                                    <label for="numb">ตำแหน่งเครื่องจักร ณ ปัจจุบัน เลขที่ : 
-                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb"
-                                            class="form-control">
-                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb"
-                                            class="form-control">
-                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb"
-                                            class="form-control">
-                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb"
-                                            class="form-control"></label>
+                                <label for="numb">ตำแหน่งเครื่องจักร ณ ปัจจุบัน เลขที่ :
+                                    <input type="text" style="margin: 0px 10px;" size="10" name="numb"
+                                        class="form-control">
+                                    <input type="text" style="margin: 0px 10px;" size="10" name="numb"
+                                        class="form-control">
+                                    <input type="text" style="margin: 0px 10px;" size="10" name="numb"
+                                        class="form-control">
+                                    <input type="text" style="margin: 0px 10px;" size="10" name="numb"
+                                        class="form-control"></label>
                             </div>
                         </div>
 
+                        <div class="panel panel-default" style="margin-top:20px;">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">รายละเอียดการแจ้งซ่อม</h3>
+                            </div>
+                            <div class="panel-body" style="margin:0px;">
+                                <input type="text" size="50" class="form-control">
+                                <input type="text" size="61" class="form-control">
+                                <button type="button" class="btn btn-success btn-circle" style="float: right;"><i
+                                        class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th style="background:#CCCCCC;">#</th>
+                                    <th style="background:#CCCCCC;">เรื่องที่แจ้ง</th>
+                                    <th style="background:#CCCCCC;">สาเหตุที่ทราบ</th>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>97</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>83</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>70</td>
+                                    <td>3</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col text-left">
+                                    <label for="numb">สถานะรถ :
+                                        <select name="" id="" class="form-control">
+                                            <option value="">fsdfdfghdghdghdghdghdghdgh</option>
+                                            <option value="">sdf</option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="col text-right">
+                                    <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="40" name="numb"
+                                            class="form-control"></label>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <div class="col-md-6">
+                                <div class="col text-left">
+                                    <button type="button" class="btn btn-danger mr-auto">กลับ</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="col text-right">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">บันทึก</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -151,36 +206,37 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">ใบแจ้งซ่อม
-                    <button type="button" class="btn btn-success btn-circle" style="float: right;"
-                            data-toggle="modal" data-target="#insertModal"><i class="fa fa-plus"></i>
+                        <button type="button" class="btn btn-success btn-circle" style="float: right;"
+                            data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-plus"></i>
                         </button>
 
 
-                        </button></h1>
+                        </button>
+                    </h1>
                 </div>
-            
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            ใบแจ้งซ่อม
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <table width="100%" class="table table-striped table-bordered table-hover"
-                                id="dataTables-example">
-                                <thead>
-                                    <tr>
-                                        <th>เลขที่ใบแจ้งซ่อม</th>
-                                        <th>วันที่แจ้ง</th>
-                                        <th>หมายเลขเครื่องจักร</th>
-                                        <th>ชื่องานหรือชื่อเครื่องจักร</th>
-                                        <th>สถานะ</th>
-                                        <th>จัดการ</th>
-                                    </tr>
-                                </thead>
-                                <?php
+
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                ใบแจ้งซ่อม
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <table width="100%" class="table table-striped table-bordered table-hover"
+                                    id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>เลขที่ใบแจ้งซ่อม</th>
+                                            <th>วันที่แจ้ง</th>
+                                            <th>หมายเลขเครื่องจักร</th>
+                                            <th>ชื่องานหรือชื่อเครื่องจักร</th>
+                                            <th>สถานะ</th>
+                                            <th>จัดการ</th>
+                                        </tr>
+                                    </thead>
+                                    <?php
           include '../database/connect.php';
           $sql = " SELECT vj.XVMajDocNo , vj.XVMajWhoInformant, vj.XVMajStatus, vj.XVMaCarStatus,vj.XVMajFinishRmk, v.XVVehCode, vp.XVDptCode 
           FROM  tdoctmajob vj , tmstmdepartment vp , tmstvehicle v
@@ -193,61 +249,63 @@
           while ($row=mysqli_fetch_array($result)){
           ?>
 
-                                        <tr class="odd gradeA">
-                                            <td><?php echo $count;?></td>
-                                            <td><?php echo $row["XVMajDocNo"];?></td>
-                                            <td><?php echo $row["XVMajWhoInformant"];?></td>
-                                            <td><?php echo $row["XVMajStatus"];?></td>
-                                            <td><?php echo $row["XVMaCarStatus"];?></td>
-                                            <td><?php echo $row["XVMajFinishRmk"];?></td>
-                                            <td><?php echo $row["XVVehCode"];?></td>
-                                            <td><?php echo $row["XVDptCode"];?></td>
-                                            <td><?php if($row['XVVehCode']==NULL){echo "ไม่สามารถระบุเครื่องจักรได้";}else {echo $row["XVVehName"];}?></td>
-                                            <td style="display:none;"><?php echo $row["XVVehCode"];?></td>
+                                    <tr class="odd gradeA">
+                                        <td><?php echo $count;?></td>
+                                        <td><?php echo $row["XVMajDocNo"];?></td>
+                                        <td><?php echo $row["XVMajWhoInformant"];?></td>
+                                        <td><?php echo $row["XVMajStatus"];?></td>
+                                        <td><?php echo $row["XVMaCarStatus"];?></td>
+                                        <td><?php echo $row["XVMajFinishRmk"];?></td>
+                                        <td><?php echo $row["XVVehCode"];?></td>
+                                        <td><?php echo $row["XVDptCode"];?></td>
+                                        <td><?php if($row['XVVehCode']==NULL){echo "ไม่สามารถระบุเครื่องจักรได้";}else {echo $row["XVVehName"];}?>
+                                        </td>
+                                        <td style="display:none;"><?php echo $row["XVVehCode"];?></td>
 
-                                            <td><?php if($row['XVDptCode']==NULL){echo "ไม่สามารถระบุไซต์งานได้";}else {echo $row["XVDptName"];}?></td>
-                                            <td style="display:none;"><?php echo $row["XVVehCode"];?></td>
+                                        <td><?php if($row['XVDptCode']==NULL){echo "ไม่สามารถระบุไซต์งานได้";}else {echo $row["XVDptName"];}?>
+                                        </td>
+                                        <td style="display:none;"><?php echo $row["XVVehCode"];?></td>
 
-                                            <td align="center"><input class='btn btn-primary editbtn' type='button'
-                                                    value='แก้ไข'></td>
-                                            <td align="center"><input class='btn btn-danger deletebtn' type='button'
-                                                    value='ลบ'></td>
+                                        <td align="center"><input class='btn btn-primary editbtn' type='button'
+                                                value='แก้ไข'></td>
+                                        <td align="center"><input class='btn btn-danger deletebtn' type='button'
+                                                value='ลบ'></td>
 
-                                        </tr>
-                                        <?php $count++;}
+                                    </tr>
+                                    <?php $count++;}
                                         mysqli_close($connect);
                                         ?>
-                                </tbody>
-                            </table>
-                            <!-- /.table-responsive -->
+                                    </tbody>
+                                </table>
+                                <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.panel-body -->
                         </div>
-                        <!-- /.panel-body -->
+                        <!-- /.panel -->
                     </div>
-                    <!-- /.panel -->
+                    <!-- /.col-lg-6 -->
                 </div>
-                <!-- /.col-lg-6 -->
+                <!-- /.row -->
             </div>
-            <!-- /.row -->
+            <!-- /#page-wrapper -->
+
         </div>
-        <!-- /#page-wrapper -->
-
-    </div>
-    <!-- /#wrapper -->
+        <!-- /#wrapper -->
 
 
-    <!-- DataTables JavaScript -->
-    <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
-    <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+        <!-- DataTables JavaScript -->
+        <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+        <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
 
-    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <script>
-    $(document).ready(function() {
-        $('#dataTables-example').DataTable({
-            responsive: true
+        <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+        <script>
+        $(document).ready(function() {
+            $('#dataTables-example').DataTable({
+                responsive: true
+            });
         });
-    });
-    </script>
+        </script>
 
 </body>
 
