@@ -53,16 +53,6 @@
         padding: 10px;
         box-sizing: border-box;
     }
-
-    .my-custom-scrollbar {
-        position: relative;
-        height: 200px;
-        overflow: auto;
-    }
-
-    .table-wrapper-scroll-y {
-        display: block;
-    }
     </style>
 
 </head>
@@ -84,14 +74,22 @@
                 <div class="modal-body">
                     <label>ใบแจ้งซ่อม</label>
                     <form action="" class="form-inline">
-                        
+                        <div class="row">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6 ml-auto">
+                                <div class="col text-right">
+                                    <label for="numb">เลขที่ : <input type="text" name="numb" class="form-control"
+                                            disabled></label>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="row">
                             <div class="col-md-6"></div>
                             <div class="col-md-6 ml-auto">
                                 <div class="col text-right">
                                     <label for="numb">เลขที่ใบแจ้งซ่อม : <input type="text" name="numb"
-                                            class="form-control" disabled></label>
+                                            class="form-control"></label>
                                 </div>
                             </div>
                         </div>
@@ -168,36 +166,35 @@
                             <div class="panel-heading">
                                 <h3 class="panel-title">รายละเอียดการแจ้งซ่อม</h3>
                             </div>
-                            <table>
-
-                            </table>
-
-                            <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                                <table class="table table-bordered" id="tab_logic">
-                                    <thead>
-                                        <tr>
-                                            <th style="background:#CCCCCC;">#</th>
-                                            <th style="background:#CCCCCC;">เรื่องที่แจ้ง</th>
-                                            <th style="background:#CCCCCC;">สาเหตุที่ทราบ</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="sub">
-                                        <tr id='addr0'>
-                                            <td>1</td>
-                                            <td><input type="text" name="n_sub" placeholder="กรุณากรอกเรื่องที่แจ้ง">
-                                            </td>
-                                            <td><input type="text" name="sub" placeholder="กรุณากรอกสาเหตุ"></td>
-                                        </tr>
-                                        <tr id='addr1'></tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
                             <div class="panel-body" style="margin:0px;">
-                                <button type="button" id="add_row" class="btn btn-success btn-circle add-row"
-                                    style="float:right;" title="คลิกเพื่อเพิ่มแถว"><i class="fa fa-plus"></i>
+                                <button type="button" class="btn btn-success btn-circle" style="float:right;" title="คลิกเพื่อเพิ่มแถว"><i
+                                        class="fa fa-plus"></i>
                                 </button>
                             </div>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th style="background:#CCCCCC;">#</th>
+                                    <th style="background:#CCCCCC;">เรื่องที่แจ้ง</th>
+                                    <th style="background:#CCCCCC;">สาเหตุที่ทราบ</th>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td><input type="text" placeholder="กรุณากรอกเรื่องที่แจ้ง"></td>
+                                    <td><input type="text" placeholder="กรุณากรอกสาเหตุ"></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td><input type="text" placeholder="กรุณากรอกเรื่องที่แจ้ง"></td>
+                                    <td><input type="text" placeholder="กรุณากรอกสาเหตุ"></td>
+
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td><input type="text" placeholder="กรุณากรอกเรื่องที่แจ้ง"></td>
+                                    <td><input type="text" placeholder="กรุณากรอกสาเหตุ"></td>
+
+                                </tr>
+                            </table>
                         </div>
 
                         <div class="row">
@@ -214,7 +211,7 @@
                             <div class="col-md-6">
                                 <div class="col text-right">
                                     <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="40" name="numb"
-                                            class="form-control" disabled></label>
+                                            class="form-control"></label>
                                 </div>
                             </div>
                         </div>
@@ -337,6 +334,7 @@
 
         <script src="../vendor/js/datepicker.js"></script>
         <script src="../vendor/js/datepicker.th-TH.js"></script>
+
         <!-- Page-Level Demo Scripts - Tables - Use for reference -->
         <script>
         $(document).ready(function() {
@@ -354,23 +352,6 @@
                 format: 'dd/mm/yyyy'
             });
         });
-
-        $(document).ready(function() {
-            var i = 1;
-            $("#add_row").click(function() {
-                $('tr').find('input').prop('disabled', false)
-                $('#addr' + i).html("<td>" + (i + 1) + "</td><td><input type='text' name='n_sub" + i +
-                    "'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='sub" +
-                    i +
-                    "' placeholder='กรุณากรอกสาเหตุ'/></td>"
-                    );
-
-                $('#tab_logic').append('<tr id="addr' + (i + 1) + '"></tr>');
-                i++;
-            });
-        });
-
-        
         </script>
 
 </body>
