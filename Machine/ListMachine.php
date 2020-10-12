@@ -341,7 +341,7 @@
 
                                         <?php
           include '../database/connect.php';
-          $sql = " SELECT v.XVVehCode,v.XVVehName,v.XVVehRegistration,v.XVVehNumber,v.XVVehMango,v.XVVehBrand,v.XVVehModel,v.XVVehChassisNumber,v.XVVehEngineNumber,vt.XVVehTypeName,v.XVVehTypeCode
+          $sql = " SELECT v.XVVehCode,v.XVVehName,v.XVVehRegistration,v.XVVehNumber,v.XVVehMango,v.XVVehBrand,v.XVVehModel,v.XVVehChassisNumber,v.XVVehEngineNumber,vt.XVVehTypeName,v.XVVehTypeCode,v.XVDptCode
           FROM tmstvehicle v
           LEFT JOIN tmstmvehicletype vt
           ON  v.XVVehTypeCode = vt.XVVehTypeCode";
@@ -361,6 +361,7 @@
                                             <td><?php echo $row["XVVehModel"];?></td>
                                             <td><?php echo $row["XVVehChassisNumber"];?></td>
                                             <td><?php echo $row["XVVehEngineNumber"];?></td>
+                                            <td><?php echo $row["XVDptCode"];?></td>
                                             <td><?php if($row['XVVehTypeCode']==NULL){echo "ไม่สามารถระบุประเภทได้";}else {echo $row["XVVehTypeName"];}?>
                                             </td>
                                             <td style="display:none;"><?php echo $row["XVVehTypeCode"];?></td>
@@ -437,8 +438,9 @@
             $('#XVVehModel').val(data[7])
             $('#XVVehChassisNumber').val(data[8])
             $('#XVVehEngineNumber').val(data[9])
-            $('#XVVehTypeName').val(data[10])
-            $("#XVVehSelect").val(data[11]);
+            $('#XVDptCode').val(data[10])
+            $('#XVVehTypeName').val(data[11])
+            $("#XVVehSelect").val(data[12]);
         })
     })
     </script>
