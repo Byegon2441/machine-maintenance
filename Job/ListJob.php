@@ -13,6 +13,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link  href="../vendor/css/datepicker.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
@@ -47,10 +48,10 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">รายละเอียดใบแจ้งซ่อม</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
+                    <h5 class="modal-title" id="exampleModalLabel">รายละเอียดใบแจ้งซ่อม</h5>
                 </div>
                 <div class="modal-body">
                     <label>ใบแจ้งซ่อม</label>
@@ -60,7 +61,7 @@
                             <div class="col-md-6 ml-auto">
                                 <div class="col text-right">
                                     <label for="numb">เลขที่ : <input type="text" name="numb"
-                                            class="form-control"></label>
+                                            class="form-control" disabled></label>
                                 </div>
                             </div>
                         </div>
@@ -80,7 +81,7 @@
                             <div class="col-md-6 ml-auto">
                                 <div class="col text-right">
                                     <label for="numb">วันที่แจ้งซ่อม : <input type="text" name="numb"
-                                            class="form-control"></label>
+                                            class="form-control" data-toggle="datepicker" disabled></label>
                                 </div>
                             </div>
                         </div>
@@ -88,14 +89,27 @@
                         <div class="row">
                             <div class="col-md-7">
                                 <div class="col text-right">
-                                    <label for="numb">ชื่องานหรือชื่อเครื่องจักร : <input type="text" size="30"
-                                            name="numb" class="form-control"></label>
+                                    <label for="numb">ชื่อเครื่องจักร :</label>
+                                    <select id="XVVehTypeName" name="XVVehTypeName" class="form-control" style="width:60%">
+                                    <?php
+                                     include '../database/connect.php';
+                                     $sql = "select * from tmstmvehicletype; ";
+                                     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+                                     while ($row=mysqli_fetch_array($result)){
+                                         ?>
+                                    <option value="<?php echo $row["XVVehTypeCode"];?>">
+                                        <?php echo $row["XVVehTypeName"]; ?></option>
+                                    <?php
+                                     }
+                                    mysqli_close($connect);
+                                    ?>
+                                </select>
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="col text-right">
                                     <label for="numb">หมายเลขเครื่องจักร : <input type="text" size="17" name="numb"
-                                            class="form-control"></label>
+                                            class="form-control" disabled></label>
                                 </div>
                             </div>
                         </div>
@@ -103,14 +117,14 @@
                         <div class="row">
                             <div class="col-md-7">
                                 <div class="col text-right">
-                                    <label for="numb">ชื่อหน่วยงาน : <input type="text" size="30" name="numb"
-                                            class="form-control"></label>
+                                    <label for="numb">ชื่อไชต์งาน : <input type="text" size="30" name="numb"
+                                            class="form-control" disabled></label>
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="col text-right">
                                     <label for="numb">หมายเลขหน่วยงาน : <input type="text" size="17" name="numb"
-                                            class="form-control"></label>
+                                            class="form-control" disabled></label>
                                 </div>
                             </div>
                         </div>
@@ -298,11 +312,24 @@
         <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
         <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
 
+        <script src="../vendor/js/datepicker.js"></script>
+        <script src="../vendor/js/datepicker.th-TH.js"></script>
+
         <!-- Page-Level Demo Scripts - Tables - Use for reference -->
         <script>
         $(document).ready(function() {
             $('#dataTables-example').DataTable({
                 responsive: true
+            });
+        });
+
+        $(function() {
+            $('[data-toggle="datepicker"]').datepicker({
+                //autoHide: true,
+                autoPick: true,
+                language: 'th-TH',
+                //zIndex: 2048,
+                format: 'dd/mm/yyyy'
             });
         });
         </script>
