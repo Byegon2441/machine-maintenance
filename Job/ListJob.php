@@ -134,8 +134,8 @@
                                 <h3 class="panel-title">รายละเอียดการแจ้งซ่อม</h3>
                             </div>
                             <div class="panel-body" style="margin:0px;">
-                                <input type="text" size="50" class="form-control">
-                                <input type="text" size="61" class="form-control">
+                                <input type="text" size="40" class="form-control">
+                                <input type="text" size="55" class="form-control">
                                 <button type="button" class="btn btn-success btn-circle" style="float: right;"><i
                                         class="fa fa-plus"></i>
                                 </button>
