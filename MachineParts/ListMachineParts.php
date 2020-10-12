@@ -43,59 +43,59 @@
 <?php include '../Template/templsidebar.php';?>
 
 <!--  modal insertMachinePart -->
-<div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">เพิ่มข้อมูลอะไหล่</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+    <div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">เพิ่มข้อมูลอะไหล่</h5>
+                </div>
+                <form class="form-horizontal" id="insert" role="form" method="POST"
+                    action="insertMachineParts.php" enctype="multipart/form-data">
+                    <div class="modal-body mx-3">
+                        <div class="form-group">
+                            <label for="name" class="col-sm-5 control-label">
+                                <span class="required"></span> ชื่ออะไหล่ :</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="INSERTXVMachinePartsName" name="XVMachinePartsName" placeholder=""
+                                    required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-sm-5 control-label">
+                                <span class="required"></span> ชื่อประเภทอะไหล่ :</label>
+                            <div class="col-sm-5">
+                            <div class="form-group col-lg-6">
+                                <select id="" name="XVMachinePartsTypeCode" class="form-control" style="width : auto;">
+                                    <?php
+                                    include '../database/connect.php';
+
+                                    $sql = "SELECT * FROM tmstmmachine_parts_type";
+                                    $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+                                    while ($row=mysqli_fetch_array($result)){
+                                        ?>
+                                    <option value="<?php echo $row["XVMachinePartsTypeCode"];?>"><?php echo $row["XVMachinePartsTypeName"]; ?></option>
+                                    <?php
+                                    }
+                                    mysqli_close($connect);
+                                    ?>
+                                </select>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                        <input type="submit" value="ยืนยัน" class="btn btn-primary">
+                    </div>
+                </form>
+
             </div>
-            <form class="form-horizontal" id="insert" role="form" method="POST"
-                action="insertMachineParts.php" enctype="multipart/form-data">
-                <div class="modal-body mx-3">
-                    <div class="form-group">
-                        <label for="name" class="col-sm-4 control-label">
-                            <span class="required"></span> ชื่ออะไหล่ :</label>
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control" id="INSERTXVMachinePartsName" name="XVMachinePartsName" placeholder=""
-                                required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="name" class="col-sm-4 control-label">
-                            <span class="required"></span> ชื่อประเภทอะไหล่ :</label>
-                        <div class="col-sm-5">
-                          <div class="form-group col-lg-6">
-                            <select id="" name="XVMachinePartsTypeCode" class="form-control" style="width : auto;">
-                                  <?php
-                                   include '../database/connect.php';
-
-                                   $sql = "SELECT * FROM tmstmmachine_parts_type";
-                                   $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-                                   while ($row=mysqli_fetch_array($result)){
-                                       ?>
-                                  <option value="<?php echo $row["XVMachinePartsTypeCode"];?>"><?php echo $row["XVMachinePartsTypeName"]; ?></option>
-                                  <?php
-                                   }
-                                  mysqli_close($connect);
-                                  ?>
-                              </select>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                    <input type="submit" value="ยืนยัน" class="btn btn-primary">
-                </div>
-            </form>
-
         </div>
     </div>
-</div>
 <!-- end Modal -->
 
 <!-- modal updateListMachineParts -->
@@ -104,29 +104,30 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">แก้ไขอะไหล่</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
+                    <h5 class="modal-title" id="exampleModalLabel">แก้ไขอะไหล่</h5>
                 </div>
                 <form class="form-horizontal" id="insert" role="form" method="POST"
                     action="updateListMachineParts.php" enctype="multipart/form-data">
                     <div class="modal-body mx-3">
                         <input type="hidden" name="XVMachinePartsCode" id="XVMachinePartsCode" value="">
-                        <div class="form-group">
-                            <div class="col-lg-5">
-                                <label for="inputEmail4">ชื่ออะไหล่ : </label>
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <input type="text" class="form-control nameof" id="XVMachinePartsName" name="XVMachinePartsName"
-                                    style="width:120%" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT">
-                            </div>
-                            <div class="col-lg-5">
-                                <label for="inputEmail4">ชื่อประเภทอะไหล่ : </label>
-                            </div>
-                            <div class="form-group col-lg-6">
 
-                                <select id="XVVehSelect" name="idcode" class="form-control">
+                        <div class="form-group">
+                            <label for="name" class="col-sm-5 control-label">
+                                <span class="required"></span> ชื่ออะไหล่ :</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control nameof" id="XVMachinePartsName" name="XVMachinePartsName"
+                                    style="width:100%" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name" class="col-sm-5 control-label">
+                                <span class="required"></span> ชื่อประเภทอะไหล่ :</label>
+                            <div class="col-sm-5">
+                            <select id="XVVehSelect" name="idcode" class="form-control" style="width : auto;">
                                     <?php
                                      include '../database/connect.php';
 
@@ -161,10 +162,10 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">ลบรายการอะไหล่</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
+                    <h5 class="modal-title" id="exampleModalLabel">ลบรายการอะไหล่</h5>
                 </div>
                 <form action="deleteListMachineParts.php" method="POST">
                     <div class="modal-body">

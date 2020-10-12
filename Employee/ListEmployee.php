@@ -49,10 +49,10 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">เพิ่มข้อมูลพนักงานใหม่</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
+                    <h5 class="modal-title" id="exampleModalLabel">เพิ่มข้อมูลพนักงานใหม่</h5>
                 </div>
                 <form class="form-horizontal" id="insert" role="form" method="POST"
                     action="insertEmp.php" enctype="multipart/form-data">
@@ -110,10 +110,10 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">ลบพนักงาน</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
+                    <h5 class="modal-title" id="exampleModalLabel">ลบพนักงาน</h5>
                 </div>
                 <form action="deleteEmp.php" method="POST">
                     <div class="modal-body">
@@ -136,10 +136,10 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">แก้ไขข้อมูลพนักงาน</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
+                    <h5 class="modal-title" id="exampleModalLabel">แก้ไขข้อมูลพนักงาน</h5>
                 </div>
                 <form class="form-horizontal" id="insert" role="form" method="POST"
                     action="updateEmp.php" enctype="multipart/form-data">
