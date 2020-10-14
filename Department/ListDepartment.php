@@ -286,8 +286,8 @@ include "../database/connect.php";?>
 <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-            "scrollY": true,
-            "scrollX": true
+            // "scrollY": true,
+            // "scrollX": true
         });
     });
 

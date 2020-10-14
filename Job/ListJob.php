@@ -202,7 +202,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">
+                            <!-- <div class="col-md-6">
                                 <div class="col text-left">
                                     <label for="numb">สถานะรถ :
                                         <select name="" id="" class="form-control">
@@ -211,8 +211,8 @@
                                         </select>
                                     </label>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
+                            </div> -->
+                            <div class="col-md-12">
                                 <div class="col text-right">
                                     <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="40" name="numb"
                                             class="form-control" disabled></label>
@@ -280,8 +280,8 @@
                             <div class="col-md-7">
                                 <div class="col text-right">
                                     <label for="numb">ชื่อเครื่องจักร :</label>
-                                    <select id="XVVehTypeName" name="XVVehTypeName" class="form-control"
-                                        style="width:60%">
+                                    <select id="typename" name="XVVehTypeName" class="form-control"
+                                        style="width:60%" disabled>
                                         <?php
                                      include '../database/connect.php';
                                      $sql = "select * from tmstmvehicletype; ";
@@ -416,7 +416,7 @@
                 <div class="col-lg-12">
                     <h1 class="page-header">ใบแจ้งซ่อม
                         <button type="button" class="btn btn-success btn-circle" style="float: right;"
-                            data-toggle="modal" data-target=".bd-example-modal-lg1"><i class="fa fa-plus"></i>
+                            data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-plus"></i>
                         </button>
 
 
@@ -562,6 +562,7 @@
                 $("#add3").prop("disabled", false);
                 $("#add4").prop("disabled", false);
                 $("#status").prop("disabled", false);
+                $("#typename").prop("disabled", false);
                 }
                 else 
                 {
@@ -573,6 +574,7 @@
                 $("#add3").prop("disabled", true);
                 $("#add4").prop("disabled", true);
                 $("#status").prop("disabled", true);
+                $("#typename").prop("disabled", true);
                 }
             });
         });
