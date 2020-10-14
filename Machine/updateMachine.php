@@ -2,6 +2,7 @@
 include '../database/connect.php';
 if ( isset( $_POST['updatedata'] ) ) {
     $id = $_POST['XVVehCode'];
+    $XVDptCode = $_POST['XVDptCode'];
     $XVVehName = $_POST['XVVehName'];
     $XVVehRegistration = $_POST['XVVehRegistration'];
     $XVVehNumber = $_POST['XVVehNumber'];
@@ -20,7 +21,8 @@ if ( isset( $_POST['updatedata'] ) ) {
      XVVehModel ='$XVVehModel',
      XVVehChassisNumber ='$XVVehChassisNumber',
      XVVehEngineNumber ='$XVVehEngineNumber',
-     XVVehTypeCode ='$XVVehTypeCode'
+     XVVehTypeCode ='$XVVehTypeCode',
+     XVDptCode ='$XVDptCode'
      WHERE XVVehCode = $id;
      ";
     $result = mysqli_query($connect,$sql);

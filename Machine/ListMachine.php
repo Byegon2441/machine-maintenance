@@ -37,8 +37,28 @@
                 <form class="form-horizontal" id="insert" role="form" method="POST" action="updateMachine.php"
                     enctype="multipart/form-data">
                     <div class="modal-body mx-3">
-                        <input type="hidden" name="XVVehCode" id="XVVehCode" value="">
+                      <input type="hidden" name="XVVehCode" id="XVVehCode" value="">
 
+                      <div class="form-group">
+                          <label for="name" class="col-sm-4 control-label">
+                              <span class="required"></span> ชื่อไซต์งาน:</label>
+                          <div class="col-sm-7">
+                              <select id="XVDptCode" name="XVDptCode" class="form-control">
+                                  <?php
+                                   include '../database/connect.php';
+                                   $sql = "select * from tmstmdepartment; ";
+                                   $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+                                   while ($row=mysqli_fetch_array($result)){
+                                       ?>
+                                  <option value="<?php echo $row["XVDptCode"];?>">
+                                      <?php echo $row["XVDptname"]; ?></option>
+                                  <?php
+                                   }
+                                  mysqli_close($connect);
+                                  ?>
+                              </select>
+                          </div>
+                      </div>
                         <div class="form-group">
                             <label for="name" class="col-sm-4 control-label">
                                 <span class="required"></span> ชื่อประเภทเครื่องจักร:</label>
@@ -59,7 +79,6 @@
                                 </select>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label for="name" class="col-sm-4 control-label">
                                 <span class="required"></span> ชื่อเครื่องจักร :</label>
@@ -159,6 +178,26 @@
                 </div>
                 <div class="modal-body mx-3">
                     <form class="form-horizontal" role="form" method="post" action="insertMachine.php ">
+                      <div class="form-group">
+                          <label for="name" class="col-sm-4 control-label">
+                              <span class="required"></span> ชื่อไซต์งาน:</label>
+                          <div class="col-sm-7">
+                              <select id="XVDptCode" name="XVDptCode" class="form-control">
+                                  <?php
+                                   include '../database/connect.php';
+                                   $sql = "select * from tmstmdepartment; ";
+                                   $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+                                   while ($row=mysqli_fetch_array($result)){
+                                       ?>
+                                  <option value="<?php echo $row["XVDptCode"];?>">
+                                      <?php echo $row["XVDptname"]; ?></option>
+                                  <?php
+                                   }
+                                  mysqli_close($connect);
+                                  ?>
+                              </select>
+                          </div>
+                      </div>
                         <div class="form-group">
                             <label for="name" class="col-sm-4 control-label">
                                 <span class="required"></span> ชื่อประเภทเครื่องจักร:</label>
@@ -333,6 +372,8 @@
                                             <th>หมายเลขเครื่อง</th>
                                             <th>ชื่อประเภทเครื่องจักร</th>
                                             <th style="display:none;">ชื่อประเภทเครื่องจักร</th>
+                                            <th>ชื่อไซต์งาน</th>
+                                            <th style="display:none;">ชื่อไซต์งาน</th>
                                             <th>แก้ไข</th>
                                             <th>ลบ</th>
                                         </tr>
@@ -341,10 +382,10 @@
 
                                         <?php
           include '../database/connect.php';
-          $sql = " SELECT v.XVVehCode,v.XVVehName,v.XVVehRegistration,v.XVVehNumber,v.XVVehMango,v.XVVehBrand,v.XVVehModel,v.XVVehChassisNumber,v.XVVehEngineNumber,vt.XVVehTypeName,v.XVVehTypeCode,v.XVDptCode
+          $sql = " SELECT v.XVVehCode,v.XVVehName,v.XVVehRegistration,v.XVVehNumber,v.XVVehMango,v.XVVehBrand,v.XVVehModel,v.XVVehChassisNumber,v.XVVehEngineNumber,vt.XVVehTypeName,v.XVVehTypeCode,v.XVDptCode,d.XVDptname
           FROM tmstvehicle v
-          LEFT JOIN tmstmvehicletype vt
-          ON  v.XVVehTypeCode = vt.XVVehTypeCode";
+          LEFT JOIN tmstmvehicletype vt ON v.XVVehTypeCode = vt.XVVehTypeCode
+          LEFT JOIN tmstmdepartment d ON v.XVDptCode = d.XVDptCode";
           $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
           $count = 1;
           while ($row=mysqli_fetch_array($result)){
@@ -361,10 +402,11 @@
                                             <td><?php echo $row["XVVehModel"];?></td>
                                             <td><?php echo $row["XVVehChassisNumber"];?></td>
                                             <td><?php echo $row["XVVehEngineNumber"];?></td>
-                                            <td><?php echo $row["XVDptCode"];?></td>
                                             <td><?php if($row['XVVehTypeCode']==NULL){echo "ไม่สามารถระบุประเภทได้";}else {echo $row["XVVehTypeName"];}?>
                                             </td>
                                             <td style="display:none;"><?php echo $row["XVVehTypeCode"];?></td>
+                                            <td><?php if($row['XVDptCode']==NULL){echo "ไม่สามารถระบุไซต์งานได้";}else {echo $row["XVDptname"];}?>
+                                            <td style="display:none;"><?php echo $row["XVDptCode"];?></td>
 
                                             <td align="center"><input class='btn btn-primary editbtn' type='button'
                                                     value='แก้ไข'></td>
@@ -438,9 +480,10 @@
             $('#XVVehModel').val(data[7])
             $('#XVVehChassisNumber').val(data[8])
             $('#XVVehEngineNumber').val(data[9])
-            $('#XVDptCode').val(data[10])
-            $('#XVVehTypeName').val(data[11])
-            $("#XVVehSelect").val(data[12]);
+            $('#XVVehTypeName').val(data[10])
+            $("#XVVehSelect").val(data[11])
+            $('#XVDptname').val(data[12])
+            $('#XVDptCode').val(data[13]);
         })
     })
     </script>

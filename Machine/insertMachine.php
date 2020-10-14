@@ -1,6 +1,7 @@
 <?php
     include '../database/connect.php';
     // $XVVehCode = $_POST['XVVehCode'];
+    $XVDptCode = $_POST['XVDptCode'];
     $XVVehName = $_POST['XVVehName'];
     $XVVehRegistration = $_POST['XVVehRegistration'];
     $XVVehNumber = $_POST['XVVehNumber'];
@@ -10,8 +11,8 @@
     $XVVehChassisNumber = $_POST['XVVehChassisNumber'];
     $XVVehEngineNumber = $_POST['XVVehEngineNumber'];
     $XVVehTypeCode = $_POST['XVVehTypeName'];
-    $query = "INSERT INTO tmstvehicle(XVVehName,XVVehRegistration,XVVehNumber,XVVehMango,XVVehBrand,XVVehModel,XVVehChassisNumber,XVVehEngineNumber, XVVehTypeCode)
-     VALUES ('$XVVehName','$XVVehRegistration','$XVVehNumber','$XVVehMango','$XVVehBrand','$XVVehModel','$XVVehChassisNumber','$XVVehEngineNumber','$XVVehTypeCode');";  
+    $query = "INSERT INTO tmstvehicle(XVVehName,XVVehRegistration,XVVehNumber,XVVehMango,XVVehBrand,XVVehModel,XVVehChassisNumber,XVVehEngineNumber, XVVehTypeCode , XVDptCode)
+     VALUES ('$XVVehName','$XVVehRegistration','$XVVehNumber','$XVVehMango','$XVVehBrand','$XVVehModel','$XVVehChassisNumber','$XVVehEngineNumber','$XVVehTypeCode','$XVDptCode');";
 
     if(mysqli_query($connect,$query)){
         echo '<script>';
@@ -39,11 +40,8 @@
         //echo "alert('$error_show');";
         echo "window.location='ListMachine.php';";
         echo '</script>';
-       
+
       }
     mysqli_close($connect);
-    
+
 ?>
-
-
-
