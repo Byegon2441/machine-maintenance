@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2020 at 10:36 AM
+-- Generation Time: Oct 07, 2020 at 10:54 AM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.2
+-- PHP Version: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -55,12 +54,8 @@ CREATE TABLE `tdoctmajob` (
   `XVMajStatus` varchar(30) COLLATE utf8_bin NOT NULL,
   `XVMaCarStatus` varchar(200) COLLATE utf8_bin NOT NULL,
   `XVMajFinishRmk` varchar(150) COLLATE utf8_bin NOT NULL,
-  `XVMajDocStatus` varchar(1) COLLATE utf8_bin NOT NULL,
-  `XVMajNumber` varchar(100) COLLATE utf8_bin NOT NULL,
-  `XVMajSub-district` varchar(100) COLLATE utf8_bin NOT NULL,
-  `XVMajDistrict` varchar(100) COLLATE utf8_bin NOT NULL,
-  `XVMajProvince` varchar(100) COLLATE utf8_bin NOT NULL,
-  `XVVehCode` int(5) NOT NULL
+  `XVVehCode` int(5) NOT NULL,
+  `XVDptCode` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -97,9 +92,7 @@ CREATE TABLE `tdoctmajobdate` (
   `XDMajRepairActualDate` datetime NOT NULL,
   `XDMajPickupActualDate` datetime NOT NULL,
   `XDMajFinishDate` datetime NOT NULL,
-  `XDMajConfirmDate` datetime NOT NULL,
-  `XDMajSendTime` datetime NOT NULL,
-  `XDMajKeyTime` datetime NOT NULL
+  `XDMajConfirmDate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -185,9 +178,7 @@ CREATE TABLE `tmstmmachine_parts` (
 INSERT INTO `tmstmmachine_parts` (`XVMachinePartsCode`, `XVMachinePartsName`, `XVMachinePartsTypeCode`) VALUES
 (3, 'แบตเตอรี่ 40v', 2),
 (4, 'ผ้าลินิน116', 1),
-(5, 'แบตเตอรี่ 15v', 1),
-(6, 'aaaa', 1),
-(7, 'aaaaa', 1);
+(5, 'แบตเตอรี่ 15v', 2);
 
 -- --------------------------------------------------------
 
@@ -227,7 +218,7 @@ CREATE TABLE `tmstmtemployee` (
 --
 
 INSERT INTO `tmstmtemployee` (`XVEpyCode`, `XVEpyFirstname`, `XVpyLastname`, `XVIdCardNumber`, `XVEpyJobPosition`) VALUES
-(2, 'naratip', 'naratip', 2147483647, 'ช่าง'),
+(2, 'aaaa', 'aaaaa', 2147483647, 'aaaaa'),
 (4, 'naratip', 'naratip', 1730201338337, '0');
 
 -- --------------------------------------------------------
@@ -265,9 +256,15 @@ CREATE TABLE `tmstvehicle` (
   `XVVehModel` varchar(50) COLLATE utf8_bin NOT NULL,
   `XVVehChassisNumber` varchar(50) COLLATE utf8_bin NOT NULL,
   `XVVehEngineNumber` varchar(50) COLLATE utf8_bin NOT NULL,
-  `XVVehTypeCode` int(5) DEFAULT NULL,
-  `XVDptCode` int(5) NOT NULL
+  `XVVehTypeCode` int(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `tmstvehicle`
+--
+
+INSERT INTO `tmstvehicle` (`XVVehCode`, `XVVehName`, `XVVehRegistration`, `XVVehNumber`, `XVVehMango`, `XVVehBrand`, `XVVehModel`, `XVVehChassisNumber`, `XVVehEngineNumber`, `XVVehTypeCode`) VALUES
+(1, 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 3);
 
 -- --------------------------------------------------------
 
@@ -303,6 +300,7 @@ ALTER TABLE `tdoctmaestimation_tnc`
 --
 ALTER TABLE `tdoctmajob`
   ADD PRIMARY KEY (`XVMajDocNo`),
+  ADD KEY `FK_DocMaJob_stMDepartment` (`XVDptCode`),
   ADD KEY `FK_DocTMaJob_stVehicle` (`XVVehCode`);
 
 --
@@ -377,8 +375,7 @@ ALTER TABLE `tmstvehicle`
   ADD UNIQUE KEY `XVVehMango_UQ` (`XVVehMango`),
   ADD UNIQUE KEY `XVVehChassisNumber_UQ` (`XVVehChassisNumber`),
   ADD UNIQUE KEY `XVVehEngineNumber_UQ` (`XVVehEngineNumber`),
-  ADD KEY `FK_tmstvehicle_tmstvehicletype` (`XVVehTypeCode`),
-  ADD KEY `FK_TMstVehicle_stMDepartment` (`XVDptCode`);
+  ADD KEY `FK_tmstvehicle_tmstvehicletype` (`XVVehTypeCode`);
 
 --
 -- Indexes for table `tsysuser`
@@ -407,7 +404,7 @@ ALTER TABLE `tmstmdepartment`
 -- AUTO_INCREMENT for table `tmstmmachine_parts`
 --
 ALTER TABLE `tmstmmachine_parts`
-  MODIFY `XVMachinePartsCode` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `XVMachinePartsCode` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tmstmmachine_parts_type`
@@ -448,6 +445,7 @@ ALTER TABLE `tdoctmaestimation_tnc`
 -- Constraints for table `tdoctmajob`
 --
 ALTER TABLE `tdoctmajob`
+  ADD CONSTRAINT `FK_DocMaJob_stMDepartment` FOREIGN KEY (`XVDptCode`) REFERENCES `tmstmdepartment` (`XVDptCode`),
   ADD CONSTRAINT `FK_DocTMaJob_stVehicle` FOREIGN KEY (`XVVehCode`) REFERENCES `tmstvehicle` (`XVVehCode`);
 
 --
@@ -487,7 +485,6 @@ ALTER TABLE `tmstmmachine_parts`
 -- Constraints for table `tmstvehicle`
 --
 ALTER TABLE `tmstvehicle`
-  ADD CONSTRAINT `FK_TMstVehicle_stMDepartment` FOREIGN KEY (`XVDptCode`) REFERENCES `tmstmdepartment` (`XVDptCode`),
   ADD CONSTRAINT `FK_tmstvehicle_tmstvehicletype` FOREIGN KEY (`XVVehTypeCode`) REFERENCES `tmstmvehicletype` (`XVVehTypeCode`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
