@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2020 at 07:51 AM
+-- Generation Time: Oct 12, 2020 at 10:36 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -164,8 +164,7 @@ CREATE TABLE `tmstmdepartment` (
 --
 
 INSERT INTO `tmstmdepartment` (`XVDptCode`, `XVDptNumber`, `XVDptSub-district`, `XVDptDistrict`, `XVDptProvince`, `XVDptname`) VALUES
-(2, 'aaa', 'aaa', 'aaa', 'aaa', 'aaa'),
-(3, 'ิิbbb', 'bbb', 'bbb', 'bbb', 'bbb');
+(2, 'aaa', 'aaa', 'aaa', 'aaa', 'aaa');
 
 -- --------------------------------------------------------
 
@@ -267,16 +266,8 @@ CREATE TABLE `tmstvehicle` (
   `XVVehChassisNumber` varchar(50) COLLATE utf8_bin NOT NULL,
   `XVVehEngineNumber` varchar(50) COLLATE utf8_bin NOT NULL,
   `XVVehTypeCode` int(5) DEFAULT NULL,
-  `XVDptCode` int(5) DEFAULT NULL
+  `XVDptCode` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `tmstvehicle`
---
-
-INSERT INTO `tmstvehicle` (`XVVehCode`, `XVVehName`, `XVVehRegistration`, `XVVehNumber`, `XVVehMango`, `XVVehBrand`, `XVVehModel`, `XVVehChassisNumber`, `XVVehEngineNumber`, `XVVehTypeCode`, `XVDptCode`) VALUES
-(3, 'a', 'aa', 'aaa', 'aaa', 'aa', 'aa', 'aa', 'aa', 4, 2),
-(4, 'bb', 'bb', 'ab', 'ab', 'ab', 'ab', 'ab', 'ab', 4, 3);
 
 -- --------------------------------------------------------
 
@@ -410,7 +401,7 @@ ALTER TABLE `sqrun`
 -- AUTO_INCREMENT for table `tmstmdepartment`
 --
 ALTER TABLE `tmstmdepartment`
-  MODIFY `XVDptCode` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `XVDptCode` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tmstmmachine_parts`
@@ -440,7 +431,7 @@ ALTER TABLE `tmstmvehicletype`
 -- AUTO_INCREMENT for table `tmstvehicle`
 --
 ALTER TABLE `tmstvehicle`
-  MODIFY `XVVehCode` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `XVVehCode` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -496,7 +487,7 @@ ALTER TABLE `tmstmmachine_parts`
 -- Constraints for table `tmstvehicle`
 --
 ALTER TABLE `tmstvehicle`
-  ADD CONSTRAINT `FK_TMstVehicle_stMDepartment` FOREIGN KEY (`XVDptCode`) REFERENCES `tmstmdepartment` (`XVDptCode`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_TMstVehicle_stMDepartment` FOREIGN KEY (`XVDptCode`) REFERENCES `tmstmdepartment` (`XVDptCode`),
   ADD CONSTRAINT `FK_tmstvehicle_tmstvehicletype` FOREIGN KEY (`XVVehTypeCode`) REFERENCES `tmstmvehicletype` (`XVVehTypeCode`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
