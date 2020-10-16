@@ -263,11 +263,11 @@
                                     </thead>
                                     <?php
           include '../database/connect.php';
-        //   $sql = " SELECT m.XVMajDocNo, d.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus
-        //   FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v
-        //   WHERE m.XVMajDocNo = d.XVMajDocNo 
-        //   AND m.XVVehCode = v.XVVehCode"; ตัวสมบูรณ์
-          $sql = " SELECT m.XVMajDocNo, m.XVVehCode, v.XVVehName, m.XVMajStatus FROM tdoctmajob m, tmstvehicle v WHERE m.XVVehCode = v.XVVehCode ";
+          $sql = " SELECT m.XVMajDocNo, d.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus
+          FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v
+          WHERE m.XVMajDocNo = d.XVMajDocNo 
+          AND m.XVVehCode = v.XVVehCode"; //ตัวสมบูรณ์
+        //   $sql = " SELECT m.XVMajDocNo, m.XVVehCode, v.XVVehName, m.XVMajStatus FROM tdoctmajob m, tmstvehicle v WHERE m.XVVehCode = v.XVVehCode ";
         //   ตัวทดสอบ
          
           
@@ -282,7 +282,13 @@
                                         <td><?php echo $row["XVVehCode"];?></td>
                                         <td><?php echo $row["XVVehName"];?></td>
                                         <td><?php echo $row["XVMajStatus"];?></td>
-                                        <td><?php echo $row["XVMajDocStatus"];?></td>
+                                        <td><?php if($row["XVMajDocStatus"] == 1){
+                                            echo 'แบบร่าง';
+                                            }else if($row["XVMajDocStatus"] == 2){
+                                                echo 'ส่งแล้ว';
+                                            }else{
+                                                echo 'ยกเลิก'; 
+                                            } ?></td>
                                         <td align="center"><button class='btn btn-primary editbtn' type='button'
                                                 >รายละเอียด</button></td>
                                         <td align="center"><button class='btn btn-danger deletebtn' type='button'
@@ -372,6 +378,20 @@
                 alert("Please Select Machine");
             }
         })
+        $(document).ready(function() {
+        $('.editbtn').on('click', function() {
+            $('.bd-example-modal-lg').modal('show')
+            $tr = $(this).closest('tr')
+
+            var data = $tr.children("td").map(function() {
+                return $(this).text()
+            }).get()
+
+            console.log(data)
+            $('#update_id').val(data[1])
+            $('#XVVehTypeName').val(data[2])
+        })
+    })
         </script>
 </body>
 </html>
