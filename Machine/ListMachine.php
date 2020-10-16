@@ -84,7 +84,7 @@
                                 <span class="required"></span> ชื่อเครื่องจักร :</label>
                             <div class="col-sm-7">
                                 <input type="text" class="form-control nameof" id="XVVehName" name="XVVehName"
-                                    style="width:100%" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT">
+                                    style="width:100%" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT" required>
                             </div>
                         </div>
 
@@ -182,7 +182,7 @@
                           <label for="name" class="col-sm-4 control-label">
                               <span class="required"></span> ชื่อไซต์งาน:</label>
                           <div class="col-sm-7">
-                              <select id="XVDptCode" name="XVDptCode" class="form-control">
+                              <select id="XVDptCode" name="XVDptCode" class="form-control" >
                                   <?php
                                    include '../database/connect.php';
                                    $sql = "select * from tmstmdepartment; ";
@@ -224,7 +224,7 @@
                                 <span class="required"></span> ชื่อเครื่องจักร :</label>
                             <div class="col-sm-7">
                                 <input type="text" class="form-control nameof" id="XVVehName" name="XVVehName"
-                                    style="width:100%" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT">
+                                    style="width:100%" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT" required>
                             </div>
                         </div>
 
@@ -234,7 +234,7 @@
                             <div class="col-sm-7">
                                 <input type="text" class="form-control nameof" id="XVVehRegistration"
                                     name="XVVehRegistration" style="width:100%" minlength="1" maxlength="100"
-                                    title="YOUR_WARNING_TEXT">
+                                    title="YOUR_WARNING_TEXT" required>
                             </div>
                         </div>
 
@@ -243,7 +243,7 @@
                                 <span class="required"></span> เบอร์รถ :</label>
                             <div class="col-sm-7">
                                 <input type="text" class="form-control nameof" id="XVVehNumber" name="XVVehNumber"
-                                    style="width:100%" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT">
+                                    style="width:100%" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT" required>
                             </div>
                         </div>
 
@@ -252,7 +252,7 @@
                                 <span class="required"></span> เลขทะเบียน MANGO :</label>
                             <div class="col-sm-7">
                                 <input type="text" class="form-control nameof" id="XVVehMango" name="XVVehMango"
-                                    style="width:100%" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT">
+                                    style="width:100%" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT" required>
                             </div>
                         </div>
 
@@ -261,7 +261,7 @@
                                 <span class="required"></span> ยี่ห้อ :</label>
                             <div class="col-sm-7">
                                 <input type="text" class="form-control nameof" id="XVVehBrand" name="XVVehBrand"
-                                    style="width:100%" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT">
+                                    style="width:100%" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT" required>
                             </div>
                         </div>
 
@@ -270,7 +270,7 @@
                                 <span class="required"></span> รุ่นรถ :</label>
                             <div class="col-sm-7">
                                 <input type="text" class="form-control nameof" id="XVVehModel" name="XVVehModel"
-                                    style="width:100%" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT">
+                                    style="width:100%" minlength="1" maxlength="100" title="YOUR_WARNING_TEXT" required>
                             </div>
                         </div>
 
@@ -280,7 +280,7 @@
                             <div class="col-sm-7">
                                 <input type="text" class="form-control nameof" id="XVVehChassisNumber"
                                     name="XVVehChassisNumber" style="width:100%" minlength="1" maxlength="100"
-                                    title="YOUR_WARNING_TEXT">
+                                    title="YOUR_WARNING_TEXT" required>
                             </div>
                         </div>
 
@@ -290,7 +290,7 @@
                             <div class="col-sm-7">
                                 <input type="text" class="form-control nameof" id="XVVehEngineNumber"
                                     name="XVVehEngineNumber" style="width:100%" minlength="1" maxlength="100"
-                                    title="YOUR_WARNING_TEXT">
+                                    title="YOUR_WARNING_TEXT" required>
                             </div>
                         </div>
                 </div>
