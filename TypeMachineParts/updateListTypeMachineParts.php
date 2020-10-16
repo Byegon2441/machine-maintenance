@@ -13,10 +13,25 @@ include '../database/connect.php';
 if ( isset( $_POST['updatedata'] ) ) {
     $id = $_POST['update_id'];
     $name = $_POST['XVMachinePartsTypeName'];
-    $sql = "UPDATE tmstmmachine_parts_type SET XVMachinePartsTypeName='$name' WHERE XVMachinePartsTypeCode = '$id'";
-    $result = mysqli_query( $connect, $sql );
+    $check = "SELECT XVMachinePartsTypeName FROM tmstmmachine_parts_type WHERE XVMachinePartsTypeName = '$name';";
+    $result = mysqli_query( $connect, $check );
+    $num=mysqli_num_rows($result);
 
-    if ( $result ) {
+    if ( $num > 0 ) {
+        echo '<script>';
+        echo "Swal.fire({
+            title: 'เกิดข้อผิดพลาด!',
+            text: 'ไม่สามารถทำการแก้ไขชื่อประเภทอะไหล่ได้ ".'\n'."ประเภทอะไหล่ ($name) มีการลงทะเบียนแล้ว',
+            icon: 'error',
+            confirmButtonText: 'Back'
+          }).then(function() {
+            window.location = 'ListTypeMachineParts.php';
+        });";
+        echo '</script>';
+    } else {
+
+        $sql = "UPDATE tmstmmachine_parts_type SET XVMachinePartsTypeName='$name' WHERE XVMachinePartsTypeCode = '$id'";
+        $query = $sql = mysqli_query( $connect, $sql );
         echo '<script>';
         echo "Swal.fire({
             title: 'สำเร็จ!',
@@ -27,24 +42,6 @@ if ( isset( $_POST['updatedata'] ) ) {
             window.location = 'ListTypeMachineParts.php';
         });";
         echo '</script>';
-    } else {
-
-         $error_detail = mysqli_error($connect);
-        if(strpos($error_detail, "XVVehTypeName_UQ")){
-            echo '<script>';
-            // echo "alert('ไม่สามารถทำการแก้ไขชื่อประเภทเครื่องจักรได้ ".'\n'."ประเภทเครื่องจักร ($name) มีการลงทะเบียนแล้ว');";
-            //  echo "window.location='ListTypeMachine.php';";
-            echo "Swal.fire({
-                title: 'เกิดข้อผิดพลาด!',
-                text: 'ไม่สามารถทำการแก้ไขชื่อประเภทอะไหล่ได้ ".'\n'."ประเภทอะไหล่ ($name) มีการลงทะเบียนแล้ว',
-                icon: 'error',
-                confirmButtonText: 'Back'
-              }).then(function() {
-                window.location = 'ListTypeMachineParts.php';
-            });";
-            echo '</script>';
-        }
-
     }
 }
 
