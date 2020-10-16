@@ -69,18 +69,6 @@
                 <div class="modal-body">
                     <label>ใบแจ้งซ่อม</label>
                     <form action="insertMajor.php" class="form-inline" method="POST">
-
-
-                        <!-- <div class="row">
-                            <div class="col-md-6"></div>
-                            <div class="col-md-6 ml-auto">
-                                <div class="col text-right">
-                                    <label for="numb">เลขที่ใบแจ้งซ่อม : <input type="text" name="numb"
-                                            class="form-control" readonly></label>
-                                </div>
-                            </div>
-                        </div> -->
-
                         <div class="row">
                             <div class="col-md-6"></div>
                             <div class="col-md-6 ml-auto">
@@ -186,19 +174,11 @@
 
                         <div class="row">
                             <div class="col-md-6">
-                                <!-- <div class="col text-left">
-                                    <label for="numb">สถานะรถ :
-                                        <select name="" id="" class="form-control">
-                                            <option value="">fsdfdfghdghdghdghdghdghdgh</option>
-                                            <option value="">sdf</option>
-                                        </select>
-                                    </label> -->
-                                <!-- </div> -->
                             </div>
                             <div class="col-md-6">
                                 <div class="col text-right">
-                                    <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="40" name="nameofuser" id="nameofuser" value="ธุรการ"
-                                            class="form-control" readonly></label>
+                                    <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="40" name="nameofuser"
+                                            id="nameofuser" value="ธุรการ" class="form-control" readonly></label>
                                 </div>
                             </div>
                         </div>
@@ -521,16 +501,32 @@
         });
 
         $(document).ready(function() {
-            var i = 1;
+            let i = 1;
             $("#add_row").click(function() {
                 $('tr').find('input').prop('disabled', false)
-                $('#addr' + i).html("<td>" + (i + 1) + "</td><td><input type='text' name='n_sub[]'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='sub[]' placeholder='กรุณากรอกสาเหตุ'/></td>"
+                $('#addr' + i).html("<td>" + (i + 1) +
+                    "</td><td><input type='text' name='n_sub[]'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='sub[]' placeholder='กรุณากรอกสาเหตุ'/></td>"
                 );
 
                 $('#tab_logic').append('<tr id="addr' + (i + 1) + '"></tr>');
                 i++;
             });
         });
+
+        $(document).ready(function() {
+            let j = 1;
+            $("#add_row1").click(function() {
+                $('tr').find('input').prop('disabled', false)
+                $('#addrr' + j).html("<td>" + (j + 1) + "</td><td><input type='text' name='n_subb[]'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='subb[]' placeholder='กรุณากรอกสาเหตุ'/></td>"
+                );
+
+                $('#tab_logic2').append('<tr id="addrr' + (j + 1) + '"></tr>');
+                j++;
+            });
+        });
+
+
+
 
         $('#XVVehName').change(() => {
             var id = $('#XVVehName').val();
@@ -607,8 +603,7 @@
           
 
         })
-    })
         </script>
 </body>
-</html>
 
+</html>
