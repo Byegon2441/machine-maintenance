@@ -2,7 +2,7 @@
 $host ='localhost';
 $user ='root';
 $pass="";
-$database="cars";
+$database="tests";
 $connect = mysqli_connect("localhost","root","","cars");
 mysqli_query($connect,"SET NAMES UTF8");
 
