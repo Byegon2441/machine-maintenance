@@ -36,9 +36,9 @@
         echo '<script>';
        
         echo "Swal.fire({
-                title: 'เกิดข้อผิดพลาด!',
+                title: 'สำเร็จ!',
                 text: 'ทำการเพิ่มเครื่องจักรเรียบร้อยแล้ว !!!',
-                icon: 'error',
+                icon: 'success',
                 confirmButtonText: 'Back'
               }).then(function() {
                 window.location = 'ListMachine.php';
@@ -68,9 +68,9 @@
 
         echo '<script>';
         echo "Swal.fire({
-                title: 'สำเร็จ!',
+                title: 'เกิดข้อผิดพลาด!',
                 text: 'ไม่สามารถทำการเพิ่มข้อมูลเครื่องจักรได้',
-                icon: 'success',
+                icon: 'error',
                 confirmButtonText: 'Back'
               }).then(function() {
                 window.location = 'ListMachine.php';
