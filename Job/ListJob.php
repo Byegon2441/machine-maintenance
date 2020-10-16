@@ -218,7 +218,7 @@
                 </div>
                 <div class="modal-body">
                     <label>ใบแจ้งซ่อม</label>
-                    <form action="updateMajor.php" class="form-inline" method="POST">
+                    <form action="updateMajor.php" class="form-inline" method="POST" id="formcancle">
                         
                         
                     <div class="row">
@@ -322,7 +322,7 @@
                                             <td><input type="text" name="n_subb[]" placeholder="กรุณากรอกเรื่องที่แจ้ง">
                                             </td>
                                             <td><input type="text" name="subb[]" placeholder="กรุณากรอกสาเหตุ"></td>
-                                            <td><button type="button" class="btn btn-danger btn-circle increase-row RemoveRow"><i class="fa fa-minus"></button></td>
+                                            <td><button type="button" class="btn btn-danger btn-circle increase-row RemoveRow btndis"><i class="fa fa-minus"></button></td>
                                         </tr>
                                         <tr id='addrr1'></tr>
 
@@ -330,7 +330,7 @@
                                 </table>
                             </div>
                             <div class="panel-body" style="margin:0px;">
-                                <button type="button" id="add_row1" class="btn btn-success btn-circle increase-row"
+                                <button type="button" id="add_row1" class="btn btn-success btn-circle increase-row btndis"
                                     style="float:right;" title="คลิกเพื่อเพิ่มแถว"><i class="fa fa-plus"></i>
                                 </button>
                             </div>
@@ -356,7 +356,7 @@
                             <div class="col-md-6">
                                 <div class="col text-right">
                                     <!-- <button type="button" class="btn btn-primary" data-dismiss="modal">บันทึก</button> -->
-                                    <input type="submit" class="btn btn-success" value="บันทึก">
+                                    <input type="submit" class="btn btn-success btndis" value="บันทึก">
                                     <!-- <button type="submit" class="btn btn-success" data-dismiss="modal">ส่ง</button> -->
                                 </div>
                             </div>
@@ -367,6 +367,36 @@
         </div>
     </div>
 <!-- modal update -->
+
+
+<!-- modal cancle -->
+
+<div class="modal fade" id="cancleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">ยกเลิกใบแจ้งซ่อม</h5>
+                </div>
+                <form action="cancleMajor.php" method="POST">
+                    <div class="modal-body">
+                        <input type="hidden" name="cancle_id" id="cancle_id">
+                        ท่านต้องการยกเลิกใบแจ้งซ่อมนี้หรือไม่?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">กลับ</button>
+                        <button type="submit" class="btn btn-danger" name="cancle">ยกเลิกใบแจ้งซ่อม</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<!-- modal cancle -->
+
 
     <div id="wrapper">
         <div id="page-wrapper">
@@ -446,11 +476,19 @@
                                             <td style="display:none;"><?php echo $row["XVDptSub-district"];?></td>
                                             <td style="display:none;"><?php echo $row["XVDptDistrict"];?></td>
                                             <td style="display:none;"><?php echo $row["XVDptProvince"];?></td>
+
+                                    <?php if($row["XVMajDocStatus"]!=3){
+
+                                        ?>
                                         <td align="center"><button class='btn btn-primary editbtn' type='button'
                                                 >รายละเอียด</button></td>
-                                        <td align="center"><button class='btn btn-danger deletebtn' type='button'
+                                        <td align="center"><button class='btn btn-danger canclebtn' type='button'
                                                 >ยกเลิก</button></td>
-
+                                    <?php }else{ ?>
+                                        <td align="center"><button class='btn btn-primary editbtn' type='button'
+                                                >รายละเอียด</button></td>
+                                                <td align="center"></td>
+                                    <?php } ?>
                                     </tr>
                                     <?php $count++;}
                                         mysqli_close($connect);
@@ -578,6 +616,19 @@
             }
         })
 
+        $(document).ready(function() {
+        $('.canclebtn').on('click', function() {
+            $('#cancleModal').modal('show')
+            $tr = $(this).closest('tr')
+
+            var data = $tr.children("td").map(function() {
+                return $(this).text()
+            }).get()
+
+            console.log(data)
+            $('#cancle_id').val(data[0])
+        })
+    })
 
         $(document).ready(function() {
             $('.editbtn').on('click', function() {
@@ -593,12 +644,34 @@
             $('#jobdate').val(data[1])   
             $('#vehcode').val(data[2])
             $('#vehcode2').val(data[2]) 
+            
             $('#department_name').val(data[6]) //6 รายละเอียด 7 ยกเลิก
             $('#department_id').val(data[7]) 
             $('#number').val(data[8]) 
             $('#sub').val(data[9]) 
             $('#dis').val(data[10]) 
             $('#pro').val(data[11]) 
+
+                
+            if(data[5]=='ยกเลิก'){
+                $('#vehcode').prop('disabled', true);
+                $('#number').prop('readonly', true);
+                $('#sub').prop('readonly', true);
+                $('#dis').prop('readonly', true);
+                $('#pro').prop('readonly', true);
+                $('#jobid').prop('readonly', true);
+                $('.btndis').hide()
+
+            }else{
+                $('#vehcode').prop('disabled', false);
+                $('#number').prop('readonly', false);
+                $('#sub').prop('readonly', false);
+                $('#dis').prop('readonly', false);
+                $('#pro').prop('readonly', false);
+                $('#jobid').prop('readonly', false);
+                $('.btndis').show()
+            }
+
 
             })
         })
