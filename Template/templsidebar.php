@@ -100,6 +100,9 @@
                                     <a href="../MachineParts/ListMachineParts.php">อะไหล่</a>
                                 </li>
                                 <li>
+                                    <a href="../TypeMachineParts/ListTypeMachineParts.php">ประเภทอะไหล่</a>
+                                </li>
+                                <li>
                                     <a href="../Employee/ListEmployee.php">พนักงาน</a>
                                 </li>
                             </ul>
