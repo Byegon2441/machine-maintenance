@@ -36,7 +36,7 @@
         echo '<script>';
        
         echo "Swal.fire({
-                title: 'เกิดข้อผิดพลาด!',
+                title: 'สำเร็จ!',
                 text: 'ทำการเพิ่มเครื่องจักรเรียบร้อยแล้ว !!!',
                 icon: 'error',
                 confirmButtonText: 'Back'
@@ -68,7 +68,7 @@
 
         echo '<script>';
         echo "Swal.fire({
-                title: 'สำเร็จ!',
+                title: 'เกิดข้อผิดพลาด!',
                 text: 'ไม่สามารถทำการเพิ่มข้อมูลเครื่องจักรได้',
                 icon: 'success',
                 confirmButtonText: 'Back'
