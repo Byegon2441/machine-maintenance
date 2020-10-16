@@ -6,10 +6,8 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.6.0/dist/sweetalert2.all.min.js"></script>
         <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <title></title>
-
 </head>
 <body>
-
 <?php
 include '../database/connect.php';
 $fname = $_POST['fname'];
