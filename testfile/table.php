@@ -53,7 +53,7 @@
 
     <?php include '../Template/templsidebar.php';?>
 
-<!-- modal insert -->
+    <!-- modal insert -->
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -195,8 +195,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="col text-right">
-                                    <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="40" name="nameofuser" id="nameofuser" value="ธุรการ"
-                                            class="form-control" readonly></label>
+                                    <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="40" name="nameofuser"
+                                            id="nameofuser" value="ธุรการ" class="form-control" readonly></label>
                                 </div>
                             </div>
                         </div>
@@ -220,9 +220,9 @@
             </div>
         </div>
     </div>
-<!-- modal insert -->
+    <!-- modal insert -->
 
-<!-- modal insert -->
+    <!-- modal insert -->
     <div class="modal fade bd-example-modal-lg1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -330,16 +330,18 @@
                                             <th style="background:#CCCCCC;">#</th>
                                             <th style="background:#CCCCCC;">เรื่องที่แจ้ง</th>
                                             <th style="background:#CCCCCC;">สาเหตุที่ทราบ</th>
+                                            <th style="background:#CCCCCC;">ยกเลิก</th>
                                         </tr>
                                     </thead>
                                     <tbody class="sub">
-                                        <tr id='addr0'>
+                                        <tr id='addrr0'>
                                             <td>1</td>
-                                            <td><input type="text" name="n_sub[]" placeholder="กรุณากรอกเรื่องที่แจ้ง">
+                                            <td><input type="text" name="n_subb[]" placeholder="กรุณากรอกเรื่องที่แจ้ง">
                                             </td>
-                                            <td><input type="text" name="sub[]" placeholder="กรุณากรอกสาเหตุ"></td>
+                                            <td><input type="text" name="subb[]" placeholder="กรุณากรอกสาเหตุ"></td>
+                                            <td><button>ลบ</button></td>
                                         </tr>
-                                        <tr id='addr1'></tr>
+                                        <tr id='addrr1'></tr>
 
                                     </tbody>
                                 </table>
@@ -364,8 +366,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="col text-right">
-                                    <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="40" name="nameofuser" id="nameofuser" value="ธุรการ"
-                                            class="form-control" readonly></label>
+                                    <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="40" name="nameofuser"
+                                            id="nameofuser" value="ธุรการ" class="form-control" readonly></label>
                                 </div>
                             </div>
                         </div>
@@ -389,9 +391,9 @@
             </div>
         </div>
     </div>
-<!-- modal insert -->
+    <!-- modal insert -->
 
-    
+
 
     <div id="wrapper">
         <div id="page-wrapper">
@@ -402,9 +404,9 @@
                             data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-plus">zc</i>
                         </button>
 
-                        <button type="button" class="btn btn-success btn-circle" style="float: right;"
+                        <!-- <button type="button" class="btn btn-success btn-circle" style="float: right;"
                             data-toggle="modal" data-target=".bd-example-modal-lg1"><i class="fa fa-plus"></i>
-                        </button>
+                        </button> -->
                     </h1>
                 </div>
 
@@ -459,10 +461,10 @@
                                             }else{
                                                 echo 'ยกเลิก'; 
                                             } ?></td>
-                                        <td align="center"><button class='btn btn-primary editbtn' type='button'
-                                                >รายละเอียด</button></td>
-                                        <td align="center"><button class='btn btn-danger deletebtn' type='button'
-                                                >ยกเลิก</button></td>
+                                        <td align="center"><button class='btn btn-primary editbtn'
+                                                type='button'>รายละเอียด</button></td>
+                                        <td align="center"><button class='btn btn-danger deletebtn'
+                                                type='button'>ยกเลิก</button></td>
 
                                     </tr>
                                     <?php $count++;}
@@ -512,10 +514,11 @@
         });
 
         $(document).ready(function() {
-            var i = 1;
+            let i = 1;
             $("#add_row").click(function() {
                 $('tr').find('input').prop('disabled', false)
-                $('#addr' + i).html("<td>" + (i + 1) + "</td><td><input type='text' name='n_sub[]'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='sub[]' placeholder='กรุณากรอกสาเหตุ'/></td>"
+                $('#addr' + i).html("<td>" + (i + 1) +
+                    "</td><td><input type='text' name='n_sub[]'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='sub[]' placeholder='กรุณากรอกสาเหตุ'/></td><td><input type='text' name='sub[]' placeholder='กรุณากรอกสาเหตุ'/></td>"
                 );
 
                 $('#tab_logic').append('<tr id="addr' + (i + 1) + '"></tr>');
@@ -524,14 +527,15 @@
         });
 
         $(document).ready(function() {
-            var i = 1;
+            let j = 1;
             $("#add_row1").click(function() {
                 $('tr').find('input').prop('disabled', false)
-                $('#addr' + i).html("<td>" + (i + 1) + "</td><td><input type='text' name='n_sub[]'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='sub[]' placeholder='กรุณากรอกสาเหตุ'/></td>"
+                $('#addrr' + j).html("<td>" + (j + 1) +
+                    "</td><td><input type='text' name='n_subb[]'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='subb[]' placeholder='กรุณากรอกสาเหตุ'/></td>"
                 );
 
-                $('#tab_logic2').append('<tr id="addr' + (i + 1) + '"></tr>');
-                i++;
+                $('#tab_logic2').append('<tr id="addrr' + (j + 1) + '"></tr>');
+                j++;
             });
         });
 
@@ -561,20 +565,20 @@
             }
         })
         $(document).ready(function() {
-        $('.editbtn').on('click', function() {
-            $('.bd-example-modal-lg').modal('show')
-            $tr = $(this).closest('tr')
+            $('.editbtn').on('click', function() {
+                $('.bd-example-modal-lg1').modal('show')
+                $tr = $(this).closest('tr')
 
-            var data = $tr.children("td").map(function() {
-                return $(this).text()
-            }).get()
+                var data = $tr.children("td").map(function() {
+                    return $(this).text()
+                }).get()
 
-            console.log(data)
-            $('#update_id').val(data[1])
-            $('#XVVehTypeName').val(data[2])
+                console.log(data)
+                $('#update_id').val(data[1])
+                $('#XVVehTypeName').val(data[2])
+            })
         })
-    })
         </script>
 </body>
-</html>
 
+</html>
