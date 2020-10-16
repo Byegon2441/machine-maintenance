@@ -356,24 +356,24 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="table">
-                                <table width="180%" class="table table-striped table-bordered table-hover"
+                                <table width="100%" class="table table-striped table-bordered table-hover"
                                     id="dataTables-example">
                                     <thead>
                                         <tr>
                                             <th>ลำดับที่ </th>
                                             <th>รหัสเครื่องจักร </th>
                                             <th>ชื่อเครื่องจักร</th>
-                                            <th>ทะเบียนรถ</th>
-                                            <th>เบอร์รถ</th>
-                                            <th>เลขทะเบียน MANGO</th>
-                                            <th>ยี่ห้อ</th>
-                                            <th>รุ่นรถ</th>
-                                            <th>หมายเลขคัทซี</th>
-                                            <th>หมายเลขเครื่อง</th>
+                                            <th style="display:none;">ทะเบียนรถ</th>
+                                            <th style="display:none;">เบอร์รถ</th>
+                                            <th style="display:none;">เลขทะเบียน MANGO</th>
+                                            <th style="display:none;">ยี่ห้อ</th>
+                                            <th style="display:none;">รุ่นรถ</th>
+                                            <th style="display:none;">หมายเลขคัทซี</th>
+                                            <th style="display:none;">หมายเลขเครื่อง</th>
                                             <th>ชื่อประเภทเครื่องจักร</th>
-                                            <th style="display:none;">ชื่อประเภทเครื่องจักร</th>
+                                            <th style="display:none;">รหัสประเภทเครื่องจักร</th>
                                             <th>ชื่อไซต์งาน</th>
-                                            <th style="display:none;">ชื่อไซต์งาน</th>
+                                            <th style="display:none;">รหัสไซต์งาน</th>
                                             <th>แก้ไข</th>
                                             <th>ลบ</th>
                                         </tr>
@@ -395,13 +395,13 @@
                                             <td><?php echo $count;?></td>
                                             <td><?php echo $row["XVVehCode"];?></td>
                                             <td><?php echo $row["XVVehName"];?></td>
-                                            <td><?php echo $row["XVVehRegistration"];?></td>
-                                            <td><?php echo $row["XVVehNumber"];?></td>
-                                            <td><?php echo $row["XVVehMango"];?></td>
-                                            <td><?php echo $row["XVVehBrand"];?></td>
-                                            <td><?php echo $row["XVVehModel"];?></td>
-                                            <td><?php echo $row["XVVehChassisNumber"];?></td>
-                                            <td><?php echo $row["XVVehEngineNumber"];?></td>
+                                            <td style="display:none;"><?php echo $row["XVVehRegistration"];?></td>
+                                            <td style="display:none;"><?php echo $row["XVVehNumber"];?></td>
+                                            <td style="display:none;"><?php echo $row["XVVehMango"];?></td>
+                                            <td style="display:none;"><?php echo $row["XVVehBrand"];?></td>
+                                            <td style="display:none;"><?php echo $row["XVVehModel"];?></td>
+                                            <td style="display:none;"><?php echo $row["XVVehChassisNumber"];?></td>
+                                            <td style="display:none;"><?php echo $row["XVVehEngineNumber"];?></td>
                                             <td><?php if($row['XVVehTypeCode']==NULL){echo "ไม่สามารถระบุประเภทได้";}else {echo $row["XVVehTypeName"];}?>
                                             </td>
                                             <td style="display:none;"><?php echo $row["XVVehTypeCode"];?></td>
