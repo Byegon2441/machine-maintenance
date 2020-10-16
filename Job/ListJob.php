@@ -149,6 +149,7 @@
                                             <th style="background:#CCCCCC;">#</th>
                                             <th style="background:#CCCCCC;">เรื่องที่แจ้ง</th>
                                             <th style="background:#CCCCCC;">สาเหตุที่ทราบ</th>
+                                            <th style="background:#CCCCCC;"></th>
                                         </tr>
                                     </thead>
                                     <tbody class="sub">
@@ -157,6 +158,7 @@
                                             <td><input type="text" name="n_sub[]" placeholder="กรุณากรอกเรื่องที่แจ้ง">
                                             </td>
                                             <td><input type="text" name="sub[]" placeholder="กรุณากรอกสาเหตุ"></td>
+                                            <td><button type="button" class="btn btn-danger btn-circle increase-row RemoveRow"><i class="fa fa-minus"></button></td>
                                         </tr>
                                         <tr id='addr1'></tr>
 
@@ -204,7 +206,7 @@
 
 
 <!-- modal update -->
-<div class="modal fade bd-example-modal-lg1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    <div class="modal fade bd-example-modal-lg1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -311,6 +313,7 @@
                                             <th style="background:#CCCCCC;">#</th>
                                             <th style="background:#CCCCCC;">เรื่องที่แจ้ง</th>
                                             <th style="background:#CCCCCC;">สาเหตุที่ทราบ</th>
+                                            <th style="background:#CCCCCC;"></th>
                                         </tr>
                                     </thead>
                                     <tbody class="sub">
@@ -319,6 +322,7 @@
                                             <td><input type="text" name="n_subb[]" placeholder="กรุณากรอกเรื่องที่แจ้ง">
                                             </td>
                                             <td><input type="text" name="subb[]" placeholder="กรุณากรอกสาเหตุ"></td>
+                                            <td><button type="button" class="btn btn-danger btn-circle increase-row RemoveRow"><i class="fa fa-minus"></button></td>
                                         </tr>
                                         <tr id='addrr1'></tr>
 
@@ -362,7 +366,7 @@
             </div>
         </div>
     </div>
-    <!-- modal update -->
+<!-- modal update -->
 
     <div id="wrapper">
         <div id="page-wrapper">
@@ -499,7 +503,7 @@
             $("#add_row").click(function() {
                 $('tr').find('input').prop('disabled', false)
                 $('#addr' + i).html("<td>" + (i + 1) +
-                    "</td><td><input type='text' name='n_sub[]'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='sub[]' placeholder='กรุณากรอกสาเหตุ'/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row'><i class='fa fa-minus'></button></td>"
+                    "</td><td><input type='text' name='n_sub[]'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='sub[]' placeholder='กรุณากรอกสาเหตุ'/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td>"
                 );
 
                 $('#tab_logic').append('<tr id="addr' + (i + 1) + '"></tr>');
@@ -511,7 +515,7 @@
             let j = 1;
             $("#add_row1").click(function() {
                 $('tr').find('input').prop('disabled', false)
-                $('#addrr' + j).html("<td>" + (j + 1) + "</td><td><input type='text' name='n_subb[]'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='subb[]' placeholder='กรุณากรอกสาเหตุ'/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row'><i class='fa fa-minus'></button></td>"
+                $('#addrr' + j).html("<td>" + (j + 1) + "</td><td><input type='text' name='n_subb[]'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='subb[]' placeholder='กรุณากรอกสาเหตุ'/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td>"
                 );
 
                 $('#tab_logic2').append('<tr id="addrr' + (j + 1) + '"></tr>');
@@ -598,6 +602,10 @@
 
             })
         })
+
+        $('table').on('click', '.RemoveRow', function(){
+            $(this).closest('tr').remove();
+        });
         </script>
 </body>
 

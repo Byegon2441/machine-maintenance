@@ -518,7 +518,7 @@
             $("#add_row").click(function() {
                 $('tr').find('input').prop('disabled', false)
                 $('#addr' + i).html("<td>" + (i + 1) +
-                    "</td><td><input type='text' name='n_sub[]'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='sub[]' placeholder='กรุณากรอกสาเหตุ'/></td>"
+                    "</td><td><input type='text' name='n_sub[]'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='sub[]' placeholder='กรุณากรอกสาเหตุ'/> <td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td></td>"
                 );
 
                 $('#tab_logic').append('<tr id="addr' + (i + 1) + '"></tr>');
@@ -530,7 +530,7 @@
             let j = 1;
             $("#add_row1").click(function() {
                 $('tr').find('input').prop('disabled', false)
-                $('#addrr' + j).html("<td>" + (j + 1) +"</td><td><input type='text' name='n_subb[]'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='subb[]' placeholder='กรุณากรอกสาเหตุ'/></td><td><button>dfgdf</button></td>");
+                $('#addrr' + j).html("<td>" + (j + 1) +"</td><td><input type='text' name='n_subb[]'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/> </td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td>");
 
                 $('#tab_logic2').append('<tr id="addrr' + (j + 1) + '"></tr>');
                 j++;
@@ -576,6 +576,9 @@
                 $('#XVVehTypeName').val(data[2])
             })
         })
+        $('table').on('click', '.RemoveRow', function(){
+            $(this).closest('tr').remove();
+        });
         </script>
 </body>
 
