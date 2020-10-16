@@ -19,8 +19,8 @@
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- DataTables CSS -->
-    <link href="../vendor/datatables/css/dataTables.bootstrap.css" rel="stylesheet">
-    
+    <link href="../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
     <!-- DataTables Responsive CSS -->
     <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
 
@@ -36,7 +36,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-<style>
+    <style>
     table td {
         position: relative;
     }
@@ -63,7 +63,7 @@
     .table-wrapper-scroll-y {
         display: block;
     }
-</style>
+    </style>
 
 </head>
 
@@ -71,8 +71,177 @@
 
     <?php include '../Template/templsidebar.php';?>
 
-<!-- modal insert -->
+    <!-- modal insert -->
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">รายละเอียดใบแจ้งซ่อม</h5>
+                </div>
+                <div class="modal-body">
+                    <label>ใบแจ้งซ่อม</label>
+                    <form action="insertMajor.php" class="form-inline" method="POST">
+
+
+                        <div class="row">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6 ml-auto">
+                                <div class="col text-right">
+                                    <label for="numb">เลขที่ใบแจ้งซ่อม : <input type="text" name="numb"
+                                            class="form-control" disabled></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6 ml-auto">
+                                <div class="col text-right">
+                                    <label for="numb">วันที่แจ้งซ่อม : <input type="text" name="numb"
+                                            class="form-control" data-toggle="datepicker" disabled></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="col text-right">
+                                    <label for="numb">ชื่อเครื่องจักร :</label>
+                                    <select id="XVVehName" name="XVVehName" class="form-control" style="width:60%">
+                                        <?php
+                                     include '../database/connect.php';
+                                     $sql = "select * from tmstvehicle; ";
+                                     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+                                     while ($row=mysqli_fetch_array($result)){
+                                         ?>
+                                        <option value="<?php echo $row["XVVehCode"];?>">
+                                            <?php echo $row["XVVehName"]; ?></option>
+                                        <?php
+                                     }
+                                    mysqli_close($connect);
+                                    ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="col text-right">
+                                    <label for="numb">หมายเลขเครื่องจักร : <input type="text" size="17" name="noof"
+                                            class="form-control" id="noof" disabled></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="col text-right">
+                                    <label for="numb">ชื่อไชต์งาน : <input type="text" size="30" name="dname" id="dname"
+                                            class="form-control" disabled></label>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="col text-right">
+                                    <label for="numb">หมายเลขหน่วยงาน : <input type="text" size="17" name="dcode"
+                                            id="dcode" class="form-control" disabled></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col">
+                                <label for="numb">ตำแหน่งเครื่องจักร ณ ปัจจุบัน เลขที่ :
+                                    <input type="text" style="margin: 0px 10px;" size="10" name="dnum" id="dnum"
+                                        class="form-control">
+                                    <input type="text" style="margin: 0px 10px;" size="10" name="dsub" id="dsub"
+                                        class="form-control">
+                                    <input type="text" style="margin: 0px 10px;" size="10" name="ddis" id="ddis"
+                                        class="form-control">
+                                    <input type="text" style="margin: 0px 10px;" size="10" name="dpro" id="dpro"
+                                        class="form-control"></label>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default" style="margin-top:20px;">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">รายละเอียดการแจ้งซ่อม</h3>
+                            </div>
+                            <table>
+
+                            </table>
+
+                            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                <table class="table table-bordered" id="tab_logic">
+                                    <thead>
+                                        <tr>
+                                            <th style="background:#CCCCCC;">#</th>
+                                            <th style="background:#CCCCCC;">เรื่องที่แจ้ง</th>
+                                            <th style="background:#CCCCCC;">สาเหตุที่ทราบ</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="sub">
+                                        <tr id='addr0'>
+                                            <td>1</td>
+                                            <td><input type="text" name="n_sub[]" placeholder="กรุณากรอกเรื่องที่แจ้ง">
+                                            </td>
+                                            <td><input type="text" name="sub[]" placeholder="กรุณากรอกสาเหตุ"></td>
+                                        </tr>
+                                        <tr id='addr1'></tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="panel-body" style="margin:0px;">
+                                <button type="button" id="add_row" class="btn btn-success btn-circle add-row"
+                                    style="float:right;" title="คลิกเพื่อเพิ่มแถว"><i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- <div class="col text-left">
+                                    <label for="numb">สถานะรถ :
+                                        <select name="" id="" class="form-control">
+                                            <option value="">fsdfdfghdghdghdghdghdghdgh</option>
+                                            <option value="">sdf</option>
+                                        </select>
+                                    </label> -->
+                                <!-- </div> -->
+                            </div>
+                            <div class="col-md-6">
+                                <div class="col text-right">
+                                    <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="40" name="nameofuser" id="nameofuser" value="test"
+                                            class="form-control" readonly></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <div class="col-md-6">
+                                <div class="col text-left">
+                                    <button type="button" class="btn btn-danger mr-auto">กลับ</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="col text-right">
+                                    <!-- <button type="button" class="btn btn-primary" data-dismiss="modal">บันทึก</button> -->
+                                    <input type="submit" class="btn btn-success" value="บันทึก">
+                                    <!-- <button type="submit" class="btn btn-success" data-dismiss="modal">ส่ง</button> -->
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal insert -->
+
+    <!-- modal ed -->
+        <!-- <div class="modal fade bd-example-modal-lg1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -113,175 +282,6 @@
                                     <label for="numb">ชื่อเครื่องจักร :</label>
                                     <select id="XVVehTypeName" name="XVVehTypeName" class="form-control"
                                         style="width:60%">
-                                        <?php
-                                     include '../database/connect.php';
-                                     $sql = "select * from tmstmvehicletype; ";
-                                     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-                                     while ($row=mysqli_fetch_array($result)){
-                                         ?>
-                                        <option value="<?php echo $row["XVVehTypeCode"];?>">
-                                            <?php echo $row["XVVehTypeName"]; ?></option>
-                                        <?php
-                                     }
-                                    mysqli_close($connect);
-                                    ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="col text-right">
-                                    <label for="numb">หมายเลขเครื่องจักร : <input type="text" size="17" name="numb"
-                                            class="form-control" disabled></label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-7">
-                                <div class="col text-right">
-                                    <label for="numb">ชื่อไชต์งาน : <input id="site" type="text" size="30" name="numb"
-                                            class="form-control" disabled></label>
-                                </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="col text-right">
-                                    <label for="numb">หมายเลขหน่วยงาน : <input type="text" size="17" name="numb"
-                                            class="form-control" disabled></label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="col">
-                                <label for="numb">ตำแหน่งเครื่องจักร ณ ปัจจุบัน เลขที่ :
-                                    <input type="text" style="margin: 0px 10px;" size="10" name="numb"
-                                        class="form-control">
-                                    <input type="text" style="margin: 0px 10px;" size="10" name="numb"
-                                        class="form-control">
-                                    <input type="text" style="margin: 0px 10px;" size="10" name="numb"
-                                        class="form-control">
-                                    <input type="text" style="margin: 0px 10px;" size="10" name="numb"
-                                        class="form-control"></label>
-                            </div>
-                        </div>
-
-                        <div class="panel panel-default" style="margin-top:20px;">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">รายละเอียดการแจ้งซ่อม</h3>
-                            </div>
-                            <table>
-
-                            </table>
-
-                            <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                                <table class="table table-bordered" id="tab_logic">
-                                    <thead>
-                                        <tr>
-                                            <th style="background:#CCCCCC;">#</th>
-                                            <th style="background:#CCCCCC;">เรื่องที่แจ้ง</th>
-                                            <th style="background:#CCCCCC;">สาเหตุที่ทราบ</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="sub">
-                                        <tr id='addr0'>
-                                            <td>1</td>
-                                            <td><input type="text" name="n_sub" placeholder="กรุณากรอกเรื่องที่แจ้ง">
-                                            </td>
-                                            <td><input type="text" name="sub" placeholder="กรุณากรอกสาเหตุ"></td>
-                                        </tr>
-                                        <tr id='addr1'></tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="panel-body" style="margin:0px;">
-                                <button type="button" id="add_row" class="btn btn-success btn-circle add-row"
-                                    style="float:right;" title="คลิกเพื่อเพิ่มแถว"><i class="fa fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <!-- <div class="col-md-6">
-                                <div class="col text-left">
-                                    <label for="numb">สถานะรถ :
-                                        <select name="" id="" class="form-control">
-                                            <option value="">fsdfdfghdghdghdghdghdghdgh</option>
-                                            <option value="">sdf</option>
-                                        </select>
-                                    </label>
-                                </div>
-                            </div> -->
-                            <div class="col-md-12">
-                                <div class="col text-right">
-                                    <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="40" name="numb"
-                                            class="form-control" disabled></label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="modal-footer">
-                            <div class="col-md-6">
-                                <div class="col text-left">
-                                    <button type="button" class="btn btn-danger mr-auto">กลับ</button>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="col text-right">
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal">บันทึก</button>
-                                    <button type="button" class="btn btn-success" data-dismiss="modal">ส่ง</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-<!-- modal insert -->
-
-<!-- modal ed -->
-    <div class="modal fade bd-example-modal-lg1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h5 class="modal-title" id="exampleModalLabel">รายละเอียดใบแจ้งซ่อม</h5>
-                </div>
-                <div class="modal-body">
-                    <label>ใบแจ้งซ่อม</label>
-                    <form action="" class="form-inline">
-                        
-
-                        <div class="row">
-                            <div class="col-md-6"></div>
-                            <div class="col-md-6 ml-auto">
-                                <div class="col text-right">
-                                    <label for="numb">เลขที่ใบแจ้งซ่อม : <input type="text" name="numb"
-                                            class="form-control" disabled></label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6"></div>
-                            <div class="col-md-6 ml-auto">
-                                <div class="col text-right">
-                                    <label for="numb">วันที่แจ้งซ่อม : <input type="text" name="numb"
-                                            class="form-control" data-toggle="datepicker" disabled></label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-7">
-                                <div class="col text-right">
-                                    <label for="numb">ชื่อเครื่องจักร :</label>
-                                    <select id="typename" name="XVVehTypeName" class="form-control"
-                                        style="width:60%" disabled>
                                         <?php
                                      include '../database/connect.php';
                                      $sql = "select * from tmstmvehicletype; ";
@@ -407,10 +407,10 @@
                 </div>
             </div>
         </div>
-    </div>
-<!-- modal ed -->
+    </div> -->
+    <!-- modal ed -->
 
-<div id="wrapper">
+    <div id="wrapper">
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
@@ -447,10 +447,12 @@
                                     </thead>
                                     <?php
           include '../database/connect.php';
-          $sql = " SELECT vj.XVMajDocNo , vj.XVMajWhoInformant, vj.XVMajStatus, vj.XVMaCarStatus,vj.XVMajFinishRmk, v.XVVehCode, vp.XVDptCode 
-          FROM  tdoctmajob vj , tmstmdepartment vp , tmstvehicle v
-          where  vj.XVMajDocNo = v.XVVehCode
-          and vj.XVMajDocNo = vp.XVDptCode";
+        //   $sql = " SELECT m.XVMajDocNo, d.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus
+        //   FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v
+        //   WHERE m.XVMajDocNo = d.XVMajDocNo 
+        //   AND m.XVVehCode = v.XVVehCode"; ตัวสมบูรณ์
+          $sql = " SELECT m.XVMajDocNo, m.XVVehCode, v.XVVehName, m.XVMajStatus FROM tdoctmajob m, tmstvehicle v WHERE m.XVVehCode = v.XVVehCode ";
+        //   ตัวทดสอบ
          
           
           $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
@@ -459,22 +461,11 @@
           ?>
 
                                     <tr class="odd gradeA">
-                                        <td><?php echo $count;?></td>
                                         <td><?php echo $row["XVMajDocNo"];?></td>
-                                        <td><?php echo $row["XVMajWhoInformant"];?></td>
-                                        <td><?php echo $row["XVMajStatus"];?></td>
-                                        <td><?php echo $row["XVMaCarStatus"];?></td>
-                                        <td><?php echo $row["XVMajFinishRmk"];?></td>
+                                        <!-- <td><?php echo $row["XDMajDate"];?></td> -->
                                         <td><?php echo $row["XVVehCode"];?></td>
-                                        <td><?php echo $row["XVDptCode"];?></td>
-                                        <td><?php if($row['XVVehCode']==NULL){echo "ไม่สามารถระบุเครื่องจักรได้";}else {echo $row["XVVehName"];}?>
-                                        </td>
-                                        <td style="display:none;"><?php echo $row["XVVehCode"];?></td>
-
-                                        <td><?php if($row['XVDptCode']==NULL){echo "ไม่สามารถระบุไซต์งานได้";}else {echo $row["XVDptName"];}?>
-                                        </td>
-                                        <td style="display:none;"><?php echo $row["XVVehCode"];?></td>
-
+                                        <td><?php echo $row["XVVehName"];?></td>
+                                        <td><?php echo $row["XVMajStatus"];?></td>
                                         <td align="center"><input class='btn btn-primary editbtn' type='button'
                                                 value='แก้ไข'></td>
                                         <td align="center"><input class='btn btn-danger deletebtn' type='button'
@@ -498,7 +489,7 @@
             </div>
             <!-- /#page-wrapper -->
 
-</div>
+        </div>
         <!-- /#wrapper -->
 
 
@@ -531,56 +522,76 @@
             var i = 1;
             $("#add_row").click(function() {
                 $('tr').find('input').prop('disabled', false)
-                $('#addr' + i).html("<td>" + (i + 1) + "</td><td><input type='text' name='n_sub" + i +
-                    "'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='sub" +
-                    i +
-                    "' placeholder='กรุณากรอกสาเหตุ'/></td>"
-                    );
+                // $('#addr' + i).html("<td>" + (i + 1) + "</td><td><input type='text' name='n_sub[]" + i +
+                //     "'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='sub[]" +
+                //     i +
+                //     "' placeholder='กรุณากรอกสาเหตุ'/></td>"
+                // );
+                // <input type='hidden' name='n_n[]' value='" + (i + 1) + "'/>
+                $('#addr' + i).html("<td>" + (i + 1) + "</td><td><input type='text' name='n_sub[]'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='sub[]' placeholder='กรุณากรอกสาเหตุ'/></td>"
+                );
 
                 $('#tab_logic').append('<tr id="addr' + (i + 1) + '"></tr>');
                 i++;
             });
         });
 
-        
+        $('#XVVehName').change(() => {
+            var id = $('#XVVehName').val();
+            if (id != '') {
+                console.log(id)
+                $.ajax({
+                    url: "fetch.php",
+                    method: "POST",
+                    data: {
+                        id: id
+                    },
+                    dataType: "JSON",
+                    success: function(data) {
+                        $('#noof').val(data.numb);
+                        $('#dcode').val(data.dcode);
+                        $('#dname').val(data.dname);
+                        $('#dnum').val(data.dnum);
+                        $('#dsub').val(data.dsub);
+                        $('#ddis').val(data.ddis);
+                        $('#dpro').val(data.dpro);
+                    }
+                })
+            } else {
+                alert("Please Select Machine");
+            }
+        })
         </script>
 
         <script>
-        $(function() 
-            {
-            $(".but").on("click", function(e) 
-            {
+        $(function() {
+            $(".but").on("click", function(e) {
                 e.preventDefault(); // not really necessary if buttons
-                $(this).prop("disabled", true);    
-                if (this.id=="sub") 
-                {
-                // do the submit and enable other button
-                $("#save").prop("disabled", false);
-                $("#XVVehTypeName").prop("disabled", false);
-                $("#add1").prop("disabled", false);
-                $("#add2").prop("disabled", false);
-                $("#add3").prop("disabled", false);
-                $("#add4").prop("disabled", false);
-                $("#status").prop("disabled", false);
-                $("#typename").prop("disabled", false);
-                }
-                else 
-                {
-                // do the save and enable other button
-                $("#sub").prop("disabled", false);
-                $("#XVVehTypeName").prop("disabled", true);
-                $("#add1").prop("disabled", true);
-                $("#add2").prop("disabled", true);
-                $("#add3").prop("disabled", true);
-                $("#add4").prop("disabled", true);
-                $("#status").prop("disabled", true);
-                $("#typename").prop("disabled", true);
+                $(this).prop("disabled", true);
+                if (this.id == "sub") {
+                    // do the submit and enable other button
+                    $("#save").prop("disabled", false);
+                    $("#XVVehTypeName").prop("disabled", false);
+                    $("#add1").prop("disabled", false);
+                    $("#add2").prop("disabled", false);
+                    $("#add3").prop("disabled", false);
+                    $("#add4").prop("disabled", false);
+                    $("#status").prop("disabled", false);
+                } else {
+                    // do the save and enable other button
+                    $("#sub").prop("disabled", false);
+                    $("#XVVehTypeName").prop("disabled", true);
+                    $("#add1").prop("disabled", true);
+                    $("#add2").prop("disabled", true);
+                    $("#add3").prop("disabled", true);
+                    $("#add4").prop("disabled", true);
+                    $("#status").prop("disabled", true);
                 }
             });
         });
-
         </script>
 
 </body>
 
 </html>
+
