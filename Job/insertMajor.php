@@ -46,7 +46,7 @@ if ( $query ) {
             echo '<script>';
             echo "Swal.fire({
                 title: 'สำเร็จ!',
-                text: 'ทำการเพิ่มข้อมูลประเภทเครื่องจักรเรียบร้อยแล้ว',
+                text: 'ทำการบันทึกข้อมูลใบแจ้งซ่อมเรียบร้อยแล้ว',
                 icon: 'success',
                 confirmButtonText: 'Back'
               }).then(function() {
