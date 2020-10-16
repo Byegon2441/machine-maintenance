@@ -22,7 +22,7 @@ if ( isset( $_POST['updatedata'] ) ) {
         // echo "window.location='ListTypeMachine.php';";
         echo "Swal.fire({
             title: 'สำเร็จ!',
-            text: 'ทำการเพิ่มข้อมูลประเภทเครื่องจักรเรียบร้อยแล้ว',
+            text: 'ทำการแก้ไขชื่อประเภทเครื่องจักรเรียบร้อย',
             icon: 'success',
             confirmButtonText: 'Back'
           }).then(function() {
