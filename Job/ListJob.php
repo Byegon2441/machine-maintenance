@@ -679,6 +679,10 @@
         $('table').on('click', '.RemoveRow', function(){
             $(this).closest('tr').remove();
         });
+
+        $(".modal").on("hidden.bs.modal", function(){
+            document.getElementById("formcancle").reset();
+        });
         </script>
 </body>
 
