@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ระบบซ่อมบำรุงเครื่องจักร : สร้างใบแจ้งซ่อม</title>
+    <title>ระบบซ่อมบำรุงเครื่องจักร : รายละเอียดใบแจ้งซ่อม</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -70,7 +70,23 @@
 
 <body>
 
-<?php include '../Template/templsidebar.php';?>
+<?php include '../Template/templsidebar.php';
+         include '../database/connect.php';
+  
+
+    if(isset($_GET['id'])){
+        $id=$_GET['id'];
+    $sql = " SELECT  m.XVMajDocNo, d.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus ,depart.XVDptCode,depart.XVDptName,depart.XVDptNumber,depart.`XVDptSub-district`,depart.XVDptDistrict,depart.XVDptProvince 
+ FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v,tmstmdepartment depart
+ WHERE m.XVMajDocNo = d.XVMajDocNo 
+ AND m.XVVehCode = v.XVVehCode
+ AND v.XVDptCode = depart.XVDptCode
+ AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
+
+$result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+while ($row=mysqli_fetch_array($result)){
+
+?>
 
 
 
@@ -78,7 +94,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">สร้างใบแจ้งซ่อม</h1>
+                <h1 class="page-header">รายละเอียดใบแจ้งซ่อม</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -92,13 +108,31 @@
                     <!-- /.panel-heading -->
                     <div class="panel-body">
                     <label>ใบแจ้งซ่อม</label>
-                    <form action="insertMajor.php" class="form-inline" method="POST">
+                    <form action="editMajor.php" class="form-inline" method="POST">
+                    <div class="row">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6 ml-auto">
+                                <div class="col text-right">
+                                    <label for="numb">สถานะใบแจ้งซ่อม : <input type="text" name="XVMajDocstatus" id="jobstatus"
+                                            class="form-control" value="<?php echo $row["XVMajStatus"];?>"  readonly></label>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="row">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6 ml-auto">
+                                <div class="col text-right">
+                                    <label for="numb">เลขที่ใบแจ้งซ่อม : <input type="text" name="XVMajDocNo" id="jobid"
+                                            class="form-control" value="<?php echo $row["XVMajDocNo"];?>"  readonly></label>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-md-6"></div>
                             <div class="col-md-6 ml-auto">
                                 <div class="col text-right">
                                     <label for="numb">วันที่แจ้งซ่อม : <input type="text" name="numb"
-                                            class="form-control" data-toggle="datepicker" readonly></label>
+                                            class="form-control" value="<?php echo $row["XDMajDate"];?>" readonly></label>
                                 </div>
                             </div>
                         </div>
@@ -107,15 +141,15 @@
                             <div class="col-md-7">
                                 <div class="col text-right">
                                     <label for="numb">ชื่อเครื่องจักร :</label>
-                                    <select id="XVVehName" name="XVVehName" class="form-control" style="width:60%">
+                                    <select id="XVVehName" name="XVVehName" class="form-control" style="width:60%" disabled>
                                         <?php
                                      include '../database/connect.php';
-                                     $sql = "select * from tmstvehicle; ";
-                                     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-                                     while ($row=mysqli_fetch_array($result)){
+                                     $sql1 = "select * from tmstvehicle; ";
+                                     $result1 = mysqli_query($connect,$sql1) or die(mysqli_query($connect));
+                                     while ($row1=mysqli_fetch_array($result1)){
                                          ?>
-                                        <option value="<?php echo $row["XVVehCode"];?>">
-                                            <?php echo $row["XVVehName"]; ?></option>
+                                        <option value="<?php echo $row1["XVVehCode"];?>" <?php if($row["XVVehCode"] == $row1["XVVehCode"]) echo "selected" ?>>
+                                            <?php echo $row1["XVVehName"]; ?></option>
                                         <?php
                                      }
                                     mysqli_close($connect);
@@ -125,7 +159,7 @@
                             </div>
                             <div class="col-md-5">
                                 <div class="col text-right">
-                                    <label for="numb">หมายเลขเครื่องจักร : <input type="text" size="17" name="noof"
+                                    <label for="numb">หมายเลขเครื่องจักร : <input type="text" size="17" name="noof" value="<?php echo $row["XVVehCode"];?>"
                                             class="form-control" id="noof" readonly></label>
                                 </div>
                             </div>
@@ -134,13 +168,13 @@
                         <div class="row">
                             <div class="col-md-7">
                                 <div class="col text-right">
-                                    <label for="numb">ชื่อไชต์งาน : <input type="text" size="30" name="dname" id="dname"
+                                    <label for="numb">ชื่อไชต์งาน : <input type="text" size="30" name="dname" id="dname" value="<?php echo $row["XVDptName"];?>"
                                             class="form-control" readonly></label>
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="col text-right">
-                                    <label for="numb">หมายเลขไซต์งาน : <input type="text" size="17" name="dcode"
+                                    <label for="numb">หมายเลขไซต์งาน : <input type="text" size="17" name="dcode" value="<?php echo $row["XVDptCode"];?>"
                                             id="dcode" class="form-control" readonly></label>
                                 </div>
                             </div>
@@ -149,13 +183,13 @@
                         <div class="form-row">
                             <div class="col">
                                 <label for="numb">ตำแหน่งเครื่องจักร ณ ปัจจุบัน เลขที่:
-                                    <input type="text" style="margin: 0px 10px;" size="10" name="dnum" id="dnum"
+                                    <input type="text" style="margin: 0px 10px;" size="10" name="dnum" id="dnum" value="<?php echo $row["XVDptNumber"];?>" readonly
                                         class="form-control">
-                                   ตำบล:<input type="text" style="margin: 0px 10px;" size="10" name="dsub" id="dsub"
+                                   ตำบล:<input type="text" style="margin: 0px 10px;" size="10" name="dsub" id="dsub" value="<?php echo $row["XVDptSub-district"];?>" readonly
                                         class="form-control">
-                                    อำเภอ:<input type="text" style="margin: 0px 10px;" size="10" name="ddis" id="ddis"
+                                    อำเภอ:<input type="text" style="margin: 0px 10px;" size="10" name="ddis" id="ddis" value="<?php echo $row["XVDptDistrict"];?>" readonly
                                         class="form-control">
-                                     จังหวัด:<input type="text" style="margin: 0px 10px;" size="10" name="dpro" id="dpro"
+                                     จังหวัด:<input type="text" style="margin: 0px 10px;" size="10" name="dpro" id="dpro" value="<?php echo $row["XVDptProvince"];?>" readonly
                                         class="form-control"></label>
                             </div>
                         </div>
@@ -175,26 +209,37 @@
                                             <th style="background:#CCCCCC;">#</th>
                                             <th style="background:#CCCCCC;">เรื่องที่แจ้ง</th>
                                             <th style="background:#CCCCCC;">สาเหตุที่ทราบ</th>
-                                            <th style="background:#CCCCCC;"></th>
+                                            
                                         </tr>
                                     </thead>
+                                   
                                     <tbody class="sub">
+                                    <?php 
+                                    include '../database/connect.php';
+                                        $sql2 = "SELECT jd.XIMajdSeqNo,jd.XVMajdSubject,jd.XVMajdCause
+                                         FROM  tdoctmajob j ,tdoctmajobdetail jd
+                                         WHERE  j.XVMajDocNo = jd.XVMajDocNo
+                                         AND j.XVMajDocNo = '$id'";
+                                        $result2 = mysqli_query($connect,$sql2) or die(mysqli_query($connect));
+                                        while ($row2=mysqli_fetch_array($result2)){
+                                    
+                                    ?>
+
                                         <tr id='addr0'>
-                                            <td>1</td>
-                                            <td><input type="text" name="n_sub[]" placeholder="กรุณากรอกเรื่องที่แจ้ง">
+                                            <td><?php echo $row2["XIMajdSeqNo"];?></td>
+                                            <td><input type="text" name="n_sub[]" placeholder="กรุณากรอกเรื่องที่แจ้ง" value="<?php echo $row2["XVMajdSubject"];?>" readonly> 
                                             </td>
-                                            <td><input type="text" name="sub[]" placeholder="กรุณากรอกสาเหตุ"></td>
-                                            <td><button type="button" class="btn btn-danger btn-circle increase-row RemoveRow"><i class="fa fa-minus"></button></td>
+                                            <td><input type="text" name="sub[]" placeholder="กรุณากรอกสาเหตุ" value="<?php echo $row2["XVMajdCause"];?>" readonly></td>
+                                            
                                         </tr>
                                         <tr id='addr1'></tr>
-
+                                        <?php } ?> 
                                     </tbody>
+
                                 </table>
                             </div>
                             <div class="panel-body" style="margin:0px;">
-                                <button type="button" id="add_row" class="btn btn-success btn-circle add-row"
-                                    style="float:right;" title="คลิกเพื่อเพิ่มแถว"><i class="fa fa-plus"></i>
-                                </button>
+                                
                             </div>
                         </div>
 
@@ -217,9 +262,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="col text-right">
-                                    <!-- <button type="button" class="btn btn-primary" data-dismiss="modal">บันทึก</button> -->
-                                    <input type="submit" class="btn btn-success" value="บันทึก" name="submit">
-                                    <!-- <button type="submit" class="btn btn-success" data-dismiss="modal">ส่ง</button> -->
+                                
                                 </div>
                             </div>
                         </div>
@@ -238,128 +281,15 @@
     </div>
     <!-- /#wrapper -->
 
+    <?php }
+                            }?>
 
-
-    <script src="../vendor/js/datepicker.js"></script>
-        <script src="../vendor/js/datepicker.th-TH.js"></script>
-<script>
-  $(function() {
-            $('[data-toggle="datepicker"]').datepicker({
-                //autoHide: true,
-                autoPick: true,
-                language: 'th-TH',
-                //zIndex: 2048,
-                format: 'dd/mm/yyyy'
-            });
-        });
-
-        $('#XVVehName').change(() => {
-            var id = $('#XVVehName').val();
-            if (id != '') {
-                console.log(id)
-                $.ajax({
-                    url: "fetch.php",
-                    method: "POST",
-                    data: {
-                        id: id
-                    },
-                    dataType: "JSON",
-                    success: function(data) {
-                        $('#noof').val(data.numb);
-                        $('#dcode').val(data.dcode);
-                        $('#dname').val(data.dname);
-                        $('#dnum').val(data.dnum);
-                        $('#dsub').val(data.dsub);
-                        $('#ddis').val(data.ddis);
-                        $('#dpro').val(data.dpro);
-                    }
-                })
-            } else {
-                alert("Please Select Machine");
-            }
-        })
-
-        $(document).ready(function() {
-            let i = 1;
-            $("#add_row").click(function() {
-                $('tr').find('input').prop('disabled', false)
-                $('#addr' + i).html("<td>" + (i + 1) +
-                    "</td><td><input type='text' name='n_sub[]'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='sub[]' placeholder='กรุณากรอกสาเหตุ'/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td>"
-                );
-
-                $('#tab_logic').append('<tr id="addr' + (i + 1) + '"></tr>');
-                i++;
-            });
-        });
-
-
-        $('table').on('click', '.RemoveRow', function(){
-            $(this).closest('tr').remove();
-        });
-
-
-</script>
+ 
 
    
 
 </body>
 
 </html>
-<?php
-include '../database/connect.php';
-if(isset($_POST['submit'])){
 
 
-$name = $_POST['nameofuser'];
-$dnum = $_POST['dnum'];
-$dsub = $_POST['dsub'];
-$ddis = $_POST['ddis'];
-$dpro = $_POST['dpro'];
-$noof = $_POST['noof'];
-
-$sql = "INSERT INTO tdoctmajob(XVMajWhoInformant,XVMajDocStatus,XVMajNumber,`XVMajSub-district`,XVMajDistrict,XVMajProvince,XVVehCode) VALUES ('$name', '1', '$dnum', '$dsub', '$ddis', '$dpro', '$noof')";
-$query = mysqli_query( $connect, $sql );
-if ( $query ) {
-    $sql = 'SELECT XVMajDocNo FROM tdoctmajob ORDER BY XVMajDocNo DESC LIMIT 1';
-    $result = mysqli_query( $connect, $sql );
-    $row = mysqli_fetch_array( $result, MYSQLI_ASSOC );
-    $last_id = $row['XVMajDocNo'];
-    $cnt = 1;
-    $nvals = count( $_REQUEST['n_sub'] );
-    date_default_timezone_set( 'Asia/Bangkok' );
-     $ti =  date ( 'Y-m-d H:i:S' );
-    $query1 = false;
-    for ( $i = 0; $i < $nvals; $i++ ) {
-        $n_sub = $_REQUEST['n_sub'][$i];
-        $sub = $_REQUEST['sub'][$i];
-        $sql1 = "INSERT INTO tdoctmajobdetail(XVMajDocNo,XIMajdSeqNo,XVMajdSubject,XVMajdCause) VALUES ('$last_id', '$cnt', '$n_sub', '$sub')";
-        $query1 = mysqli_query( $connect, $sql1 );
-
-        $cnt++;
-    }
-    if ( $query1 ) {
-        $sql2 = "INSERT INTO tdoctmajobdate(XVMajDocNo,XDMajDate,XDMajKeyTime) VALUES ('$last_id', '$ti', '$ti')";
-        $query2 = mysqli_query( $connect, $sql2 );
-        if ( $query2 ) {
-            echo '<script>';
-            echo "Swal.fire({
-                title: 'สำเร็จ!',
-                text: 'ทำการบันทึกข้อมูลใบแจ้งซ่อมเรียบร้อยแล้ว',
-                icon: 'success',
-                confirmButtonText: 'Back'
-              }).then(function() {
-                window.location = 'ListJob.php';
-            });";
-            echo '</script>';
-        }else{
-            echo mysqli_error( $connect );
-        }
-    } else {
-        echo mysqli_error( $connect );
-    }
-} else {
-    echo mysqli_error( $connect );
-}
-
-}
-?>
