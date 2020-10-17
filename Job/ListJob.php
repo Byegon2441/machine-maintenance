@@ -158,7 +158,9 @@
                                             <td><input type="text" name="n_sub[]" placeholder="กรุณากรอกเรื่องที่แจ้ง">
                                             </td>
                                             <td><input type="text" name="sub[]" placeholder="กรุณากรอกสาเหตุ"></td>
-                                            <td><button type="button" class="btn btn-danger btn-circle increase-row RemoveRow"><i class="fa fa-minus"></button></td>
+                                            <td><button type="button"
+                                                    class="btn btn-danger btn-circle increase-row RemoveRow"><i
+                                                        class="fa fa-minus"></button></td>
                                         </tr>
                                         <tr id='addr1'></tr>
 
@@ -205,7 +207,7 @@
     <!-- modal insert -->
 
 
-<!-- modal update -->
+    <!-- modal update -->
     <div class="modal fade bd-example-modal-lg1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -218,18 +220,29 @@
                 </div>
                 <div class="modal-body">
                     <label>ใบแจ้งซ่อม</label>
+
+
                     <form action="updateMajor.php" class="form-inline" method="POST" id="formcancle">
-                        
-                        
-                    <div class="row">
+
+
+                        <div class="row">
                             <div class="col-md-6"></div>
                             <div class="col-md-6 ml-auto">
                                 <div class="col text-right">
-                                    <label for="numb">เลขที่ใบแจ้งซ่อม : <input type="text" name="XVMajDocNo" id="jobid"
-                                            class="form-control" readonly></label>
+                                    <label for="numb">เลขที่ใบแจ้งซ่อม : <input type="text" name="XVMajDocNoo"
+                                            id="jobid" class="form-control" readonly></label>
                                 </div>
                             </div>
                         </div>
+                        <!-- <div class="row">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6 ml-auto">
+                                <div class="col text-right">
+                                    <label for="numb">ทดสอบ : <input type="text" name="XVMajDocNo" id="testjson"
+                                            class="form-control" readonly></label>
+                                </div>
+                            </div>
+                        </div> -->
 
                         <div class="row">
                             <div class="col-md-6"></div>
@@ -263,8 +276,8 @@
                             </div>
                             <div class="col-md-5">
                                 <div class="col text-right">
-                                    <label for="numb">หมายเลขเครื่องจักร : <input type="text" size="17" name="noof"id="vehcode2"
-                                            class="form-control" id="noof" readonly></label>
+                                    <label for="numb">หมายเลขเครื่องจักร : <input type="text" size="17" name="noof"
+                                            id="vehcode2" class="form-control" id="noof" readonly></label>
                                 </div>
                             </div>
                         </div>
@@ -272,14 +285,14 @@
                         <div class="row">
                             <div class="col-md-7">
                                 <div class="col text-right">
-                                    <label for="numb">ชื่อไชต์งาน : <input type="text" size="30" name="dname" id="department_name"
-                                            class="form-control" readonly></label>
+                                    <label for="numb">ชื่อไชต์งาน : <input type="text" size="30" name="dname"
+                                            id="department_name" class="form-control" readonly></label>
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="col text-right">
                                     <label for="numb">หมายเลขหน่วยงาน : <input type="text" size="17" name="dcode"
-                                    id="department_id" class="form-control" readonly></label>
+                                            id="department_id" class="form-control" readonly></label>
                                 </div>
                             </div>
                         </div>
@@ -302,9 +315,6 @@
                             <div class="panel-heading">
                                 <h3 class="panel-title">รายละเอียดการแจ้งซ่อม</h3>
                             </div>
-                            <table>
-
-                            </table>
 
                             <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                 <table class="table table-bordered" id="tab_logic2">
@@ -316,22 +326,24 @@
                                             <th style="background:#CCCCCC;"></th>
                                         </tr>
                                     </thead>
-                                    <tbody class="sub">
+                                    <tbody class="sub" id="div1">
                                         <tr id='addrr0'>
                                             <td>1</td>
                                             <td><input type="text" name="n_subb[]" placeholder="กรุณากรอกเรื่องที่แจ้ง">
                                             </td>
                                             <td><input type="text" name="subb[]" placeholder="กรุณากรอกสาเหตุ"></td>
-                                            <td><button type="button" class="btn btn-danger btn-circle increase-row RemoveRow btndis"><i class="fa fa-minus"></button></td>
+                                            <td><button type="button"
+                                                    class="btn btn-danger btn-circle increase-row RemoveRow btndis"><i
+                                                        class="fa fa-minus"></button></td>
                                         </tr>
                                         <tr id='addrr1'></tr>
-
                                     </tbody>
                                 </table>
                             </div>
                             <div class="panel-body" style="margin:0px;">
-                                <button type="button" id="add_row1" class="btn btn-success btn-circle increase-row btndis"
-                                    style="float:right;" title="คลิกเพื่อเพิ่มแถว"><i class="fa fa-plus"></i>
+                                <button type="button" id="add_row1"
+                                    class="btn btn-success btn-circle increase-row btndis" style="float:right;"
+                                    title="คลิกเพื่อเพิ่มแถว"><i class="fa fa-plus"></i>
                                 </button>
                             </div>
                         </div>
@@ -366,12 +378,12 @@
             </div>
         </div>
     </div>
-<!-- modal update -->
+    <!-- modal update -->
 
 
-<!-- modal cancle -->
+    <!-- modal cancle -->
 
-<div class="modal fade" id="cancleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="cancleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -395,7 +407,7 @@
         </div>
     </div>
 
-<!-- modal cancle -->
+    <!-- modal cancle -->
 
 
     <div id="wrapper">
@@ -458,7 +470,7 @@
           ?>
 
                                     <tr class="odd gradeA">
-                                    <td><?php echo $row["XVMajDocNo"];?></td>
+                                        <td><?php echo $row["XVMajDocNo"];?></td>
                                         <td><?php echo $row["XDMajDate"];?></td>
                                         <td><?php echo $row["XVVehCode"];?></td>
                                         <td><?php echo $row["XVVehName"];?></td>
@@ -470,25 +482,25 @@
                                             }else{
                                                 echo 'ยกเลิก'; 
                                             } ?></td>
-                                            <td style="display:none;"><?php echo $row["XVDptName"];?></td>
-                                            <td style="display:none;"><?php echo $row["XVDptCode"];?></td>
-                                            <td style="display:none;"><?php echo $row["XVDptNumber"];?></td>
-                                            <td style="display:none;"><?php echo $row["XVDptSub-district"];?></td>
-                                            <td style="display:none;"><?php echo $row["XVDptDistrict"];?></td>
-                                            <td style="display:none;"><?php echo $row["XVDptProvince"];?></td>
+                                        <td style="display:none;"><?php echo $row["XVDptName"];?></td>
+                                        <td style="display:none;"><?php echo $row["XVDptCode"];?></td>
+                                        <td style="display:none;"><?php echo $row["XVDptNumber"];?></td>
+                                        <td style="display:none;"><?php echo $row["XVDptSub-district"];?></td>
+                                        <td style="display:none;"><?php echo $row["XVDptDistrict"];?></td>
+                                        <td style="display:none;"><?php echo $row["XVDptProvince"];?></td>
 
-                                    <?php if($row["XVMajDocStatus"]!=3){
+                                        <?php if($row["XVMajDocStatus"]!=3){
 
                                         ?>
-                                        <td align="center"><button class='btn btn-primary editbtn' type='button'
-                                                >รายละเอียด</button></td>
-                                        <td align="center"><button class='btn btn-danger canclebtn' type='button'
-                                                >ยกเลิก</button></td>
-                                    <?php }else{ ?>
-                                        <td align="center"><button class='btn btn-primary editbtn' type='button'
-                                                >รายละเอียด</button></td>
-                                                <td align="center"></td>
-                                    <?php } ?>
+                                        <td align="center"><button class='btn btn-primary editbtn'
+                                                type='button'>รายละเอียด</button></td>
+                                        <td align="center"><button class='btn btn-danger canclebtn'
+                                                type='button'>ยกเลิก</button></td>
+                                        <?php }else{ ?>
+                                        <td align="center"><button class='btn btn-primary editbtn'
+                                                type='button'>รายละเอียด</button></td>
+                                        <td align="center"></td>
+                                        <?php } ?>
                                     </tr>
                                     <?php $count++;}
                                         mysqli_close($connect);
@@ -520,6 +532,18 @@
         <script src="../vendor/js/datepicker.th-TH.js"></script>
         <!-- Page-Level Demo Scripts - Tables - Use for reference -->
         <script>
+        function addNo(a) {
+            let j = a
+            $("#add_row1").click(() => {
+                $('tr').find('input').prop('disabled', false)
+                $('#addrr' + j).html("<td>" + (j + 1) +
+                    "</td><td><input type='text' name='n_subb[]'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='subb[]' placeholder='กรุณากรอกสาเหตุ'/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td>"
+                );
+
+                $('#tab_logic2').append('<tr id="addrr' + (j + 1) + '"></tr>');
+                j++;
+            });
+        }
         $(document).ready(function() {
             $('#dataTables-example').DataTable({
                 responsive: true
@@ -536,6 +560,8 @@
             });
         });
 
+
+
         $(document).ready(function() {
             let i = 1;
             $("#add_row").click(function() {
@@ -549,17 +575,18 @@
             });
         });
 
-        $(document).ready(function() {
-            let j = 1;
-            $("#add_row1").click(function() {
-                $('tr').find('input').prop('disabled', false)
-                $('#addrr' + j).html("<td>" + (j + 1) + "</td><td><input type='text' name='n_subb[]'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='subb[]' placeholder='กรุณากรอกสาเหตุ'/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td>"
-                );
+        // $(document).ready(function() {
+        //     let j = countKey
+        //     $("#add_row1").click(() => {
+        //         $('tr').find('input').prop('disabled', false)
+        //         $('#addrr' + j).html("<td>" + (j + 1) +
+        //             "</td><td><input type='text' name='n_subb[]'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='subb[]' placeholder='กรุณากรอกสาเหตุ'/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td>"
+        //         );
 
-                $('#tab_logic2').append('<tr id="addrr' + (j + 1) + '"></tr>');
-                j++;
-            });
-        });
+        //         $('#tab_logic2').append('<tr id="addrr' + (j + 1) + '"></tr>');
+        //         j++;
+        //     });
+        // });
 
 
 
@@ -617,22 +644,8 @@
         })
 
         $(document).ready(function() {
-        $('.canclebtn').on('click', function() {
-            $('#cancleModal').modal('show')
-            $tr = $(this).closest('tr')
-
-            var data = $tr.children("td").map(function() {
-                return $(this).text()
-            }).get()
-
-            console.log(data)
-            $('#cancle_id').val(data[0])
-        })
-    })
-
-        $(document).ready(function() {
-            $('.editbtn').on('click', function() {
-                $('.bd-example-modal-lg1').modal('show')
+            $('.canclebtn').on('click', function() {
+                $('#cancleModal').modal('show')
                 $tr = $(this).closest('tr')
 
                 var data = $tr.children("td").map(function() {
@@ -640,47 +653,101 @@
                 }).get()
 
                 console.log(data)
-            $('#jobid').val(data[0])
-            $('#jobdate').val(data[1])   
-            $('#vehcode').val(data[2])
-            $('#vehcode2').val(data[2]) 
-            
-            $('#department_name').val(data[6]) //6 รายละเอียด 7 ยกเลิก
-            $('#department_id').val(data[7]) 
-            $('#number').val(data[8]) 
-            $('#sub').val(data[9]) 
-            $('#dis').val(data[10]) 
-            $('#pro').val(data[11]) 
-
-                
-            if(data[5]=='ยกเลิก'){
-                $('#vehcode').prop('disabled', true);
-                $('#number').prop('readonly', true);
-                $('#sub').prop('readonly', true);
-                $('#dis').prop('readonly', true);
-                $('#pro').prop('readonly', true);
-                $('#jobid').prop('readonly', true);
-                $('.btndis').hide()
-
-            }else{
-                $('#vehcode').prop('disabled', false);
-                $('#number').prop('readonly', false);
-                $('#sub').prop('readonly', false);
-                $('#dis').prop('readonly', false);
-                $('#pro').prop('readonly', false);
-                $('#jobid').prop('readonly', false);
-                $('.btndis').show()
-            }
-
-
+                $('#cancle_id').val(data[0])
             })
         })
 
-        $('table').on('click', '.RemoveRow', function(){
+        $(document).ready(function() {
+            $('.editbtn').on('click', function() {
+                $('#div1').empty()
+                var countKey = 0
+                $('.bd-example-modal-lg1').modal('show')
+                $tr = $(this).closest('tr')
+
+                var data = $tr.children("td").map(function() {
+                    return $(this).text()
+                }).get()
+                $.ajax({
+                    url: "test.php",
+                    method: "POST",
+                    data: {
+                        id: data[0]
+                    },
+                    dataType: "JSON",
+                    success: function(rows) {
+                        countKey = Object.keys(rows).length;
+                        addNo(countKey)
+                        $('#tab_logic2').append('<tr id="addrr0"></tr>');
+                        let j = 0
+                        for (var k = 0; k < countKey; k++) {
+                            $('tr').find('input').prop('disabled', false)
+                            $('#addrr' + j).html("<td>" + (j + 1) +
+                                "</td><td><input type='text' name='n_subb[]' value='" +
+                                rows[k] +
+                                "'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='subb[]' value='" +
+                                rows[k] +
+                                "' placeholder='กรุณากรอกสาเหตุ'/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td>"
+                            );
+
+                            $('#tab_logic2').append('<tr id="addrr' + (j + 1) + '"></tr>');
+                            j++
+                        }
+                    }
+
+                })
+                $('#jobid').val(data[0])
+                $('#jobdate').val(data[1])
+                $('#vehcode').val(data[2])
+                $('#vehcode2').val(data[2])
+
+                $('#department_name').val(data[6]) //6 รายละเอียด 7 ยกเลิก
+                $('#department_id').val(data[7])
+                $('#number').val(data[8])
+                $('#sub').val(data[9])
+                $('#dis').val(data[10])
+                $('#pro').val(data[11])
+
+
+                if (data[5] == 'ยกเลิก') {
+                    $('#vehcode').prop('disabled', true);
+                    $('#number').prop('readonly', true);
+                    $('#sub').prop('readonly', true);
+                    $('#dis').prop('readonly', true);
+                    $('#pro').prop('readonly', true);
+                    $('#jobid').prop('readonly', true);
+                    $('.btndis').hide()
+
+                } else {
+                    $('#vehcode').prop('disabled', false);
+                    $('#number').prop('readonly', false);
+                    $('#sub').prop('readonly', false);
+                    $('#dis').prop('readonly', false);
+                    $('#pro').prop('readonly', false);
+                    $('#jobid').prop('readonly', false);
+                    $('.btndis').show()
+                }
+
+                $('#jobid').change(function() {
+                    $.ajax({
+                        type: "POST",
+                        url: "test.php",
+                        data: {
+                            text: $(this).val()
+                        }
+                    });
+                });
+                return countKey
+
+
+            })
+
+        })
+
+        $('table').on('click', '.RemoveRow', function() {
             $(this).closest('tr').remove();
         });
 
-        $(".modal").on("hidden.bs.modal", function(){
+        $(".modal").on("hidden.bs.modal", function() {
             document.getElementById("formcancle").reset();
         });
         </script>
