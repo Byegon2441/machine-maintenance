@@ -188,7 +188,7 @@
                         <div class="modal-footer">
                             <div class="col-md-6">
                                 <div class="col text-left">
-                                    <button type="button" class="btn btn-danger mr-auto">กลับ</button>
+                                    <button type="button" class="btn btn-danger mr-auto" data-dismiss="modal">กลับ</button>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -362,13 +362,13 @@
                         <div class="modal-footer">
                             <div class="col-md-6">
                                 <div class="col text-left">
-                                    <button type="button" class="btn btn-danger mr-auto">กลับ</button>
+                                    <button type="button" class="btn btn-danger mr-auto" data-dismiss="modal">กลับ</button>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="col text-right">
-                                    <!-- <button type="button" class="btn btn-primary" data-dismiss="modal">บันทึก</button> -->
-                                    <input type="submit" class="btn btn-success btndis" value="บันทึก">
+                                <input type="submit" class="btn btn-primary btndis" name= "submit" value="ส่งใบแจ้งซ่อม">
+                                    <input type="submit" class="btn btn-success btndis" name= "save" value="บันทึก">
                                     <!-- <button type="submit" class="btn btn-success" data-dismiss="modal">ส่ง</button> -->
                                 </div>
                             </div>

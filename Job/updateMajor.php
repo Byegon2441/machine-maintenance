@@ -109,6 +109,41 @@ if($query1){
        
 //     }
 
+
+// }else if(isset($_POST['submit'])){
+//     $sql = "UPDATE tdoctmajob
+//         SET XVMajWhoInformant = '$name' ,
+//         XVMajNumber = '$dnum',
+//         `XVMajSub-district` = '$dsub',
+//         XVMajStatus='แจ้งซ่อม',
+//         XVMajDocStatus ='2',
+//         XVMajDistrict = '$ddis',
+//         XVMajProvince='$dpro',
+//         XVVehCode='$noof'
+//         WHERE XVMajDocNo = '$XVMajDocNo' ";
+        
+//         $query = mysqli_query( $connect, $sql );
+//     if ( $query ) {
+        
+//                 echo '<script>';
+//                 echo "Swal.fire({
+//                     title: 'สำเร็จ!',
+//                     text: 'ทำการส่งข้อมูลใบแจ้งซ่อมให้หัวหน้าช่างเรียบร้อยแล้ว',
+//                     icon: 'success',
+//                     confirmButtonText: 'Back'
+//                 }).then(function() {
+//                     window.location = 'ListJob.php';
+//                 });";
+//                 echo '</script>';
+//             }else{
+//                 echo mysqli_error( $connect );
+        
+//         }
+
+
+// }
+
+
 ?>
 </body>
 
