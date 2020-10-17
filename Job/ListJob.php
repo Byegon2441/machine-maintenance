@@ -51,9 +51,9 @@
 <?php include '../Template/templsidebar.php';?>
 
 
-<!-- modal cancle -->
+    <!-- modal cancle -->
 
-<div class="modal fade" id="cancleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="cancleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -77,7 +77,7 @@
         </div>
     </div>
 
-<!-- modal cancle -->
+    <!-- modal cancle -->
 
 <div id="wrapper">
         <div id="page-wrapper">
@@ -133,7 +133,7 @@
           ?>
 
                                     <tr class="odd gradeA">
-                                    <td><?php echo $row["XVMajDocNo"];?></td>
+                                        <td><?php echo $row["XVMajDocNo"];?></td>
                                         <td><?php echo $row["XDMajDate"];?></td>
                                         <td><?php echo $row["XVVehCode"];?></td>
                                         <td><?php echo $row["XVVehName"];?></td>
@@ -195,6 +195,18 @@
         <script src="../vendor/js/datepicker.js"></script>
         <script src="../vendor/js/datepicker.th-TH.js"></script>
         <script>
+        function addNo(a) {
+            let j = a
+            $("#add_row1").click(() => {
+                $('tr').find('input').prop('disabled', false)
+                $('#addrr' + j).html("<td>" + (j + 1) +
+                    "</td><td><input type='text' name='n_subb[]'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='subb[]' placeholder='กรุณากรอกสาเหตุ'/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td>"
+                );
+
+                $('#tab_logic2').append('<tr id="addrr' + (j + 1) + '"></tr>');
+                j++;
+            });
+        }
         $(document).ready(function() {
             $('#dataTables-example').DataTable({
                 responsive: true
@@ -202,16 +214,17 @@
         });
 
         $(document).ready(function() {
-        $('.canclebtn').on('click', function() {
-            $('#cancleModal').modal('show')
-            $tr = $(this).closest('tr')
+            $('.canclebtn').on('click', function() {
+                $('#cancleModal').modal('show')
+                $tr = $(this).closest('tr')
 
-            var data = $tr.children("td").map(function() {
-                return $(this).text()
-            }).get()
+                var data = $tr.children("td").map(function() {
+                    return $(this).text()
+                }).get()
 
-            console.log(data)
-            $('#cancle_id').val(data[0])
+                console.log(data)
+                $('#cancle_id').val(data[0])
+            })
         })
     })
         </script>
