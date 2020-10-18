@@ -12,7 +12,7 @@
 <body>
     <?php
         include '../database/connect.php';
-        $XVMajDocNo = $_POST['XVMajDocNoo'];
+        $XVMajDocNo = $_POST['XVMajDocNo'];
         $name = $_POST['nameofuser'];
         $dnum = $_POST['dnum'];
         $dsub = $_POST['dsub'];
@@ -35,11 +35,11 @@ while( $row = mysqli_fetch_array($query))
 echo $XVMajDocNo;
 if($query1){
     $cnt = 1;
-    $nvals = count( $_REQUEST['n_subb'] );
+    $nvals = count( $_REQUEST['n_sub'] );
     $query2 = false;
     for ( $i = 0; $i < $nvals; $i++ ) {
-        $n_sub = $_REQUEST['n_subb'][$i];
-        $sub = $_REQUEST['subb'][$i];
+        $n_sub = $_REQUEST['n_sub'][$i];
+        $sub = $_REQUEST['sub'][$i];
         if(!empty($n_sub) && !empty($sub)){
             $sql2 = "INSERT INTO tdoctmajobdetail(XVMajDocNo,XIMajdSeqNo,XVMajdSubject,XVMajdCause) VALUES ('$XVMajDocNo', '$cnt', '$n_sub', '$sub')";
             $query2 = mysqli_query( $connect, $sql2 );
