@@ -155,7 +155,7 @@
                                             </td>
                                             <td><input type="text" name="sub[]" placeholder="กรุณากรอกสาเหตุ"></td>
                                             <td><button type="button"
-                                                    class="btn btn-danger btn-circle increase-row RemoveRow"><i
+                                                    class="btn btn-danger btn-circle increase-row RemoveRow btndis"><i
                                                         class="fa fa-minus"></button></td>
                                         </tr>
                                         <tr id='addr1'></tr>

@@ -229,7 +229,9 @@ while ($row=mysqli_fetch_array($result)){
                                             <td><input type="text" name="n_sub[]" placeholder="กรุณากรอกเรื่องที่แจ้ง" value="<?php echo $row2["XVMajdSubject"];?>" readonly> 
                                             </td>
                                             <td><input type="text" name="sub[]" placeholder="กรุณากรอกสาเหตุ" value="<?php echo $row2["XVMajdCause"];?>" readonly></td>
-                                            
+                                            <td><button type="button"
+                                                    class="btn btn-danger btn-circle increase-row RemoveRow btndis"><i
+                                                        class="fa fa-minus"></button></td>
                                         </tr>
                                         <tr id='addr1'></tr>
                                         <?php } ?> 
