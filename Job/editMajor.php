@@ -412,7 +412,7 @@ if ( $query ) {
                        
                                         }
         }
-    }
+    }//save
 
 
 }else if(isset($_POST['submit'])){
@@ -435,22 +435,47 @@ $noof = $_POST['noof'];
         WHERE XVMajDocNo = '$XVMajDocNo' ";
         
         $query = mysqli_query( $connect, $sql );
-    if ( $query ) {
-        
-                echo '<script>';
-                echo "Swal.fire({
-                    title: 'สำเร็จ!',
-                    text: 'ทำการส่งข้อมูลใบแจ้งซ่อมให้หัวหน้าช่างเรียบร้อยแล้ว',
-                    icon: 'success',
-                    confirmButtonText: 'Back'
-                }).then(function() {
-                    window.location = 'ListJob.php';
-                });";
-                echo '</script>';
-            }else{
-                echo mysqli_error( $connect );
+        if ( $query ) {
+            $sql = "SELECT XIMajdSeqNo FROM tdoctmajobdetail WHERE XVMajDocNo = '$XVMajDocNo'";
+            $query = mysqli_query( $connect, $sql );
+            $query1 = false;
+            while( $row = mysqli_fetch_array($query))
+            {
+                $seq = $row['XIMajdSeqNo'];
+                $sql1 = "DELETE FROM tdoctmajobdetail  WHERE XIMajdSeqNo = $seq AND XVMajDocNo = '$XVMajDocNo'";
+                $query1 = mysqli_query( $connect, $sql1 );
+                // echo $seq;
+            }   
+            $cnt = 1;
+            $nvals = count( $_REQUEST['n_sub'] );
+            $query2 = false;
+            for ( $i = 0; $i < $nvals; $i++ ) {
+                $n_sub = $_REQUEST['n_sub'][$i];
+                $sub = $_REQUEST['sub'][$i];
+                if(!empty($n_sub) && !empty($sub)){
+                    $sql2 = "INSERT INTO tdoctmajobdetail(XVMajDocNo,XIMajdSeqNo,XVMajdSubject,XVMajdCause) VALUES ('$XVMajDocNo', '$cnt', '$n_sub', '$sub')";
+                    $query2 = mysqli_query( $connect, $sql2 );
+                    $cnt++;
+                }
+            }
+            if($query2){
+                if($query2){
+                    echo '<script>';
+                                echo "Swal.fire({
+                                    title: 'สำเร็จ!',
+                                    text: 'ทำการส่งข้อมูลใบแจ้งซ่อมให้หัวหน้าช่างเรียบร้อยแล้ว',
+                                    icon: 'success',
+                                    confirmButtonText: 'Back'
+                                  }).then(function() {
+                                    window.location = 'ListJob.php';
+                                });";
+                                echo '</script>';
+                            }else{ echo mysqli_error( $connect );
+                           
+                                            }
+            }
         }
-}
+}//submit
 ?>
 </body>
 
