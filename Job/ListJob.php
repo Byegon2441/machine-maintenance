@@ -226,7 +226,7 @@
                 $('#cancle_id').val(data[0])
             })
         })
-    })
+    
         </script>
 
 </body>
