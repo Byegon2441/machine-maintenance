@@ -51,24 +51,47 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
-                                    <?php
-    $sql = "SELECT ty.XVMachinePartsTypeCode,ty.XVMachinePartsTypeName
-    FROM tmstmmachine_parts_type ty";
+<?php
+    $sql = "SELECT tj.XVMajDocNo,tj.XVMaCarStatus,tv.XVVehEngineNumber,tv.XVVehName,td.XDMajDate
+    FROM tdoctmajob tj,tmstvehicle tv,tdoctmajobdate td
+    WHERE tj.XVVehCode = tv.XVVehCode
+    AND tj.XVMajDocNo = td.XVMajDocNo
+    AND tj.XVMajDocStatus = 2";
     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
     $count = 1;
     while ($row=mysqli_fetch_array($result)){
 ?>
                                     <tr class="odd gradeA">
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td align="center"><input class='btn btn-primary' type='button'
-                                                value='จัดการ'></td>
+                                        <td><?php echo $row["XVMajDocNo"];?></td>
+                                        <td><?php echo $row["XDMajDate"];?></td>
+                                        <td><?php echo $row["XVVehEngineNumber"];?></td>
+                                        <td><?php echo $row["XVVehName"];?></td>
+                                        <td><?php echo $row["XVMaCarStatus"];?></td>
+                                  <?php
+                                        if($row["XVMaCarStatus"] == "รอนำรถประเมินอะไหล่"){
+                                   ?>
+                                        <!--td align="center"><input class='btn btn-primary' type='button'
+                                            value='จัดการ></td-->
+                                        <td align="center">
+                                        <a class='btn btn-primary editbtn' href="addDataCheck.php?id=<?php echo $row["XVMajDocNo"] ?>"
+                                            >จัดการ</a>
+                                        </td>
+                                  <?php
+                                  }
+                                        else if($row["XVMaCarStatus"] == "รออนุมัติซ่อม"){
+                                      ?>
+                                      <!--td align="center"><input class='btn btn-primary' type='button'
+                                          value='จัดการ'></td-->
+                                          <td align="center">
+                                          <a class='btn btn-primary editbtn' href="addEngiCheck.php?id=<?php echo $row["XVMajDocNo"] ?>"
+                                              >จัดการ</a>
+                                          </td>
+                                      <?php
+                                        }
+                                   ?>
                                     </tr>
-                                    <?php $count++;} ?>
+                                    <?php $count++;}
+                                    mysqli_close($connect); ?>
                                 </tbody>
                             </table>
                         </div>
@@ -85,10 +108,12 @@
 <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-            "scrollY": true,
-            "scrollX": true
+          "scrollY": true,
+          "scrollX": true
         });
     });
+
+
 
     $(document).ready(function() {
         $('.editbtn').on('click', function() {

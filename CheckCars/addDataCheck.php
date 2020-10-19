@@ -32,7 +32,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.6.0/dist/sweetalert2.all.min.js"></script>
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    
+
     <style>
     table td {
         position: relative;
@@ -89,7 +89,7 @@
                         <div class="panel-body">
                         <label>ใบแจ้งซ่อม</label>
                             <form action="" class="form-inline">
-                                
+
 
                                 <div class="row">
                                     <div class="col-md-6"></div>
@@ -219,7 +219,7 @@
                                 <div class="modal-footer">
                                     <div class="col-md-6">
                                         <div class="col text-left">
-                                            <button type="button" class="btn btn-danger mr-auto">กลับ</button>
+                                            <button type="button" class="btn btn-danger mr-auto"><a style="color: white; text-decoration: none; " href="javascript:history.back();">กลับ</a></button>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
