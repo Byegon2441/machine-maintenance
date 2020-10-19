@@ -209,9 +209,6 @@ while ($row=mysqli_fetch_array($result)){
                                     <div class="panel-heading">
                                         <h3 class="panel-title">รายละเอียดการแจ้งซ่อม</h3>
                                     </div>
-                                    <table>
-
-                                    </table>
 
                                     <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                         <table class="table table-bordered" id="tab_logic">
