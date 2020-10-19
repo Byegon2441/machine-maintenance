@@ -78,7 +78,7 @@
                     <ul class="nav" id="side-menu">
 
                         <li>
-                            <a href="AllowMainte.php"><i class="fa fa-th-list fa-fw"></i> อนุมัติการซ่อม</a>
+                            <a href="ListAllowMainte.php"><i class="fa fa-th-list fa-fw"></i> อนุมัติการซ่อม</a>
                         </li>
                         <li>
                             <a href="CompleteRepair.php"><i class="fa fa-check fa-fw"></i> แจ้งซ่อมเสร็จ</a>

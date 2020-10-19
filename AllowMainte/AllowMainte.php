@@ -69,6 +69,19 @@
 
     <?php include '../Template/temSuperside.php';
          include '../database/connect.php';
+
+         
+    if(isset($_GET['id'])){
+        $id=$_GET['id'];
+    $sql = " SELECT  m.XVMajDocNo, d.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus ,depart.XVDptCode,depart.XVDptName,depart.XVDptNumber,depart.`XVDptSub-district`,depart.XVDptDistrict,depart.XVDptProvince 
+ FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v,tmstmdepartment depart
+ WHERE m.XVMajDocNo = d.XVMajDocNo 
+ AND m.XVVehCode = v.XVVehCode
+ AND v.XVDptCode = depart.XVDptCode
+ AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
+
+$result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+while ($row=mysqli_fetch_array($result)){
     ?>
 <div id="wrapper">
         <div id="page-wrapper">
@@ -89,72 +102,80 @@
                         <div class="panel-body">
                         <label>ใบแจ้งซ่อม</label>
                             <form action="" class="form-inline">
-                                
-
-                                <div class="row">
-                                    <div class="col-md-6"></div>
-                                    <div class="col-md-6 ml-auto">
-                                        <div class="col text-right">
-                                            <label for="numb">เลขที่ใบแจ้งซ่อม : <input type="text" name="numb"
-                                                    class="form-control" disabled></label>
-                                        </div>
-                                    </div>
+                            <div class="row">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6 ml-auto">
+                                <div class="col text-right">
+                                    <label for="numb">สถานะใบแจ้งซ่อม : <input type="text" name="XVMajDocstatus" id="jobstatus"
+                                            class="form-control" value="<?php echo $row["XVMajStatus"];?>"  readonly></label>
                                 </div>
+                            </div>
+                        </div>
 
-                                <div class="row">
-                                    <div class="col-md-6"></div>
-                                    <div class="col-md-6 ml-auto">
-                                        <div class="col text-right">
-                                            <label for="numb">วันที่แจ้งซ่อม : <input type="text" name="numb"
-                                                    class="form-control" disabled></label>
-                                        </div>
-                                    </div>
+                        <div class="row">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6 ml-auto">
+                                <div class="col text-right">
+                                    <label for="numb">เลขที่ใบแจ้งซ่อม : <input type="text" name="XVMajDocNo" id="jobid"
+                                            class="form-control" value="<?php echo $row["XVMajDocNo"];?>"  readonly></label>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6 ml-auto">
+                                <div class="col text-right">
+                                    <label for="numb">วันที่แจ้งซ่อม : <input type="text" name="numb"
+                                            class="form-control" value="<?php echo $row["XDMajDate"];?>" readonly></label>
+                                </div>
+                            </div>
+                        </div>
+
 
                                 <div class="row">
                                     <div class="col-md-7">
                                         <div class="col text-right">
                                             <label for="numb">ชื่อเครื่องจักร :</label>
-                                            <input id="XVVehTypeName" name="XVVehTypeName" class="form-control"
+                                            <input id="XVVehTypeName" name="XVVehTypeName" class="form-control" value="<?php echo $row["XVVehName"];?>"
                                                 style="width:60%" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-5">
-                                        <div class="col text-right">
-                                            <label for="numb">หมายเลขเครื่องจักร : <input type="text" size="17" name="numb"
-                                                    class="form-control" readonly></label>
-                                        </div>
-                                    </div>
+                                <div class="col text-right">
+                                    <label for="numb">หมายเลขเครื่องจักร : <input type="text" size="17" name="noof" value="<?php echo $row["XVVehCode"];?>"
+                                            class="form-control" id="noof" readonly></label>
                                 </div>
+                            </div>
+                        </div>
 
-                                <div class="row">
-                                    <div class="col-md-7">
-                                        <div class="col text-right">
-                                            <label for="numb">ชื่อไชต์งาน : <input id="site" type="text" size="30" name="numb"
-                                                    class="form-control" readonly></label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <div class="col text-right">
-                                            <label for="numb">หมายเลขหน่วยงาน : <input type="text" size="17" name="numb"
-                                                    class="form-control" readonly></label>
-                                        </div>
-                                    </div>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="col text-right">
+                                    <label for="numb">ชื่อไชต์งาน : <input type="text" size="30" name="dname" id="dname" value="<?php echo $row["XVDptName"];?>"
+                                            class="form-control" readonly></label>
                                 </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="col text-right">
+                                    <label for="numb">หมายเลขไซต์งาน : <input type="text" size="17" name="dcode" value="<?php echo $row["XVDptCode"];?>"
+                                            id="dcode" class="form-control" readonly></label>
+                                </div>
+                            </div>
+                        </div>
 
-                                <div class="form-row">
-                                    <div class="col">
-                                        <label for="numb">ตำแหน่งเครื่องจักร ณ ปัจจุบัน เลขที่ :
-                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb"
-                                                class="form-control" readonly>
-                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb"
-                                                class="form-control" readonly>
-                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb"
-                                                class="form-control" readonly>
-                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb"
-                                                class="form-control" readonly></label>
-                                    </div>
-                                </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <label for="numb">ตำแหน่งเครื่องจักร ณ ปัจจุบัน เลขที่:
+                                    <input type="text" style="margin: 0px 10px;" size="10" name="dnum" id="dnum" value="<?php echo $row["XVDptNumber"];?>" readonly
+                                        class="form-control">
+                                   ตำบล:<input type="text" style="margin: 0px 10px;" size="10" name="dsub" id="dsub" value="<?php echo $row["XVDptSub-district"];?>" readonly
+                                        class="form-control">
+                                    อำเภอ:<input type="text" style="margin: 0px 10px;" size="10" name="ddis" id="ddis" value="<?php echo $row["XVDptDistrict"];?>" readonly
+                                        class="form-control">
+                                     จังหวัด:<input type="text" style="margin: 0px 10px;" size="10" name="dpro" id="dpro" value="<?php echo $row["XVDptProvince"];?>" readonly
+                                        class="form-control"></label>
+                            </div>
+                        </div>
 
                                 <div class="panel panel-default" style="margin-top:20px;">
                                     <div class="panel-heading">
@@ -272,6 +293,10 @@
                 <!-- /.row -->
             </div>
             <!-- /#page-wrapper -->
+
+
+            <?php }
+                            }?>
 
 </div>
         <!-- /#wrapper -->

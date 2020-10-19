@@ -21,14 +21,14 @@
 
 <body>
     <?php include '../Template/temSuperside.php';
-    include "../database/connect.php";
+    
     ?>
 
     <div id="wrapper">
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">รายการอนุมัติซ่อม</h1>
+                    <h1 class="page-header">รายการรออนุมัติซ่อม</h1>
                 </div>
             </div>
             <div class="row">
@@ -53,20 +53,24 @@
                                 <tbody>
 
                                     <?php
-    $sql = "SELECT ty.XVMachinePartsTypeCode,ty.XVMachinePartsTypeName
-    FROM tmstmmachine_parts_type ty";
+                                    include "../database/connect.php";
+     $sql = " SELECT m.XVMajDocNo, d.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus 
+     FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v
+     WHERE m.XVMajDocNo = d.XVMajDocNo 
+     AND m.XVVehCode = v.XVVehCode
+     AND m.XVMajStatus = 'รออนุมัติซ่อม' "; //แสดงใบแจ้งซ่อมทีเป็นสถานะ "รออนุมัติซ่อม"
     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
     $count = 1;
     while ($row=mysqli_fetch_array($result)){
 ?>
                                     <tr class="odd gradeA">
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td align="center"><input class='btn btn-primary' type='button'
-                                                value='จัดการ'></td>
+                                    <td><?php echo $row["XVMajDocNo"];?></td>
+                                        <td><?php echo $row["XDMajDate"];?></td>
+                                        <td><?php echo $row["XVVehCode"];?></td>
+                                        <td><?php echo $row["XVVehName"];?></td>
+                                        <td><?php echo $row["XVMajStatus"];?></td>
+                                        <td align="center"><a class='btn btn-primary editbtn' href="AllowMainte.php?id=<?php echo $row["XVMajDocNo"] ?>"
+                                                >จัดการ</a></td>
                                     </tr>
                                     <?php $count++;} ?>
                                 </tbody>

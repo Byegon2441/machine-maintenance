@@ -138,26 +138,14 @@ while ($row=mysqli_fetch_array($result)){
                         </div>
 
                         <div class="row">
-                            <div class="col-md-7">
-                                <div class="col text-right">
-                                    <label for="numb">ชื่อเครื่องจักร :</label>
-                                    <select id="XVVehName" name="XVVehName" class="form-control" style="width:60%" disabled>
-                                        <?php
-                                     include '../database/connect.php';
-                                     $sql1 = "select * from tmstvehicle; ";
-                                     $result1 = mysqli_query($connect,$sql1) or die(mysqli_query($connect));
-                                     while ($row1=mysqli_fetch_array($result1)){
-                                         ?>
-                                        <option value="<?php echo $row1["XVVehCode"];?>" <?php if($row["XVVehCode"] == $row1["XVVehCode"]) echo "selected" ?>>
-                                            <?php echo $row1["XVVehName"]; ?></option>
-                                        <?php
-                                     }
-                                    mysqli_close($connect);
-                                    ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-5">
+                                    <div class="col-md-7">
+                                        <div class="col text-right">
+                                            <label for="numb">ชื่อเครื่องจักร :</label>
+                                            <input id="XVVehTypeName" name="XVVehTypeName" class="form-control" value="<?php echo $row["XVVehName"];?>"
+                                                style="width:60%" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
                                 <div class="col text-right">
                                     <label for="numb">หมายเลขเครื่องจักร : <input type="text" size="17" name="noof" value="<?php echo $row["XVVehCode"];?>"
                                             class="form-control" id="noof" readonly></label>
