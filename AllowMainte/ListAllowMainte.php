@@ -21,14 +21,14 @@
 
 <body>
     <?php include '../Template/temSuperside.php';
-    include "../database/connect.php";
+    
     ?>
 
     <div id="wrapper">
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">รายการแจ้งซ่อม</h1>
+                    <h1 class="page-header">รายการรออนุมัติซ่อม</h1>
                 </div>
             </div>
             <div class="row">
@@ -51,47 +51,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-<?php
-    $sql = "SELECT tj.XVMajDocNo,tj.XVMaCarStatus,tv.XVVehEngineNumber,tv.XVVehName,td.XDMajDate
-    FROM tdoctmajob tj,tmstvehicle tv,tdoctmajobdate td
-    WHERE tj.XVVehCode = tv.XVVehCode
-    AND tj.XVMajDocNo = td.XVMajDocNo
-    AND tj.XVMajDocStatus = 2";
+
+                                    <?php
+                                    include "../database/connect.php";
+     $sql = " SELECT m.XVMajDocNo, d.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus 
+     FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v
+     WHERE m.XVMajDocNo = d.XVMajDocNo 
+     AND m.XVVehCode = v.XVVehCode
+     AND m.XVMajStatus = 'รออนุมัติซ่อม' "; //แสดงใบแจ้งซ่อมทีเป็นสถานะ "รออนุมัติซ่อม"
     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
     $count = 1;
     while ($row=mysqli_fetch_array($result)){
 ?>
                                     <tr class="odd gradeA">
-                                        <td><?php echo $row["XVMajDocNo"];?></td>
+                                    <td><?php echo $row["XVMajDocNo"];?></td>
                                         <td><?php echo $row["XDMajDate"];?></td>
-                                        <td><?php echo $row["XVVehEngineNumber"];?></td>
+                                        <td><?php echo $row["XVVehCode"];?></td>
                                         <td><?php echo $row["XVVehName"];?></td>
-                                        <td><?php echo $row["XVMaCarStatus"];?></td>
-                                  <?php
-                                        if($row["XVMaCarStatus"] == "รอนำรถประเมินอะไหล่"){
-                                   ?>
-                                        <!--td align="center"><input class='btn btn-primary' type='button'
-                                            value='จัดการ></td-->
-                                        <td align="center">
-                                        <a class='btn btn-primary editbtn' href="addDataCheck.php?id=<?php echo $row["XVMajDocNo"] ?>"
-                                            >จัดการ</a>
-                                        </td>
-                                  <?php
-                                  }
-                                        else if($row["XVMaCarStatus"] == "รออนุมัติซ่อม"){
-                                      ?>
-                                      <!--td align="center"><input class='btn btn-primary' type='button'
-                                          value='จัดการ'></td-->
-                                          <td align="center">
-                                          <a class='btn btn-primary editbtn' href="addEngiCheck.php?id=<?php echo $row["XVMajDocNo"] ?>"
-                                              >จัดการ</a>
-                                          </td>
-                                      <?php
-                                        }
-                                   ?>
+                                        <td><?php echo $row["XVMajStatus"];?></td>
+                                        <td align="center"><a class='btn btn-primary editbtn' href="AllowMainte.php?id=<?php echo $row["XVMajDocNo"] ?>"
+                                                >จัดการ</a></td>
                                     </tr>
-                                    <?php $count++;}
-                                    mysqli_close($connect); ?>
+                                    <?php $count++;} ?>
                                 </tbody>
                             </table>
                         </div>
@@ -108,12 +89,10 @@
 <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-          "scrollY": true,
-          "scrollX": true
+            "scrollY": true,
+            "scrollX": true
         });
     });
-
-
 
     $(document).ready(function() {
         $('.editbtn').on('click', function() {
