@@ -89,10 +89,15 @@
                             <label for="name" class="col-sm-4 control-label">
                                 <span class="required"></span> เลือกช่างประเมิน:</label>
                             <div class="col-sm-7">
-                            <select name="select2[]" class="selectpicker form-control" multiple>
-                                <option value="a">นาย a</option>
-                                <option value="b">นาย b</option>
-                                <option value="c">นาย c</option>
+                            <select name="selectemployee" class="selectpicker form-control"  multiple data-actions-box="true" multiple>
+                              <?php $emp_sql = "SELECT * FROM tmstmtemployee ORDER BY XVEpyJobPosition ASC";
+                                    $emp_query = mysqli_query($connect,$emp_sql)or die(mysqli_query($connect));
+                                    while ($emp_row=mysqli_fetch_array($emp_query)){
+                              ?>
+                                <option value="<?php echo $emp_row["XVEpyCode "]; ?>"><?php echo $emp_row["XVEpyFirstname"]; ?>  <?php echo	$emp_row["XVpyLastname"]; ?></option>
+                                <?php
+                              }
+                                 ?>
                             </select>
 
                             </div>
@@ -100,7 +105,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                        <input type="submit" value="ยืนยัน" class="btn btn-primary">
+                        <input type="submit" value="ยืนยัน" class="btn btn-primary" onclick="getValue()">
                     </div>
                 </form>
 
@@ -120,7 +125,7 @@
 $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
 while ($row=mysqli_fetch_array($result)){
 
-?> ?>
+?>
 <div id="wrapper">
         <div id="page-wrapper">
             <div class="row">
@@ -187,8 +192,8 @@ while ($row=mysqli_fetch_array($result)){
                                     </div>
                                     <div class="col-md-5">
                                         <div class="col text-right">
-                                            <label for="numb">หมายเลขหน่วยงาน : <input type="text" size="17" name="numb"
-                                                    class="form-control" readonly></label>
+                                            <label for="numb">หมายเลขไซต์งาน : <input type="text" size="17" name="numb"
+                                                  value="<?php echo $row["XVDptCode"];?>"  class="form-control" readonly></label>
                                         </div>
                                     </div>
                                 </div>
@@ -196,13 +201,13 @@ while ($row=mysqli_fetch_array($result)){
                                 <div class="form-row">
                                     <div class="col">
                                         <label for="numb">ตำแหน่งเครื่องจักร ณ ปัจจุบัน เลขที่ :
-                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb"
+                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb" value="<?php echo $row["XVDptNumber"];?>"
                                                 class="form-control" readonly>
-                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb"
+                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb" value="<?php echo $row["XVDptSub-district"];?>"
                                                 class="form-control" readonly>
-                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb"
+                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb" value="<?php echo $row["XVDptDistrict"];?>"
                                                 class="form-control" readonly>
-                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb"
+                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb" value="<?php echo $row["XVDptProvince"];?>"
                                                 class="form-control" readonly></label>
                                     </div>
                                 </div>
@@ -225,13 +230,27 @@ while ($row=mysqli_fetch_array($result)){
                                                 </tr>
                                             </thead>
                                             <tbody class="sub">
-                                                <tr id='addr0'>
-                                                    <td>1</td>
-                                                    <td><input type="text" name="n_sub" placeholder="กรุณากรอกเรื่องที่แจ้ง" readonly>
-                                                    </td>
-                                                    <td><input type="text" name="sub" placeholder="กรุณากรอกสาเหตุ" readonly></td>
-                                                </tr>
-                                                <tr id='addr1'></tr>
+                                              <?php
+                                            //  include '../database/connect.php';
+                                                  $sql2 = "SELECT jd.XIMajdSeqNo,jd.XVMajdSubject,jd.XVMajdCause
+                                                   FROM  tdoctmajob j ,tdoctmajobdetail jd
+                                                   WHERE  j.XVMajDocNo = jd.XVMajDocNo
+                                                   AND j.XVMajDocNo = '$id'";
+                                                  $result2 = mysqli_query($connect,$sql2) or die(mysqli_query($connect));
+                                                  while ($row2=mysqli_fetch_array($result2)){
+
+                                              ?>
+
+                                                  <tr id='addr0'>
+                                                      <td><?php echo $row2["XIMajdSeqNo"];?></td>
+                                                      <td><input type="text" name="n_sub[]" placeholder="กรุณากรอกเรื่องที่แจ้ง" value="<?php echo $row2["XVMajdSubject"];?>" readonly>
+                                                      </td>
+                                                      <td><input type="text" name="sub[]" placeholder="กรุณากรอกสาเหตุ" value="<?php echo $row2["XVMajdCause"];?>" readonly></td>
+
+                                                  </tr>
+                                                  <tr id='addr1'></tr>
+                                                  <?php }
+                                                   ?>
 
                                             </tbody>
                                         </table>
@@ -245,7 +264,7 @@ while ($row=mysqli_fetch_array($result)){
                                         <div class="col text-left">
                                             <label for="numb">สถานะรถ :
                                                 <select name="" id="" class="form-control" disabled>
-                                                    <option value="">fsdfdfghdghdghdghdghdghdgh</option>
+                                                    <option value=""><?php echo $row["XVMajStatus"]; ?></option>
                                                     <option value="">sdf</option>
                                                 </select>
                                             </label>
@@ -254,7 +273,7 @@ while ($row=mysqli_fetch_array($result)){
                                     <div class="col-md-7">
                                         <div class="col text-right">
                                             <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="30" name="numb"
-                                                    class="form-control" readonly></label>
+                                                    class="form-control" value="ธุรการ" readonly></label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -269,7 +288,7 @@ while ($row=mysqli_fetch_array($result)){
                                     </div>
                                     <div class="col-md-12">
                                         <div class="col text-left">
-                                            <label for="numb">ช่างประเมิน : <?php echo 'อิอิ'?>
+                                            <label for="numb">ช่างประเมิน : <input type="text" name="" id="texts" value="">
                                             </label>
                                         </div>
                                     </div>
@@ -278,7 +297,7 @@ while ($row=mysqli_fetch_array($result)){
                                 <div class="modal-footer">
                                     <div class="col-md-6">
                                         <div class="col text-left">
-                                            <button type="button" class="btn btn-danger mr-auto"><a style="color: white; text-decoration: none;" href="javascript:history.back();">กลับ</a></button>
+                                              <a type="button" class="btn btn-danger mr-auto" href="ListCheck.php" >กลับ</a>
                                             <button type="button" class="btn btn-warning mr-auto" data-toggle="modal" data-target="#insertModal">เพิ่มช่างประเมิน</button>
                                         </div>
                                     </div>
@@ -319,7 +338,12 @@ while ($row=mysqli_fetch_array($result)){
             });
         });
 
-        $('.my-select').selectpicker();
+        $('.selectpicker').selectpicker();
+        
+        $('#getValue').click( function() {
+          var val = $('.selectpicker').selectpicker('val', '');
+          alert(val);
+        });
         </script>
 
 </body>
