@@ -219,7 +219,8 @@
                                 <div class="modal-footer">
                                     <div class="col-md-6">
                                         <div class="col text-left">
-                                            <button type="button" class="btn btn-danger mr-auto"><a style="color: white; text-decoration: none; " href="javascript:history.back();">กลับ</a></button>
+                                            <!--button type="button" class="btn btn-danger mr-auto"><a style="color: white; text-decoration: none; " href="javascript:history.back();">กลับ</a></button-->
+                                            <a type="button" class="btn btn-danger mr-auto" href="ListCheck.php" >กลับ</a>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
