@@ -67,7 +67,7 @@
 
 <body>
 
-    <?php include '../Template/temSuperside.php';
+    <?php include '../Template/temTechnician.php';
          include '../database/connect.php';
     ?>
 

@@ -78,10 +78,10 @@
                     <ul class="nav" id="side-menu">
 
                         <li>
-                            <a href="RepairSheet.php"><i class="fa fa-th-list fa-fw"></i> ใบประเมินการซ่อม</a>
+                            <a href="../CheckParts/ListAddParts.php"><i class="fa fa-th-list fa-fw"></i> ใบประเมินการซ่อม</a>
                         </li>
                         <li>
-                            <a href="GetSpare.php"><i class="fa fa-check fa-fw"></i> รับอะไหล่</a>
+                            <a href="#"><i class="fa fa-check fa-fw"></i> รับอะไหล่</a>
                         </li>
                         
                     </ul>
