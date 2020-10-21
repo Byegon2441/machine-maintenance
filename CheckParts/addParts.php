@@ -64,8 +64,15 @@
     }
     </style>
 </head>
+<!-- <<<<<<< HEAD -->
 <?php 
-         include '../database/connect.php';
+// =======
+
+<body>
+
+//     <?php include '../Template/temTechnician.php';
+// >>>>>>> 8ff2228f701344c9827cd8e9e46cc952ec997013
+//          include '../database/connect.php';
   
 
     if(isset($_GET['id'])){
