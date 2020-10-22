@@ -25,7 +25,7 @@
 
     <!-- Custom CSS -->
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
-    <link  href="../vendor/css/datepicker.css" rel="stylesheet">
+    <link href="../vendor/css/datepicker.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -34,7 +34,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.6.0/dist/sweetalert2.all.min.js"></script>
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    
+
     <style>
     table td {
         position: relative;
@@ -64,14 +64,22 @@
     }
     </style>
 </head>
+<!-- <<<<<<< HEAD -->
+<?php 
+// =======
 
 <body>
 
-    <?php include '../Template/temSuperside.php';
-         include '../database/connect.php';
-    ?>
+//     <?php include '../Template/temTechnician.php';
+// >>>>>>> 8ff2228f701344c9827cd8e9e46cc952ec997013
+//          include '../database/connect.php';
+  
 
-<!-- modal เพิ่มอะไหล่ -->
+    if(isset($_GET['id'])){
+        $id=$_GET['id'];
+        ?>
+<body>
+    <!-- modal เพิ่มอะไหล่ -->
     <div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -82,34 +90,48 @@
                     </button>
                     <h5 class="modal-title" id="exampleModalLabel">เพิ่มอะไหล่</h5>
                 </div>
-                <form class="form-horizontal" id="insert" role="form" method="POST"
-                    action="#" enctype="multipart/form-data">
+                <form class="form-horizontal" id="insert" role="form" method="POST" action="insertt.php"
+                    enctype="multipart/form-data">
                     <div class="modal-body mx-3">
                         <div class="form-group">
                             <label for="name" class="col-sm-4 control-label">
                                 <span class="required"></span> เลือกอะไหล่:</label>
+                                <input type="hidden" name="seqq" id="seqqe">
+                                <input type="hidden" name="docno" id="docno" value="<?php echo $id; ?>">
                             <div class="col-sm-4">
-                                <select name="select2[]" class="selectpicker form-control" data-live-search="true">
-                                    <option value="a">อะไหล่ a</option>
-                                    <option value="b">อะไหล่ b</option>
-                                    <option value="c">อะไหล่ c</option>
+                                <select name="select2" id="select2" class="selectpicker form-control" data-live-search="true">
+                                    <?php 
+                                    include'../database/connect.php';
+                                    $sql = "select * from tmstmmachine_parts";
+                                    $query = mysqli_query($connect,$sql);
+                                    if($query){
+                                        while($row=mysqli_fetch_array($query)){
+                                            ?>
+                                                <option value="<?php echo $row['XVMachinePartsCode']; ?>"><?php echo $row['XVMachinePartsName'];?></option>
+                                            <?php
+                                        }
+                                        }else{
+                                            echo "<script type='text/javascript'>alert('fail');</script>";
+                                    }
+                                ?>
                                 </select>
                             </div>
                             <div class="col-sm-2">
-                                <input class="form-control" type="number"min="1" max="5" ></input>
+                                <input class="form-control" id="val_select2" type="number" min="1" max="5"></input>
                             </div>
                             <div class="col-sm-1">
-                                <button type="button" id="add_row" class="btn btn-success btn-circle add_row" style="float: right;"><i class="fa fa-plus"></i>
+                                <button type="button" id="add_row" class="btn btn-success btn-circle add_row"
+                                    style="float: right;"><i class="fa fa-plus"></i>
                             </div>
                         </div>
                     </div>
 
                     <div class="panel panel-default" style="margin-left:20px; margin-right:20px;">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">รายการอะไหล่</h3>
-                                    </div>
+                        <div class="panel-heading">
+                            <h3 class="panel-title">รายการอะไหล่</h3>
+                        </div>
 
-                        <table class="table table-bordered" id="tab_logic">
+                        <table class="table table-bordered" id="tab_logic3">
                             <thead>
                                 <tr>
                                     <th style="background:#CCCCCC;">ชื่ออะไหล่</th>
@@ -117,28 +139,50 @@
                                     <th style="background:#CCCCCC;"></th>
                                 </tr>
                             </thead>
-                            <tbody class="sub">
-                                <tr id='addr0'>
-                                    <td></td>
-                                    <td></td>
-                                    <td><button type="button"class="btn btn-danger btn-circle increase-row RemoveRow btndis"><i class="fa fa-minus"></button></td>
-                                </tr>
+                            <tbody class="sub" id="div1">
+                            <tr id='addrr0'>
+                                            <td><input type="text" name="n_sub[]" placeholder="กรุณากรอกเรื่องที่แจ้ง">
+                                            </td>
+                                            <td><input type="text" name="sub[]" placeholder="กรุณากรอกสาเหตุ"></td>
+                                            <td><button type="button"
+                                                    class="btn btn-danger btn-circle increase-row RemoveRow btndis"><i
+                                                        class="fa fa-minus"></button></td>
+                                        </tr>
+                                        <tr id='addrr1'></tr>
                             </tbody>
                         </table>
-                    </div>  
+                    </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                        <input type="submit" value="ยืนยัน" class="btn btn-primary">
+                        <input type="submit" value="ยืนยัน" name="save" class="btn btn-primary">
                     </div>
                 </form>
 
             </div>
         </div>
     </div>
-<!-- modal เพิ่มอะไหล่ -->
+    <!-- modal เพิ่มอะไหล่ -->
 
-<div id="wrapper">
+
+    <?php 
+include '../Template/temSuperside.php';
+         include '../database/connect.php';
+  
+
+    if(isset($_GET['id'])){
+        $id=$_GET['id'];
+    $sql = " SELECT  m.XVMajDocNo, d.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus ,depart.XVDptCode,depart.XVDptName,depart.XVDptNumber,depart.`XVDptSub-district`,depart.XVDptDistrict,depart.XVDptProvince 
+ FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v,tmstmdepartment depart
+ WHERE m.XVMajDocNo = d.XVMajDocNo 
+ AND m.XVVehCode = v.XVVehCode
+ AND v.XVDptCode = depart.XVDptCode
+ AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
+
+$result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+while ($row=mysqli_fetch_array($result)){
+?>
+    <div id="wrapper">
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
@@ -155,26 +199,27 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                        <label>ใบแจ้งซ่อม</label>
+                            <label>ใบแจ้งซ่อม</label>
                             <form action="" class="form-inline">
-                                
+
 
                                 <div class="row">
                                     <div class="col-md-6"></div>
                                     <div class="col-md-6 ml-auto">
                                         <div class="col text-right">
-                                            <label for="numb">เลขที่ใบแจ้งซ่อม : <input type="text" name="numb"
-                                                    class="form-control" disabled></label>
+                                            <label for="numb">เลขที่ใบแจ้งซ่อม : <input type="text" name="XVMajDocNo"
+                                                    id="jobid" class="form-control"
+                                                    value="<?php echo $row["XVMajDocNo"];?>" readonly></label>
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="row">
                                     <div class="col-md-6"></div>
                                     <div class="col-md-6 ml-auto">
                                         <div class="col text-right">
                                             <label for="numb">วันที่แจ้งซ่อม : <input type="text" name="numb"
-                                                    class="form-control" disabled></label>
+                                                    class="form-control" value="<?php echo $row["XDMajDate"];?>"
+                                                    readonly></label>
                                         </div>
                                     </div>
                                 </div>
@@ -183,14 +228,29 @@
                                     <div class="col-md-7">
                                         <div class="col text-right">
                                             <label for="numb">ชื่อเครื่องจักร :</label>
-                                            <input id="XVVehTypeName" name="XVVehTypeName" class="form-control"
-                                                style="width:60%" readonly>
+                                            <select id="XVVehName" name="XVVehName" class="form-control"
+                                                style="width:60%">
+                                                <?php
+                                     include '../database/connect.php';
+                                     $sql1 = "select * from tmstvehicle; ";
+                                     $result1 = mysqli_query($connect,$sql1) or die(mysqli_query($connect));
+                                     while ($row1=mysqli_fetch_array($result1)){
+                                         ?>
+                                                <option value="<?php echo $row1["XVVehCode"];?>"
+                                                    <?php if($row["XVVehCode"] == $row1["XVVehCode"]) echo "selected" ?>>
+                                                    <?php echo $row1["XVVehName"]; ?></option>
+                                                <?php
+                                     }
+                                    mysqli_close($connect);
+                                    ?>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-5">
                                         <div class="col text-right">
-                                            <label for="numb">หมายเลขเครื่องจักร : <input type="text" size="17" name="numb"
-                                                    class="form-control" readonly></label>
+                                            <label for="numb">หมายเลขเครื่องจักร : <input type="text" size="17"
+                                                    name="noof" value="<?php echo $row["XVVehCode"];?>"
+                                                    class="form-control" id="noof" readonly></label>
                                         </div>
                                     </div>
                                 </div>
@@ -198,13 +258,15 @@
                                 <div class="row">
                                     <div class="col-md-7">
                                         <div class="col text-right">
-                                            <label for="numb">ชื่อไชต์งาน : <input id="site" type="text" size="30" name="numb"
+                                            <label for="numb">ชื่อไชต์งาน : <input type="text" size="30" name="dname"
+                                                    id="dname" value="<?php echo $row["XVDptName"];?>"
                                                     class="form-control" readonly></label>
                                         </div>
                                     </div>
                                     <div class="col-md-5">
                                         <div class="col text-right">
-                                            <label for="numb">หมายเลขหน่วยงาน : <input type="text" size="17" name="numb"
+                                            <label for="numb">หมายเลขไซต์งาน : <input type="text" size="17" name="dcode"
+                                                    value="<?php echo $row["XVDptCode"];?>" id="dcode"
                                                     class="form-control" readonly></label>
                                         </div>
                                     </div>
@@ -212,18 +274,21 @@
 
                                 <div class="form-row">
                                     <div class="col">
-                                        <label for="numb">ตำแหน่งเครื่องจักร ณ ปัจจุบัน เลขที่ :
-                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb"
-                                                class="form-control" readonly>
-                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb"
-                                                class="form-control" readonly>
-                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb"
-                                                class="form-control" readonly>
-                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb"
-                                                class="form-control" readonly></label>
+                                        <label for="numb">ตำแหน่งเครื่องจักร ณ ปัจจุบัน เลขที่:
+                                            <input type="text" style="margin: 0px 10px;" size="10" name="dnum" id="dnum"
+                                                value="<?php echo $row["XVDptNumber"];?>" class="form-control">
+                                            ตำบล:<input type="text" style="margin: 0px 10px;" size="10" name="dsub"
+                                                id="dsub" value="<?php echo $row["XVDptSub-district"];?>"
+                                                class="form-control">
+                                            อำเภอ:<input type="text" style="margin: 0px 10px;" size="10" name="ddis"
+                                                id="ddis" value="<?php echo $row["XVDptDistrict"];?>"
+                                                class="form-control">
+                                            จังหวัด:<input type="text" style="margin: 0px 10px;" size="10" name="dpro"
+                                                id="dpro" value="<?php echo $row["XVDptProvince"];?>"
+                                                class="form-control"></label>
                                     </div>
                                 </div>
-
+                                <?php }?>
                                 <div class="panel panel-default" style="margin-top:20px;">
                                     <div class="panel-heading">
                                         <h3 class="panel-title">รายละเอียดการแจ้งซ่อม</h3>
@@ -244,15 +309,29 @@
                                                 </tr>
                                             </thead>
                                             <tbody class="sub">
+                                                <?php
+                                             include '../database/connect.php';
+                                                $sql2 = "SELECT  jd.XIMajdSeqNo,jd.XVMajdSubject,jd.XVMajdCause
+                                                FROM  tdoctmajob j ,tdoctmajobdetail jd
+                                                WHERE  j.XVMajDocNo = jd.XVMajDocNo
+                                                AND j.XVMajDocNo = '$id'";
+                                                $result2 = mysqli_query($connect,$sql2) or die(mysqli_query($connect));
+                                                while ($row2=mysqli_fetch_array($result2)){
+                                                
+                                            ?>
                                                 <tr id='addr0'>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td><button type="button" class="btn btn-success mr-auto" data-toggle="modal" data-target="#insertModal">เพิ่มอะไหล่</button></td>
-                                                    <td></td>
+                                                    <td class="seq"><?php echo $row2["XIMajdSeqNo"];?></td>
+                                                    <td><input type="text" name="n_sub[]"
+                                                            placeholder="กรุณากรอกเรื่องที่แจ้ง"
+                                                            value="<?php echo $row2["XVMajdSubject"];?>" readonly>
+                                                    </td>
+                                                    <td><input type="text" name="sub[]" placeholder="กรุณากรอกสาเหตุ"
+                                                            value="<?php echo $row2["XVMajdCause"];?>" readonly></td>
+                                                    <td align="center"><button type="button" class="btn btn-success mr-auto addPart">เพิ่มอะไหล่</button></td>
+                                                    <td><input type="text" name="note[]"></td>
                                                 </tr>
-                                                <tr id='addr1'></tr>
-
+                                                <!-- <tr id='addr1'></tr> -->
+                                                <?php } ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -264,26 +343,27 @@
                                     <div class="col-md-5">
                                         <div class="col text-left">
                                             <label for="numb">สถานะรถ :
-                                                <select name="" id="" class="form-control" disabled>
+                                                <!-- <select name="" id="" class="form-control" disabled>
                                                     <option value="">fsdfdfghdghdghdghdghdghdgh</option>
                                                     <option value="">sdf</option>
-                                                </select>
+                                                </select> -->
+                                                <input class="form-control" type="text" value="รถใช้งานได้" readonly>
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="col text-right">
-                                            <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="30" name="numb"
-                                                    class="form-control" readonly></label>
+                                            <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="30"
+                                                    name="nameof" class="form-control" readonly></label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col text-left">
-                                            <label for="numb">วันนัดประเมิน : <input type="text" size="6" name="numb"
-                                                    class="form-control" >
+                                            <label for="numb">วันนัดประเมิน : <input type="text" size="6" name="as_date"
+                                                    class="form-control" readonly>
                                             </label>
-                                            <label for="numb">วันที่ประเมิน : <input type="text" size="6" name="numb"
-                                                    class="form-control" >
+                                            <label for="numb">วันที่ประเมิน : <input type="text" size="6"
+                                                    name="eva_date" class="form-control">
                                             </label>
                                         </div>
                                     </div>
@@ -298,12 +378,14 @@
                                 <div class="modal-footer">
                                     <div class="col-md-6">
                                         <div class="col text-left">
-                                            <button type="button" class="btn btn-danger mr-auto">กลับ</button>
+                                            <button type="button" class="btn btn-danger mr-auto"
+                                                onclick="window.location.href='listEvaluate.php'">กลับ</button>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col text-right">
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal">บันทึก</button>
+                                            <button type="button" class="btn btn-primary"
+                                                data-dismiss="modal">บันทึก</button>
                                         </div>
                                     </div>
                                 </div>
@@ -318,8 +400,8 @@
                 <!-- /.row -->
             </div>
             <!-- /#page-wrapper -->
-
-</div>
+            <?php } ?>
+        </div>
         <!-- /#wrapper -->
 
 
@@ -327,6 +409,65 @@
         <script src="../vendor/js/datepicker.th-TH.js"></script>
         <script src="../vendor/js/bootstrap-select.js"></script>
         <script>
+        function addNo(a) {
+            let j = a
+            $("#add_row1").click(() => {
+                $('tr').find('input').prop('disabled', false)
+                $('#addrr' + j).html("<td>" + (j + 1) +
+                    "</td><td><input type='text' name='n_sub[]'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='sub[]' placeholder='กรุณากรอกสาเหตุ'/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td>"
+                );
+
+                $('#tab_logic3').append('<tr id="addrr' + (j + 1) + '"></tr>');
+                j++;
+            });
+        }
+
+        $(document).ready(()=> {
+            $('.addPart').on('click',function() {
+                $('#insertModal').modal('show')
+                $('#div1').empty()
+                $tr = $(this).closest('tr')
+
+                var data = $tr.children("td").map(function() {
+                    return $(this).text()
+                }).get()
+                
+                var jobi = $('#jobid').val()
+                console.log(data)
+                console.log(jobi)
+                $.ajax({
+                    url: "test_t.php",
+                    method: "POST",
+                    data: {
+                        id: data[0],
+                        jobid: jobi 
+                    },
+                    dataType: "JSON",
+                    success: function(rows) {
+                        countKey = Object.keys(rows).length;
+                        addNo(countKey)
+                        $('#tab_logic3').append('<tr id="addrr0"></tr>');
+                        let j = 0
+                        for (var k = 0; k < countKey; k = k+2) {
+                            $('tr').find('input').prop('disabled', false)
+                            $('#addrr' + j).html("<td><input type='text' name='n_sub[]' value='" +
+                                rows[k] + 
+                                "'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='sub[]' value='" +
+                                rows[k+1] +
+                                "' placeholder='กรุณากรอกสาเหตุ'/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td>"
+                            );
+
+                            $('#tab_logic3').append('<tr id="addrr' + (j + 1) + '"></tr>');
+                    
+                            j++
+                        }
+                    }
+
+                })
+            })
+        })
+
+
         $(function() {
             $('[data-toggle="datepicker"]').datepicker({
                 autoHide: true,
@@ -340,23 +481,37 @@
         $('.my-select').selectpicker();
 
         $(document).ready(function() {
-            let i = 1;
+            let i = 0;
             $("#add_row").click(function() {
-                $('#tab_logic').append('<tr id="addr' + (i) + '"></tr>');
+                var select2 = $('#select2').val()
+                var val_select2 = $('#val_select2').val()
+                var value = $("#select2 option:selected"); 
+                $('#tab_logic3').append('<tr id="addr' + (i) + '"></tr>');
                 $('tr').find('input').prop('disabled', false)
-                $('#addr' + i).html("<td><input type='text' name='n_sub[]'  placeholder=''/></td><td><input type='text' name='sub[]' placeholder=''/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td>"
+                $('#addr' + i).html(
+                    "<td hidden><input type='hidden' name='n_sub[]' value='"+ select2 +"' placeholder=''/></td><td><input type='text' name='name_sub[]' value='"+ value.text() +"' placeholder=''/></td><td><input type='text' name='sub[]' value='"+val_select2+"' placeholder=''/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td>"
                 );
-
-                $('#tab_logic').append('<tr id="addr' + (i + 1) + '"></tr>');
+                $('#tab_logic3').append('<tr id="addr' + (i + 1) + '"></tr>');
                 i++;
             });
         });
+//  $(document).ready(function() {
+//             let i = 1;
+//             $("#add_row").click(function() {
+//                 $('tr').find('input').prop('disabled', false)
+//                 $('#addr' + i).html("<td>" + (i + 1) +
+//                     "</td><td><input type='text' name='n_sub[]'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='sub[]' placeholder='กรุณากรอกสาเหตุ'/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td>"
+//                 );
 
+//                 $('#tab_logic').append('<tr id="addr' + (i + 1) + '"></tr>');
+//                 i++;
+//             });
+//         });
+        
         $('table').on('click', '.RemoveRow', function() {
             $(this).closest('tr').remove();
         });
         </script>
-
 </body>
-
+<?php } ?>
 </html>
