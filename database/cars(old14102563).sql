@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2020 at 09:02 AM
+-- Generation Time: Oct 14, 2020 at 07:51 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -123,7 +123,6 @@ CREATE TABLE `tdoctmajobdetail` (
 --
 
 CREATE TABLE `tdoctmamachine_parts_use` (
-  `XIMachinePartsSeqNo` int(3) NOT NULL,
   `XVMajDocNo` varchar(13) COLLATE utf8_bin NOT NULL,
   `XIMajdSeqNo` int(3) NOT NULL,
   `XVMachinePartsCode` int(35) NOT NULL,
@@ -332,8 +331,7 @@ ALTER TABLE `tdoctmajobdetail`
 -- Indexes for table `tdoctmamachine_parts_use`
 --
 ALTER TABLE `tdoctmamachine_parts_use`
-  ADD PRIMARY KEY (`XIMachinePartsSeqNo`,`XVMajDocNo`,`XIMajdSeqNo`),
-  ADD UNIQUE KEY `XVMajDocNo` (`XVMajDocNo`,`XIMajdSeqNo`) USING BTREE,
+  ADD PRIMARY KEY (`XVMajDocNo`,`XIMajdSeqNo`),
   ADD KEY `FK_MachinepartsUse2_MaJobDetail2` (`XIMajdSeqNo`),
   ADD KEY `FK_MachinepartsUse_Machineparts` (`XVMachinePartsCode`);
 
@@ -407,12 +405,6 @@ ALTER TABLE `tsysuser`
 --
 ALTER TABLE `sqrun`
   MODIFY `Sq` int(13) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `tdoctmamachine_parts_use`
---
-ALTER TABLE `tdoctmamachine_parts_use`
-  MODIFY `XIMachinePartsSeqNo` int(3) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tmstmdepartment`
