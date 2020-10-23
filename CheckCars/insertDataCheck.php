@@ -18,7 +18,7 @@
  $showDate = date('d/m/Y', strtotime($newD));
  $query = "UPDATE tdoctmajobdate  SET XDMajEstAppPlanDate = '$newDate' WHERE XVMajDocNo = '$id'";
  $sql = mysqli_query( $connect, $query );
- $query1 = "UPDATE tdoctmajob  SET XVMaCarStatus = 'รอนำรถประเมินอะไหล่' WHERE XVMajDocNo = '$id'";
+ $query1 = "UPDATE tdoctmajob  SET XVMajStatus = 'รอนำรถประเมินอะไหล่' WHERE XVMajDocNo = '$id'";
  $sql1 = mysqli_query( $connect, $query1 );
  if($sql){
    echo '<script>';
