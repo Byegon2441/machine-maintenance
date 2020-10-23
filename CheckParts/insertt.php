@@ -42,7 +42,8 @@ if ( isset( $_POST['save'] ) ) {
     $XVMajDocNo = $_POST['docno'];
     $seqqq = $_POST['seqq'];
     $nvals = count($_REQUEST['n_sub']);
-    echo $nvals;
+    // echo $nvals;
+    echo $seqqq;
     $query2 = false;
     for ( $i = 0; $i < $nvals; $i++ ) {
         $n_sub = $_REQUEST['n_sub'][$i];

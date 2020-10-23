@@ -68,7 +68,7 @@
 <?php 
 // =======
 
-<body>
+// <body>
 
 //     <?php include '../Template/temTechnician.php';
 // >>>>>>> 8ff2228f701344c9827cd8e9e46cc952ec997013
@@ -431,7 +431,8 @@ while ($row=mysqli_fetch_array($result)){
                 var data = $tr.children("td").map(function() {
                     return $(this).text()
                 }).get()
-                
+
+                $('#seqqe').val(data[0])
                 var jobi = $('#jobid').val()
                 console.log(data)
                 console.log(jobi)
