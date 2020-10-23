@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2020 at 09:02 AM
+-- Generation Time: Oct 23, 2020 at 09:24 AM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.2
+-- PHP Version: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -407,12 +406,6 @@ ALTER TABLE `tsysuser`
 --
 ALTER TABLE `sqrun`
   MODIFY `Sq` int(13) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `tdoctmamachine_parts_use`
---
-ALTER TABLE `tdoctmamachine_parts_use`
-  MODIFY `XIMachinePartsSeqNo` int(3) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tmstmdepartment`
