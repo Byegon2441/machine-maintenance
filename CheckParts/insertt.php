@@ -37,37 +37,47 @@
 <body>
 <?php
 include '../database/connect.php';
-if ( isset( $_POST['save'] ) ) {
-    $cnt = 1;
     $XVMajDocNo = $_POST['docno'];
     $seqqq = $_POST['seqq'];
+    $sql = "DELETE FROM TDocTMaMachine_parts_use WHERE XVMajDocNo = '$XVMajDocNo' AND XIMajdSeqNo = $seqqq";
+    $query = mysqli_query( $connect, $sql );
+    // $sql = "SELECT * FROM DocTMaMachine_parts_use WHERE XVMajDocNo = $XVMajDocNo AND XIMajdSeqNo = $seqqq";
+    // $query = mysqli_query( $connect, $sql );
+    // $arry = array();
+    // while($r=mysqli_fetch_array($result)){
+        //     $arry = $r['XIMachinePartsSeqNo'];
+        // }
     $nvals = count($_REQUEST['n_sub']);
-    // echo $nvals;
-    echo $seqqq;
     $query2 = false;
-    for ( $i = 0; $i < $nvals; $i++ ) {
-        $n_sub = $_REQUEST['n_sub'][$i];
-        $sub = $_REQUEST['sub'][$i];
-        $sql2 = "INSERT INTO TDocTMaMachine_parts_use(XVMajDocNo,XIMajdSeqNo,XVMachinePartsCode,XVAmount) VALUES ('$XVMajDocNo', '$seqqq', '$n_sub', '$sub')";
-        $query2 = mysqli_query( $connect, $sql2 );
-    }
-    if ( $query2 ) {
-        echo '<script>';
-        echo "Swal.fire({
-            title: 'สำเร็จ!',
-            text: 'ทำการส่งข้อมูลใบแจ้งซ่อมให้หัวหน้าช่างเรียบร้อยแล้ว',
-            icon: 'success',
-            confirmButtonText: 'Back'
-            }).then(function() {
-            window.location = 'addParts.php';
-        });";
-        echo '</script>';
-    } else {
-        echo mysqli_error( $connect );
+    if($query){
+        $nvals = count($_REQUEST['n_sub']);
+        for ( $i = 0; $i < $nvals; $i++ ) {
+            $n_sub = $_REQUEST['n_sub'][$i];
+            $sub = $_REQUEST['sub'][$i];
+            $sql2 = "INSERT INTO TDocTMaMachine_parts_use(XVMajDocNo,XIMajdSeqNo,XVMachinePartsCode,XVAmount) VALUES ('$XVMajDocNo', '$seqqq', '$n_sub', '$sub')";
+            $query2 = mysqli_query( $connect, $sql2 );
+            echo $n_sub;
+        }
+        if ( $query2 ) {
+            echo '<script>';
+            echo "Swal.fire({
+                title: 'สำเร็จ!',
+                text: 'ทำการส่งข้อมูลใบแจ้งซ่อมให้หัวหน้าช่างเรียบร้อยแล้ว',
+                icon: 'success',
+                confirmButtonText: 'Back'
+                }).then(function() {
+                window.location = 'listevaluate.php';
+            });";
+            echo '</script>';
+        } else {
+            echo mysqli_error( $connect );
+    
+        }
 
     }
-}
-//save
+
+   
+
 ?>
 </body>
 

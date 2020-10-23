@@ -96,6 +96,7 @@
                         <div class="form-group">
                             <label for="name" class="col-sm-4 control-label">
                                 <span class="required"></span> เลือกอะไหล่:</label>
+                                <input type="hidden" name="pp" id="pp">
                                 <input type="hidden" name="seqq" id="seqqe">
                                 <input type="hidden" name="docno" id="docno" value="<?php echo $id; ?>">
                             <div class="col-sm-4">
@@ -435,7 +436,6 @@ while ($row=mysqli_fetch_array($result)){
                 $('#seqqe').val(data[0])
                 var jobi = $('#jobid').val()
                 console.log(data)
-                console.log(jobi)
                 $.ajax({
                     url: "test_t.php",
                     method: "POST",
@@ -449,12 +449,14 @@ while ($row=mysqli_fetch_array($result)){
                         addNo(countKey)
                         $('#tab_logic3').append('<tr id="addrr0"></tr>');
                         let j = 0
-                        for (var k = 0; k < countKey; k = k+2) {
+                        for (var k = 0; k < countKey; k = k+3) {
                             $('tr').find('input').prop('disabled', false)
-                            $('#addrr' + j).html("<td><input type='text' name='n_sub[]' value='" +
+                            $('#addrr' + j).html("<td hidden><input type='hidden' name='n_sub[]' value='" +
                                 rows[k] + 
+                                "'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='n_suub[]' value='" +
+                                rows[k+1] + 
                                 "'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='sub[]' value='" +
-                                rows[k+1] +
+                                rows[k+2] +
                                 "' placeholder='กรุณากรอกสาเหตุ'/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td>"
                             );
 
