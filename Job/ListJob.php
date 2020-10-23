@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>ระบบซ่อมบำรุงเครื่องจักร : ใบแจ้งซ่อม</title>
+    <title>ระบบซ่อมบำรุงเครื่องจักร : ใบแจ้งซ่อมทั้งหมด</title>
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../vendor/css/datepicker.css" rel="stylesheet">
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
@@ -409,7 +409,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">ใบแจ้งซ่อม
+                    <h1 class="page-header">ใบแจ้งซ่อมทั้งหมด
                         <a  class="btn btn-success btn-circle" style="float: right;" href="insertMajor.php"
                             ><i class="fa fa-plus"></i>
                         </a>
@@ -424,7 +424,7 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                ใบแจ้งซ่อม
+                                รายการใบแจ้งซ่อม
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">

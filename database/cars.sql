@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2020 at 09:24 AM
+-- Generation Time: Oct 23, 2020 at 12:11 PM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
+-- PHP Version: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -30,6 +31,14 @@ SET time_zone = "+00:00";
 CREATE TABLE `sqrun` (
   `Sq` int(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `sqrun`
+--
+
+INSERT INTO `sqrun` (`Sq`) VALUES
+(3),
+(4);
 
 -- --------------------------------------------------------
 
@@ -61,6 +70,14 @@ CREATE TABLE `tdoctmajob` (
   `XVMajProvince` varchar(100) COLLATE utf8_bin NOT NULL,
   `XVVehCode` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `tdoctmajob`
+--
+
+INSERT INTO `tdoctmajob` (`XVMajDocNo`, `XVMajWhoInformant`, `XVMajStatus`, `XVMaCarStatus`, `XVMajFinishRmk`, `XVMajDocStatus`, `XVMajNumber`, `XVMajSub-district`, `XVMajDistrict`, `XVMajProvince`, `XVVehCode`) VALUES
+('byymm-000001', 'aa', '2', 'รอนำรถประเมินอะไหล่', 'aa', '2', 'aa', 'aa', 'aa', 'aa', 3),
+('byymm-000002', 'bb', '2', 'รออนุมัติซ่อม', 'bb', '2', 'bb', 'bb', 'bb', 'bb', 4);
 
 --
 -- Triggers `tdoctmajob`
@@ -101,6 +118,14 @@ CREATE TABLE `tdoctmajobdate` (
   `XDMajKeyTime` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Dumping data for table `tdoctmajobdate`
+--
+
+INSERT INTO `tdoctmajobdate` (`XVMajDocNo`, `XDMajEstAppPlanDate`, `XDMajEstActualDate`, `XDMajDate`, `XDMajSpareDate`, `XDMaPickupAppPlanDate`, `XDMajRepairAppPlanDate`, `XDMajRepairActualDate`, `XDMajPickupActualDate`, `XDMajFinishDate`, `XDMajConfirmDate`, `XDMajSendTime`, `XDMajKeyTime`) VALUES
+('byymm-000001', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+('byymm-000002', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -115,6 +140,13 @@ CREATE TABLE `tdoctmajobdetail` (
   `XVMajConfirm` varchar(50) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Dumping data for table `tdoctmajobdetail`
+--
+
+INSERT INTO `tdoctmajobdetail` (`XIMajdSeqNo`, `XVMajDocNo`, `XVMajdSubject`, `XVMajdCause`, `XVMajConfirm`) VALUES
+(1, 'byymm-000001', 'aa', 'aa', 'aa');
+
 -- --------------------------------------------------------
 
 --
@@ -123,15 +155,23 @@ CREATE TABLE `tdoctmajobdetail` (
 
 CREATE TABLE `tdoctmamachine_parts_use` (
   `XIMachinePartsSeqNo` int(3) NOT NULL,
-  `XVMajDocNo` varchar(13) COLLATE utf8_bin NOT NULL,
   `XIMajdSeqNo` int(3) NOT NULL,
+  `XVMajDocNo` varchar(13) COLLATE utf8_bin NOT NULL,
   `XVMachinePartsCode` int(35) NOT NULL,
   `XVAmount` int(3) NOT NULL,
-  `XVSource` int(100) NOT NULL,
-  `XVMachinePartsRmk` int(100) NOT NULL,
+  `XVSource` varchar(100) COLLATE utf8_bin NOT NULL,
+  `XVMachinePartsRmk` varchar(100) COLLATE utf8_bin NOT NULL,
   `XDMachinePartsReady` date NOT NULL,
   `XDMachinePartsUse` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `tdoctmamachine_parts_use`
+--
+
+INSERT INTO `tdoctmamachine_parts_use` (`XIMachinePartsSeqNo`, `XIMajdSeqNo`, `XVMajDocNo`, `XVMachinePartsCode`, `XVAmount`, `XVSource`, `XVMachinePartsRmk`, `XDMachinePartsReady`, `XDMachinePartsUse`) VALUES
+(1, 1, 'byymm-000001', 4, 15, 'aa', 'aa', '0000-00-00', '2020-10-20'),
+(2, 1, 'byymm-000001', 7, 15, 'ฟฟ', 'ฟฟ', '0000-00-00', '2020-10-20');
 
 -- --------------------------------------------------------
 
@@ -332,9 +372,9 @@ ALTER TABLE `tdoctmajobdetail`
 --
 ALTER TABLE `tdoctmamachine_parts_use`
   ADD PRIMARY KEY (`XIMachinePartsSeqNo`,`XVMajDocNo`,`XIMajdSeqNo`),
-  ADD UNIQUE KEY `XVMajDocNo` (`XVMajDocNo`,`XIMajdSeqNo`) USING BTREE,
   ADD KEY `FK_MachinepartsUse2_MaJobDetail2` (`XIMajdSeqNo`),
-  ADD KEY `FK_MachinepartsUse_Machineparts` (`XVMachinePartsCode`);
+  ADD KEY `FK_MachinepartsUse_Machineparts` (`XVMachinePartsCode`),
+  ADD KEY `FK_MachinepartsUse_MaJobDetail` (`XVMajDocNo`);
 
 --
 -- Indexes for table `tdoctmarepair_tnc`
@@ -405,7 +445,13 @@ ALTER TABLE `tsysuser`
 -- AUTO_INCREMENT for table `sqrun`
 --
 ALTER TABLE `sqrun`
-  MODIFY `Sq` int(13) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Sq` int(13) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `tdoctmamachine_parts_use`
+--
+ALTER TABLE `tdoctmamachine_parts_use`
+  MODIFY `XIMachinePartsSeqNo` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tmstmdepartment`
