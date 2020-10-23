@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ระบบซ่อมบำรุงเครื่องจักร : แก้ไขใบแจ้งซ่อม</title>
+    <title>ระบบซ่อมบำรุงเครื่องจักร : กำหนดวันนำรถเข้าประเมิน</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -85,7 +85,7 @@ while ($row=mysqli_fetch_array($result)){
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">ใบการซ่อม</h1>
+                    <h1 class="page-header">กำหนดวันนำรถเข้าประเมิน</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
