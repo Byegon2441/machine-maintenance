@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ระบบซ่อมบำรุงเครื่องจักร : อนุมัติการซ่อม</title>
+    <title>ระบบซ่อมบำรุงเครื่องจักร : แก้ไขใบแจ้งซ่อม</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -67,27 +67,32 @@
 
 <body>
 
-    <?php include '../Template/templsidebar.php';
+    <?php include '../Template/temSuperside.php';
          include '../database/connect.php';
 
-         
-    if(isset($_GET['id'])){
-        $id=$_GET['id'];
-    $sql = " SELECT  m.XVMajDocNo, d.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus ,depart.XVDptCode,depart.XVDptName,depart.XVDptNumber,depart.`XVDptSub-district`,depart.XVDptDistrict,depart.XVDptProvince 
- FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v,tmstmdepartment depart
- WHERE m.XVMajDocNo = d.XVMajDocNo 
- AND m.XVVehCode = v.XVVehCode
- AND v.XVDptCode = depart.XVDptCode
- AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
 
-$result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-while ($row=mysqli_fetch_array($result)){
+
+         if(isset($_GET['id'])){
+            $id=$_GET['id'];
+        $sql = " SELECT  /* เลขที่ใบแจ้งซ่อม */ m.XVMajDocNo,/* วันที่ใบแจ้งซ่อม */ d.XDMajDate, /* รหัสเครื่องจักร */m.XVVehCode, /* ชื่อเครื่องจักร */v.XVVehName, /* รหัสไซต์งาน */depart.XVDptCode,/* ชื่อไซต์งาน */depart.XVDptName,/* เลขที่ */depart.XVDptNumber,/* ตำบล */depart.`XVDptSub-district`,/* อำเภอ */depart.XVDptDistrict,/* จังหวัด */depart.XVDptProvince 
+     FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v,tmstmdepartment depart ,tdoctmajobdetail detail
+     WHERE  m.XVMajDocNo = d.XVMajDocNo 
+     AND m.XVVehCode = v.XVVehCode
+     AND v.XVDptCode = depart.XVDptCode
+     AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
+    
+    $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+    while ($row=mysqli_fetch_array($result)){
+    
     ?>
+
+
+
 <div id="wrapper">
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">รายการรออนุมัติการซ่อม</h1>
+                    <h1 class="page-header">อนุมัติการซ่อม</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -102,21 +107,13 @@ while ($row=mysqli_fetch_array($result)){
                         <div class="panel-body">
                         <label>ใบแจ้งซ่อม</label>
                             <form action="" class="form-inline">
-                            <div class="row">
-                            <div class="col-md-6"></div>
-                            <div class="col-md-6 ml-auto">
-                                <div class="col text-right">
-                                    <label for="numb">สถานะใบแจ้งซ่อม : <input type="text" name="XVMajDocstatus" id="jobstatus"
-                                            class="form-control" value="<?php echo $row["XVMajStatus"];?>"  readonly></label>
-                                </div>
-                            </div>
-                        </div>
+                                
 
-                        <div class="row">
-                            <div class="col-md-6"></div>
-                            <div class="col-md-6 ml-auto">
-                                <div class="col text-right">
-                                    <label for="numb">เลขที่ใบแจ้งซ่อม : <input type="text" name="XVMajDocNo" id="jobid"
+                                <div class="row">
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-6 ml-auto">
+                                        <div class="col text-right">
+                                        <label for="numb">เลขที่ใบแจ้งซ่อม : <input type="text" name="XVMajDocNo" id="jobid"
                                             class="form-control" value="<?php echo $row["XVMajDocNo"];?>"  readonly></label>
                                 </div>
                             </div>
@@ -131,8 +128,7 @@ while ($row=mysqli_fetch_array($result)){
                             </div>
                         </div>
 
-
-                                <div class="row">
+                        <div class="row">
                                     <div class="col-md-7">
                                         <div class="col text-right">
                                             <label for="numb">ชื่อเครื่องจักร :</label>
@@ -177,6 +173,7 @@ while ($row=mysqli_fetch_array($result)){
                             </div>
                         </div>
 
+
                                 <div class="panel panel-default" style="margin-top:20px;">
                                     <div class="panel-heading">
                                         <h3 class="panel-title">รายละเอียดการแจ้งซ่อม</h3>
@@ -186,7 +183,34 @@ while ($row=mysqli_fetch_array($result)){
                                         <table class="table table-bordered" id="tab_logic">
                                             <thead>
                                                 <tr>
-                                                    <h4>zcvzv</h4>
+                                                    <h5>เรื่องที่แจ้ง :
+                                                    <?php
+                                     include '../database/connect.php';
+                                     $sql = "select * from tdoctmajobdetail; ";
+                                     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+                                     while ($row=mysqli_fetch_array($result)){
+                                         ?>
+                                        <?php echo $row["XVMajDocNo"];?>
+                                            <?php echo $row["XVMajdSubject"]; ?>
+                                        <?php
+                                     }
+                                    mysqli_close($connect);
+                                    ?>
+                                    </h5>
+                                                     <h5>สาเหตุที่ทราบ :
+                                                     <?php
+                                     include '../database/connect.php';
+                                     $sql = "select * from tdoctmajobdetail; ";
+                                     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+                                     while ($row=mysqli_fetch_array($result)){
+                                         ?>
+                                        <?php echo $row["XVMajDocNo"];?>
+                                            <?php echo $row["XVMajdCause"]; ?></option>
+                                        <?php
+                                     }
+                                    mysqli_close($connect);
+                                    ?>
+                                    </h5>
                                                     <th style="background:#CCCCCC;">อนุมัติ</th>
                                                     <th style="background:#CCCCCC;">ลำดับ</th>
                                                     <th style="background:#CCCCCC;">รายการอะไหล่</th>
@@ -207,29 +231,7 @@ while ($row=mysqli_fetch_array($result)){
                                             </tbody>
                                         </table>
 
-                                        <table class="table table-bordered" id="tab_logic">
-                                            <thead>
-                                                <tr>
-                                                    <h4>zcvzv</h4>
-                                                    <th style="background:#CCCCCC;">อนุมัติ</th>
-                                                    <th style="background:#CCCCCC;">ลำดับ</th>
-                                                    <th style="background:#CCCCCC;">รายการอะไหล่</th>
-                                                    <th style="background:#CCCCCC;">จำนวน</th>
-                                                    <th style="background:#CCCCCC;">หมายเหตุ</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="sub">
-                                                <tr id='addr0'>
-                                                    <td><input style="margin: auto;"class="form-check-input" type="checkbox" value="" id="defaultCheck1"></td>
-                                                    <td>1</td>
-                                                    <td>1</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr id='addr1'></tr>
-
-                                            </tbody>
-                                        </table>
+                                   
                                     </div>
                                     <div class="panel-body" style="margin:0px;">
                                     </div>
@@ -247,10 +249,10 @@ while ($row=mysqli_fetch_array($result)){
                                         </div>
                                     </div>
                                     <div class="col-md-7">
-                                        <div class="col text-right">
-                                            <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="30" name="numb"
-                                                    class="form-control" readonly></label>
-                                        </div>
+                                    <div class="col text-right">
+                                    <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="40" name="nameofuser"
+                                            id="nameofuser" value="ธุรการ" class="form-control" readonly></label>
+                                </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col text-left">
@@ -259,6 +261,13 @@ while ($row=mysqli_fetch_array($result)){
                                             </label>
                                             <label for="numb">วันที่ประเมิน : <input type="text" size="6" name="numb"
                                                     class="form-control" data-toggle="datepicker" disabled>
+                                            </label>
+                                            <label for="numb">วันที่ซ่อม : <input id="datepicker" size="6" name="numb"
+                                                    class="form-control" data-toggle="datepicker"
+                                                    $(document).ready(function () {
+  
+                                                    
+                                                     >
                                             </label>
                                         </div>
                                     </div>
@@ -294,10 +303,6 @@ while ($row=mysqli_fetch_array($result)){
             </div>
             <!-- /#page-wrapper -->
 
-
-            <?php }
-                            }?>
-
 </div>
         <!-- /#wrapper -->
 
@@ -315,6 +320,8 @@ while ($row=mysqli_fetch_array($result)){
                 format: 'dd/mm/yyyy'
             });
         });
+        </script>
+       
 
 
 </body>
