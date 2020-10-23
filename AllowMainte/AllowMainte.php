@@ -72,17 +72,17 @@
 
 
 
-         if(isset($_GET['id'])){
-            $id=$_GET['id'];
-        $sql = " SELECT  /* เลขที่ใบแจ้งซ่อม */ m.XVMajDocNo,/* วันที่ใบแจ้งซ่อม */ d.XDMajDate, /* รหัสเครื่องจักร */m.XVVehCode, /* ชื่อเครื่องจักร */v.XVVehName, /* รหัสไซต์งาน */depart.XVDptCode,/* ชื่อไซต์งาน */depart.XVDptName,/* เลขที่ */depart.XVDptNumber,/* ตำบล */depart.`XVDptSub-district`,/* อำเภอ */depart.XVDptDistrict,/* จังหวัด */depart.XVDptProvince 
-     FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v,tmstmdepartment depart ,tdoctmajobdetail detail
-     WHERE  m.XVMajDocNo = d.XVMajDocNo 
-     AND m.XVVehCode = v.XVVehCode
-     AND v.XVDptCode = depart.XVDptCode
-     AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
+    //      if(isset($_GET['id'])){
+    //         $id=$_GET['id'];
+    //     $sql = " SELECT  /* เลขที่ใบแจ้งซ่อม */ m.XVMajDocNo,/* วันที่ใบแจ้งซ่อม */ d.XDMajDate, /* รหัสเครื่องจักร */m.XVVehCode, /* ชื่อเครื่องจักร */v.XVVehName, /* รหัสไซต์งาน */depart.XVDptCode,/* ชื่อไซต์งาน */depart.XVDptName,/* เลขที่ */depart.XVDptNumber,/* ตำบล */depart.`XVDptSub-district`,/* อำเภอ */depart.XVDptDistrict,/* จังหวัด */depart.XVDptProvince 
+    //  FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v,tmstmdepartment depart ,tdoctmajobdetail detail
+    //  WHERE  m.XVMajDocNo = d.XVMajDocNo 
+    //  AND m.XVVehCode = v.XVVehCode
+    //  AND v.XVDptCode = depart.XVDptCode
+    //  AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
     
-    $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-    while ($row=mysqli_fetch_array($result)){
+    // $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+    // while ($row=mysqli_fetch_array($result)){
     
     ?>
 
@@ -213,7 +213,9 @@
                                     </h5>
                                                     <th style="background:#CCCCCC;">อนุมัติ</th>
                                                     <th style="background:#CCCCCC;">ลำดับ</th>
-                                                    <th style="background:#CCCCCC;">รายการอะไหล่</th>
+                                                    <th style="background:#CCCCCC;">รายการอะไหล่
+                                                  
+                                                    </th>
                                                     <th style="background:#CCCCCC;">จำนวน</th>
                                                     <th style="background:#CCCCCC;">หมายเหตุ</th>
                                                 </tr>
@@ -222,9 +224,34 @@
                                                 <tr id='addr0'>
                                                     <td><input style="margin: auto;"class="form-check-input" type="checkbox" value="" id="defaultCheck1"></td>
                                                     <td>1</td>
-                                                    <td>1</td>
-                                                    <td></td>
-                                                    <td></td>
+                                                 <!--รายการอะไหล่-->   <td> <?php
+                                     include '../database/connect.php';
+                                     $sql = "select * from TDocTMaMachine_parts_use , TMstMMachine_parts ; ";
+                                     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+                                     while ($row=mysqli_fetch_array($result)){
+                                         ?>
+                                        <?php echo $row["XVMachinePartsCode"];?>
+                                            <?php echo $row["XVMachinePartsName"]; ?>
+                                        <?php
+                                     }
+                                    mysqli_close($connect);
+                                    ?></td>
+                                                 
+                                                 
+                                                 
+                                                  <!--จำนวน-->    <td> <?php
+                                     include '../database/connect.php';
+                                     $sql = "select * from TDocTMaMachine_parts_use , TMstMMachine_parts ; ";
+                                     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+                                     while ($row=mysqli_fetch_array($result)){
+                                         ?>
+                                        <?php echo $row["XVMachinePartsCode"];?>
+                                            <?php echo $row["XVAmount"]; ?>
+                                        <?php
+                                     }
+                                    mysqli_close($connect);
+                                    ?></td>
+                                                   <td><input type="text" name="note[]"></td>
                                                 </tr>
                                                 <tr id='addr1'></tr>
 
@@ -262,7 +289,7 @@
                                             <label for="numb">วันที่ประเมิน : <input type="text" size="6" name="numb"
                                                     class="form-control" data-toggle="datepicker" disabled>
                                             </label>
-                                            <label for="numb">วันที่ซ่อม : <input id="datepicker" size="6" name="numb"
+                                            <label for="numb">วันที่อนุมัติซ่อม : <input id="datepicker" size="6" name="numb"
                                                     class="form-control" data-toggle="datepicker"
                                                     $(document).ready(function () {
   
