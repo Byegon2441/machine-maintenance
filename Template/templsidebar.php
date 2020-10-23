@@ -78,10 +78,45 @@
                     <ul class="nav" id="side-menu">
 
                         <li>
-                            <a href="../Job/ListJob.php"><i class="fa fa-th-list fa-fw"></i> ใบแจ้งซ่อม</a>
+                        <a href="#"><i class="fa fa-edit fa-fw"></i> ใบแจ้งซ่อม<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="../Job/ListJob.php">ใบแจ้งซ่อมทั้งหมด</a>
+                                </li>
+                                <li>
+                                    <a href="../CheckCars/ListCheck.php">กำหนดวันประเมิน</a>   <!-- คือรายการที่ต้องใส่วันนัด-->
+                                </li>
+                                <li>
+                                    <a href="#">รถรอประเมิน</a>   <!-- listที่show คือใบที่ใส่วันนัดประเมินแล้ว-->
+                                </li>
+                                
+                                <!-- <li>
+                                <a href="#">รายการส่งมอบอะไหล่</a>
+                                </li> -->
+                                <li>
+                                <a href="../AllowMainte/ListAllowMainte.php">อนุมัติการซ่อม</a> <!-- หรือก็คือ รถประเมินแล้ว อันเดียวกัน-->
+                                </li>
+                                <!-- <li>
+                                <a href="#">รถรอเข้าซ่อม</a>
+                                </li>
+                                <li>
+                                <a href="#">รถรอปิดงาน</a>
+                                </li>
+                                <li>
+                                <a href="../Job/Finish.php"><i class="fa fa-check fa-fw"></i> ปิดงาน</a>
+                                </li> -->
+                                <li>
+                                <a href="../CheckParts/listEvaluate.php">ใบประเมินการซ่อม</a>
+                                </li>
+                                <!-- <li>
+                                <a href="#">รับอะไหล่</a>
+                                </li>
+                                 -->
+                            </ul>
+                            <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="../Job/Finish.php"><i class="fa fa-check fa-fw"></i> ปิดงาน</a>
+                           
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-edit fa-fw"></i> กำหนดค่า<span class="fa arrow"></span></a>

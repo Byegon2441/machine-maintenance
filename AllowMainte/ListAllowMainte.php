@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <?php include '../Template/temSuperside.php';
+    <?php include '../Template/templsidebar.php';
     
     ?>
 
@@ -28,7 +28,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">รายการรออนุมัติซ่อม</h1>
+                    <h1 class="page-header">รายการรถที่ประเมินแล้ว</h1>
                 </div>
             </div>
             <div class="row">

@@ -166,7 +166,7 @@
 
 
     <?php 
-include '../Template/temSuperside.php';
+include '../Template/templsidebar.php';
          include '../database/connect.php';
   
 
