@@ -9,6 +9,7 @@
  </head>
  <body>
  <?php
+ date_default_timezone_set('Asia/Bangkok');
   include '../database/connect.php';
  $statuscar = $_POST['statuscar'];
  $id = $_GET['id'];
@@ -34,7 +35,7 @@
     $oldDate = "$date";
     $newD = str_replace('/', '-', $oldDate);
     $newDate =  date('Y-m-d', strtotime($newD));
-    $newtime = date("h:i:sa");
+    $newtime = Date("H:i:s");
    for ($i=0; $i < count($arr)-1; $i++) {
     $sqlarr = "INSERT INTO tdoctmaestimation_tnc(XVEpyCode,XVMajDocNo) VALUES ('$arr[$i]','$id')";
     $queryarr = mysqli_query($connect,$sqlarr)or die("ERROR INSERT");

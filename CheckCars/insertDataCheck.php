@@ -9,6 +9,7 @@
  </head>
  <body>
  <?php
+date_default_timezone_set('Asia/Bangkok');
  include '../database/connect.php';
  $id = $_POST['id_Data'];
  $date = $_POST['numDate'];
@@ -16,7 +17,7 @@
  $newD = str_replace('/', '-', $oldDate);
  $newDate =  date('Y-m-d', strtotime($newD));
  $showDate = date('d/m/Y', strtotime($newD));
- $newtime = date("h:i:sa");
+ $newtime = date("H:i:s");
  $query = "UPDATE tdoctmajobdate  SET XDMajEstAppPlanDate = '$newDate $newtime' WHERE XVMajDocNo = '$id'";
  $sql = mysqli_query( $connect, $query );
  $query1 = "UPDATE tdoctmajob  SET XVMajStatus = 'รอนำรถประเมินอะไหล่' WHERE XVMajDocNo = '$id'";

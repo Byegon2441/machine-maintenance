@@ -330,12 +330,10 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col text-right">
-<<<<<<< HEAD
-                                         <input type="submit" class="btn btn-success btndis" name="save"
-=======
+
                                         <input type="hidden" value="<?php echo $id?>" name='id'>
                                         <input type="submit" class="btn btn-success btndis" name="save"
->>>>>>> 31b8154cd81321c28b415ecab7dc96b02247d4c7
+
                                                 value="บันทึก">
                                         </div>
                                     </div>
