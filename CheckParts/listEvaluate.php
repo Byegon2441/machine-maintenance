@@ -46,7 +46,7 @@
                                         <th>วันที่แจ้ง</th>
                                         <th>หมายเลขเครื่อง</th>
                                         <th>ชื่อเครื่องจักร</th>
-                                        <th>สถานะ</th>
+                                        <th>สถานะใบแจ้งซ่อม</th>
                                         <th>จัดการ</th>
                                     </tr>
                                 </thead>
@@ -54,7 +54,11 @@
 
                                     <?php
     $sql = "SELECT m.XVMajDocNo, j.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus
-    FROM TDocTMaJob m, TDocTMaJobDate j, TMstVehicle v GROUP BY m.XVMajDocNo";
+    FROM TDocTMaJob m, TDocTMaJobDate j, TMstVehicle v
+    WHERE m.XVMajDocNo=j.XVMajDocNo
+    AND v.XVVehCode = m.XVVehCode
+    AND m.XVMajStatus = 'รอนำรถประเมินอะไหล่'
+     ";
     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
     $count = 1;
     while ($row=mysqli_fetch_array($result)){
@@ -68,7 +72,7 @@
                                         <!-- <td align="center"><input class='btn btn-primary' type='button'
                                                 value='รายละเอียด'></td> -->
                                         <td align="center"><a class='btn btn-primary editbtn'
-                                                href="addParts.php?id=<?php echo $row["XVMajDocNo"] ?>">รายละเอียด</a>
+                                                href="addParts.php?id=<?php echo $row["XVMajDocNo"] ?>">ประเมิน</a>
                                         </td>
                                     </tr>
                                     <?php $count++;} ?>
