@@ -303,6 +303,7 @@ while ($row=mysqli_fetch_array($result)){
                                             <thead>
                                                 <tr>
                                                     <th style="background:#CCCCCC;">ซ่อม</th>
+                                                    <!-- <th style="background:#CCCCCC;">ลำดับ</th> -->
                                                     <th style="background:#CCCCCC;">เรื่องที่แจ้ง</th>
                                                     <th style="background:#CCCCCC;">สาเหตุที่ทราบ</th>
                                                     <th style="background:#CCCCCC;">อะไหล่ที่ต้องใช้</th>
@@ -321,6 +322,7 @@ while ($row=mysqli_fetch_array($result)){
                                                 
                                             ?>
                                                 <tr id='addr0'>
+                                                    <!-- <td><input type="checkbox" name="repair_check" value="<?php echo $row2["XIMajdSeqNo"];?>" class="repair_check"></td> -->
                                                     <td class="seq"><?php echo $row2["XIMajdSeqNo"];?></td>
                                                     <td><input type="text" name="n_sub[]"
                                                             placeholder="กรุณากรอกเรื่องที่แจ้ง"
@@ -328,8 +330,8 @@ while ($row=mysqli_fetch_array($result)){
                                                     </td>
                                                     <td><input type="text" name="sub[]" placeholder="กรุณากรอกสาเหตุ"
                                                             value="<?php echo $row2["XVMajdCause"];?>" readonly></td>
-                                                    <td align="center"><button type="button" class="btn btn-success mr-auto addPart">เพิ่มอะไหล่</button></td>
-                                                    <td><input type="text" name="note[]"></td>
+                                                    <td align="center"><button type="button" id="addPartt" class="btn btn-success mr-auto addPart">เพิ่มอะไหล่</button></td>
+                                                    <td><input type="text" placeholder="กรุณาใส่หมายเหตุ" name="note[]" id="note"></td>
                                                 </tr>
                                                 <!-- <tr id='addr1'></tr> -->
                                                 <?php } ?>
@@ -410,6 +412,20 @@ while ($row=mysqli_fetch_array($result)){
         <script src="../vendor/js/datepicker.th-TH.js"></script>
         <script src="../vendor/js/bootstrap-select.js"></script>
         <script>
+
+            // $(document).ready(function(){
+            //     $('input[type="checkbox"]').click(function(){
+            //         if($(this).is(":checked")){
+            //             $("#addPartt").prop('disabled', false);
+            //             $("#note").prop('disabled', true);
+            //         }else if($(this).is(":not(:checked)")){
+            //             $("#addPartt").prop('disabled', true);
+            //             $("#note").prop('disabled', false);
+            //             $("#note").attr("placeholder", "กรุณาใส่หมายเหตุ");
+            // }
+            //     });
+            // });
+
         function addNo(a) {
             let j = a
             $("#add_row1").click(() => {

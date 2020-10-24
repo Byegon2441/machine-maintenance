@@ -71,8 +71,11 @@ include '../database/connect.php';
             echo '</script>';
         } else {
             echo mysqli_error( $connect );
-    
+            
         }
+        
+    }else{
+        echo mysqli_error( $connect );
 
     }
 
