@@ -201,7 +201,7 @@ while ($row=mysqli_fetch_array($result)){
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <label>ใบแจ้งซ่อม</label>
-                            <form action="" class="form-inline">
+                            <form action="insertTest.php" method="POST" class="form-inline">
 
 
                                 <div class="row">
@@ -303,7 +303,7 @@ while ($row=mysqli_fetch_array($result)){
                                             <thead>
                                                 <tr>
                                                     <th style="background:#CCCCCC;">ซ่อม</th>
-                                                    <!-- <th style="background:#CCCCCC;">ลำดับ</th> -->
+                                                    <th style="background:#CCCCCC;">ลำดับ</th>
                                                     <th style="background:#CCCCCC;">เรื่องที่แจ้ง</th>
                                                     <th style="background:#CCCCCC;">สาเหตุที่ทราบ</th>
                                                     <th style="background:#CCCCCC;">อะไหล่ที่ต้องใช้</th>
@@ -313,6 +313,7 @@ while ($row=mysqli_fetch_array($result)){
                                             <tbody class="sub">
                                                 <?php
                                              include '../database/connect.php';
+                                                $cnt = 1;
                                                 $sql2 = "SELECT  jd.XIMajdSeqNo,jd.XVMajdSubject,jd.XVMajdCause
                                                 FROM  tdoctmajob j ,tdoctmajobdetail jd
                                                 WHERE  j.XVMajDocNo = jd.XVMajDocNo
@@ -322,7 +323,7 @@ while ($row=mysqli_fetch_array($result)){
                                                 
                                             ?>
                                                 <tr id='addr0'>
-                                                    <!-- <td><input type="checkbox" name="repair_check" value="<?php echo $row2["XIMajdSeqNo"];?>" class="repair_check"></td> -->
+                                                    <td><input type="checkbox" name="repair_check" id="<?php echo $cnt; ?>" value="<?php echo $row2["XIMajdSeqNo"];?>" class="repair_check"></td>
                                                     <td class="seq"><?php echo $row2["XIMajdSeqNo"];?></td>
                                                     <td><input type="text" name="n_sub[]"
                                                             placeholder="กรุณากรอกเรื่องที่แจ้ง"
@@ -330,8 +331,8 @@ while ($row=mysqli_fetch_array($result)){
                                                     </td>
                                                     <td><input type="text" name="sub[]" placeholder="กรุณากรอกสาเหตุ"
                                                             value="<?php echo $row2["XVMajdCause"];?>" readonly></td>
-                                                    <td align="center"><button type="button" id="addPartt" class="btn btn-success mr-auto addPart">เพิ่มอะไหล่</button></td>
-                                                    <td><input type="text" placeholder="กรุณาใส่หมายเหตุ" name="note[]" id="note"></td>
+                                                    <td align="center"><button type="button" disabled id="<?php echo 'addPartt'.$cnt; ?>" class="btn btn-success mr-auto addPart">เพิ่มอะไหล่</button></td>
+                                                    <td><input type="text" placeholder="กรุณาใส่หมายเหตุ" name="note[]" id="<?php echo 'note'.$cnt; $cnt++;?>"></td>
                                                 </tr>
                                                 <!-- <tr id='addr1'></tr> -->
                                                 <?php } ?>
@@ -387,8 +388,8 @@ while ($row=mysqli_fetch_array($result)){
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col text-right">
-                                            <button type="button" class="btn btn-primary"
-                                                data-dismiss="modal">บันทึก</button>
+                                            <button type="submit" class="btn btn-primary"
+                                                data-dismiss="modal" name="save">บันทึก</button>
                                         </div>
                                     </div>
                                 </div>
@@ -425,6 +426,19 @@ while ($row=mysqli_fetch_array($result)){
             // }
             //     });
             // });
+            $(document).ready(function () {
+                ($(".repair_check").click(function () {
+                    if($(this).is(":checked")){
+                        // alert(this.id)
+                        $("#addPartt" + this.id).prop('disabled', false);
+                        $("#note" + this.id).prop('disabled', true);
+                    }else if($(this).is(":not(:checked)")){
+                        $("#addPartt" + this.id).prop('disabled', true);
+                        $("#note" + this.id).prop('disabled', false);
+                        $("#note" + this.id).attr("placeholder", "กรุณาใส่หมายเหตุ");
+                    }
+                }));
+            });
 
         function addNo(a) {
             let j = a
@@ -449,14 +463,14 @@ while ($row=mysqli_fetch_array($result)){
                     return $(this).text()
                 }).get()
 
-                $('#seqqe').val(data[0])
+                $('#seqqe').val(data[1])
                 var jobi = $('#jobid').val()
                 console.log(data)
                 $.ajax({
                     url: "test_t.php",
                     method: "POST",
                     data: {
-                        id: data[0],
+                        id: data[1],
                         jobid: jobi 
                     },
                     dataType: "JSON",

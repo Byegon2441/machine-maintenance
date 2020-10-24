@@ -66,7 +66,7 @@ include '../database/connect.php';
                 icon: 'success',
                 confirmButtonText: 'Back'
                 }).then(function() {
-                window.location = 'listevaluate.php';
+                window.location = 'addParts.php?id=$XVMajDocNo';
             });";
             echo '</script>';
         } else {
