@@ -118,7 +118,7 @@
                                 </select>
                             </div>
                             <div class="col-sm-2">
-                                <input class="form-control" id="val_select2" type="number" min="1"></input>
+                                <select class="form-control 1-100" id="val_select2"></select>
                             </div>
                             <div class="col-sm-1">
                                 <button type="button" id="add_row" class="btn btn-success btn-circle add_row"
@@ -142,9 +142,9 @@
                             </thead>
                             <tbody class="sub" id="div1">
                             <tr id='addrr0'>
-                                            <td><input type="text" name="n_sub[]" placeholder="กรุณากรอกเรื่องที่แจ้ง">
+                                            <td><input type="text" name="n_sub[]" placeholder="">
                                             </td>
-                                            <td><input type="text" name="sub[]" placeholder="กรุณากรอกสาเหตุ"></td>
+                                            <td><input type="text" name="sub[]" placeholder=""></td>
                                             <td><button type="button"
                                                     class="btn btn-danger btn-circle increase-row RemoveRow btndis"><i
                                                         class="fa fa-minus"></button></td>
@@ -543,6 +543,13 @@ while ($row=mysqli_fetch_array($result)){
         
         $('table').on('click', '.RemoveRow', function() {
             $(this).closest('tr').remove();
+        });
+
+        $(function(){
+            var $select = $(".1-100");
+            for (i=1;i<=100;i++){
+                $select.append($('<option></option>').val(i).html(i))
+            }
         });
         </script>
 </body>
