@@ -283,12 +283,34 @@ while ($row=mysqli_fetch_array($result)){
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col text-left">
+                                        <?php
+                                        $sqldate = "SELECT XDMajDate,XDMajEstActualDate FROM tdoctmajobdate WHERE XVMajDocNo = '$id'";
+                                        $querydate = mysqli_query($connect,$sqldate)or die("ERROR SELECT DATE");
+                                        $rowdate = mysqli_fetch_array($querydate);
+                                        $oldDate = $rowdate['XDMajDate'];
+                                        $newD = str_replace('-', '/', $oldDate);
+                                        $newDate =  date('d/m/Y', strtotime($newD));
+                                         ?>
                                             <label for="numb">วันนัดประเมิน : <input type="text" size="6" name="numb"
-                                                    class="form-control" data-toggle="datepicker"disabled>
+                                                 value="<?php echo $newDate ?>"  class="form-control" disabled>
                                             </label>
-                                            <label for="numb">วันที่ประเมิน : <input type="text" size="6" name="datee"
-                                                    class="form-control" data-toggle="datepicker">
-                                            </label>
+                                        <?php if($rowdate['XDMajEstActualDate'] != "0000-00-00 00:00:00"){
+                                          $oD = $rowdate['XDMajEstActualDate'];
+                                          $nD = str_replace('-', '/', $oD);
+                                          $newa =  date('d/m/Y', strtotime($nD));
+                                          ?>
+                                          <label for="numb">วันที่ประเมิน : <input type="text" size="6" name="datee"
+                                                class="form-control" value="<?php echo $newa; ?>" disabled>
+                                          </label>
+                                          <?php
+                                        }else{
+                                          ?>
+                                          <label for="numb">วันที่ประเมิน : <input type="text" size="6" name="datee"
+                                                  class="form-control" data-toggle="datepicker">
+                                          </label>
+                                          <?php
+                                        }?>
+
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -308,20 +330,35 @@ while ($row=mysqli_fetch_array($result)){
                                               }
                                               ;
                                             } ?>" >
-                                            <?php if(isset($_POST['selectemployee'])){
-                                              $emp =  $_POST['selectemployee'];
-                                              if(isset($emp)){
-                                                if(count($emp) == 1){
-                                                  echo $emp[0];
-                                              }else{
-                                                for ($i=0; $i < count($emp); $i++) {
-                                                  echo $emp[$i]." ";
-                                                }
+                                            <?php
+                                            $sqldepart1 = "SELECT count(tn.XVEpyCode) AS tnXV FROM tdoctmaestimation_tnc tn,tmstmtemployee tm WHERE tn.XVEpyCode = tm.XVEpyCode AND XVMajDocNo = '$id'";
+                                            $querydepart1 = mysqli_query($connect,$sqldepart1)or die("ERROR SELECT");
+                                            $fectdep = mysqli_fetch_array($querydepart1);
+                                            if($fectdep['tnXV'] != 0){
+                                              $sqldepart = "SELECT tn.XVEpyCode,tm.XVEpyFirstname,tm.XVpyLastname FROM tdoctmaestimation_tnc tn,tmstmtemployee tm WHERE tn.XVEpyCode = tm.XVEpyCode AND XVMajDocNo = '$id'";
+                                              $querydepart = mysqli_query($connect,$sqldepart)or die("ERROR SELECT");
+                                              while ($rowdepart=mysqli_fetch_array($querydepart)) {
+                                                echo $rowdepart['XVEpyCode']." ";
+                                                echo $rowdepart['XVEpyFirstname']." ";
+                                                echo $rowdepart['XVpyLastname']." ";
                                               }
+                                            }else{
+                                              if(isset($_POST['selectemployee'])){
+                                                $emp =  $_POST['selectemployee'];
+                                                if(isset($emp)){
+                                                  if(count($emp) == 1){
+                                                    echo $emp[0];
+                                                }else{
+                                                  for ($i=0; $i < count($emp); $i++) {
+                                                    echo $emp[$i]." ";
+                                                  }
+                                                }
+                                                }
                                               }else{
                                                   echo "";
                                               }
-                                            } ?>
+                                            }
+                                            ?>
                                             </label>
                                         </div>
                                     </div>
