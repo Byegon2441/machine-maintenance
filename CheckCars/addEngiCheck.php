@@ -72,6 +72,7 @@
     ?>
 
 <!-- modal เพิ่มช่างประเมิน -->
+
     <div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -97,7 +98,6 @@
                                 <option value="<?php echo $emp_row["XVEpyCode"]; ?> <?php echo $emp_row["XVEpyFirstname"]; ?> <?php echo	$emp_row["XVpyLastname"]; ?>"><?php echo $emp_row["XVEpyFirstname"]; ?>  <?php echo	$emp_row["XVpyLastname"]; ?></option>
                                 <?php
                               }
-                              mysqli_close()
                                  ?>
                             </select>
 
@@ -261,7 +261,7 @@ while ($row=mysqli_fetch_array($result)){
                                     <div class="col-md-5">
                                         <div class="col text-left">
                                             <label for="numb">สถานะรถ :
-                                                <select name="statuscar" id="" class="form-control">
+                                                <select name="statuscar" id="" class="form-control" onchange="updatecredoff();">
                                                     <option value="กำหนดบำรุงรักษาตามรอบ 7 วัน">กำหนดบำรุงรักษาตามรอบ 7 วัน</option>
                                                     <option value="การซ่อมแซมทั่วไป 7 วัน">การซ่อมแซมทั่วไป 7 วัน</option>
                                                     <option value="การซ่อมแซมแบบเร่งด่วนเครื่องจักรจอด 3 วัน">การซ่อมแซมแบบเร่งด่วนเครื่องจักรจอด 3 วัน</option>
@@ -284,10 +284,10 @@ while ($row=mysqli_fetch_array($result)){
                                     <div class="col-md-6">
                                         <div class="col text-left">
                                         <?php
-                                        $sqldate = "SELECT XDMajDate,XDMajEstActualDate FROM tdoctmajobdate WHERE XVMajDocNo = '$id'";
+                                        $sqldate = "SELECT XDMajDate,XDMajEstActualDate,XDMajEstAppPlanDate FROM tdoctmajobdate WHERE XVMajDocNo = '$id'";
                                         $querydate = mysqli_query($connect,$sqldate)or die("ERROR SELECT DATE");
                                         $rowdate = mysqli_fetch_array($querydate);
-                                        $oldDate = $rowdate['XDMajDate'];
+                                        $oldDate = $rowdate['XDMajEstAppPlanDate'];
                                         $newD = str_replace('-', '/', $oldDate);
                                         $newDate =  date('d/m/Y', strtotime($newD));
                                          ?>
@@ -300,13 +300,13 @@ while ($row=mysqli_fetch_array($result)){
                                           $newa =  date('d/m/Y', strtotime($nD));
                                           ?>
                                           <label for="numb">วันที่ประเมิน : <input type="text" size="6" name="datee"
-                                                class="form-control" value="<?php echo $newa; ?>" disabled>
+                                                class="form-control" value="<?php echo "$newa"; ?>" disabled>
                                           </label>
                                           <?php
                                         }else{
                                           ?>
                                           <label for="numb">วันที่ประเมิน : <input type="text" size="6" name="datee"
-                                                  class="form-control" data-toggle="datepicker">
+                                                   class="form-control" data-toggle="datepicker">
                                           </label>
                                           <?php
                                         }?>
@@ -407,8 +407,20 @@ while ($row=mysqli_fetch_array($result)){
                 format: 'dd/mm/yyyy'
             });
         });
-
-        //$('.selectpicker').selectpicker();
+        // $(document).ready(function() {
+        //     $('.editbtn').on('click', function() {
+        //         $('#editModal').modal('show')
+        //         $tr = $(this).closest('tr')
+        //
+        //         var data = $tr.children("td").map(function() {
+        //             return $(this).text()
+        //         }).get()
+        //
+        //         console.log(data)
+        //         $('#update_id').val(data[1])
+        //         $('#XVVehTypeName').val(data[2])
+        //     })
+        // })
         </script>
 
 </body>
