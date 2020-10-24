@@ -70,7 +70,7 @@
                                         <td><?php echo $row["XVVehName"];?></td>
                                         <td><?php echo $row["XVMajStatus"];?></td>
                                         <td align="center"><a class='btn btn-primary editbtn' href="AllowMainte.php?id=<?php echo $row["XVMajDocNo"] ?>"
-                                                >จัดการ</a></td>
+                                                >อนุมัติการซ่อม</a></td>
                                     </tr>
                                     <?php $count++;} ?>
                                 </tbody>
