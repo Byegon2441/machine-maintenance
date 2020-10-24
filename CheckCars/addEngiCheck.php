@@ -407,20 +407,7 @@ while ($row=mysqli_fetch_array($result)){
                 format: 'dd/mm/yyyy'
             });
         });
-        // $(document).ready(function() {
-        //     $('.editbtn').on('click', function() {
-        //         $('#editModal').modal('show')
-        //         $tr = $(this).closest('tr')
-        //
-        //         var data = $tr.children("td").map(function() {
-        //             return $(this).text()
-        //         }).get()
-        //
-        //         console.log(data)
-        //         $('#update_id').val(data[1])
-        //         $('#XVVehTypeName').val(data[2])
-        //     })
-        // })
+        
         </script>
 
 </body>
