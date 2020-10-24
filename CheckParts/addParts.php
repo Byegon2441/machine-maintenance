@@ -118,7 +118,7 @@
                                 </select>
                             </div>
                             <div class="col-sm-2">
-                                <input class="form-control" id="val_select2" type="number" min="1" max="5"></input>
+                                <input class="form-control" id="val_select2" type="number" min="1"></input>
                             </div>
                             <div class="col-sm-1">
                                 <button type="button" id="add_row" class="btn btn-success btn-circle add_row"

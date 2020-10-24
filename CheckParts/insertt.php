@@ -62,7 +62,7 @@ include '../database/connect.php';
             echo '<script>';
             echo "Swal.fire({
                 title: 'สำเร็จ!',
-                text: 'ทำการส่งข้อมูลใบแจ้งซ่อมให้หัวหน้าช่างเรียบร้อยแล้ว',
+                text: 'ทำการเพิ่มอะไหล่เรียบร้อยแล้ว',
                 icon: 'success',
                 confirmButtonText: 'Back'
                 }).then(function() {
