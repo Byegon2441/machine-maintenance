@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <?php include '../Template/templsidebar.php';
+    <?php include '../Template/temSuperside.php';
     include "../database/connect.php";
     ?>
 
@@ -28,7 +28,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">ราย</h1>
+                    <h1 class="page-header">รายการแจ้งซ่อม</h1>
                 </div>
             </div>
             <div class="row">
@@ -44,6 +44,7 @@
                                     <tr>
                                         <th>เลขที่ใบแจ้งซ่อม</th>
                                         <th>วันที่แจ้ง</th>
+                                        <th>วันที่ประเมิน</th>
                                         <th>หมายเลขเครื่อง</th>
                                         <th>ชื่อเครื่องจักร</th>
                                         <th>สถานะ</th>
@@ -57,7 +58,7 @@
     WHERE tj.XVVehCode = tv.XVVehCode
     AND tj.XVMajDocNo = td.XVMajDocNo
     AND XVMajDocStatus = 2
-    AND tj.XVMajStatus = 'แจ้งซ่อม'";
+    AND tj.XVMajStatus = 'รอนำรถประเมินอะไหล่'";
     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
     $count = 1;
     while ($row=mysqli_fetch_array($result)){
@@ -65,12 +66,13 @@
                                     <tr class="odd gradeA">
                                         <td><?php echo $row["XVMajDocNo"];?></td>
                                         <td><?php echo $row["DS"];?></td>
+                                        <td><?php echo $row["DA"];?></td>
                                         <td><?php echo $row["XVVehEngineNumber"];?></td>
                                         <td><?php echo $row["XVVehName"];?></td>
                                         <td><?php echo $row["XVMajStatus"];?></td>
                                         <td align="center">
-                                        <a class='btn btn-primary editbtn' href="addDataCheck.php?id=<?php echo $row["XVMajDocNo"] ?>"
-                                            >กำหนดวันประเมิน</a>
+                                        <a class='btn btn-primary editbtn' href="addEngiCheck.php?id=<?php echo $row["XVMajDocNo"] ?>"
+                                            >กำหนดช่างประเมิน</a>
                                         </td>
                                     </tr>
                                     <?php $count++;}

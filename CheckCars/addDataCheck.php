@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<!--กำหนดวันประเมิน-->
 <head>
 
     <meta charset="utf-8">
@@ -65,11 +65,22 @@
 
 <body>
 
-    <?php include '../Template/temSuperside.php';
+    <?php include  '../Template/templsidebar.php';
          include '../database/connect.php';
     ?>
+<?php
+if(isset($_GET['id'])){
+      $id=$_GET['id'];
+  $sql = " SELECT  m.XVMajDocNo, d.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus ,depart.XVDptCode,depart.XVDptName,depart.XVDptNumber,depart.`XVDptSub-district`,depart.XVDptDistrict,depart.XVDptProvince
+FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v,tmstmdepartment depart
+WHERE m.XVMajDocNo = d.XVMajDocNo
+AND m.XVVehCode = v.XVVehCode
+AND v.XVDptCode = depart.XVDptCode
+AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
 
-
+$result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+while ($row=mysqli_fetch_array($result)){
+ ?>
 <div id="wrapper">
         <div id="page-wrapper">
             <div class="row">
@@ -88,7 +99,7 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                         <label>ใบแจ้งซ่อม</label>
-                            <form action="" class="form-inline">
+                            <form action="insertDataCheck.php" class="form-inline" method="post">
 
 
                                 <div class="row">
@@ -96,7 +107,7 @@
                                     <div class="col-md-6 ml-auto">
                                         <div class="col text-right">
                                             <label for="numb">เลขที่ใบแจ้งซ่อม : <input type="text" name="numb"
-                                                    class="form-control" disabled></label>
+                                                    value="<?php echo $row["XVMajDocNo"];?>" class="form-control" disabled></label>
                                         </div>
                                     </div>
                                 </div>
@@ -106,7 +117,7 @@
                                     <div class="col-md-6 ml-auto">
                                         <div class="col text-right">
                                             <label for="numb">วันที่แจ้งซ่อม : <input type="text" name="numb"
-                                                    class="form-control" disabled></label>
+                                                    value="<?php echo $row["XDMajDate"];?>" class="form-control" disabled></label>
                                         </div>
                                     </div>
                                 </div>
@@ -116,13 +127,13 @@
                                         <div class="col text-right">
                                             <label for="numb">ชื่อเครื่องจักร :</label>
                                             <input id="XVVehTypeName" name="XVVehTypeName" class="form-control"
-                                                style="width:60%" readonly>
+                                                value="<?php echo $row["XVVehName"];?>" style="width:60%" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-5">
                                         <div class="col text-right">
                                             <label for="numb">หมายเลขเครื่องจักร : <input type="text" size="17" name="numb"
-                                                    class="form-control" readonly></label>
+                                                    value="<?php echo $row["XVVehCode"];?>"  class="form-control" readonly></label>
                                         </div>
                                     </div>
                                 </div>
@@ -131,13 +142,13 @@
                                     <div class="col-md-7">
                                         <div class="col text-right">
                                             <label for="numb">ชื่อไชต์งาน : <input id="site" type="text" size="30" name="numb"
-                                                    class="form-control" readonly></label>
+                                                     value="<?php echo $row["XVDptName"];?>" class="form-control" readonly></label>
                                         </div>
                                     </div>
                                     <div class="col-md-5">
                                         <div class="col text-right">
-                                            <label for="numb">หมายเลขหน่วยงาน : <input type="text" size="17" name="numb"
-                                                    class="form-control" readonly></label>
+                                            <label for="numb">หมายเลขไซต์งาน : <input type="text" size="17" name="numb"
+                                                      value="<?php echo $row["XVDptCode"];?>"  class="form-control" readonly></label>
                                         </div>
                                     </div>
                                 </div>
@@ -145,13 +156,13 @@
                                 <div class="form-row">
                                     <div class="col">
                                         <label for="numb">ตำแหน่งเครื่องจักร ณ ปัจจุบัน เลขที่ :
-                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb"
+                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb" value="<?php echo $row["XVDptNumber"];?>"
                                                 class="form-control" readonly>
-                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb"
+                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb" value="<?php echo $row["XVDptSub-district"];?>"
                                                 class="form-control" readonly>
-                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb"
+                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb" value="<?php echo $row["XVDptDistrict"];?>"
                                                 class="form-control" readonly>
-                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb"
+                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb" value="<?php echo $row["XVDptProvince"];?>"
                                                 class="form-control" readonly></label>
                                     </div>
                                 </div>
@@ -174,14 +185,28 @@
                                                 </tr>
                                             </thead>
                                             <tbody class="sub">
-                                                <tr id='addr0'>
-                                                    <td>1</td>
-                                                    <td><input type="text" name="n_sub" placeholder="กรุณากรอกเรื่องที่แจ้ง" readonly>
-                                                    </td>
-                                                    <td><input type="text" name="sub" placeholder="กรุณากรอกสาเหตุ" readonly></td>
-                                                </tr>
-                                                <tr id='addr1'></tr>
+                                              <?php
+                                            //  include '../database/connect.php';
+                                                  $sql2 = "SELECT jd.XIMajdSeqNo,jd.XVMajdSubject,jd.XVMajdCause
+                                                   FROM  tdoctmajob j ,tdoctmajobdetail jd
+                                                   WHERE  j.XVMajDocNo = jd.XVMajDocNo
+                                                   AND j.XVMajDocNo = '$id'";
+                                                  $result2 = mysqli_query($connect,$sql2) or die(mysqli_query($connect));
+                                                  $number = 0;
+                                                  while ($row2=mysqli_fetch_array($result2)){
+                                                  $number++;
+                                              ?>
 
+                                                  <tr id='addr0'>
+                                                      <td><?php echo $number;?></td>
+                                                      <td><input type="text" name="n_sub[]" placeholder="กรุณากรอกเรื่องที่แจ้ง" value="<?php echo $row2["XVMajdSubject"];?>" readonly>
+                                                      </td>
+                                                      <td><input type="text" name="sub[]" placeholder="กรุณากรอกสาเหตุ" value="<?php echo $row2["XVMajdCause"];?>" readonly></td>
+
+                                                  </tr>
+                                                  <tr id='addr1'></tr>
+                                                  <?php }
+                                                   ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -192,12 +217,6 @@
                                 <div class="row">
                                     <div class="col-md-5">
                                         <div class="col text-left">
-                                            <label for="numb">สถานะรถ :
-                                                <select name="" id="" class="form-control" disabled>
-                                                    <option value="">fsdfdfghdghdghdghdghdghdgh</option>
-                                                    <option value="">sdf</option>
-                                                </select>
-                                            </label>
                                         </div>
                                     </div>
                                     <div class="col-md-7">
@@ -208,7 +227,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col text-left">
-                                            <label for="numb">วันนัดประเมิน : <input type="text" size="6" name="numb"
+                                            <label for="numb">วันนัดประเมิน : <input type="text" size="6" name="numDate"
                                                     class="form-control" data-toggle="datepicker">
                                                 </select>
                                             </label>
@@ -225,7 +244,8 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col text-right">
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal">บันทึก</button>
+                                        <input type="hidden" name="id_Data" value="<?php echo $row["XVMajDocNo"];?>">
+                                        <button type="submit" class="btn btn-primary" data-dismiss="modal">บันทึก</button>
                                         </div>
                                     </div>
                                 </div>
@@ -244,7 +264,9 @@
 </div>
         <!-- /#wrapper -->
 
-
+<?php
+                }
+                        }?>
         <script src="../vendor/js/datepicker.js"></script>
         <script src="../vendor/js/datepicker.th-TH.js"></script>
         <script>

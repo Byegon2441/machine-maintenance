@@ -318,12 +318,13 @@
                                 <div class="modal-footer">
                                     <div class="col-md-6">
                                         <div class="col text-left">
-                                            <button type="button" class="btn btn-danger mr-auto">กลับ</button>
+                                        <a type="button" class="btn btn-danger mr-auto" href="ListAllowMainte.php" >กลับ</a>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col text-right">
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal">บันทึก</button>
+                                        <input type="submit" class="btn btn-success btndis" name="save"
+                                                value="บันทึก">
                                         </div>
                                     </div>
                                 </div>
