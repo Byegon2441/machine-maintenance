@@ -100,12 +100,14 @@
                               }
                                  ?>
                             </select>
-
+                            <input type="hidden" id="date" value="" name="date">
+                        <input type="hidden" id="carstatus" value="" name="carstatus">
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                       
                         <input type="submit" value="ยืนยัน" class="btn btn-primary">
                     </div>
                 </form>
@@ -122,9 +124,12 @@
  AND v.XVDptCode = depart.XVDptCode
  AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
 
+
+
 $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
 while ($row=mysqli_fetch_array($result)){
-
+   
+    
 ?>
 <div id="wrapper">
         <div id="page-wrapper">
@@ -261,16 +266,16 @@ while ($row=mysqli_fetch_array($result)){
                                     <div class="col-md-5">
                                         <div class="col text-left">
                                             <label for="numb">สถานะรถ :
-                                                <select name="statuscar" id="" class="form-control" onchange="updatecredoff();">
-                                                    <option value="กำหนดบำรุงรักษาตามรอบ 7 วัน">กำหนดบำรุงรักษาตามรอบ 7 วัน</option>
-                                                    <option value="การซ่อมแซมทั่วไป 7 วัน">การซ่อมแซมทั่วไป 7 วัน</option>
-                                                    <option value="การซ่อมแซมแบบเร่งด่วนเครื่องจักรจอด 3 วัน">การซ่อมแซมแบบเร่งด่วนเครื่องจักรจอด 3 วัน</option>
-                                                    <option value="การซ่อมแซมเชิงป้องกัน">การซ่อมแซมเชิงป้องกัน</option>
-                                                    <option value="เปลี่ยนยางล้อหมุน 7 วัน">เปลี่ยนยางล้อหมุน 7 วัน</option>
-                                                    <option value="การซ่อมแซมจากเคสอุบัติเหตุ 30 วัน">การซ่อมแซมจากเคสอุบัติเหตุ 30 วัน</option>
-                                                    <option value="เบิกของสิ้นเปลือง">เบิกของสิ้นเปลือง</option>
-                                                    <option value="ซ่อมแอร์/ติดฟีลม์ 7 วัน">ซ่อมแอร์/ติดฟีลม์ 7 วัน</option>
-                                                    <option value="ปลี่ยนยางเครื่องจักร 3 วัน">เปลี่ยนยางเครื่องจักร 3 วัน</option>
+                                                <select name="statuscar" id="carstatusinput" class="form-control" >
+                                                    <option value="กำหนดบำรุงรักษาตามรอบ 7 วัน"  <?php if(isset($_POST['carstatus']) ){ if($_POST['carstatus']=="กำหนดบำรุงรักษาตามรอบ 7 วัน"){ echo 'selected';} } ?>>กำหนดบำรุงรักษาตามรอบ 7 วัน</option>
+                                                    <option value="การซ่อมแซมทั่วไป 7 วัน" <?php if(isset($_POST['carstatus']) ){ if($_POST['carstatus']=="การซ่อมแซมทั่วไป 7 วัน"){ echo 'selected';} } ?>>การซ่อมแซมทั่วไป 7 วัน</option>
+                                                    <option value="การซ่อมแซมแบบเร่งด่วนเครื่องจักรจอด 3 วัน" <?php if(isset($_POST['carstatus']) ){ if($_POST['carstatus']=="การซ่อมแซมแบบเร่งด่วนเครื่องจักรจอด 3 วัน"){ echo 'selected';} } ?> >การซ่อมแซมแบบเร่งด่วนเครื่องจักรจอด 3 วัน</option>
+                                                    <option value="การซ่อมแซมเชิงป้องกัน" <?php if(isset($_POST['carstatus']) ){ if($_POST['carstatus']=="การซ่อมแซมเชิงป้องกัน"){ echo 'selected';} } ?>>การซ่อมแซมเชิงป้องกัน</option>
+                                                    <option value="เปลี่ยนยางล้อหมุน 7 วัน" <?php if(isset($_POST['carstatus']) ){ if($_POST['carstatus']=="เปลี่ยนยางล้อหมุน 7 วัน"){ echo 'selected';} } ?>>เปลี่ยนยางล้อหมุน 7 วัน</option>
+                                                    <option value="การซ่อมแซมจากเคสอุบัติเหตุ 30 วัน" <?php if(isset($_POST['carstatus']) ){ if($_POST['carstatus']=="การซ่อมแซมจากเคสอุบัติเหตุ 30 วัน"){ echo 'selected';} } ?> >การซ่อมแซมจากเคสอุบัติเหตุ 30 วัน</option>
+                                                    <option value="เบิกของสิ้นเปลือง" <?php if(isset($_POST['carstatus']) ){ if($_POST['carstatus']=="เบิกของสิ้นเปลือง"){ echo 'selected';} } ?>>เบิกของสิ้นเปลือง</option>
+                                                    <option value="ซ่อมแอร์/ติดฟีลม์ 7 วัน" <?php if(isset($_POST['carstatus']) ){ if($_POST['carstatus']=="ซ่อมแอร์/ติดฟีลม์ 7 วัน"){ echo 'selected';} } ?>>ซ่อมแอร์/ติดฟีลม์ 7 วัน</option>
+                                                    <option value="เปลี่ยนยางเครื่องจักร 3 วัน" <?php if(isset($_POST['carstatus']) ){ if($_POST['carstatus']=="เปลี่ยนยางเครื่องจักร 3 วัน"){ echo 'selected';} } ?>>เปลี่ยนยางเครื่องจักร 3 วัน</option>
                                                 </select>
                                             </label>
                                         </div>
@@ -299,15 +304,21 @@ while ($row=mysqli_fetch_array($result)){
                                           $nD = str_replace('-', '/', $oD);
                                           $newa =  date('d/m/Y', strtotime($nD));
                                           ?>
-                                          <label for="numb">วันที่ประเมิน : <input type="text" size="6" name="datee"
+
+                                          
+                                          <label for="numb">วันที่ประเมิน : <input type="text" size="6" name="datee" id='dateinput'
                                                 class="form-control" value="<?php echo "$newa"; ?>" disabled>
                                           </label>
+                                      
+
                                           <?php
                                         }else{
                                           ?>
-                                          <label for="numb">วันที่ประเมิน : <input type="text" size="6" name="datee"
-                                                   class="form-control" data-toggle="datepicker">
+                                         
+                                          <label for="numb">วันที่ประเมิน : <input type="text" size="6" name="datee" id='dateinput'
+                                                   class="form-control" data-toggle="datepicker" value="<?php if(isset($_POST['date']) ){ $date= $_POST['date']; echo "$date";  }?>">
                                           </label>
+                                        
                                           <?php
                                         }?>
 
@@ -408,6 +419,24 @@ while ($row=mysqli_fetch_array($result)){
             });
         });
         
+        $('#carstatusinput').change(() => {
+           
+            var carstatusinput = $('#carstatusinput').val(); 
+        
+            //alert(carstatusinput)
+              $('#carstatus').val(carstatusinput)
+        })
+
+        $('#dateinput').change(() => {
+            var dateinput  = $('#dateinput').val();
+        
+          
+         
+              $('#date').val(dateinput)
+            
+        })
+
+
         </script>
 
 </body>

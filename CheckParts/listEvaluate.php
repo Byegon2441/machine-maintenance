@@ -28,7 +28,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">รายการแจ้งซ่อม</h1>
+                    <h1 class="page-header">ใบประเมินการซ่อมของช่าง</h1>
                 </div>
             </div>
             <div class="row">
@@ -53,7 +53,7 @@
                                 <tbody>
 
                                     <?php
-    $sql = "SELECT m.XVMajDocNo, j.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMaCarStatus
+    $sql = "SELECT m.XVMajDocNo, j.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus
     FROM TDocTMaJob m, TDocTMaJobDate j, TMstVehicle v GROUP BY m.XVMajDocNo";
     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
     $count = 1;
@@ -64,7 +64,7 @@
                                         <td><?php echo $row['XDMajDate']; ?></td>
                                         <td><?php echo $row['XVVehCode']; ?></td>
                                         <td><?php echo $row['XVVehName']; ?></td>
-                                        <td><?php echo $row['XVMaCarStatus']; ?></td>
+                                        <td><?php echo $row['XVMajStatus']; ?></td>
                                         <!-- <td align="center"><input class='btn btn-primary' type='button'
                                                 value='รายละเอียด'></td> -->
                                         <td align="center"><a class='btn btn-primary editbtn'
