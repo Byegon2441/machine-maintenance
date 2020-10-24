@@ -87,12 +87,15 @@
                                     <a href="../CheckCars/ListCheck.php">กำหนดวันประเมิน</a>   <!-- คือรายการที่ต้องใส่วันนัด-->
                                 </li>
                                 <li>
-                                    <a href="#">รถรอประเมิน</a>   <!-- listที่show คือใบที่ใส่วันนัดประเมินแล้ว-->
+                                    <a href="../CheckCars/ListCheckDataEngi.php">รถรอประเมิน</a>   <!-- listที่show คือใบที่ใส่วันนัดประเมินแล้ว-->
                                 </li>
                                 
                                 <!-- <li>
                                 <a href="#">รายการส่งมอบอะไหล่</a>
                                 </li> -->
+                                <li>
+                                <a href="../CheckParts/listEvaluate.php">ใบประเมินการซ่อม</a>
+                                </li>
                                 <li>
                                 <a href="../AllowMainte/ListAllowMainte.php">อนุมัติการซ่อม</a> <!-- หรือก็คือ รถประเมินแล้ว อันเดียวกัน-->
                                 </li>
@@ -105,9 +108,7 @@
                                 <li>
                                 <a href="../Job/Finish.php"><i class="fa fa-check fa-fw"></i> ปิดงาน</a>
                                 </li> -->
-                                <li>
-                                <a href="../CheckParts/listEvaluate.php">ใบประเมินการซ่อม</a>
-                                </li>
+                               
                                 <!-- <li>
                                 <a href="#">รับอะไหล่</a>
                                 </li>
