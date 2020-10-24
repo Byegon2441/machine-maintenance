@@ -83,20 +83,21 @@
                     <h5 class="modal-title" id="exampleModalLabel">เพิ่มช่างประเมิน</h5>
                 </div>
                 <form class="form-horizontal" id="insert" role="form" method="POST"
-                    action="#" enctype="multipart/form-data">
+                    action="addEngiCheck.php?id=<?php echo $_GET['id']; ?>" enctype="multipart/form-data">
                     <div class="modal-body mx-3">
                         <div class="form-group">
                             <label for="name" class="col-sm-4 control-label">
                                 <span class="required"></span> เลือกช่างประเมิน:</label>
                             <div class="col-sm-7">
-                            <select name="selectemployee" class="selectpicker form-control"  multiple data-actions-box="true" multiple>
+                            <select name="selectemployee[]" class="selectpicker form-control" data-live-search="true" multiple>
                               <?php $emp_sql = "SELECT * FROM tmstmtemployee ORDER BY XVEpyJobPosition ASC";
                                     $emp_query = mysqli_query($connect,$emp_sql)or die(mysqli_query($connect));
                                     while ($emp_row=mysqli_fetch_array($emp_query)){
                               ?>
-                                <option value="<?php echo $emp_row["XVEpyCode "]; ?>"><?php echo $emp_row["XVEpyFirstname"]; ?>  <?php echo	$emp_row["XVpyLastname"]; ?></option>
+                                <option value="<?php echo $emp_row["XVEpyCode"]; ?> <?php echo $emp_row["XVEpyFirstname"]; ?> <?php echo	$emp_row["XVpyLastname"]; ?>"><?php echo $emp_row["XVEpyFirstname"]; ?>  <?php echo	$emp_row["XVpyLastname"]; ?></option>
                                 <?php
                               }
+                              mysqli_close()
                                  ?>
                             </select>
 
@@ -105,10 +106,9 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                        <input type="submit" value="ยืนยัน" class="btn btn-primary" onclick="getValue()">
+                        <input type="submit" value="ยืนยัน" class="btn btn-primary">
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
@@ -144,9 +144,7 @@ while ($row=mysqli_fetch_array($result)){
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                         <label>ใบแจ้งซ่อม</label>
-                            <form action="" class="form-inline">
-
-
+                            <form action="insert.php?id=<?php echo $_GET['id']; ?>" class="form-inline" method="post">
                                 <div class="row">
                                     <div class="col-md-6"></div>
                                     <div class="col-md-6 ml-auto">
@@ -231,18 +229,18 @@ while ($row=mysqli_fetch_array($result)){
                                             </thead>
                                             <tbody class="sub">
                                               <?php
-                                            //  include '../database/connect.php';
                                                   $sql2 = "SELECT jd.XIMajdSeqNo,jd.XVMajdSubject,jd.XVMajdCause
                                                    FROM  tdoctmajob j ,tdoctmajobdetail jd
                                                    WHERE  j.XVMajDocNo = jd.XVMajDocNo
                                                    AND j.XVMajDocNo = '$id'";
                                                   $result2 = mysqli_query($connect,$sql2) or die(mysqli_query($connect));
+                                                  $number = 0;
                                                   while ($row2=mysqli_fetch_array($result2)){
-
+                                                    $number++;
                                               ?>
 
                                                   <tr id='addr0'>
-                                                      <td><?php echo $row2["XIMajdSeqNo"];?></td>
+                                                      <td><?php echo $number?></td>
                                                       <td><input type="text" name="n_sub[]" placeholder="กรุณากรอกเรื่องที่แจ้ง" value="<?php echo $row2["XVMajdSubject"];?>" readonly>
                                                       </td>
                                                       <td><input type="text" name="sub[]" placeholder="กรุณากรอกสาเหตุ" value="<?php echo $row2["XVMajdCause"];?>" readonly></td>
@@ -263,9 +261,16 @@ while ($row=mysqli_fetch_array($result)){
                                     <div class="col-md-5">
                                         <div class="col text-left">
                                             <label for="numb">สถานะรถ :
-                                                <select name="" id="" class="form-control" disabled>
-                                                    <option value=""><?php echo $row["XVMajStatus"]; ?></option>
-                                                    <option value="">sdf</option>
+                                                <select name="statuscar" id="" class="form-control">
+                                                    <option value="กำหนดบำรุงรักษาตามรอบ 7 วัน">กำหนดบำรุงรักษาตามรอบ 7 วัน</option>
+                                                    <option value="การซ่อมแซมทั่วไป 7 วัน">การซ่อมแซมทั่วไป 7 วัน</option>
+                                                    <option value="การซ่อมแซมแบบเร่งด่วนเครื่องจักรจอด 3 วัน">การซ่อมแซมแบบเร่งด่วนเครื่องจักรจอด 3 วัน</option>
+                                                    <option value="การซ่อมแซมเชิงป้องกัน">การซ่อมแซมเชิงป้องกัน</option>
+                                                    <option value="เปลี่ยนยางล้อหมุน 7 วัน">เปลี่ยนยางล้อหมุน 7 วัน</option>
+                                                    <option value="การซ่อมแซมจากเคสอุบัติเหตุ 30 วัน">การซ่อมแซมจากเคสอุบัติเหตุ 30 วัน</option>
+                                                    <option value="เบิกของสิ้นเปลือง">เบิกของสิ้นเปลือง</option>
+                                                    <option value="ซ่อมแอร์/ติดฟีลม์ 7 วัน">ซ่อมแอร์/ติดฟีลม์ 7 วัน</option>
+                                                    <option value="ปลี่ยนยางเครื่องจักร 3 วัน">เปลี่ยนยางเครื่องจักร 3 วัน</option>
                                                 </select>
                                             </label>
                                         </div>
@@ -279,16 +284,44 @@ while ($row=mysqli_fetch_array($result)){
                                     <div class="col-md-6">
                                         <div class="col text-left">
                                             <label for="numb">วันนัดประเมิน : <input type="text" size="6" name="numb"
-                                                    class="form-control" data-toggle="datepicker">
+                                                    class="form-control" data-toggle="datepicker"disabled>
                                             </label>
-                                            <label for="numb">วันที่ประเมิน : <input type="text" size="6" name="numb"
+                                            <label for="numb">วันที่ประเมิน : <input type="text" size="6" name="datee"
                                                     class="form-control" data-toggle="datepicker">
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="col text-left">
-                                            <label for="numb">ช่างประเมิน : <input type="text" name="" id="texts" value="">
+                                            <label for="numb">ช่างประเมิน : <input style="border: none; width:auto;" type="hidden" name="empar" value="<?php if(isset($_POST['selectemployee'])){
+                                              $emp =  $_POST['selectemployee'];
+                                              if(isset($emp)){
+                                                if(count($emp) == 1){
+                                                  echo $emp[0][0];
+                                              }else{
+                                                for ($i=0; $i < count($emp); $i++) {
+                                                  echo $emp[$i][0]." ";
+                                                }
+                                              }
+                                              }else{
+                                                  echo "";
+                                              }
+                                              ;
+                                            } ?>" >
+                                            <?php if(isset($_POST['selectemployee'])){
+                                              $emp =  $_POST['selectemployee'];
+                                              if(isset($emp)){
+                                                if(count($emp) == 1){
+                                                  echo $emp[0];
+                                              }else{
+                                                for ($i=0; $i < count($emp); $i++) {
+                                                  echo $emp[$i]." ";
+                                                }
+                                              }
+                                              }else{
+                                                  echo "";
+                                              }
+                                            } ?>
                                             </label>
                                         </div>
                                     </div>
@@ -297,13 +330,13 @@ while ($row=mysqli_fetch_array($result)){
                                 <div class="modal-footer">
                                     <div class="col-md-6">
                                         <div class="col text-left">
-                                              <a type="button" class="btn btn-danger mr-auto" href="ListCheck.php" >กลับ</a>
+                                              <a type="button" class="btn btn-danger mr-auto" href="ListCheckDataEngi.php" >กลับ</a>
                                             <button type="button" class="btn btn-warning mr-auto" data-toggle="modal" data-target="#insertModal">เพิ่มช่างประเมิน</button>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col text-right">
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal">บันทึก</button>
+                                            <button type="submit" class="btn btn-primary" data-dismiss="modal">บันทึก</button>
                                         </div>
                                     </div>
                                 </div>
@@ -338,12 +371,7 @@ while ($row=mysqli_fetch_array($result)){
             });
         });
 
-        $('.selectpicker').selectpicker();
-        
-        $('#getValue').click( function() {
-          var val = $('.selectpicker').selectpicker('val', '');
-          alert(val);
-        });
+        //$('.selectpicker').selectpicker();
         </script>
 
 </body>
