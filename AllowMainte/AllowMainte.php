@@ -330,7 +330,6 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col text-right">
-
                                         <input type="hidden" value="<?php echo $id?>" name='id'>
                                         <input type="submit" class="btn btn-success btndis" name="save"
 
