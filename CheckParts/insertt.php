@@ -8,7 +8,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+<?php 
+// Turn off all error reporting
+error_reporting(0);
 
+// Report simple running errors
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
+// Reporting E_NOTICE can be good too (to report uninitialized
+// variables or catch variable name misspellings ...)
+error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+
+// Report all errors except E_NOTICE
+error_reporting(E_ALL & ~E_NOTICE);
+
+// Report all PHP errors
+error_reporting(E_ALL);
+
+// Report all PHP errors
+error_reporting(-1);
+
+// Same as error_reporting(E_ALL);
+ini_set('error_reporting', E_ALL);
+?>
     <title>ระบบซ่อมบำรุงเครื่องจักร : แก้ไขใบแจ้งซ่อม</title>
 
     <!-- Bootstrap Core CSS -->
@@ -41,12 +63,6 @@ include '../database/connect.php';
     $seqqq = $_POST['seqq'];
     $sql = "DELETE FROM TDocTMaMachine_parts_use WHERE XVMajDocNo = '$XVMajDocNo' AND XIMajdSeqNo = $seqqq";
     $query = mysqli_query( $connect, $sql );
-    // $sql = "SELECT * FROM DocTMaMachine_parts_use WHERE XVMajDocNo = $XVMajDocNo AND XIMajdSeqNo = $seqqq";
-    // $query = mysqli_query( $connect, $sql );
-    // $arry = array();
-    // while($r=mysqli_fetch_array($result)){
-        //     $arry = $r['XIMachinePartsSeqNo'];
-        // }
     $nvals = count($_REQUEST['n_sub']);
     $query2 = false;
     if($query){
@@ -71,12 +87,30 @@ include '../database/connect.php';
             echo '</script>';
         } else {
             echo mysqli_error( $connect );
-            
+            echo '<script>';
+            echo "Swal.fire({
+                title: 'เกิดข้อผิดพลาด!',
+                text: 'กรุณาเพิ่มอะไหล่ที่ต้องการ',
+                icon: 'warning',
+                confirmButtonText: 'Back'
+                }).then(function() {
+                window.location = 'addParts.php?id=$XVMajDocNo';
+            });";
+            echo '</script>';
         }
         
     }else{
-        echo mysqli_error( $connect );
-
+        // echo mysqli_error( $connect );
+        echo '<script>';
+        echo "Swal.fire({
+            title: 'เกิดข้อผิดพลาด!',
+            text: 'ไม่สามารถเพิ่มข้อมูลได้',
+            icon: 'error',
+            confirmButtonText: 'Back'
+            }).then(function() {
+            window.location = 'addParts.php?id=$XVMajDocNo';
+        });";
+        echo '</script>';
     }
 
    
