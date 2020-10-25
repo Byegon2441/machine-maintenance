@@ -107,7 +107,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                       
+
                         <input type="submit" value="ยืนยัน" class="btn btn-primary">
                     </div>
                 </form>
@@ -128,8 +128,8 @@
 
 $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
 while ($row=mysqli_fetch_array($result)){
-   
-    
+
+
 ?>
 <div id="wrapper">
         <div id="page-wrapper">
@@ -305,20 +305,20 @@ while ($row=mysqli_fetch_array($result)){
                                           $newa =  date('d/m/Y', strtotime($nD));
                                           ?>
 
-                                          
+
                                           <label for="numb">วันที่ประเมิน : <input type="text" size="6" name="datee" id='dateinput'
                                                 class="form-control" value="<?php echo "$newa"; ?>" disabled>
                                           </label>
-                                      
+
 
                                           <?php
                                         }else{
                                           ?>
-                                         
+
                                           <label for="numb">วันที่ประเมิน : <input type="text" size="6" name="datee" id='dateinput'
                                                    class="form-control" data-toggle="datepicker" value="<?php if(isset($_POST['date']) ){ $date= $_POST['date']; echo "$date";  }?>">
                                           </label>
-                                        
+
                                           <?php
                                         }?>
 
@@ -330,7 +330,7 @@ while ($row=mysqli_fetch_array($result)){
                                               $emp =  $_POST['selectemployee'];
                                               if(isset($emp)){
                                                 if(count($emp) == 1){
-                                                  echo $emp[0][0];
+                                                  echo $emp[0][0]." ";
                                               }else{
                                                 for ($i=0; $i < count($emp); $i++) {
                                                   echo $emp[$i][0]." ";
@@ -358,7 +358,7 @@ while ($row=mysqli_fetch_array($result)){
                                                 $emp =  $_POST['selectemployee'];
                                                 if(isset($emp)){
                                                   if(count($emp) == 1){
-                                                    echo $emp[0];
+                                                    echo $emp[0]." ";
                                                 }else{
                                                   for ($i=0; $i < count($emp); $i++) {
                                                     echo $emp[$i]." ";
@@ -418,22 +418,22 @@ while ($row=mysqli_fetch_array($result)){
                 format: 'dd/mm/yyyy'
             });
         });
-        
+
         $('#carstatusinput').change(() => {
-           
-            var carstatusinput = $('#carstatusinput').val(); 
-        
+
+            var carstatusinput = $('#carstatusinput').val();
+
             //alert(carstatusinput)
               $('#carstatus').val(carstatusinput)
         })
 
         $('#dateinput').change(() => {
             var dateinput  = $('#dateinput').val();
-        
-          
-         
+
+
+
               $('#date').val(dateinput)
-            
+
         })
 
 
