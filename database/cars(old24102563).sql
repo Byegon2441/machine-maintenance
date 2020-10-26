@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2020 at 07:08 AM
+-- Generation Time: Oct 23, 2020 at 12:11 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -51,15 +51,6 @@ CREATE TABLE `tdoctmaestimation_tnc` (
   `XVMajDocNo` varchar(13) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
---
--- Dumping data for table `tdoctmaestimation_tnc`
---
-
-INSERT INTO `tdoctmaestimation_tnc` (`XVEpyCode`, `XVMajDocNo`) VALUES
-(2, 'byymm-000002'),
-(4, 'byymm-000002'),
-(5, 'byymm-000002');
-
 -- --------------------------------------------------------
 
 --
@@ -85,8 +76,8 @@ CREATE TABLE `tdoctmajob` (
 --
 
 INSERT INTO `tdoctmajob` (`XVMajDocNo`, `XVMajWhoInformant`, `XVMajStatus`, `XVMaCarStatus`, `XVMajFinishRmk`, `XVMajDocStatus`, `XVMajNumber`, `XVMajSub-district`, `XVMajDistrict`, `XVMajProvince`, `XVVehCode`) VALUES
-('byymm-000001', 'aa', 'รอนำรถประเมินอะไหล่', 'กำหนดบำรุงรักษาตามรอบ 7 วัน', 'aa', '2', 'aa', 'aa', 'aa', 'aa', 3),
-('byymm-000002', 'bb', 'รอนำรถประเมินอะไหล่', 'เปลี่ยนยางล้อหมุน 7 วัน', 'bb', '2', 'bb', 'bb', 'bb', 'bb', 4);
+('byymm-000001', 'aa', '2', 'รอนำรถประเมินอะไหล่', 'aa', '2', 'aa', 'aa', 'aa', 'aa', 3),
+('byymm-000002', 'bb', '2', 'รออนุมัติซ่อม', 'bb', '2', 'bb', 'bb', 'bb', 'bb', 4);
 
 --
 -- Triggers `tdoctmajob`
@@ -132,8 +123,8 @@ CREATE TABLE `tdoctmajobdate` (
 --
 
 INSERT INTO `tdoctmajobdate` (`XVMajDocNo`, `XDMajEstAppPlanDate`, `XDMajEstActualDate`, `XDMajDate`, `XDMajSpareDate`, `XDMaPickupAppPlanDate`, `XDMajRepairAppPlanDate`, `XDMajRepairActualDate`, `XDMajPickupActualDate`, `XDMajFinishDate`, `XDMajConfirmDate`, `XDMajSendTime`, `XDMajKeyTime`) VALUES
-('byymm-000001', '2020-10-23 18:37:42', '2020-10-16 16:29:23', '2020-10-01', '0000-00-00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-('byymm-000002', '2020-10-22 00:00:00', '2020-10-22 08:03:16', '0000-00-00', '0000-00-00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+('byymm-000001', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+('byymm-000002', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -146,18 +137,15 @@ CREATE TABLE `tdoctmajobdetail` (
   `XVMajDocNo` varchar(13) COLLATE utf8_bin NOT NULL,
   `XVMajdSubject` varchar(150) COLLATE utf8_bin NOT NULL,
   `XVMajdCause` varchar(150) COLLATE utf8_bin NOT NULL,
-  `XVMajConfirm` varchar(50) COLLATE utf8_bin NOT NULL,
-  `XVPicturePath` text COLLATE utf8_bin NOT NULL
+  `XVMajConfirm` varchar(50) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `tdoctmajobdetail`
 --
 
-INSERT INTO `tdoctmajobdetail` (`XIMajdSeqNo`, `XVMajDocNo`, `XVMajdSubject`, `XVMajdCause`, `XVMajConfirm`, `XVPicturePath`) VALUES
-(1, 'byymm-000001', 'aa', 'aa', 'aa', ''),
-(2, 'byymm-000002', 'aaa', 'vvv', 'bbb', ''),
-(3, 'byymm-000002', 'aaa', 'vasxc', 'asc', '');
+INSERT INTO `tdoctmajobdetail` (`XIMajdSeqNo`, `XVMajDocNo`, `XVMajdSubject`, `XVMajdCause`, `XVMajConfirm`) VALUES
+(1, 'byymm-000001', 'aa', 'aa', 'aa');
 
 -- --------------------------------------------------------
 
@@ -280,9 +268,8 @@ CREATE TABLE `tmstmtemployee` (
 --
 
 INSERT INTO `tmstmtemployee` (`XVEpyCode`, `XVEpyFirstname`, `XVpyLastname`, `XVIdCardNumber`, `XVEpyJobPosition`) VALUES
-(2, 'jinawadee', 'jinawadee', 2147483647, 'ช่าง'),
-(4, 'naratip', 'naratip', 1730201338337, 'ช่าง'),
-(5, 'plus', 'plus', 1730201338339, 'ช่าง');
+(2, 'naratip', 'naratip', 2147483647, 'ช่าง'),
+(4, 'naratip', 'naratip', 1730201338337, '0');
 
 -- --------------------------------------------------------
 
@@ -488,7 +475,7 @@ ALTER TABLE `tmstmmachine_parts_type`
 -- AUTO_INCREMENT for table `tmstmtemployee`
 --
 ALTER TABLE `tmstmtemployee`
-  MODIFY `XVEpyCode` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `XVEpyCode` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tmstmvehicletype`
