@@ -201,7 +201,7 @@ while ($row=mysqli_fetch_array($result)){
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <label>ใบแจ้งซ่อม</label>
-                            <form action="insertTest.php" method="POST" class="form-inline" enctype='multipart/form-data'>
+                            <form action="insertTest.php" method="POST" class="form-inline">
 
 
                             <div class="row">
@@ -305,8 +305,7 @@ while ($row=mysqli_fetch_array($result)){
                                             ?>
                                                 <tr id='addr0'>
                                                     <td><input style="width:25px; height:25px; margin:10px 25px 0" type="checkbox" name="repair_check" id="<?php echo $cnt; ?>" value="<?php echo $row2["XIMajdSeqNo"];?>" class="repair_check"></td>
-                                                    <!-- <td class="seq"><?php echo $row2["XIMajdSeqNo"];?></td> -->
-                                                    <td class="seq"><input type="text" name="sequency" value="<?php echo $row2["XIMajdSeqNo"];?>" readonly></td>
+                                                    <td class="seq"><?php echo $row2["XIMajdSeqNo"];?></td>
                                                     <td><input type="text" name="n_sub[]"
                                                             placeholder="กรุณากรอกเรื่องที่แจ้ง"
                                                             value="<?php echo $row2["XVMajdSubject"];?>" readonly>
@@ -314,7 +313,7 @@ while ($row=mysqli_fetch_array($result)){
                                                     <td><input type="text" name="sub[]" placeholder="กรุณากรอกสาเหตุ"
                                                             value="<?php echo $row2["XVMajdCause"];?>" readonly></td>
                                                     <td align="center"><button type="button" disabled id="<?php echo 'addPartt'.$cnt; ?>" class="btn btn-success mr-auto addPart">เพิ่มอะไหล่</button></td>
-                                                    <td align="center"><input type="file" name="multiImg[]" class="custom-file-input"  multiple>แนบรูป</input></td>
+                                                    <td align="center"><input type="file" class="custom-file-input" multiple>แนบรูป</input></td>
                                                     <td><input type="text" placeholder="กรุณาใส่หมายเหตุ" name="note[]" id="<?php echo 'note'.$cnt; $cnt++;?>"></td>
                                                 </tr>
                                                 <!-- <tr id='addr1'></tr> -->
@@ -388,7 +387,7 @@ while ($row=mysqli_fetch_array($result)){
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col text-right">
-                                            <button type="submit" class="btn btn-primary submit_file"
+                                            <button type="submit" class="btn btn-primary"
                                                 data-dismiss="modal" name="save">บันทึก</button>
                                         </div>
                                     </div>
@@ -413,15 +412,7 @@ while ($row=mysqli_fetch_array($result)){
         <script src="../vendor/js/datepicker.th-TH.js"></script>
         <script src="../vendor/js/bootstrap-select.js"></script>
         <script>
-        $(document).ready(function(){
-            $(".submit_file").click(function(){
-                var $fileUpload = $("input[type='file']");
-                if (parseInt($fileUpload.get(0).files.length)>2){
-                    alert("You can only upload a maximum of 2 files");
-                    return 0
-                }
-            });    
-        });
+
             // $(document).ready(function(){
             //     $('input[type="checkbox"]').click(function(){
             //         if($(this).is(":checked")){
@@ -507,8 +498,7 @@ while ($row=mysqli_fetch_array($result)){
                 })
             })
         })
-        
-       
+
 
         $(function() {
             $('[data-toggle="datepicker"]').datepicker({
