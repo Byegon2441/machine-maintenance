@@ -287,6 +287,7 @@ while ($row=mysqli_fetch_array($result)){
                                                     <th style="background:#CCCCCC;">เรื่องที่แจ้ง</th>
                                                     <th style="background:#CCCCCC;">สาเหตุที่ทราบ</th>
                                                     <th style="background:#CCCCCC;">อะไหล่ที่ต้องใช้</th>
+                                                    <th style="background:#CCCCCC;">แนบรูป</th>
                                                     <th style="background:#CCCCCC;">หมายเหตุ</th>
                                                 </tr>
                                             </thead>
@@ -303,7 +304,7 @@ while ($row=mysqli_fetch_array($result)){
                                                 
                                             ?>
                                                 <tr id='addr0'>
-                                                    <td><input type="checkbox" name="repair_check" id="<?php echo $cnt; ?>" value="<?php echo $row2["XIMajdSeqNo"];?>" class="repair_check"></td>
+                                                    <td><input style="width:25px; height:25px; margin:10px 25px 0" type="checkbox" name="repair_check" id="<?php echo $cnt; ?>" value="<?php echo $row2["XIMajdSeqNo"];?>" class="repair_check"></td>
                                                     <td class="seq"><?php echo $row2["XIMajdSeqNo"];?></td>
                                                     <td><input type="text" name="n_sub[]"
                                                             placeholder="กรุณากรอกเรื่องที่แจ้ง"
@@ -312,6 +313,7 @@ while ($row=mysqli_fetch_array($result)){
                                                     <td><input type="text" name="sub[]" placeholder="กรุณากรอกสาเหตุ"
                                                             value="<?php echo $row2["XVMajdCause"];?>" readonly></td>
                                                     <td align="center"><button type="button" disabled id="<?php echo 'addPartt'.$cnt; ?>" class="btn btn-success mr-auto addPart">เพิ่มอะไหล่</button></td>
+                                                    <td align="center"><input type="file" class="custom-file-input">แนบรูป</input></td>
                                                     <td><input type="text" placeholder="กรุณาใส่หมายเหตุ" name="note[]" id="<?php echo 'note'.$cnt; $cnt++;?>"></td>
                                                 </tr>
                                                 <!-- <tr id='addr1'></tr> -->

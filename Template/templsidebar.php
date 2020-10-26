@@ -90,9 +90,9 @@
                                     <a href="../CheckCars/ListCheckDataEngi.php">รถรอประเมิน</a>   <!-- listที่show คือใบที่ใส่วันนัดประเมินแล้ว-->
                                 </li>
                                 
-                                <!-- <li>
-                                <a href="#">รายการส่งมอบอะไหล่</a>
-                                </li> -->
+                                <li>
+                                <a href="../ConfirmParts/ListConParts.php">รายการส่งมอบอะไหล่</a>
+                                </li>
                                 <li>
                                 <a href="../CheckParts/listEvaluate.php">ใบประเมินการซ่อม</a>
                                 </li>
