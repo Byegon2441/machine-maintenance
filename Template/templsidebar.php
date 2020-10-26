@@ -99,7 +99,9 @@
                                 <li>
                                 <a href="../AllowMainte/ListAllowMainte.php">อนุมัติการซ่อม</a> <!-- หรือก็คือ รถประเมินแล้ว อันเดียวกัน-->
                                 </li>
-                                
+                                <li>
+                                    <a href="../AllowMainte/ListFixDate.php">กำหนดวันนัดซ่อม</a>   <!-- คือรายการที่ต้องใส่วันนัด-->
+                                </li>
                                 <!-- <li>
                                 <a href="#">รถรอเข้าซ่อม</a>
                                 </li>
