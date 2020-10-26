@@ -313,7 +313,7 @@ while ($row=mysqli_fetch_array($result)){
                                                     <td><input type="text" name="sub[]" placeholder="กรุณากรอกสาเหตุ"
                                                             value="<?php echo $row2["XVMajdCause"];?>" readonly></td>
                                                     <td align="center"><button type="button" disabled id="<?php echo 'addPartt'.$cnt; ?>" class="btn btn-success mr-auto addPart">เพิ่มอะไหล่</button></td>
-                                                    <td align="center"><input type="file" class="custom-file-input">แนบรูป</input></td>
+                                                    <td align="center"><input type="file" class="custom-file-input" multiple>แนบรูป</input></td>
                                                     <td><input type="text" placeholder="กรุณาใส่หมายเหตุ" name="note[]" id="<?php echo 'note'.$cnt; $cnt++;?>"></td>
                                                 </tr>
                                                 <!-- <tr id='addr1'></tr> -->
