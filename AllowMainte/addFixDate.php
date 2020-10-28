@@ -76,16 +76,16 @@
             $id=$_GET['id'];
             //m.XVMaCarStatus,/* เลขที่ใบแจ้งซ่อม */ m.XVMajDocNo,/* วันที่ใบแจ้งซ่อม */ d.XDMajDate, /* รหัสเครื่องจักร */m.XVVehCode, /* ชื่อเครื่องจักร */v.XVVehName, /* รหัสไซต์งาน */depart.XVDptCode,/* ชื่อไซต์งาน */depart.XVDptName,/* เลขที่ */depart.XVDptNumber,/* ตำบล */depart.`XVDptSub-district`,/* อำเภอ */depart.XVDptDistrict,/* จังหวัด */depart.XVDptProvince
         $sql = " SELECT   *
-     FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v,tmstmdepartment depart 
-     WHERE  m.XVMajDocNo = d.XVMajDocNo 
+     FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v,tmstmdepartment depart
+     WHERE  m.XVMajDocNo = d.XVMajDocNo
      AND m.XVVehCode = v.XVVehCode
      AND v.XVDptCode = depart.XVDptCode
      AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
-    
+
     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
     while ($row1=mysqli_fetch_array($result)){
 
-    
+
     ?>
 
 
@@ -108,7 +108,7 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <label>ใบแจ้งซ่อม</label>
-                            <form action="insertAllow.php" method='POST' class="form-inline">
+                            <form action="insertAllowFixDate.php" method='POST' class="form-inline">
 
 
                                 <div class="row">
@@ -191,20 +191,19 @@
                                     </div>
 
                                     <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                                        <?php 
+                                        <?php
 
                         include '../database/connect.php';
                                      $sql2 = " SELECT   *
                                      FROM  tdoctmajob m,TDocTMaJobDetail detail
-                                     WHERE  m.XVMajDocNo = detail.XVMajDocNo 
-                               
+                                     WHERE  m.XVMajDocNo = detail.XVMajDocNo
                                      AND m.XVMajDocNo ='$id'"; //ค้นคืน รายการ เรื่องที่แจ้ง
-                        
+
                                     $result2 = mysqli_query($connect,$sql2) or die(mysqli_query($connect));
                                     while ($row2=mysqli_fetch_array($result2)){
-                                        
-                                        
-                               
+
+
+
                                     ?>
                                         <table class="table table-bordered" id="tab_logic">
                                             <thead>
@@ -228,18 +227,18 @@
                                                 <tr id='addr0'>
 
 
-                                                    <?php  
+                                                    <?php
                                             $count = 0 ;
                                     $sql3 = " SELECT   *
                                     FROM  TDocTMaJobDetail detail,TDocTMaMachine_parts_use partsuse ,TMstMMachine_parts parts
-                                    WHERE  detail.XVMajDocNo = partsuse.XVMajDocNo 
+                                    WHERE  detail.XVMajDocNo = partsuse.XVMajDocNo
                                     And detail.XIMajdSeqNo = partsuse.XIMajdSeqNo
                                     AND partsuse.XVMachinePartsCode = parts.XVMachinePartsCode
                                     AND detail.XVMajDocNo='$id'
                                     AND partsuse.XIMajdSeqNo = %s"; //ค้นคืน รายการ อะไหล่ของแต่ละรายการเรื่องที่แจ้ง
                                      $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
                                            $result3 = mysqli_query($connect,$sql3) or die(mysqli_query($connect));
-                                          
+
                                             while ($row3=mysqli_fetch_array($result3)){
                                          $count ++ ;
                                          ?>
@@ -293,11 +292,15 @@
                                             </label>
                                             <label for="numb">วันที่อนุมัติซ่อม : <input id="datepicker" size="6"
                                                     name="XDMajConfirmDate" class="form-control"
-                                                    data-toggle="datepicker" $(document).ready(function () {>
+                                                     value="<?php $datecon = $row1["XDMajConfirmDate"];
+                                                                  $DN = str_replace('-', '/', $datecon);
+                                                                   $Dnew =  date('d/m/Y', strtotime($DN));
+                                                                   echo $Dnew;
+                                                                  ?>" disabled>
                                             </label>
                                             <label for="numb">วันที่นัดซ่อม : <input id="datepicker" size="6"
-                                                    name="XDMajConfirmFixDate" class="form-control"
-                                                    data-toggle="datepicker" $(document).ready(function () {>
+                                                    name="XDMajRepairAppPlanDate" class="form-control"
+                                                    data-toggle="datepicker" >
                                             </label>
                                         </div>
                                     </div>
@@ -356,7 +359,7 @@
         </div>
         <!-- /#wrapper -->
         <?php
-    } 
+    }
 }
         ?>
 
