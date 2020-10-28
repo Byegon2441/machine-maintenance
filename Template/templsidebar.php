@@ -84,23 +84,20 @@
                                     <a href="../Job/ListJob.php">ใบแจ้งซ่อมทั้งหมด</a>
                                 </li>
                                 <li>
-                                    <a href="../CheckCars/ListCheck.php">กำหนดวันนัดประเมิน</a>   <!-- คือรายการที่ต้องใส่วันนัด-->
+                                    <a href="../CheckCars/ListCheck.php">กำหนดวันประเมิน</a>   <!-- คือรายการที่ต้องใส่วันนัด-->
                                 </li>
                                 <li>
                                     <a href="../CheckCars/ListCheckDataEngi.php">รถรอประเมิน</a>   <!-- listที่show คือใบที่ใส่วันนัดประเมินแล้ว-->
                                 </li>
                                 
                                 <li>
-                                <a href="../ConfirmParts/ListConParts.php">รายการส่งมอบอะไหล่</a><!-- หรือก็คือ หน้ารอธุรการส่ง อันเดียวกัน-->
+                                <a href="../ConfirmParts/ListConParts.php">รายการส่งมอบอะไหล่</a>
                                 </li>
                                 <li>
                                 <a href="../CheckParts/listEvaluate.php">ใบประเมินการซ่อม</a>
                                 </li>
                                 <li>
                                 <a href="../AllowMainte/ListAllowMainte.php">อนุมัติการซ่อม</a> <!-- หรือก็คือ รถประเมินแล้ว อันเดียวกัน-->
-                                </li>
-                                <li>
-                                    <a href="../AllowMainte/ListFixDate.php">กำหนดวันนัดซ่อม</a>   <!-- คือรายการที่ต้องใส่วันนัด-->
                                 </li>
                                 <!-- <li>
                                 <a href="#">รถรอเข้าซ่อม</a>
