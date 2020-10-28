@@ -209,7 +209,10 @@
                                                    
                                     
                                                    สาเหตุที่ทราบ : <?php echo $row2["XVMajdCause"];?>
-                                                  
+                                                   <!-- <button style="position:static;" class="btn btn-info">ดูรูปภาพ</button> -->
+                                                   <a type="button" style="position:static;" href="../testfile/retrival_img.php?id=<?php echo $row1["XVMajDocNo"];?>&seq=<?php echo $row2["XIMajdSeqNo"];?>" value="facebook" target="_blank" class="btn btn-info">ดูรูปภาพ</a>
+
+                                                   <!-- href="formUpdate.php?id=<?php echo $row["id_member"];?>&path=<?php echo $row["upload"]; ?> -->
                                     
                                                    
                                                     <th style="background:#CCCCCC;">ลำดับ</th>

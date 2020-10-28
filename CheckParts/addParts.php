@@ -306,7 +306,7 @@ while ($row=mysqli_fetch_array($result)){
                                                 <tr id='addr0'>
                                                     <td><input style="width:25px; height:25px; margin:10px 25px 0" type="checkbox" name="repair_check" id="<?php echo $cnt; ?>" value="<?php echo $row2["XIMajdSeqNo"];?>" class="repair_check"></td>
                                                     <td class="seq"><?php echo $row2["XIMajdSeqNo"];?></td>
-                                                    <!-- <td class="seq"><input type="text" name="sequency" value="<?php echo $row2["XIMajdSeqNo"];?>" readonly></td> -->
+                                                    <td class="seq" hidden><input type="text" name="sequency" value="<?php echo $row2["XIMajdSeqNo"];?>" readonly></td>
                                                     <td><input type="text" name="n_sub[]"
                                                             placeholder="กรุณากรอกเรื่องที่แจ้ง"
                                                             value="<?php echo $row2["XVMajdSubject"];?>" readonly>
