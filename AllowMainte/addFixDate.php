@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ระบบซ่อมบำรุงเครื่องจักร : ส่งมอบอะไหล่</title>
+    <title>ระบบซ่อมบำรุงเครื่องจักร : แก้ไขใบแจ้งซ่อม</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
 
     <!-- Custom CSS -->
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
-    <link  href="../vendor/css/datepicker.css" rel="stylesheet">
+    <link href="../vendor/css/datepicker.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -34,7 +34,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.6.0/dist/sweetalert2.all.min.js"></script>
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    
+
     <style>
     table td {
         position: relative;
@@ -62,9 +62,6 @@
     .table-wrapper-scroll-y {
         display: block;
     }
-
- 
-
     </style>
 </head>
 
@@ -93,11 +90,11 @@
 
 
 
-<div id="wrapper">
+    <div id="wrapper">
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">ส่งมอบอะไหล่</h1>
+                    <h1 class="page-header">อนุมัติการซ่อม</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -110,73 +107,82 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                        <label>ใบแจ้งซ่อม</label>
+                            <label>ใบแจ้งซ่อม</label>
                             <form action="insertAllow.php" method='POST' class="form-inline">
-                                
+
 
                                 <div class="row">
                                     <div class="col-md-6"></div>
                                     <div class="col-md-6 ml-auto">
                                         <div class="col text-right">
-                                        <label for="numb">เลขที่ใบแจ้งซ่อม : <input type="text" name="XVMajDocNo" id="jobid"
-                                            class="form-control" value="<?php echo $row1["XVMajDocNo"];?>"  readonly></label>
+                                            <label for="numb">เลขที่ใบแจ้งซ่อม : <input type="text" name="XVMajDocNo"
+                                                    id="jobid" class="form-control"
+                                                    value="<?php echo $row1["XVMajDocNo"];?>" readonly></label>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6"></div>
-                            <div class="col-md-6 ml-auto">
-                                <div class="col text-right">
-                                    <label for="numb">วันที่แจ้งซ่อม : <input type="text" name="numb"
-                                            class="form-control" value="<?php echo $row1["XDMajDate"];?>" readonly></label>
+                                <div class="row">
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-6 ml-auto">
+                                        <div class="col text-right">
+                                            <label for="numb">วันที่แจ้งซ่อม : <input type="text" name="numb"
+                                                    class="form-control" value="<?php echo $row1["XDMajDate"];?>"
+                                                    readonly></label>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <div class="row">
+                                <div class="row">
                                     <div class="col-md-7">
                                         <div class="col text-right">
                                             <label for="numb">ชื่อเครื่องจักร :</label>
-                                            <input id="XVVehTypeName" name="XVVehTypeName" class="form-control" value="<?php echo $row1["XVVehName"];?>"
-                                                style="width:60%" readonly>
+                                            <input id="XVVehTypeName" name="XVVehTypeName" class="form-control"
+                                                value="<?php echo $row1["XVVehName"];?>" style="width:60%" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-5">
-                                <div class="col text-right">
-                                    <label for="numb">หมายเลขเครื่องจักร : <input type="text" size="17" name="noof" value="<?php echo $row1["XVVehCode"];?>"
-                                            class="form-control" id="noof" readonly></label>
+                                        <div class="col text-right">
+                                            <label for="numb">หมายเลขเครื่องจักร : <input type="text" size="17"
+                                                    name="noof" value="<?php echo $row1["XVVehCode"];?>"
+                                                    class="form-control" id="noof" readonly></label>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-md-7">
-                                <div class="col text-right">
-                                    <label for="numb">ชื่อไชต์งาน : <input type="text" size="30" name="dname" id="dname" value="<?php echo $row1["XVDptname"];?>"
-                                            class="form-control" readonly></label>
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="col text-right">
+                                            <label for="numb">ชื่อไชต์งาน : <input type="text" size="30" name="dname"
+                                                    id="dname" value="<?php echo $row1["XVDptname"];?>"
+                                                    class="form-control" readonly></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="col text-right">
+                                            <label for="numb">หมายเลขไซต์งาน : <input type="text" size="17" name="dcode"
+                                                    value="<?php echo $row1["XVDptCode"];?>" id="dcode"
+                                                    class="form-control" readonly></label>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="col text-right">
-                                    <label for="numb">หมายเลขไซต์งาน : <input type="text" size="17" name="dcode" value="<?php echo $row1["XVDptCode"];?>"
-                                            id="dcode" class="form-control" readonly></label>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="form-row">
-                            <div class="col">
-                                <label for="numb">ตำแหน่งเครื่องจักร ณ ปัจจุบัน เลขที่:
-                                    <input type="text" style="margin: 0px 10px;" size="10" name="dnum" id="dnum" value="<?php echo $row1["XVDptNumber"];?>" readonly
-                                        class="form-control">
-                                   ตำบล:<input type="text" style="margin: 0px 10px;" size="10" name="dsub" id="dsub" value="<?php echo $row1["XVDptSub-district"];?>" readonly
-                                        class="form-control">
-                                    อำเภอ:<input type="text" style="margin: 0px 10px;" size="10" name="ddis" id="ddis" value="<?php echo $row1["XVDptDistrict"];?>" readonly
-                                        class="form-control">
-                                     จังหวัด:<input type="text" style="margin: 0px 10px;" size="10" name="dpro" id="dpro" value="<?php echo $row1["XVDptProvince"];?>" readonly
-                                        class="form-control"></label>
-                            </div>
-                        </div>
+                                <div class="form-row">
+                                    <div class="col">
+                                        <label for="numb">ตำแหน่งเครื่องจักร ณ ปัจจุบัน เลขที่:
+                                            <input type="text" style="margin: 0px 10px;" size="10" name="dnum" id="dnum"
+                                                value="<?php echo $row1["XVDptNumber"];?>" readonly
+                                                class="form-control">
+                                            ตำบล:<input type="text" style="margin: 0px 10px;" size="10" name="dsub"
+                                                id="dsub" value="<?php echo $row1["XVDptSub-district"];?>" readonly
+                                                class="form-control">
+                                            อำเภอ:<input type="text" style="margin: 0px 10px;" size="10" name="ddis"
+                                                id="ddis" value="<?php echo $row1["XVDptDistrict"];?>" readonly
+                                                class="form-control">
+                                            จังหวัด:<input type="text" style="margin: 0px 10px;" size="10" name="dpro"
+                                                id="dpro" value="<?php echo $row1["XVDptProvince"];?>" readonly
+                                                class="form-control"></label>
+                                    </div>
+                                </div>
 
 
                                 <div class="panel panel-default" style="margin-top:20px;">
@@ -185,7 +191,7 @@
                                     </div>
 
                                     <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                                    <?php 
+                                        <?php 
 
                         include '../database/connect.php';
                                      $sql2 = " SELECT   *
@@ -202,38 +208,27 @@
                                     ?>
                                         <table class="table table-bordered" id="tab_logic">
                                             <thead>
-                                            อนุมัติการซ่อม : <?php if($row2["XVMajConfirm"]=="confirm"){ echo 'อนุมัติแล้ว';}else{echo 'ไม่อนุมัติ';}?> <br>
-                                            
-                                                    รายการที่ : <?php echo $row2["XIMajdSeqNo"];?>
-                                                   เรื่องที่แจ้ง : <?php echo $row2["XVMajdSubject"];?>
-                                                   
-                                    
-                                                   สาเหตุที่ทราบ : <?php echo $row2["XVMajdCause"];?>
-                                                  
-                                    
-                                                   
-                                                    <th style="background:#CCCCCC;">ลำดับ</th>
-                                                    <th style="background:#CCCCCC;">รายการอะไหล่
-                                                  
-                                                    </th>
-                                                    <th style="background:#CCCCCC;">จำนวน</th>
-                                                    <th style="background:#CCCCCC;">คลัง</th>
-                                                    <th style="background:#CCCCCC;">สั่งซื้อ</th>
-                                                    <th style="background:#CCCCCC;">จำนวนวัน</th>
-                                                    <th style="background:#CCCCCC;">วันที่ของมา</th>
-                                                    <th style="background:#CCCCCC;">เบิก</th>
-                                                    <th style="background:#CCCCCC;">วันที่เบิก</th>
+                                            <p></p>&nbsp;รายการที่ : <?php echo $row2["XIMajdSeqNo"];?>
+                                                เรื่องที่แจ้ง : <?php echo $row2["XVMajdSubject"];?>
+                                                สาเหตุที่ทราบ : <?php echo $row2["XVMajdCause"];?>
+                                                <th style="background:#CCCCCC;">อะไหล่หร้อม</th>
+                                                <th style="background:#CCCCCC;">ลำดับ</th>
+                                                <th style="background:#CCCCCC;">รายการอะไหล่</th>
+                                                <th style="background:#CCCCCC;">จำนวน</th>
+                                                <th style="background:#CCCCCC;">คลัง</th>
+                                                <th style="background:#CCCCCC;">สั่งซื้อ</th>
+                                                <th style="background:#CCCCCC;">จำนวนวัน</th>
+                                                <th style="background:#CCCCCC;">วันที่ของมา</th>
+                                                <th style="background:#CCCCCC;">เบิก</th>
+                                                <p><th style="background:#CCCCCC;">วันที่เบิก</th></p>
                                                 </tr>
                                             </thead>
-                                        
-                                            <tbody class="sub">
-                                               
-                                 
 
-                                          <tr id='addr0'>
-                                          
-                                  
-                                           <?php  
+                                            <tbody class="sub">
+                                                <tr id='addr0'>
+
+
+                                                    <?php  
                                             $count = 0 ;
                                     $sql3 = " SELECT   *
                                     FROM  TDocTMaJobDetail detail,TDocTMaMachine_parts_use partsuse ,TMstMMachine_parts parts
@@ -248,42 +243,27 @@
                                             while ($row3=mysqli_fetch_array($result3)){
                                          $count ++ ;
                                          ?>
-                                          
-                                         <td><?php echo $count;?></td>
-                                         
-                                         <td>
-                                         <?php echo $row3["XVMachinePartsName"];?>
-                                        
-                                         </td>
-
-                                         <td> <?php echo $row3["XVAmount"]; ?></td>
-                                        <?php if($row3["XVMajConfirm"]=="confirm"){  ?>
-                                         <td ><input style="width:25px; height:25px;" type="checkbox" name="check_warehouse[]" value="check"></td>    <!-- คลัง -->
-                                         <td><input style="width:25px; height:25px;"  type="checkbox" name="check_order[]" value="check"></td>    <!-- สั่งซื้อ -->
-                                          <td><div id="dateforcoming[]"></div></td> 
-                                          <td> <input id="XDMachinePartsReady[]" size="6" name="XDMachinePartsReady[]"  class="form-control" data-toggle="datepicker"> </td>     
-                                          <td><div id="dateforusing[]"></div></td>    
-                                          <td> <input id="XDMachinePartsUse[]" size="6" name="XDMachinePartsUse[]"  class="form-control" data-toggle="datepicker"> </td>     
-                                        <?php }else{?>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        <?php } ?>
-                                         </tr>
-                                        <?php
-                                        
+                                                    <td><input style="width:25px; height:25px; margin:4px 55px 0" type="checkbox" name=""></td>
+                                                    <td><?php echo $count;?></td>
+                                                    <td><?php echo $row3["XVMachinePartsName"];?></td>
+                                                    <td> <?php echo $row3["XVAmount"]; ?></td>
+                                                    <td><input style="width:25px; height:25px; margin:4px 19px 0" type="checkbox" name=""></td>
+                                                    <td><input style="width:25px; height:25px; margin:4px 25px 0" type="checkbox" name=""></td>
+                                                    <td><input type="text" name="note[]"></td>
+                                                    <td><input type="text" name="note[]"></td>
+                                                    <td><input style="width:25px; height:25px; margin:4px 15px 0" type="checkbox" name=""></td>
+                                                    <td><input type="text" name="note[]"></td>
+                                                </tr>
+                                                <?php
                                      }}
                                     mysqli_close($connect);
-                                    ?> 
+                                    ?>
                                                 <tr id='addr1'></tr>
 
                                             </tbody>
                                         </table>
 
-                                   
+
                                     </div>
                                     <div class="panel-body" style="margin:0px;">
                                     </div>
@@ -297,32 +277,34 @@
                                         </div>
                                     </div>
                                     <div class="col-md-7">
-                                    <div class="col text-right">
-                                    <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="40" name="nameofuser"
-                                            id="nameofuser" value="ธุรการ" class="form-control" readonly></label>
-                                </div>
+                                        <div class="col text-right">
+                                            <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="40"
+                                                    name="nameofuser" id="nameofuser" value="ธุรการ"
+                                                    class="form-control" readonly></label>
+                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col text-left">
                                             <label for="numb">วันนัดประเมิน : <?php echo $row1["XDMajEstAppPlanDate"];?>
-                                                    
+
                                             </label>
                                             <label for="numb">วันที่ประเมิน : <?php echo $row1["XDMajEstActualDate"];?>
-                                                    
+
                                             </label>
+                                            <label for="numb">วันที่อนุมัติซ่อม : <input id="datepicker" size="6"
+                                                    name="XDMajConfirmDate" class="form-control"
+                                                    data-toggle="datepicker" $(document).ready(function () {>
                                             </label>
-                                            <label for="numb">วันที่อนุมัติซ่อม : <?php echo $row1["XDMajConfirmDate"];?>
-                                                    
-                                            </label>
-                                            <label for="numb">วันที่อะไหล่พร้อม : <input id="datepicker" size="6" name="XDMajConfirmDate"
-                                                    class="form-control" data-toggle="datepicker"  >
+                                            <label for="numb">วันที่นัดซ่อม : <input id="datepicker" size="6"
+                                                    name="XDMajConfirmFixDate" class="form-control"
+                                                    data-toggle="datepicker" $(document).ready(function () {>
                                             </label>
                                         </div>
                                     </div>
-                                                    
+
                                     <div class="col-md-12">
                                         <div class="col text-left">
-                                            <label for="numb">ช่างประเมิน : 
+                                            <label for="numb">ช่างประเมิน :
                                             </label>
                                             <?php
                                                     include '../database/connect.php';
@@ -335,24 +317,26 @@
                                                      while ($row=mysqli_fetch_array($result)){
                                                     ?>
 
-                                            <label for=""> <?php echo  $row["XVEpyCode"]." ".$row["XVEpyFirstname"]." ".$row["XVpyLastname"];?> </label>
+                                            <label for="">
+                                                <?php echo  $row["XVEpyCode"]." ".$row["XVEpyFirstname"]." ".$row["XVpyLastname"];?>
+                                            </label>
                                             <?php } ?>
                                         </div>
                                     </div>
-                                                    
+
                                 </div>
 
                                 <div class="modal-footer">
                                     <div class="col-md-6">
                                         <div class="col text-left">
-                                        <a type="button" class="btn btn-danger mr-auto" href="ListConParts.php" >กลับ</a>
+                                            <a type="button" class="btn btn-danger mr-auto"
+                                                href="ListAllowMainte.php">กลับ</a>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col text-right">
-                                        <input type="hidden" value="<?php echo $id?>" name='id'>
-                                        <input type="submit" class="btn btn-success btndis" name="save"
-
+                                            <input type="hidden" value="<?php echo $id?>" name='id'>
+                                            <input type="submit" class="btn btn-success btndis" name="save"
                                                 value="บันทึก">
                                         </div>
                                     </div>
@@ -369,7 +353,7 @@
             </div>
             <!-- /#page-wrapper -->
 
-</div>
+        </div>
         <!-- /#wrapper -->
         <?php
     } 
@@ -390,27 +374,8 @@
                 format: 'dd/mm/yyyy'
             });
         });
-
-
-        // $('#XDMachinePartsReady').change(() => {
-        //      $('#XDMachinePartsReady').val()
-        //     const date1 = new Date('7/13/2010');
-        //     const date2 = new Date();
-        //     const diffTime = Math.abs(date2 - date1);
-        //     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-        //     console.log( $('#XDMachinePartsReady').val())
-        //     // console.log(diffTime + " milliseconds");
-        //     // console.log(diffDays + " days");
-        // })
-       
-
-    //    $('#XDMachinePartsUse[]').change(() => {
-    //        $('#dateforusing').append("เบิกแล้ว")
-    //    })
-            
         </script>
-       
-     
+
 
 
 </body>
