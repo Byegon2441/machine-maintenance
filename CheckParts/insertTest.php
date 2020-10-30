@@ -13,43 +13,48 @@ session_start();
 $ide = $_POST['XVMajDocNo'];
 $img = (isset($_POST["multiImg"])) ? $_POST["multiImg"] : NULL;//ภาพมีหรือเปล่า
 $countfiles = count($_FILES['multiImg']['name']);//นับไฟล์
-$sq = $_POST['sequency'];
 $upload = "";
+
+foreach ($_POST['sequency'] as $selectedOption){
+    echo $selectedOption;
+        $make_dir = mkdir("$ide/$selectedOption",0777,true);
+        $upload = "$ide/$selectedOption/".$_FILES["multiImg"]["name"];
+        move_uploaded_file($_FILES['multiImg']['tmp_name'],$upload);
+    }
+
+    $upload = "$ide/$selectedOption/";
+    $sql = "UPDATE TDocTMaJob SET XVMajStatus = 'รออนุมัติซ่อม' WHERE XVMajDocNo = '$ide' ";
+    $query = mysqli_query( $connect, $sql );
+    $sql1 = "UPDATE tdoctmajobdetail SET XVPicturePath = '$upload' WHERE XVMajDocNo = '$ide' AND XIMajdSeqNo = $selectedOption";
+    $query1 = mysqli_query( $connect, $sql1 );
+    if ( $query1) {
+        echo '<script>';
+                echo "Swal.fire({
+                    title: 'สำเร็จ!',
+                    text: 'ทำการส่งข้อมูลใบแจ้งซ่อมให้หัวหน้าช่างเรียบร้อยแล้ว',
+                    icon: 'success',
+                    confirmButtonText: 'Back'
+                    }).then(function() {
+                    window.location = 'listEvaluate.php';
+                });";
+                echo '</script>';
+    } else {
+        echo mysqli_error( $connect );
+    }
+
+
 // echo 'ลำดับที่ : '.$sq;
 // echo 'จำนวนไฟล์ : '.$countfiles;
-$make_dir = mkdir("$ide/$sq",0777,true);
+
+
+// echo $sq;
 
 // if($make_dir){
 //     echo 'created';
 // }else{
 //     echo 'not created';
 // }
-for($i=0;$i<$countfiles;$i++){
-    // $filename = $_FILES['multiImg']['name'][$i];
-    $upload = "$ide/$sq/".$_FILES["multiImg"]["name"][$i];
-    // Upload file
-    move_uploaded_file($_FILES['multiImg']['tmp_name'][$i],$upload);
-   
-   }
-$upload = "$ide/$sq/";
-$sql = "UPDATE TDocTMaJob SET XVMajStatus = 'รออนุมัติซ่อม' WHERE XVMajDocNo = '$ide' ";
-$query = mysqli_query( $connect, $sql );
-$sql1 = "UPDATE tdoctmajobdetail SET XVPicturePath = '$upload' WHERE XVMajDocNo = '$ide' AND XIMajdSeqNo = $sq";
-$query1 = mysqli_query( $connect, $sql1 );
-if ( $query1) {
-    echo '<script>';
-            echo "Swal.fire({
-                title: 'สำเร็จ!',
-                text: 'ทำการส่งข้อมูลใบแจ้งซ่อมให้หัวหน้าช่างเรียบร้อยแล้ว',
-                icon: 'success',
-                confirmButtonText: 'Back'
-                }).then(function() {
-                window.location = 'listEvaluate.php';
-            });";
-            echo '</script>';
-} else {
-    echo mysqli_error( $connect );
-}
+
 
 ?>
 </body>
