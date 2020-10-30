@@ -15,11 +15,11 @@ $img = (isset($_POST["multiImg"])) ? $_POST["multiImg"] : NULL;//ภาพมี
 $countfiles = count($_FILES['multiImg']['name']);//นับไฟล์
 $upload = "";
 
-foreach ($_POST['sequency'] as $selectedOption){
+foreach ($_POST['sequency'] as $key => $selectedOption){
     echo $selectedOption;
         $make_dir = mkdir("$ide/$selectedOption",0777,true);
-        $upload = "$ide/$selectedOption/".$_FILES["multiImg"]["name"];
-        move_uploaded_file($_FILES['multiImg']['tmp_name'],$upload);
+        $upload = "$ide/$selectedOption/".$_FILES["multiImg"]["name"][$key];
+        move_uploaded_file($_FILES['multiImg']['tmp_name'][$key],$upload);
     }
 
     $upload = "$ide/$selectedOption/";
