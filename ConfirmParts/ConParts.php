@@ -233,7 +233,7 @@
                                   
                                            <?php  
                                             $count = 0 ;
-                                    $sql3 = " SELECT   *
+                                    $sql3 = " SELECT   * 
                                     FROM  TDocTMaJobDetail detail,TDocTMaMachine_parts_use partsuse ,TMstMMachine_parts parts
                                     WHERE  detail.XVMajDocNo = partsuse.XVMajDocNo 
                                     And detail.XIMajdSeqNo = partsuse.XIMajdSeqNo
@@ -324,7 +324,7 @@
                                             <label for="numb">วันที่อนุมัติซ่อม : <?php echo $row1["XDMajConfirmDate"];?>
                                                     
                                             </label>
-                                            <label for="numb">วันที่อะไหล่พร้อม : <input id="datepicker" size="6" name="XDMajConfirmDate"
+                                            <label for="numb">วันที่อะไหล่พร้อม : <input id="XDMajConfirmDate" size="6" name="XDMajConfirmDate"
                                                     class="form-control" data-toggle="datepicker"  >
                                             </label>
                                         </div>
@@ -360,6 +360,17 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col text-right">
+
+                                        <?php $sql5="SELECT COUNT(u.XIMachinePartsSeqNo) as total
+                                        FROM tdoctmamachine_parts_use u ,tdoctmajobdetail d
+                                        WHERE u.XVMajDocNo = d.XVMajDocNo
+                                            AND u.XIMajdSeqNo = d.XIMajdSeqNo
+                                            AND d.XVMajConfirm = 'confirm'
+                                            AND u.XVMajDocNo='$id';";
+                                              $result5 = mysqli_query($connect,$sql5) or die(mysqli_query($connect));
+                                              $row5=mysqli_fetch_array($result5);
+                                        ?>
+                                        <input type="hidden" name="count_column" value="<?php echo $row5['total'];?>" id='count_column' >
                                         <input type="hidden" value="<?php echo $id?>" name='id'>
                                         <input type="submit" class="btn btn-success btndis" name="save"
 
@@ -378,6 +389,7 @@
                 <!-- /.row -->
             </div>
             <!-- /#page-wrapper -->
+            
 
 </div>
         <!-- /#wrapper -->
@@ -402,6 +414,7 @@
         });
         $(document).ready(function () {
            // $(".hid").hide()
+           $("#XDMajConfirmDate").prop('disabled', true);
         $(".dateforusing").click(function () {
                     if($(this).is(":checked")){
                        
@@ -412,6 +425,12 @@
                         $("#XDMachinePartsUse"+this.id).prop('disabled', true);
                     }
                 });
+
+                $(".parts_ready").click(function (){
+                    $('#XDMajConfirmDate').prop('disabled',$('.parts_ready:checked').length != $("#count_column").val());
+                    
+                 })       
+      
            
             });
         // $('#XDMachinePartsReady').change(() => {
