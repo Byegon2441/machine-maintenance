@@ -284,11 +284,16 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col text-left">
-                                            <label for="numb">วันนัดประเมิน : <?php echo $row1["XDMajEstAppPlanDate"];?>
+                                            <label for="numb">วันนัดประเมิน : <?php $datecon1 = $row1["XDMajEstAppPlanDate"];
+                                                         $DN1 = str_replace('-', '/', $datecon1);
+                                                          $Dnew1 =  date('d/m/Y H:i:s', strtotime($DN1));
+                                                          echo $Dnew1; ?>
 
                                             </label>
-                                            <label for="numb">วันที่ประเมิน : <?php echo $row1["XDMajEstActualDate"];?>
-
+                                            <label for="numb">วันที่ประเมิน : <?php $datecon2 = $row1["XDMajEstActualDate"];
+                                                         $DN2 = str_replace('-', '/', $datecon2);
+                                                          $Dnew2 =  date('d/m/Y H:i:s', strtotime($DN2));
+                                                          echo $Dnew2;?>
                                             </label>
                                             <label for="numb">วันที่อนุมัติซ่อม : <input id="datepicker" size="6"
                                                     name="XDMajConfirmDate" class="form-control"
