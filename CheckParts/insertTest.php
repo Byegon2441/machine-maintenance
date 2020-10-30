@@ -18,8 +18,10 @@ $upload = "";
 foreach ($_POST['sequency'] as $key => $selectedOption){
     echo $selectedOption;
         $make_dir = mkdir("$ide/$selectedOption",0777,true);
-        $upload = "$ide/$selectedOption/".$_FILES["multiImg"]["name"][$key];
-        move_uploaded_file($_FILES['multiImg']['tmp_name'][$key],$upload);
+        for ($i=0; $i < $countfiles; $i++) { 
+            $upload = "$ide/$selectedOption/".$_FILES["multiImg"]["name"][$i];
+            move_uploaded_file($_FILES['multiImg']['tmp_name'][$i],$upload);
+        }
     }
 
     $upload = "$ide/$selectedOption/";
