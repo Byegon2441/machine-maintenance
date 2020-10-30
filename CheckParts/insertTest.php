@@ -11,22 +11,27 @@
 include '../database/connect.php';
 session_start();
 $ide = $_POST['XVMajDocNo'];
-$img = (isset($_POST["multiImg"])) ? $_POST["multiImg"] : NULL;//ภาพมีหรือเปล่า
-$countfiles = count($_FILES['multiImg']['name']);//นับไฟล์
-$upload = "";
-
 foreach ($_POST['sequency'] as $key => $selectedOption){
-    echo $selectedOption;
-        $make_dir = mkdir("$ide/$selectedOption",0777,true);
-        $upload = "$ide/$selectedOption/".$_FILES["multiImg"]["name"][$key];
-        move_uploaded_file($_FILES['multiImg']['tmp_name'][$key],$upload);
+    echo 'ลำดับอาการที่ : '.$selectedOption.'<br>';
+    $make_dir = mkdir("$ide/$selectedOption",0777,true);
+    $img = (isset($_POST["multiImg$selectedOption"])) ? $_POST["multiImg$selectedOption"] : NULL;//ภาพมีหรือเปล่า
+    if(!$img){
+        echo 'มีรูป';
+        $countfiles = count($_FILES["multiImg$selectedOption"]["name"]);//นับไฟล์
+        for ($i=0; $i < $countfiles; $i++) { 
+            $upload = "$ide/$selectedOption/".$_FILES["multiImg$selectedOption"]["name"][$i];
+            move_uploaded_file($_FILES["multiImg$selectedOption"]["tmp_name"][$i],$upload);
+            $upload = "";
+            $upload = "$ide/$selectedOption/";
+            $sql1 = "UPDATE tdoctmajobdetail SET XVPicturePath = '$upload' WHERE XVMajDocNo = '$ide' AND XIMajdSeqNo = $selectedOption";
+            $query1 = mysqli_query( $connect, $sql1 );
+        }
+    }else{
+        echo 'ไม่มีรูป';
     }
-
-    $upload = "$ide/$selectedOption/";
+}
     $sql = "UPDATE TDocTMaJob SET XVMajStatus = 'รออนุมัติซ่อม' WHERE XVMajDocNo = '$ide' ";
     $query = mysqli_query( $connect, $sql );
-    $sql1 = "UPDATE tdoctmajobdetail SET XVPicturePath = '$upload' WHERE XVMajDocNo = '$ide' AND XIMajdSeqNo = $selectedOption";
-    $query1 = mysqli_query( $connect, $sql1 );
     if ( $query1) {
         echo '<script>';
                 echo "Swal.fire({
@@ -41,20 +46,6 @@ foreach ($_POST['sequency'] as $key => $selectedOption){
     } else {
         echo mysqli_error( $connect );
     }
-
-
-// echo 'ลำดับที่ : '.$sq;
-// echo 'จำนวนไฟล์ : '.$countfiles;
-
-
-// echo $sq;
-
-// if($make_dir){
-//     echo 'created';
-// }else{
-//     echo 'not created';
-// }
-
 
 ?>
 </body>

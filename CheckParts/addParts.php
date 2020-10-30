@@ -2,36 +2,20 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>ระบบซ่อมบำรุงเครื่องจักร : แก้ไขใบแจ้งซ่อม</title>
-
-    <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-
-    <!-- DataTables CSS -->
     <link href="../vendor/datatables/css/dataTables.bootstrap.css" rel="stylesheet">
-
-    <!-- DataTables Responsive CSS -->
     <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="../vendor/css/datepicker.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
     <link rel="stylesheet" href="../vendor/css/bootstrap-select.css">
-
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.6.0/dist/sweetalert2.all.min.js"></script>
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -39,7 +23,6 @@
     table td {
         position: relative;
     }
-
     table td input {
         position: absolute;
         display: block;
@@ -52,20 +35,18 @@
         padding: 10px;
         box-sizing: border-box;
     }
-
     .my-custom-scrollbar {
         position: relative;
         height: 200px;
         overflow: auto;
     }
-
     .table-wrapper-scroll-y {
         display: block;
     }
     </style>
 </head>
 <!-- <<<<<<< HEAD -->
-<?php 
+<?php
 // =======
 
 // <body>
@@ -73,8 +54,9 @@
 //     <?php include '../Template/temTechnician.php';
 // >>>>>>> 8ff2228f701344c9827cd8e9e46cc952ec997013
 //          include '../database/connect.php';
-  
 
+?>
+<?php
     if(isset($_GET['id'])){
         $id=$_GET['id'];
         ?>
@@ -101,7 +83,7 @@
                                 <input type="hidden" name="docno" id="docno" value="<?php echo $id; ?>">
                             <div class="col-sm-4">
                                 <select name="select2" id="select2" class="selectpicker form-control" data-live-search="true">
-                                    <?php 
+                                    <?php
                                     include'../database/connect.php';
                                     $sql = "select * from tmstmmachine_parts";
                                     $query = mysqli_query($connect,$sql);
@@ -166,16 +148,16 @@
     <!-- modal เพิ่มอะไหล่ -->
 
 
-    <?php 
+    <?php
 include '../Template/templsidebar.php';
          include '../database/connect.php';
-  
+
 
     if(isset($_GET['id'])){
         $id=$_GET['id'];
         $sql = " SELECT   *
-        FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v,tmstmdepartment depart 
-        WHERE  m.XVMajDocNo = d.XVMajDocNo 
+        FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v,tmstmdepartment depart
+        WHERE  m.XVMajDocNo = d.XVMajDocNo
         AND m.XVVehCode = v.XVVehCode
         AND v.XVDptCode = depart.XVDptCode
         AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
@@ -201,7 +183,7 @@ while ($row=mysqli_fetch_array($result)){
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <label>ใบแจ้งซ่อม</label>
-                            <form action="insertTest.php" method="POST" class="form-inline" enctype='multipart/form-data'>
+                            <form action="insertTest.php" method="POST" class="form-inline" id="form1" enctype='multipart/form-data'>
 
 
                             <div class="row">
@@ -269,7 +251,7 @@ while ($row=mysqli_fetch_array($result)){
                         </div>
                                 <?php }?>
 
-                                
+
                                 <div class="panel panel-default" style="margin-top:20px;">
                                     <div class="panel-heading">
                                         <h3 class="panel-title">รายละเอียดการแจ้งซ่อม</h3>
@@ -301,11 +283,14 @@ while ($row=mysqli_fetch_array($result)){
                                                 AND j.XVMajDocNo = '$id'";
                                                 $result2 = mysqli_query($connect,$sql2) or die(mysqli_query($connect));
                                                 while ($row2=mysqli_fetch_array($result2)){
-                                                
+
                                             ?>
                                                 <tr id='addr0'>
                                                     <td><input style="width:25px; height:25px; margin:10px 25px 0" type="checkbox" name="repair_check" id="<?php echo $cnt; ?>" value="<?php echo $row2["XIMajdSeqNo"];?>" class="repair_check"></td>
+
                                                     <td class="seq"><?php echo $row2["XIMajdSeqNo"];?></td>
+
+
                                                     <td class="seq" hidden><input type="text" name="sequency[]" value="<?php echo $row2["XIMajdSeqNo"];?>" readonly></td>
                                                     <td><input type="text" name="n_sub[]"
                                                             placeholder="กรุณากรอกเรื่องที่แจ้ง"
@@ -314,7 +299,7 @@ while ($row=mysqli_fetch_array($result)){
                                                     <td><input type="text" name="sub[]" placeholder="กรุณากรอกสาเหตุ"
                                                             value="<?php echo $row2["XVMajdCause"];?>" readonly></td>
                                                     <td align="center"><button type="button" disabled id="<?php echo 'addPartt'.$cnt; ?>" class="btn btn-success mr-auto addPart">เพิ่มอะไหล่</button></td>
-                                                    <td align="center"><input type="file" name="multiImg[]" class="custom-file-input"  multiple>แนบรูป</input></td>
+                                                    <td align="center"><input type="file" name="multiImg<?php echo $cnt; ?>[]" class="custom-file-input"  multiple>แนบรูป</input></td>
                                                     <td><input type="text" placeholder="กรุณาใส่หมายเหตุ" name="note[]" id="<?php echo 'note'.$cnt; $cnt++;?>"></td>
                                                 </tr>
                                                 <!-- <tr id='addr1'></tr> -->
@@ -327,15 +312,15 @@ while ($row=mysqli_fetch_array($result)){
                                 </div>
 
                                 <div class="row">
-                               
+
                                     <div class="col-md-5">
                                         <div class="col text-left">
                                         <?php  $sql = " SELECT   *
                                         FROM  tdoctmajob m, tdoctmajobdate d
-                                        WHERE  m.XVMajDocNo = d.XVMajDocNo 
+                                        WHERE  m.XVMajDocNo = d.XVMajDocNo
                                         AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
 
-                                                                    
+
                                     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
                                     while ($row=mysqli_fetch_array($result)){
                                         ?>
@@ -350,18 +335,24 @@ while ($row=mysqli_fetch_array($result)){
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col text-left">
-                                          
-                                        <label for="numb">วันนัดประเมิน : <?php echo $row["XDMajEstAppPlanDate"];?>
-                                                    
+
+                                        <label for="numb">วันนัดประเมิน : <?php $datecon2 = $row["XDMajEstAppPlanDate"];
+                                                     $DN2 = str_replace('-', '/', $datecon2);
+                                                      $Dnew2 =  date('d/m/Y H:i:s', strtotime($DN2));
+                                                      echo $Dnew2;?>
+
                                       </label>
-                                      <label for="numb">วันที่ประเมิน : <?php echo $row["XDMajEstActualDate"]; }?>
+                                      <label for="numb">วันที่ประเมิน : <?php $datecon1 = $row["XDMajEstActualDate"];
+                                                   $DN1 = str_replace('-', '/', $datecon1);
+                                                    $Dnew1 =  date('d/m/Y H:i:s', strtotime($DN1));
+                                                    echo $Dnew1; }?>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="col text-left">
-                                            <label for="numb">ช่างประเมิน : 
+                                            <label for="numb">ช่างประเมิน :
                                             </label>
-                                            
+
                                             <?php
                                                     include '../database/connect.php';
                                                     $sql = "  SELECT *
@@ -414,26 +405,19 @@ while ($row=mysqli_fetch_array($result)){
         <script src="../vendor/js/bootstrap-select.js"></script>
         <script>
         $(document).ready(function(){
-            $(".submit_file").click(function(){
+            $(".submit_file").click(function(e){
                 var $fileUpload = $("input[type='file']");
-                if (parseInt($fileUpload.get(0).files.length)>2){
-                    alert("You can only upload a maximum of 2 files");
-                    return 0//ย้อนกลับ
-                }
-            });    
+                if (parseInt($fileUpload.get(0).files.length)>5){
+                    e.preventDefault(e);
+                    Swal.fire({
+                    title: 'ไม่สามารถเพิ่มรูปภาพได้!',
+                    text: 'สามารถเพิ่มรูปภาพได้ไม่เกิน 5 รูป',
+                    icon: 'warning',
+                    confirmButtonText: 'ปิด'
+                    })
+                    }
+            });
         });
-            // $(document).ready(function(){
-            //     $('input[type="checkbox"]').click(function(){
-            //         if($(this).is(":checked")){
-            //             $("#addPartt").prop('disabled', false);
-            //             $("#note").prop('disabled', true);
-            //         }else if($(this).is(":not(:checked)")){
-            //             $("#addPartt").prop('disabled', true);
-            //             $("#note").prop('disabled', false);
-            //             $("#note").attr("placeholder", "กรุณาใส่หมายเหตุ");
-            // }
-            //     });
-            // });
             $(document).ready(function () {
                 ($(".repair_check").click(function () {
                     if($(this).is(":checked")){
@@ -479,7 +463,7 @@ while ($row=mysqli_fetch_array($result)){
                     method: "POST",
                     data: {
                         id: data[1],
-                        jobid: jobi 
+                        jobid: jobi
                     },
                     dataType: "JSON",
                     success: function(rows) {
@@ -490,16 +474,16 @@ while ($row=mysqli_fetch_array($result)){
                         for (var k = 0; k < countKey; k = k+3) {
                             $('tr').find('input').prop('disabled', false)
                             $('#addrr' + j).html("<td hidden><input type='hidden' name='n_sub[]' value='" +
-                                rows[k] + 
+                                rows[k] +
                                 "'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='n_suub[]' value='" +
-                                rows[k+1] + 
+                                rows[k+1] +
                                 "'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='sub[]' value='" +
                                 rows[k+2] +
                                 "' placeholder='กรุณากรอกสาเหตุ'/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td>"
                             );
 
                             $('#tab_logic3').append('<tr id="addrr' + (j + 1) + '"></tr>');
-                    
+
                             j++
                         }
                     }
@@ -507,8 +491,8 @@ while ($row=mysqli_fetch_array($result)){
                 })
             })
         })
-        
-       
+
+
 
         $(function() {
             $('[data-toggle="datepicker"]').datepicker({
@@ -527,7 +511,7 @@ while ($row=mysqli_fetch_array($result)){
             $("#add_row").click(function() {
                 var select2 = $('#select2').val()
                 var val_select2 = $('#val_select2').val()
-                var value = $("#select2 option:selected"); 
+                var value = $("#select2 option:selected");
                 $('#tab_logic3').append('<tr id="addr' + (i) + '"></tr>');
                 $('tr').find('input').prop('disabled', false)
                 $('#addr' + i).html(
@@ -537,19 +521,7 @@ while ($row=mysqli_fetch_array($result)){
                 i++;
             });
         });
-//  $(document).ready(function() {
-//             let i = 1;
-//             $("#add_row").click(function() {
-//                 $('tr').find('input').prop('disabled', false)
-//                 $('#addr' + i).html("<td>" + (i + 1) +
-//                     "</td><td><input type='text' name='n_sub[]'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='sub[]' placeholder='กรุณากรอกสาเหตุ'/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td>"
-//                 );
 
-//                 $('#tab_logic').append('<tr id="addr' + (i + 1) + '"></tr>');
-//                 i++;
-//             });
-//         });
-        
         $('table').on('click', '.RemoveRow', function() {
             $(this).closest('tr').remove();
         });
