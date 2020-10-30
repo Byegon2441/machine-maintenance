@@ -203,7 +203,7 @@
                                         <table class="table table-bordered" id="tab_logic">
                                             <thead>
                                             อนุมัติการซ่อม :
-                                            <input style="width:25px; height:25px;"class="form-check-input" type="checkbox" value="confirm" id="check[]" name='check[]'> <br>
+                                            <input style="width:25px; height:25px;"class="form-check-input" type="checkbox" value="confirm" id="check[<?php echo $row2["XIMajdSeqNo"];?>]" name='check[<?php echo $row2["XIMajdSeqNo"];?>]'> <br>
                                                     รายการที่ : <?php echo $row2["XIMajdSeqNo"];?>
                                                    เรื่องที่แจ้ง : <?php echo $row2["XVMajdSubject"];?>
                                                    

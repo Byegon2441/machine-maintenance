@@ -59,15 +59,18 @@ if(isset($_POST['save'])){
               
               if(  isset($_POST['check'])  ){
 
-                $check = count($_POST['check']);
-                for ( $i = 0; $i < $check; $i++ ) {
-                    $count_check = $_POST['check'][$i];
+             foreach ($_POST['check'] as $key => $value) {
+                
+            
+                
+                   
                     
                     $sql3 = "UPDATE TDocTMaJobDetail
-                    SET XVMajConfirm = '$count_check'
-                    WHERE XVMajDocNo = '$id'";
+                    SET XVMajConfirm = '$value'
+                    WHERE XVMajDocNo = '$id'
+                    AND XIMajdSeqNo= '$key'";
                    mysqli_query( $connect, $sql3); 
-              } 
+                }
             }
                             
                    
