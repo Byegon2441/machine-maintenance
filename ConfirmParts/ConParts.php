@@ -111,7 +111,7 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                         <label>ใบแจ้งซ่อม</label>
-                            <form action="insertAllow.php" method='POST' class="form-inline">
+                            <form action="insertConParts.php" method='POST' class="form-inline">
                                 
 
                                 <div class="row">
@@ -211,11 +211,9 @@
                                                    สาเหตุที่ทราบ : <?php echo $row2["XVMajdCause"];?>
                                                   
                                     
-                                                   
+                                                   <th style="background:#CCCCCC;">อะไหล่พร้อม</th>
                                                     <th style="background:#CCCCCC;">ลำดับ</th>
-                                                    <th style="background:#CCCCCC;">รายการอะไหล่
-                                                  
-                                                    </th>
+                                                    <th style="background:#CCCCCC;">รายการอะไหล่ </th>
                                                     <th style="background:#CCCCCC;">จำนวน</th>
                                                     <th style="background:#CCCCCC;">คลัง</th>
                                                     <th style="background:#CCCCCC;">สั่งซื้อ</th>
@@ -248,22 +246,23 @@
                                             while ($row3=mysqli_fetch_array($result3)){
                                          $count ++ ;
                                          ?>
-                                          
+                                           <td style="width:100px; "><input style="width:25px; height:25px; margin:5px 35px 0;" type="checkbox" name="parts_ready[<?php echo $row3["XIMachinePartsSeqNo"];?>]" id="<?php echo $row3["XIMachinePartsSeqNo"];?>" class="parts_ready" value="1"></td>
                                          <td><?php echo $count;?></td>
                                          
                                          <td>
                                          <?php echo $row3["XVMachinePartsName"];?>
+                                         
                                         
                                          </td>
-
-                                         <td> <?php echo $row3["XVAmount"]; ?></td>
+                                         
+                                         <td style="width:60px;"> <?php echo $row3["XVAmount"]; ?></td>
                                         <?php if($row3["XVMajConfirm"]=="confirm"){  ?>
-                                         <td ><input style="width:25px; height:25px;" type="checkbox" name="check_warehouse[]" value="check"></td>    <!-- คลัง -->
-                                         <td><input style="width:25px; height:25px;"  type="checkbox" name="check_order[]" value="check"></td>    <!-- สั่งซื้อ -->
-                                          <td><div id="dateforcoming[]"></div></td> 
-                                          <td> <input id="XDMachinePartsReady[]" size="6" name="XDMachinePartsReady[]"  class="form-control" data-toggle="datepicker"> </td>     
-                                          <td><div id="dateforusing[]"></div></td>    
-                                          <td> <input id="XDMachinePartsUse[]" size="6" name="XDMachinePartsUse[]"  class="form-control" data-toggle="datepicker"> </td>     
+                                         <td><input style="width:25px; height:25px; margin:5px 25px 0;" type="radio" name="check_source[<?php echo $row3["XIMachinePartsSeqNo"];?>]" value="คลัง"></td>    <!-- คลัง -->
+                                         <td><input style="width:25px; height:25px; margin:5px 25px 0;"  type="radio" name="check_source[<?php echo $row3["XIMachinePartsSeqNo"];?>]" value="สั่งซื้อ"></td>    <!-- สั่งซื้อ -->
+                                          <td style="width:80px;"><input type="number" name="dateforcoming[<?php echo $row3["XIMachinePartsSeqNo"];?>]" id="dateforcoming[<?php echo $row3["XIMachinePartsSeqNo"];?>]" min="1"></td>  <!-- จำนวนวันที่ของจะมา-->
+                                          <td> <input  size="11" name="XDMachinePartsReady[<?php echo $row3["XIMachinePartsSeqNo"];?>]" id="XDMachinePartsReady[<?php echo $row3["XIMachinePartsSeqNo"];?>]"  class="form-control" data-toggle="datepicker"> </td>      <!-- วันที่ของจะมา-->
+                                          <td><input style="width:25px; height:25px; margin:5px 20px 0;" type="checkbox" name="dateforusing[<?php echo $row3["XIMachinePartsSeqNo"];?>]" id="<?php echo $row3["XIMachinePartsSeqNo"];?>" class="dateforusing" value="1"></td>    <!-- การเบิก-->
+                                          <td> <input  size="8" name="XDMachinePartsUse[<?php echo $row3["XIMachinePartsSeqNo"];?>]" id="XDMachinePartsUse<?php echo $row3["XIMachinePartsSeqNo"];?>"  class="form-control hid" data-toggle="datepicker" disabled> </td>      <!-- วันที่เบิก-->
                                         <?php }else{?>
                                             <td></td>
                                             <td></td>
@@ -390,8 +389,20 @@
                 format: 'dd/mm/yyyy'
             });
         });
-
-
+        $(document).ready(function () {
+            $(".hid").hide()
+        $(".dateforusing").click(function () {
+                    if($(this).is(":checked")){
+                       
+                       $("#XDMachinePartsUse"+this.id).show()
+                       $("#XDMachinePartsUse"+this.id).prop('disabled', false);
+                    }else if($(this).is(":not(:checked)")){
+                        $("#XDMachinePartsUse"+this.id).hide()
+                        $("#XDMachinePartsUse"+this.id).prop('disabled', true);
+                    }
+                });
+           
+            });
         // $('#XDMachinePartsReady').change(() => {
         //      $('#XDMachinePartsReady').val()
         //     const date1 = new Date('7/13/2010');
