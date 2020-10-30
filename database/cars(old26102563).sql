@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2020 at 07:26 AM
+-- Generation Time: Oct 26, 2020 at 07:08 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -57,7 +57,6 @@ CREATE TABLE `tdoctmaestimation_tnc` (
 
 INSERT INTO `tdoctmaestimation_tnc` (`XVEpyCode`, `XVMajDocNo`) VALUES
 (2, 'byymm-000002'),
-(4, 'byymm-000001'),
 (4, 'byymm-000002'),
 (5, 'byymm-000002');
 
@@ -86,8 +85,8 @@ CREATE TABLE `tdoctmajob` (
 --
 
 INSERT INTO `tdoctmajob` (`XVMajDocNo`, `XVMajWhoInformant`, `XVMajStatus`, `XVMaCarStatus`, `XVMajFinishRmk`, `XVMajDocStatus`, `XVMajNumber`, `XVMajSub-district`, `XVMajDistrict`, `XVMajProvince`, `XVVehCode`) VALUES
-('byymm-000001', 'aa', 'รอนำรถเข้าซ่อม', 'กำหนดบำรุงรักษาตามรอบ 7 วัน', 'aa', '2', 'aa', 'aa', 'aa', 'aa', 3),
-('byymm-000002', 'bb', 'รอนำรถเข้าซ่อม', 'เปลี่ยนยางล้อหมุน 7 วัน', 'bb', '2', 'bb', 'bb', 'bb', 'bb', 4);
+('byymm-000001', 'aa', 'รอนำรถประเมินอะไหล่', 'กำหนดบำรุงรักษาตามรอบ 7 วัน', 'aa', '2', 'aa', 'aa', 'aa', 'aa', 3),
+('byymm-000002', 'bb', 'รอนำรถประเมินอะไหล่', 'เปลี่ยนยางล้อหมุน 7 วัน', 'bb', '2', 'bb', 'bb', 'bb', 'bb', 4);
 
 --
 -- Triggers `tdoctmajob`
@@ -133,8 +132,8 @@ CREATE TABLE `tdoctmajobdate` (
 --
 
 INSERT INTO `tdoctmajobdate` (`XVMajDocNo`, `XDMajEstAppPlanDate`, `XDMajEstActualDate`, `XDMajDate`, `XDMajSpareDate`, `XDMaPickupAppPlanDate`, `XDMajRepairAppPlanDate`, `XDMajRepairActualDate`, `XDMajPickupActualDate`, `XDMajFinishDate`, `XDMajConfirmDate`, `XDMajSendTime`, `XDMajKeyTime`) VALUES
-('byymm-000001', '2020-10-21 15:10:27', '2020-10-16 16:29:23', '2020-10-01', '0000-00-00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2020-10-08 15:09:34', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-('byymm-000002', '2020-10-28 15:06:20', '2020-10-22 08:03:16', '2020-10-15', '0000-00-00', '0000-00-00 00:00:00', '2020-10-21 15:13:29', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1970-01-01 08:37:36', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+('byymm-000001', '2020-10-23 18:37:42', '2020-10-16 16:29:23', '2020-10-01', '0000-00-00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+('byymm-000002', '2020-10-22 00:00:00', '2020-10-22 08:03:16', '0000-00-00', '0000-00-00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -175,22 +174,16 @@ CREATE TABLE `tdoctmamachine_parts_use` (
   `XVSource` varchar(100) COLLATE utf8_bin NOT NULL,
   `XVMachinePartsRmk` varchar(100) COLLATE utf8_bin NOT NULL,
   `XDMachinePartsReady` date NOT NULL,
-  `XDMachinePartsUse` date NOT NULL,
-  `XVPartsReady` int(1) NOT NULL,
-  `XVNumOfDays` int(2) NOT NULL,
-  `XVPickupParts` int(1) NOT NULL
+  `XDMachinePartsUse` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `tdoctmamachine_parts_use`
 --
 
-INSERT INTO `tdoctmamachine_parts_use` (`XIMachinePartsSeqNo`, `XIMajdSeqNo`, `XVMajDocNo`, `XVMachinePartsCode`, `XVAmount`, `XVSource`, `XVMachinePartsRmk`, `XDMachinePartsReady`, `XDMachinePartsUse`, `XVPartsReady`, `XVNumOfDays`, `XVPickupParts`) VALUES
-(2, 2, 'byymm-000002', 7, 15, 'ฟฟ', 'ฟฟ', '0000-00-00', '2020-10-20', 0, 0, 0),
-(3, 3, 'byymm-000002', 4, 15, 'aaaa', 'aaaa', '2020-10-08', '2020-10-08', 0, 0, 0),
-(4, 1, 'byymm-000001', 4, 15, '', '', '0000-00-00', '0000-00-00', 0, 0, 0),
-(5, 1, 'byymm-000001', 3, 1, '', '', '0000-00-00', '0000-00-00', 0, 0, 0),
-(6, 1, 'byymm-000001', 6, 1, '', '', '0000-00-00', '0000-00-00', 0, 0, 0);
+INSERT INTO `tdoctmamachine_parts_use` (`XIMachinePartsSeqNo`, `XIMajdSeqNo`, `XVMajDocNo`, `XVMachinePartsCode`, `XVAmount`, `XVSource`, `XVMachinePartsRmk`, `XDMachinePartsReady`, `XDMachinePartsUse`) VALUES
+(1, 1, 'byymm-000001', 4, 15, 'aa', 'aa', '0000-00-00', '2020-10-20'),
+(2, 1, 'byymm-000001', 7, 15, 'ฟฟ', 'ฟฟ', '0000-00-00', '2020-10-20');
 
 -- --------------------------------------------------------
 
@@ -471,7 +464,7 @@ ALTER TABLE `sqrun`
 -- AUTO_INCREMENT for table `tdoctmamachine_parts_use`
 --
 ALTER TABLE `tdoctmamachine_parts_use`
-  MODIFY `XIMachinePartsSeqNo` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `XIMachinePartsSeqNo` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tmstmdepartment`
