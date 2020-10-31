@@ -333,9 +333,14 @@
                                             <label for="numb">วันที่อนุมัติซ่อม : <?php echo $row1["XDMajConfirmDate"];?>
                                                     
                                             </label>
-                                            <label for="numb">วันที่อะไหล่พร้อม : <input id="XDMajConfirmDate" size="6" name="XDMajConfirmDate"
+                                        <?php if(isset($row1['XDMajSpareDate']) && $row1['XDMajSpareDate'] != "0000-00-00"){
+                                          
+                                            echo "<label for='numb'>วันที่อะไหล่พร้อม : ".$row1['XDMajSpareDate']."</label>";
+                                        }else{?>
+                                            <label for="numb">วันที่อะไหล่พร้อม : <input id="XDMajSpareDate" size="6" name="XDMajSpareDate" 
                                                     class="form-control" data-toggle="datepicker"  >
                                             </label>
+                                        <?php }?>
                                         </div>
                                     </div>
                                                     
@@ -423,7 +428,7 @@
         });
         $(document).ready(function () {
            // $(".hid").hide()
-           $("#XDMajConfirmDate").prop('disabled', true);
+           $("#XDMajSpareDate").prop('disabled', true);
         $(".dateforusing").click(function () {
                     if($(this).is(":checked")){
                        
@@ -436,7 +441,7 @@
                 });
 
                 $(".parts_ready").click(function (){
-                    $('#XDMajConfirmDate').prop('disabled',$('.parts_ready:checked').length != $("#count_column").val());
+                    $('#XDMajSpareDate').prop('disabled',$('.parts_ready:checked').length != $("#count_column").val());
                     
                  })       
       
