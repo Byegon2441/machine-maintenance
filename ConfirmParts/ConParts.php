@@ -226,7 +226,7 @@
                                         
                                             <tbody class="sub">
                                                
-                                 
+                                 <?php ?>
 
                                           <tr id='addr0'>
                                           
@@ -259,22 +259,29 @@
                                           $sql4 = "SELECT DATE_FORMAT(XDMachinePartsReady, '%d/%m/%Y') AS DA,DATE_FORMAT(XDMachinePartsUse, '%d/%m/%Y') AS DS,XDMachinePartsReady,XDMachinePartsUse
                                             FROM tdoctmamachine_parts_use
                                             WHERE XVMajDocNo='$id'
-                                            AND XIMajdSeqNo = '$row2[XIMajdSeqNo]'";
+                                            AND XIMachinePartsSeqNo = '$row3[XIMachinePartsSeqNo]'
+                                            AND XIMajdSeqNo = '$row2[XIMajdSeqNo]'"; //ค้นคืนวันที่เบิก วันที่ของมา ถ้ามีอยู่แล้ว
                                             $result4 = mysqli_query($connect,$sql4) or die(mysqli_query($connect));
-                                            while ($row4=mysqli_fetch_array($result4)){
+                                          
                                          ?>
                                         
                                          </td>
                                          
                                          <td style="width:60px;"> <?php echo $row3["XVAmount"]; ?></td>
-                                        <?php if($row3["XVMajConfirm"]=="confirm"){  ?>
+                                        <?php if($row3["XVMajConfirm"]=="confirm"){  
+                                              while ($row4=mysqli_fetch_array($result4)){
+                                            ?>
                                          <td><input style="width:25px; height:25px; margin:5px 25px 0;" type="radio" name="check_source[<?php echo $row3["XIMachinePartsSeqNo"];?>]" value="คลัง" <?php if(isset($row3['XVSource']) && $row3['XVSource']=="คลัง"){echo "checked";}?>></td>    <!-- คลัง -->
                                          <td><input style="width:25px; height:25px; margin:5px 25px 0;"  type="radio" name="check_source[<?php echo $row3["XIMachinePartsSeqNo"];?>]" value="สั่งซื้อ" <?php if(isset($row3['XVSource']) && $row3['XVSource']=="สั่งซื้อ"){echo "checked";}?>></td>    <!-- สั่งซื้อ -->
-                                          <td style="width:80px;"><input type="number" name="dateforcoming[<?php echo $row3["XIMachinePartsSeqNo"];?>]" id="dateforcoming[<?php echo $row3["XIMachinePartsSeqNo"];?>]" min="1" value="<?php if(isset($row3['XVNumOfDays']) ){echo $row3['XVNumOfDays'];}?>"></td>  <!-- จำนวนวันที่ของจะมา-->
+                                          <td style="width:80px;"><input type="number" name="dateforcoming[<?php echo $row3["XIMachinePartsSeqNo"];?>]" id="dateforcoming[<?php echo $row3["XIMachinePartsSeqNo"];?>]" min="0" value="<?php if(isset($row3['XVNumOfDays']) ){echo $row3['XVNumOfDays'];}?>"></td>  <!-- จำนวนวันที่ของจะมา-->
+                                          
                                           <td> <input  size="11" name="XDMachinePartsReady[<?php echo $row3["XIMachinePartsSeqNo"];?>]" id="XDMachinePartsReady[<?php echo $row3["XIMachinePartsSeqNo"];?>]"  class="form-control" data-toggle="datepicker"value="<?php if(isset($row4['DA']) && $row4['XDMachinePartsReady']!= "0000-00-00"){echo $row4['DA'];}?>" > </td>      <!-- วันที่ของจะมา-->
                                           <td><input style="width:25px; height:25px; margin:5px 20px 0;" type="checkbox" name="dateforusing[<?php echo $row3["XIMachinePartsSeqNo"];?>]" id="<?php echo $row3["XIMachinePartsSeqNo"];?>" class="dateforusing" value="1"      <?php if(isset($row3['XVPickupParts']) && $row3['XVPickupParts']=="1"){echo "checked";}?>></td>    <!-- การเบิก-->
+                                          
                                           <td> <input  size="6" name="XDMachinePartsUse[<?php echo $row3["XIMachinePartsSeqNo"];?>]" id="XDMachinePartsUse<?php echo $row3["XIMachinePartsSeqNo"];?>"  class="form-control hid" data-toggle="datepicker" disabled value="<?php if(isset($row4['DS']) && $row4['XDMachinePartsUse']!= "0000-00-00"){echo $row4['DS'];}?>"> </td>      <!-- วันที่เบิก-->
-                                        <?php }else{?>
+                                        <?php
+                                    }//sql4
+                                    }else{?>
                                             <td></td>
                                             <td></td>
                                             <td></td>
@@ -285,7 +292,9 @@
                                          </tr>
                                         <?php
                                         
-                                     }}}
+                                     
+                                     }//sql3
+                                    }//sql2
                                     mysqli_close($connect);
                                     ?> 
                                                 <tr id='addr1'></tr>
