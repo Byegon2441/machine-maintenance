@@ -101,6 +101,9 @@
                                 <li>
                                     <a href="../AllowMainte/ListFixDate.php">กำหนดวันนัดซ่อม</a>   <!-- คือรายการที่ต้องใส่วันนัด-->
                                 </li>
+                                <li>
+                                <a href="../GetParts/ListGetParts.php">รับอะไหล่</a>
+                                </li>
                                 <!-- <li>
                                 <a href="#">รถรอเข้าซ่อม</a>
                                 </li>
@@ -110,11 +113,6 @@
                                 <li>
                                 <a href="../Job/Finish.php"><i class="fa fa-check fa-fw"></i> ปิดงาน</a>
                                 </li> -->
-                               
-                                <!-- <li>
-                                <a href="#">รับอะไหล่</a>
-                                </li>
-                                 -->
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>

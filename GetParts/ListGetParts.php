@@ -28,7 +28,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">รายการส่งมอบอะไหล่</h1>
+                    <h1 class="page-header">รายการรับอะไหล่</h1>
                 </div>
             </div>
             <div class="row">
@@ -58,7 +58,7 @@
      FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v
      WHERE m.XVMajDocNo = d.XVMajDocNo 
      AND m.XVVehCode = v.XVVehCode
-     AND m.XVMajStatus = 'รออะไหล่' "; //แสดงใบแจ้งซ่อมทีเป็นสถานะ "รออนุมัติซ่อม"
+     AND m.XVMajStatus = 'รอช่างรับอะไหล่' "; //แสดงใบแจ้งซ่อมทีเป็นสถานะ "รออนุมัติซ่อม"
     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
     $count = 1;
     while ($row=mysqli_fetch_array($result)){
@@ -69,7 +69,7 @@
                                         <td><?php echo $row["XVVehCode"];?></td>
                                         <td><?php echo $row["XVVehName"];?></td>
                                         <td><?php echo $row["XVMajStatus"];?></td>
-                                        <td align="center"><a class='btn btn-primary editbtn' href="ConParts.php?id=<?php echo $row["XVMajDocNo"] ?>"
+                                        <td align="center"><a class='btn btn-primary editbtn' href="GetParts.php?id=<?php echo $row["XVMajDocNo"] ?>"
                                                 >ดูรายละเอียด</a></td>
                                     </tr>
                                     <?php $count++;} ?>
