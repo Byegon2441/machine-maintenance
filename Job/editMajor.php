@@ -412,8 +412,13 @@ if ( $query ) {
     }//save
 
 
+
+
+
+
+
 }else if(isset($_POST['submit'])){
-    $XVMajDocNo = $_POST['XVMajDocNo'];
+$XVMajDocNo = $_POST['XVMajDocNo'];
 $name = $_POST['nameofuser'];
 $dnum = $_POST['dnum'];
 $dsub = $_POST['dsub'];
@@ -455,7 +460,6 @@ $noof = $_POST['noof'];
                     $cnt++;
                 }
             }
-            if($query2){
                 if($query2){
                     echo '<script>';
                                 echo "Swal.fire({
@@ -467,10 +471,20 @@ $noof = $_POST['noof'];
                                     window.location = 'ListJob.php';
                                 });";
                                 echo '</script>';
-                            }else{ echo mysqli_error( $connect );
+                            }else{ 
+                                echo '<script>';
+                                echo "Swal.fire({
+                                    title: 'สำเร็จ!',
+                                    text: 'ทำการส่งข้อมูลใบแจ้งซ่อมให้หัวหน้าช่างเรียบร้อยแล้ว',
+                                    icon: 'success',
+                                    confirmButtonText: 'Back'
+                                  }).then(function() {
+                                    window.location = 'ListJob.php';
+                                });";
+                                echo '</script>';
                            
                                             }
-            }
+            
         }
 }//submit
 ?>
