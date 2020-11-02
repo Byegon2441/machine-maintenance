@@ -88,7 +88,50 @@
 
     ?>
 
+<!-- modal เพิ่มช่างประเมิน -->
 
+    <div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">เพิ่มช่างประเมิน</h5>
+                </div>
+                <form class="form-horizontal" id="insert" role="form" method="POST"
+                    action="addEngiRepair.php?id=<?php echo $_GET['id']; ?>" enctype="multipart/form-data">
+                    <div class="modal-body mx-3">
+                        <div class="form-group">
+                            <label for="name" class="col-sm-4 control-label">
+                                <span class="required"></span> เลือกช่างประเมิน:</label>
+                            <div class="col-sm-7">
+                            <select name="selectemployee[]" class="selectpicker form-control" data-live-search="true" multiple>
+                              <?php $emp_sql = "SELECT * FROM tmstmtemployee ORDER BY XVEpyJobPosition ASC";
+                                    $emp_query = mysqli_query($connect,$emp_sql)or die(mysqli_query($connect));
+                                    while ($emp_row=mysqli_fetch_array($emp_query)){
+                              ?>
+                                <option value="<?php echo $emp_row["XVEpyCode"]; ?> <?php echo $emp_row["XVEpyFirstname"]; ?> <?php echo	$emp_row["XVpyLastname"]; ?>"><?php echo $emp_row["XVEpyFirstname"]; ?>  <?php echo	$emp_row["XVpyLastname"]; ?></option>
+                                <?php
+                              }
+                                 ?>
+                            </select>
+                            <input type="hidden" id="date" value="" name="date">
+                        <input type="hidden" id="carstatus" value="" name="carstatus">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+
+                        <input type="submit" value="ยืนยัน" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<!-- modal เพิ่มช่างประเมิน -->
 
     <div id="wrapper">
         <div id="page-wrapper">
@@ -396,6 +439,11 @@ mysqli_close($connect);
                                             </label>
                                             <label for="numb">วันที่นัดซ่อม : <input id="datepicker" size="6"
                                                     name="XDMajRepairAppPlanDate" class="form-control"
+                                                    data-toggle="datepicker" disabled>
+                                            </label>
+
+                                            <label for="numb">วันซ่อมจริง : <input id="datepicker" size="6"
+                                                    name="XDMajRepairAppPlanDate" class="form-control"
                                                     data-toggle="datepicker">
                                             </label>
                                         </div>
@@ -423,6 +471,56 @@ mysqli_close($connect);
                                         </div>
                                     </div>
 
+                                    <div class="col-md-12">
+                                        <div class="col text-left">
+                                            <label for="numb">ช่างซ่อม : <input style="border: none; width:auto;" type="hidden" name="empar" value="<?php if(isset($_POST['selectemployee'])){
+                                                $emp =  $_POST['selectemployee'];
+                                                if(isset($emp)){
+                                                    if(count($emp) == 1){
+                                                    echo $emp[0][0]." ";
+                                                }else{
+                                                    for ($i=0; $i < count($emp); $i++) {
+                                                    echo $emp[$i][0]." ";
+                                                    }
+                                                }
+                                                }else{
+                                                    echo "";
+                                                }
+                                                ;
+                                                } ?>" >
+                                                <?php
+                                                $sqldepart1 = "SELECT count(tn.XVEpyCode) AS tnXV FROM tdoctmaestimation_tnc tn,tmstmtemployee tm WHERE tn.XVEpyCode = tm.XVEpyCode AND XVMajDocNo = '$id'";
+                                                $querydepart1 = mysqli_query($connect,$sqldepart1)or die("ERROR SELECT");
+                                                $fectdep = mysqli_fetch_array($querydepart1);
+                                                if($fectdep['tnXV'] != 0){
+                                                $sqldepart = "SELECT tn.XVEpyCode,tm.XVEpyFirstname,tm.XVpyLastname FROM tdoctmaestimation_tnc tn,tmstmtemployee tm WHERE tn.XVEpyCode = tm.XVEpyCode AND XVMajDocNo = '$id'";
+                                                $querydepart = mysqli_query($connect,$sqldepart)or die("ERROR SELECT");
+                                                while ($rowdepart=mysqli_fetch_array($querydepart)) {
+                                                    echo $rowdepart['XVEpyCode']." ";
+                                                    echo $rowdepart['XVEpyFirstname']." ";
+                                                    echo $rowdepart['XVpyLastname']." ";
+                                                }
+                                                }else{
+                                                if(isset($_POST['selectemployee'])){
+                                                    $emp =  $_POST['selectemployee'];
+                                                    if(isset($emp)){
+                                                    if(count($emp) == 1){
+                                                        echo $emp[0]." ";
+                                                    }else{
+                                                    for ($i=0; $i < count($emp); $i++) {
+                                                        echo $emp[$i]." ";
+                                                    }
+                                                    }
+                                                    }
+                                                }else{
+                                                    echo "";
+                                                }
+                                                }
+                                                ?>
+                                            </label>
+                                        </div>
+                                    </div>
+
                                 </div>
 
                                 <div class="modal-footer">
@@ -430,6 +528,7 @@ mysqli_close($connect);
                                         <div class="col text-left">
                                             <a type="button" class="btn btn-danger mr-auto"
                                                 href="ListAllowMainte.php">กลับ</a>
+                                                <button type="button" class="btn btn-warning mr-auto" data-toggle="modal" data-target="#insertModal">เพิ่มช่างซ่อม</button>
                                         </div>
                                     </div>
                                     <div class="col-md-6">

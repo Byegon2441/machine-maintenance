@@ -104,13 +104,14 @@
                                 <li>
                                 <a href="../GetParts/ListGetParts.php">รับอะไหล่</a>
                                 </li>
+                                <li>
+                                <a href="../JobDone/ListDone.php">แจ้งซ่อมเสร็จ</a>
+                                </li>
+                                <li>
+                                <a href="../CheckCars/ListEngiRepair.php">รับรถเข้าซ่อม</a>
+                                </li>
                                 <!-- <li>
-                                <a href="#">รถรอเข้าซ่อม</a>
-                                </li>
-                                <li>
-                                <a href="#">รถรอปิดงาน</a>
-                                </li>
-                                <li>
+                                
                                 <a href="../Job/Finish.php"><i class="fa fa-check fa-fw"></i> ปิดงาน</a>
                                 </li> -->
                             </ul>
