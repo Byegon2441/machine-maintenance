@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ระบบซ่อมบำรุงเครื่องจักร : แก้ไขใบแจ้งซ่อม</title>
+    <title>ระบบซ่อมบำรุงเครื่องจักร : บันทึกการซ่อม</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -108,7 +108,7 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <label>ใบแจ้งซ่อม</label>
-                            <form action="insertAllowFixDate.php" method='POST' class="form-inline">
+                            <form action="insertJobDone.php" method='POST' class="form-inline">
 
 
                                 <div class="row">
@@ -191,45 +191,168 @@
                                     </div>
 
                                     <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                                <table class="table table-bordered" id="tab_logic">
-                                    <thead>
-                                        <tr>
-                                            <th style="background:#CCCCCC;">#</th>
-                                            <th style="background:#CCCCCC;">เรื่องที่แจ้ง</th>
-                                            <th style="background:#CCCCCC;">สาเหตุที่ทราบ</th>
-                                            
-                                        </tr>
-                                    </thead>
-                                   
-                                    <tbody class="sub">
-                                    <?php 
-                                    include '../database/connect.php';
-                                        $sql2 = "SELECT jd.XIMajdSeqNo,jd.XVMajdSubject,jd.XVMajdCause
-                                         FROM  tdoctmajob j ,tdoctmajobdetail jd
-                                         WHERE  j.XVMajDocNo = jd.XVMajDocNo
-                                         AND j.XVMajDocNo = '$id'";
-                                        $result2 = mysqli_query($connect,$sql2) or die(mysqli_query($connect));
-                                        while ($row2=mysqli_fetch_array($result2)){
-                                    
-                                    ?>
+                                        <?php
 
-                                        <tr id='addr0'>
-                                            <td><?php echo $row2["XIMajdSeqNo"];?></td>
-                                            <td><input type="text" name="n_sub[]" placeholder="กรุณากรอกเรื่องที่แจ้ง" value="<?php echo $row2["XVMajdSubject"];?>" readonly> 
-                                            </td>
-                                            <td><input type="text" name="sub[]" placeholder="กรุณากรอกสาเหตุ" value="<?php echo $row2["XVMajdCause"];?>" readonly></td>
-                                            
-                                        </tr>
-                                        <tr id='addr1'></tr>
-                                        <?php } ?> 
-                                    </tbody>
+include '../database/connect.php';
+$sql2 = " SELECT   *
+FROM  tdoctmajob m,TDocTMaJobDetail detail
+WHERE  m.XVMajDocNo = detail.XVMajDocNo 
 
-                                </table>
-                            </div>
+AND m.XVMajDocNo ='$id'"; //ค้นคืน รายการ เรื่องที่แจ้ง
+
+$result2 = mysqli_query($connect,$sql2) or die(mysqli_query($connect));
+while ($row2=mysqli_fetch_array($result2)){
+   
+   
+
+?>
+                                        <table class="table table-bordered" id="tab_logic">
+                                            <thead>
+                                                อนุมัติการซ่อม :
+                                                <?php if($row2["XVMajConfirm"]=="confirm"){ echo 'อนุมัติแล้ว';}else{echo 'ไม่อนุมัติ';}?>
+                                                <br>
+
+                                                รายการที่ : <?php echo $row2["XIMajdSeqNo"];?>
+                                                เรื่องที่แจ้ง : <?php echo $row2["XVMajdSubject"];?>
+
+
+                                                สาเหตุที่ทราบ : <?php echo $row2["XVMajdCause"];?>
+
+
+                                                <th style="background:#CCCCCC;">อะไหล่พร้อม</th>
+                                                <th style="background:#CCCCCC;">ลำดับ</th>
+                                                <th style="background:#CCCCCC;">รายการอะไหล่ </th>
+                                                <th style="background:#CCCCCC;">จำนวน</th>
+                                                <th style="background:#CCCCCC;">คลัง</th>
+                                                <th style="background:#CCCCCC;">สั่งซื้อ</th>
+                                                <th style="background:#CCCCCC;">จำนวนวัน</th>
+                                                <th style="background:#CCCCCC;">วันที่ของมา</th>
+                                                <th style="background:#CCCCCC;">เบิก</th>
+                                                <th style="background:#CCCCCC;">วันที่เบิก</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody class="sub">
+
+                                                <?php ?>
+
+                                                <tr id='addr0'>
+
+
+                                                    <?php  
+       $count = 0 ;
+$sql3 = " SELECT   * 
+FROM  TDocTMaJobDetail detail,TDocTMaMachine_parts_use partsuse ,TMstMMachine_parts parts
+WHERE  detail.XVMajDocNo = partsuse.XVMajDocNo 
+And detail.XIMajdSeqNo = partsuse.XIMajdSeqNo
+AND partsuse.XVMachinePartsCode = parts.XVMachinePartsCode
+AND detail.XVMajDocNo='$id'
+AND partsuse.XIMajdSeqNo = %s"; //ค้นคืน รายการ อะไหล่ของแต่ละรายการเรื่องที่แจ้ง
+$sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
+      $result3 = mysqli_query($connect,$sql3) or die(mysqli_query($connect));
+     
+       while ($row3=mysqli_fetch_array($result3)){
+    $count ++ ;
+    ?>
+                                                    <?php if($row3["XVMajConfirm"]=="confirm"){?>
+                                                    <td style="width:100px; "><input
+                                                            style="width:25px; height:25px; margin:5px 35px 0;"
+                                                            type="checkbox"
+                                                            name="parts_ready[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
+                                                            id="<?php echo $row3["XIMachinePartsSeqNo"];?>"
+                                                            class="parts_ready" value="1"
+                                                            <?php if(isset($row3['XVPartsReady']) && $row3['XVPartsReady']=="1"){echo "checked";}?>
+                                                            disabled></td>
+                                                    <?php }else{?>
+                                                    <td></td>
+                                                    <?php } ?>
+                                                    <td><?php echo $count;?></td>
+
+                                                    <td>
+                                                        <?php echo $row3["XVMachinePartsName"];?>
+                                                        <?php 
+     $sql4 = "SELECT DATE_FORMAT(XDMachinePartsReady, '%d/%m/%Y') AS DA,DATE_FORMAT(XDMachinePartsUse, '%d/%m/%Y') AS DS,XDMachinePartsReady,XDMachinePartsUse
+       FROM tdoctmamachine_parts_use
+       WHERE XVMajDocNo='$id'
+       AND XIMachinePartsSeqNo = '$row3[XIMachinePartsSeqNo]'
+       AND XIMajdSeqNo = '$row2[XIMajdSeqNo]'"; //ค้นคืนวันที่เบิก วันที่ของมา ถ้ามีอยู่แล้ว
+       $result4 = mysqli_query($connect,$sql4) or die(mysqli_query($connect));
+     
+    ?>
+
+                                                    </td>
+
+                                                    <td style="width:60px;"> <?php echo $row3["XVAmount"]; ?></td>
+                                                    <?php if($row3["XVMajConfirm"]=="confirm"){  
+         while ($row4=mysqli_fetch_array($result4)){
+       ?>
+                                                    <td><input style="width:25px; height:25px; margin:5px 25px 0;"
+                                                            type="radio"
+                                                            name="check_source[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
+                                                            value="คลัง"
+                                                            <?php if(isset($row3['XVSource']) && $row3['XVSource']=="คลัง"){echo "checked";}?>
+                                                            disabled></td> <!-- คลัง -->
+                                                    <td><input style="width:25px; height:25px; margin:5px 25px 0;"
+                                                            type="radio"
+                                                            name="check_source[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
+                                                            value="สั่งซื้อ"
+                                                            <?php if(isset($row3['XVSource']) && $row3['XVSource']=="สั่งซื้อ"){echo "checked";}?>
+                                                            disabled></td> <!-- สั่งซื้อ -->
+                                                    <td style="width:80px;"><input type="number"
+                                                            name="dateforcoming[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
+                                                            id="dateforcoming[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
+                                                            min="0"
+                                                            value="<?php if(isset($row3['XVNumOfDays']) ){echo $row3['XVNumOfDays'];}?>"
+                                                            disabled></td> <!-- จำนวนวันที่ของจะมา-->
+
+                                                    <td> <input size="11"
+                                                            name="XDMachinePartsReady[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
+                                                            id="XDMachinePartsReady[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
+                                                            class="form-control" data-toggle="datepicker"
+                                                            value="<?php if(isset($row4['DA']) && $row4['XDMachinePartsReady']!= "0000-00-00"){echo $row4['DA'];}?>"
+                                                            disabled> </td> <!-- วันที่ของจะมา-->
+                                                    <td><input style="width:25px; height:25px; margin:5px 20px 0;"
+                                                            type="checkbox"
+                                                            name="dateforusing[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
+                                                            id="<?php echo $row3["XIMachinePartsSeqNo"];?>"
+                                                            class="dateforusing" value="1"
+                                                            <?php if(isset($row3['XVPickupParts']) && $row3['XVPickupParts']=="1"){echo "checked";}?>
+                                                            disabled></td> <!-- การเบิก-->
+
+                                                    <td> <input size="6"
+                                                            name="XDMachinePartsUse[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
+                                                            id="XDMachinePartsUse<?php echo $row3["XIMachinePartsSeqNo"];?>"
+                                                            class="form-control hid" data-toggle="datepicker" disabled
+                                                            value="<?php if(isset($row4['DS']) && $row4['XDMachinePartsUse']!= "0000-00-00"){echo $row4['DS'];}?>">
+                                                    </td> <!-- วันที่เบิก-->
+                                                    <?php
+}//sql4
+}else{?>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <?php } ?>
+                                                </tr>
+                                                <?php
+   
+
+}//sql3
+}//sql2
+mysqli_close($connect);
+?>
+                                                <tr id='addr1'></tr>
+
+                                            </tbody>
+                                        </table>
+
+
+                                    </div>
                                     <div class="panel-body" style="margin:0px;">
                                     </div>
                                 </div>
-
 
                                 <div class="row">
                                     <div class="col-md-5">
@@ -271,17 +394,24 @@
                                                           $Dnew3 =  date('d/m/Y', strtotime($DN3));
                                                           echo $Dnew3;?>
                                             </label>
+                                            
                                             <label for="numb">วันที่นัดซ่อม : <input id="datepicker" size="6"
-                                                    name="XDMajRepairAppPlanDate" class="form-control"
+                                                    name="XDMajRepairAppPlanDate" class="form-control" value="<?php $datecon3 = $row1["XDMajRepairAppPlanDate"];
+                                                         $DN3 = str_replace('-', '/', $datecon3);
+                                                          $Dnew3 =  date('d/m/Y', strtotime($DN3));
+                                                          echo $Dnew3;?>"
                                                     data-toggle="datepicker" disabled>
                                             </label>
                                             <label for="numb">วันที่ซ่อมจริง : <input id="datepicker" size="6"
-                                                    name="#" class="form-control"
+                                                    name="#" class="form-control" value="<?php $datecon3 = $row1["XDMajRepairActualDate"];
+                                                         $DN3 = str_replace('-', '/', $datecon3);
+                                                          $Dnew3 =  date('d/m/Y', strtotime($DN3));
+                                                          echo $Dnew3;?>"
                                                     data-toggle="datepicker" disabled>
                                             </label>
                                             <label for="numb">วันนัดรับรถ : <input id="datepicker" size="6"
-                                                    name="#" class="form-control"
-                                                    data-toggle="datepicker" disabled>
+                                                    name="XDMaPickupAppPlanDate" class="form-control"
+                                                    data-toggle="datepicker">
                                             </label>
                                         </div>
                                     </div>
@@ -315,7 +445,7 @@
                                             <?php
                                                     include '../database/connect.php';
                                                     $sql = "  SELECT *
-                                                    FROM  tdoctmajob j ,TdocTMaEstimation_Tnc tnc,TMstMTEmployee e
+                                                    FROM  tdoctmajob j ,tdoctmarepair_tnc tnc,TMstMTEmployee e
                                                     WHERE  j.XVMajDocNo = tnc.XVMajDocNo
                                                     AND tnc.XVEpyCode = e.XVEpyCode
                                                     AND j.XVMajDocNo = '$id' ";
