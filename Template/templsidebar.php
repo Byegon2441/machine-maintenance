@@ -78,40 +78,44 @@
                     <ul class="nav" id="side-menu">
 
                         <li>
-                        <a href="#"><i class="fa fa-edit fa-fw"></i> ใบแจ้งซ่อม<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-bars  fa-fw"></i> ใบแจ้งซ่อม<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="../Job/ListJob.php">ใบแจ้งซ่อมทั้งหมด</a>
+                                    <a href="../Job/ListJob.php"><i class="fa fa-edit fa-fw"></i> ใบแจ้งซ่อมทั้งหมด</a>
                                 </li>
                                 <li>
-                                    <a href="../CheckCars/ListCheck.php">กำหนดวันนัดประเมิน</a>   <!-- คือรายการที่ต้องใส่วันนัด-->
+                                    <a href="../CheckCars/ListCheck.php"><i class="fa fa-edit fa-fw"></i> กำหนดวันนัดประเมิน</a>   <!-- คือรายการที่ต้องใส่วันนัด-->
                                 </li>
                                 <li>
-                                    <a href="../CheckCars/ListCheckDataEngi.php">รถรอประเมิน</a>   <!-- listที่show คือใบที่ใส่วันนัดประเมินแล้ว-->
+                                    <a href="../CheckCars/ListCheckDataEngi.php"><i class="fa fa-edit fa-fw"></i> รถรอประเมิน</a>   <!-- listที่show คือใบที่ใส่วันนัดประเมินแล้ว-->
                                 </li>
                                 <li>
-                                <a href="../CheckParts/listEvaluate.php">ใบประเมินการซ่อม</a>
+                                <a href="../CheckParts/listEvaluate.php"><i class="fa fa-edit fa-fw"></i> ใบประเมินการซ่อม</a>
                                 </li>
                                 <li>
-                                <a href="../AllowMainte/ListAllowMainte.php">อนุมัติการซ่อม</a> <!-- หรือก็คือ รถประเมินแล้ว อันเดียวกัน-->
+                                <a href="../AllowMainte/ListAllowMainte.php"><i class="fa fa-edit fa-fw"></i> อนุมัติการซ่อม</a> <!-- หรือก็คือ รถประเมินแล้ว อันเดียวกัน-->
                                 </li>
                                 <li>
-                                <a href="../ConfirmParts/ListConParts.php">รายการส่งมอบอะไหล่</a><!-- หรือก็คือ หน้ารอธุรการส่ง อันเดียวกัน-->
+                                <a href="../ConfirmParts/ListConParts.php"><i class="fa fa-edit fa-fw"></i> รายการส่งมอบอะไหล่</a><!-- หรือก็คือ หน้ารอธุรการส่ง อันเดียวกัน-->
                                 </li>
                                 <li>
-                                    <a href="../AllowMainte/ListFixDate.php">กำหนดวันนัดซ่อม</a>   <!-- คือรายการที่ต้องใส่วันนัด-->
+                                <a href="../GetParts/ListGetParts.php"><i class="fa fa-edit fa-fw"></i> รับอะไหล่</a>
                                 </li>
                                 <li>
-                                <a href="../GetParts/ListGetParts.php">รับอะไหล่</a>
+                                    <a href="../AllowMainte/ListFixDate.php"><i class="fa fa-edit fa-fw"></i> กำหนดวันนัดซ่อม</a>   <!-- คือรายการที่ต้องใส่วันนัด-->
                                 </li>
                                 <li>
-                                <a href="../JobDone/ListDone.php">แจ้งซ่อมเสร็จ</a>
+                                <a href="../CheckCars/ListEngiRepair.php"><i class="fa fa-edit fa-fw"></i> รับรถเข้าซ่อม</a>
                                 </li>
                                 <li>
-                                <a href="../CheckCars/ListEngiRepair.php">รับรถเข้าซ่อม</a>
+                                <a href="../JobDone/ListDone.php"><i class="fa fa-edit fa-fw"></i> แจ้งซ่อมเสร็จ</a>
+                                </li>
+                               
+                                <li>
+                                <a href="../Finish/ListFinish.php"><i class="fa fa-edit fa-fw"></i> ปิดงาน</a>
                                 </li>
                                 <li>
-                                <a href="../Finish/ListFinish.php"><i class="fa fa-check fa-fw"></i> ปิดงาน</a>
+                                <a href="../Finish/ListFinishDone.php"><i class="fa fa-check-square-o"></i> ปิดงานแล้ว</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -120,26 +124,26 @@
                            
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-edit fa-fw"></i> กำหนดค่า<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bars  fa-fw" ></i> กำหนดค่า<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="../TypeMachine/ListTypeMachine.php">ประเภทเครื่องจักร</a>
+                                    <a href="../TypeMachine/ListTypeMachine.php"><i class="fa fa-edit fa-fw"></i> ประเภทเครื่องจักร</a>
                                 </li>
                                 <li>
-                                    <a href="../Machine/ListMachine.php">เครื่องจักร</a>
+                                    <a href="../Machine/ListMachine.php"><i class="fa fa-edit fa-fw"></i> เครื่องจักร</a>
                                 </li>
                                 <li>
-                                    <a href="../Department/ListDepartment.php">ไซต์งาน</a>
+                                    <a href="../Department/ListDepartment.php"><i class="fa fa-edit fa-fw"></i> ไซต์งาน</a>
                                 </li>
                                 
                                 <li>
-                                    <a href="../MachineParts/ListMachineParts.php">อะไหล่</a>
+                                    <a href="../MachineParts/ListMachineParts.php"><i class="fa fa-edit fa-fw"></i> อะไหล่</a>
                                 </li>
                                 <li>
-                                    <a href="../TypeMachineParts/ListTypeMachineParts.php">ประเภทอะไหล่</a>
+                                    <a href="../TypeMachineParts/ListTypeMachineParts.php"><i class="fa fa-edit fa-fw"></i> ประเภทอะไหล่</a>
                                 </li>
                                 <li>
-                                    <a href="../Employee/ListEmployee.php">พนักงาน</a>
+                                    <a href="../Employee/ListEmployee.php"><i class="fa fa-edit fa-fw"></i> พนักงาน</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
