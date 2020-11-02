@@ -94,7 +94,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">แจ้งซ่อมเสร็จ</h1>
+                    <h1 class="page-header">ปิดงาน</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -283,6 +283,10 @@
                                                     name="#" class="form-control"
                                                     data-toggle="datepicker" disabled>
                                             </label>
+                                            <label for="numb">วันที่รับรถ : <input id="datepicker" size="6"
+                                                    name="#" class="form-control"
+                                                    data-toggle="datepicker">
+                                            </label>
                                         </div>
                                     </div>
 
@@ -342,8 +346,9 @@
                                     <div class="col-md-6">
                                         <div class="col text-right">
                                             <input type="hidden" value="<?php echo $id?>" name='id'>
-                                            <input type="submit" class="btn btn-success btndis" name="save"
-                                                value="บันทึก">
+                                            <input type="text" value="" name='' class="form-control" >
+                                            <input type="submit" class="btn btn-info" name="save"
+                                                value="ปิดงาน">
                                         </div>
                                     </div>
                                 </div>

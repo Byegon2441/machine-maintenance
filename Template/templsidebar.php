@@ -110,10 +110,9 @@
                                 <li>
                                 <a href="../CheckCars/ListEngiRepair.php">รับรถเข้าซ่อม</a>
                                 </li>
-                                <!-- <li>
-                                
-                                <a href="../Job/Finish.php"><i class="fa fa-check fa-fw"></i> ปิดงาน</a>
-                                </li> -->
+                                <li>
+                                <a href="../Finnish/ListFinnish.php"><i class="fa fa-check fa-fw"></i> ปิดงาน</a>
+                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
