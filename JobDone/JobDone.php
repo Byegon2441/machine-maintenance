@@ -402,7 +402,7 @@ mysqli_close($connect);
                                                           echo $Dnew3;?>"
                                                     data-toggle="datepicker" disabled>
                                             </label>
-                                            <label for="numb">วันที่ซ่อมจริง : <input id="datepicker" size="6"
+                                            <label for="numb">วันที่ซ่อม : <input id="datepicker" size="6"
                                                     name="#" class="form-control" value="<?php $datecon3 = $row1["XDMajRepairActualDate"];
                                                          $DN3 = str_replace('-', '/', $datecon3);
                                                           $Dnew3 =  date('d/m/Y', strtotime($DN3));
@@ -466,7 +466,7 @@ mysqli_close($connect);
                                     <div class="col-md-6">
                                         <div class="col text-left">
                                             <a type="button" class="btn btn-danger mr-auto"
-                                                href="ListAllowMainte.php">กลับ</a>
+                                                href="ListJobDone.php">กลับ</a>
                                         </div>
                                     </div>
                                     <div class="col-md-6">

@@ -28,7 +28,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">รายการรับอะไหล่</h1>
+                    <h1 class="page-header">รายการรอปิดงาน</h1>
                 </div>
             </div>
             <div class="row">
@@ -69,7 +69,7 @@
                                         <td><?php echo $row["XVVehCode"];?></td>
                                         <td><?php echo $row["XVVehName"];?></td>
                                         <td><?php echo $row["XVMajStatus"];?></td>
-                                        <td align="center"><a class='btn btn-primary editbtn' href="JobFinnish.php?id=<?php echo $row["XVMajDocNo"] ?>"
+                                        <td align="center"><a class='btn btn-primary editbtn' href="JobFinish.php?id=<?php echo $row["XVMajDocNo"] ?>"
                                                 >ดูรายละเอียด</a></td>
                                     </tr>
                                     <?php $count++;} ?>
