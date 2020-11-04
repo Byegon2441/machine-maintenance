@@ -35,7 +35,7 @@
                         <label for="name" class="control-label">เลือกวันที่:</label>
                     </div>
                     <div class="form-group col-md-2 center">
-                        <input type="text" class="form-control" data-toggle="datepicker">
+                        <input type="text" class="form-control datepicker" id="datee" data-toggle="datepicker">
                     </div>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -285,8 +285,31 @@
             format: 'dd/mm/yyyy'
         });
     });
+    // $('.my-select').selectpicker();
+    // {dateFormat: "dd-mm-yyyy"}
+    $('.datepicker').datepicker();
+    $('#datee').change(function() {
+    // alert($('#datee').val())
+    $.ajax({
+        type: "GET",
+        url: "closed_job.php" ,
+        data: {
+            date_fi: $('#datee').val()
+        },
+        dataType: "JSON",
+        success: function(data) {
+            // $('#ct').html(response);
+            // $( "#datepicker" ).datepicker();
+            alert(data.Code)
+            /*added following line to solve this issue ..but not worked*/
+            //$( ".datepicker" ).datepicker({dateFormat: "dd-mm-yy"});
 
-    $('.my-select').selectpicker();
+        } ,
+        error: function () {
+            $('#ct').html("Some problem fetching data.Please try again");
+        }
+    });
+});
     </script>
 
 </body>
