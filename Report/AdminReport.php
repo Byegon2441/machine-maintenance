@@ -50,7 +50,6 @@
                                 <thead>
                                     <tr>
                                         <th>เลขที่ใบแจ้งซ่อม</th>
-                                        <th>วันที่แจ้ง</th>
                                         <th>หมายเลขเครื่องจักร</th>
                                         <th>ชื่องานหรือชื่อเครื่องจักร</th>
                                         <th>สถานะ</th>
@@ -80,7 +79,6 @@
                                 <thead>
                                     <tr>
                                         <th>เลขที่ใบแจ้งซ่อม</th>
-                                        <th>วันที่แจ้ง</th>
                                         <th>หมายเลขเครื่องจักร</th>
                                         <th>ชื่องานหรือชื่อเครื่องจักร</th>
                                         <th>สถานะ</th>
@@ -106,19 +104,18 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <table width="100%" class="table table-striped table-bordered table-hover display"
-                                id="dataTables-example2">
+                                id="closedJob">
                                 <thead>
                                     <tr>
                                         <th>เลขที่ใบแจ้งซ่อม</th>
-                                        <th>วันที่แจ้ง</th>
                                         <th>หมายเลขเครื่องจักร</th>
                                         <th>ชื่องานหรือชื่อเครื่องจักร</th>
                                         <th>สถานะ</th>
-                                        <th>จัดการ</th>
+                                        <!-- <th>จัดการ</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="odd gradeA"></tr>
+                                    <!-- <tr class="odd gradeA"></tr> -->
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->
@@ -166,22 +163,24 @@
             },
             dataType: "JSON",
             success: function(data) {
-                alert(data.Code)
-                $('table.display').DataTable({
-                    "scrollY": "200px",
-                    "scrollCollapse": true,
-                    // "processing": true,
-                    // "serverSide": true,
-                    "paging": false,
-                    responsive: true
-                });
+                var countKey = (Object.keys(data).length + 1) / 5;
+                alert(countKey)
+                $('#closedJob').append('<tr id="addrr0"></tr>');
+                let j = 0
+                let g = 0
+                for (var k = 0; k < countKey; k++) {
+                    $('tr').find('input').prop('disabled', false)
+                    $('#addrr' + j).html("<td>" + data[0+g] + "</td><td>" + data[1+g] + "</td><td>" + data[2+g] + "</td><td>" + data[3+g] + "</td>")
+                    $('#closedJob').append('<tr id="addrr' + (j + 1) + '"></tr>');
+                    g = g+4
+                    j++
+                }
             },
             error: function() {
                 $('#ct').html("Some problem fetching data.Please try again");
             }
         });
     });
-    
     </script>
 
 </body>
