@@ -240,7 +240,7 @@ while ($row=mysqli_fetch_array($result)){
                                                     <td><input type="text" name="sub[]" placeholder="กรุณากรอกสาเหตุ"
                                                             value="<?php echo $row2["XVMajdCause"];?>" readonly></td>
                                                     <td><button type="button"
-                                                            class="btn btn-danger btn-circle increase-row RemoveRow btndis"><i
+                                                            class="btn btn-danger btn-circle increase-row RemoveRow "><i
                                                                 class="fa fa-minus"></button></td>
                                                 </tr>
                                                 <?php } ?>
@@ -274,10 +274,8 @@ while ($row=mysqli_fetch_array($result)){
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col text-right">
-                                            <input type="submit" class="btn btn-primary btndis" name="submit"
-                                                value="ส่งใบแจ้งซ่อม">
-                                            <input type="submit" class="btn btn-success btndis" name="save"
-                                                value="บันทึก">
+                                            <input type="submit" class="btn btn-primary " name="sendjob" value="ส่งใบแจ้งซ่อม">
+                                            <input type="submit" class="btn btn-success " name="save"  value="บันทึก">
                                         </div>
                                     </div>
                                 </div>
@@ -396,15 +394,15 @@ if ( $query ) {
         if($query2){
             if($query2){
                 echo '<script>';
-                            echo "Swal.fire({
-                                title: 'สำเร็จ!',
-                                text: 'ทำการบันทึกข้อมูลใบแจ้งซ่อมเรียบร้อยแล้ว',
-                                icon: 'success',
-                                confirmButtonText: 'Back'
-                              }).then(function() {
-                                window.location = 'ListJob.php';
-                            });";
-                            echo '</script>';
+            echo "Swal.fire({
+                title: 'สำเร็จ!',
+                text: 'ทำการบันทึกข้อมูลใบแจ้งซ่อมเรียบร้อยแล้ว',
+                icon: 'success',
+                confirmButtonText: 'Back'
+              }).then(function() {
+                window.location = 'ListJob.php';
+            });";
+            echo '</script>';
                         }else{ echo mysqli_error( $connect );
                        
                                         }
@@ -412,13 +410,8 @@ if ( $query ) {
     }//save
 
 
-
-
-
-
-
-}else if(isset($_POST['submit'])){
-$XVMajDocNo = $_POST['XVMajDocNo'];
+}else if(isset($_POST['sendjob'])){
+    $XVMajDocNo = $_POST['XVMajDocNo'];
 $name = $_POST['nameofuser'];
 $dnum = $_POST['dnum'];
 $dsub = $_POST['dsub'];

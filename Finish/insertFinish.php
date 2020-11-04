@@ -14,7 +14,7 @@
   $idno = $_POST['id'];
   $date = $_POST['XDMajPickupActualDate'];
   $date1 = $_POST['XDMajFinishDate'];
-
+  $note = $_POST['XVMajFinishRmk'];
   $oldDate = "$date";
   $newD = str_replace('/', '-', $oldDate);
   $newDate =  date('Y-m-d', strtotime($newD));
@@ -27,6 +27,8 @@
   $showDate1 = date('d/m/Y', strtotime($newD1));
   $newtime1 = date("H:i:s");
   
+  $query2 = "UPDATE tdoctmajob SET XVMajFinishRmk = '$note' WHERE XVMajDocNo = '$idno'";
+  $sql2 = mysqli_query( $connect, $query2 );
   $query = "UPDATE tdoctmajobdate  SET XDMajPickupActualDate = '$newDate $newtime',
             XDMajFinishDate = '$newDate1 $newtime1' WHERE XVMajDocNo = '$idno'";
   $sql = mysqli_query( $connect, $query );
