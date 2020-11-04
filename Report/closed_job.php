@@ -7,7 +7,7 @@
     $newDate1 = date("Y-m-d", strtotime($oldDate1));  
     // echo 'date1 : '.$newDate1;
 
-    $sql = "SELECT m.XVMajDocNo FROM TDocTMaJobDate d, TDocTMaJob m WHERE d.XVMajDocNo = m.XVMajDocNo AND DATE(d.XDMajFinishDate) = '$newDate1'";
+    $sql = "SELECT m.XVMajDocNo FROM TDocTMaJobDate d, TDocTMaJob m WHERE DATE(d.XDMajFinishDate) = '$newDate1'";
     $query = mysqli_query($connect,$sql);
     while( $row = mysqli_fetch_array( $query) )
  {
