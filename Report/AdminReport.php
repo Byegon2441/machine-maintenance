@@ -57,7 +57,30 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="odd gradeA"></tr>
+                                    <tr class="odd gradeA">
+                                        <td>XXXXXXXXXXXXXX</td>
+                                        <td>XXXXXXX</td>
+                                        <td>XXX</td>
+                                        <td>XXXXXX</td>
+                                        <td>แจ้งซ่อม</td>
+                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด' /></td>
+                                    </tr>
+                                    <tr class="odd gradeA">
+                                        <td>XXXXXXXXXXXXXX</td>
+                                        <td>XXXXXXX</td>
+                                        <td>XXX</td>
+                                        <td>XXXXXX</td>
+                                        <td>แจ้งซ่อม</td>
+                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด' /></td>
+                                    </tr>
+                                    <tr class="odd gradeA">
+                                        <td>XXXXXXXXXXXXXX</td>
+                                        <td>XXXXXXX</td>
+                                        <td>XXX</td>
+                                        <td>XXXXXX</td>
+                                        <td>แจ้งซ่อม</td>
+                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด' /></td>
+                                    </tr>
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->
@@ -86,7 +109,94 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="odd gradeA"></tr>
+                                    <tr class="odd gradeA">
+                                        <td>XXXXXXXXXXXXXX</td>
+                                        <td>XXXXXXX</td>
+                                        <td>XXX</td>
+                                        <td>XXXXXX</td>
+                                        <td>แจ้งซ่อม</td>
+                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด' /></td>
+                                    </tr>
+                                    <tr class="odd gradeA">
+                                        <td>XXXXXXXXXXXXXX</td>
+                                        <td>XXXXXXX</td>
+                                        <td>XXX</td>
+                                        <td>XXXXXX</td>
+                                        <td>แจ้งซ่อม</td>
+                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด' /></td>
+                                    </tr>
+                                    <tr class="odd gradeA">
+                                        <td>XXXXXXXXXXXXXX</td>
+                                        <td>XXXXXXX</td>
+                                        <td>XXX</td>
+                                        <td>XXXXXX</td>
+                                        <td>แจ้งซ่อม</td>
+                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด' /></td>
+                                    </tr>
+                                    <tr class="odd gradeA">
+                                        <td>XXXXXXXXXXXXXX</td>
+                                        <td>XXXXXXX</td>
+                                        <td>XXX</td>
+                                        <td>XXXXXX</td>
+                                        <td>แจ้งซ่อม</td>
+                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด' /></td>
+                                    </tr>
+                                    <tr class="odd gradeA">
+                                        <td>XXXXXXXXXXXXXX</td>
+                                        <td>XXXXXXX</td>
+                                        <td>XXX</td>
+                                        <td>XXXXXX</td>
+                                        <td>แจ้งซ่อม</td>
+                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด' /></td>
+                                    </tr>
+                                    <tr class="odd gradeA">
+                                        <td>XXXXXXXXXXXXXX</td>
+                                        <td>XXXXXXX</td>
+                                        <td>XXX</td>
+                                        <td>XXXXXX</td>
+                                        <td>แจ้งซ่อม</td>
+                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด' /></td>
+                                    </tr>
+                                    <tr class="odd gradeA">
+                                        <td>XXXXXXXXXXXXXX</td>
+                                        <td>XXXXXXX</td>
+                                        <td>XXX</td>
+                                        <td>XXXXXX</td>
+                                        <td>แจ้งซ่อม</td>
+                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด' /></td>
+                                    </tr>
+                                    <tr class="odd gradeA">
+                                        <td>XXXXXXXXXXXXXX</td>
+                                        <td>XXXXXXX</td>
+                                        <td>XXX</td>
+                                        <td>XXXXXX</td>
+                                        <td>แจ้งซ่อม</td>
+                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด' /></td>
+                                    </tr>
+                                    <tr class="odd gradeA">
+                                        <td>XXXXXXXXXXXXXX</td>
+                                        <td>XXXXXXX</td>
+                                        <td>XXX</td>
+                                        <td>XXXXXX</td>
+                                        <td>แจ้งซ่อม</td>
+                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด' /></td>
+                                    </tr>
+                                    <tr class="odd gradeA">
+                                        <td>XXXXXXXXXXXXXX</td>
+                                        <td>XXXXXXX</td>
+                                        <td>XXX</td>
+                                        <td>XXXXXX</td>
+                                        <td>แจ้งซ่อม</td>
+                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด' /></td>
+                                    </tr>
+                                    <tr class="odd gradeA">
+                                        <td>XXXXXXXXXXXXXX</td>
+                                        <td>XXXXXXX</td>
+                                        <td>XXX</td>
+                                        <td>XXXXXX</td>
+                                        <td>แจ้งซ่อม</td>
+                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด' /></td>
+                                    </tr>
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->
@@ -143,6 +253,15 @@
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
+    $(document).ready(function() {
+        $('table.display').DataTable({
+            "scrollY": "200px",
+            "scrollCollapse": true,
+            "paging": false,
+            responsive: true
+        });
+    });
+
     $(function() {
         $('[data-toggle="datepicker"]').datepicker({
             autoHide: true,
@@ -152,7 +271,8 @@
             format: 'dd/mm/yyyy'
         });
     });
-
+    // $('.my-select').selectpicker();
+    // {dateFormat: "dd-mm-yyyy"}
     $('.datepicker').datepicker();
     $('#datee').change(function() {
         $.ajax({
