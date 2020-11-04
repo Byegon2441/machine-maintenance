@@ -482,7 +482,7 @@ mysqli_close($connect);
                                     <div class="col-md-6">
                                         <div class="col text-right">
                                             <input type="hidden" value="<?php echo $id?>" name='id'>
-                                            <input type="text" value="" name='' class="form-control" >
+                                            หมายเหตุปิดงาน : <input type="text" value="" name="XVMajFinishRmk" class="form-control" >
                                             <input type="submit" class="btn btn-info" name="save"
                                                 value="ปิดงาน">
                                         </div>
