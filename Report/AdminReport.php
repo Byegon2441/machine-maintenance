@@ -17,7 +17,8 @@
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="../vendor/css/datepicker.css" rel="stylesheet">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js" integrity="sha512-BkpSL20WETFylMrcirBahHfSnY++H2O1W+UnEEO4yNIl+jI2+zowyoGJpbtk6bx97fBXf++WJHSSK2MV4ghPcg==" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -98,105 +99,17 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <table width="100%" class="table table-striped table-bordered table-hover display"
-                                id="dataTables-example2">
+                                id="perDay">
                                 <thead>
                                     <tr>
                                         <th>เลขที่ใบแจ้งซ่อม</th>
                                         <th>หมายเลขเครื่องจักร</th>
                                         <th>ชื่องานหรือชื่อเครื่องจักร</th>
                                         <th>สถานะ</th>
-                                        <th>จัดการ</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXXXXX</td>
-                                        <td>XXX</td>
-                                        <td>XXXXXX</td>
-                                        <td>แจ้งซ่อม</td>
-                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด' /></td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXXXXX</td>
-                                        <td>XXX</td>
-                                        <td>XXXXXX</td>
-                                        <td>แจ้งซ่อม</td>
-                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด' /></td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXXXXX</td>
-                                        <td>XXX</td>
-                                        <td>XXXXXX</td>
-                                        <td>แจ้งซ่อม</td>
-                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด' /></td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXXXXX</td>
-                                        <td>XXX</td>
-                                        <td>XXXXXX</td>
-                                        <td>แจ้งซ่อม</td>
-                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด' /></td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXXXXX</td>
-                                        <td>XXX</td>
-                                        <td>XXXXXX</td>
-                                        <td>แจ้งซ่อม</td>
-                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด' /></td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXXXXX</td>
-                                        <td>XXX</td>
-                                        <td>XXXXXX</td>
-                                        <td>แจ้งซ่อม</td>
-                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด' /></td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXXXXX</td>
-                                        <td>XXX</td>
-                                        <td>XXXXXX</td>
-                                        <td>แจ้งซ่อม</td>
-                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด' /></td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXXXXX</td>
-                                        <td>XXX</td>
-                                        <td>XXXXXX</td>
-                                        <td>แจ้งซ่อม</td>
-                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด' /></td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXXXXX</td>
-                                        <td>XXX</td>
-                                        <td>XXXXXX</td>
-                                        <td>แจ้งซ่อม</td>
-                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด' /></td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXXXXX</td>
-                                        <td>XXX</td>
-                                        <td>XXXXXX</td>
-                                        <td>แจ้งซ่อม</td>
-                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด' /></td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>XXXXXXXXXXXXXX</td>
-                                        <td>XXXXXXX</td>
-                                        <td>XXX</td>
-                                        <td>XXXXXX</td>
-                                        <td>แจ้งซ่อม</td>
-                                        <td><input class='btn btn-primary' type='button' value='รายละเอียด' /></td>
-                                    </tr>
+                                    
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->
@@ -250,18 +163,7 @@
     <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
     <script src="../vendor/js/datepicker.js"></script>
     <script src="../vendor/js/datepicker.th-TH.js"></script>
-
-    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
-    $(document).ready(function() {
-        $('table.display').DataTable({
-            "scrollY": "200px",
-            "scrollCollapse": true,
-            "paging": false,
-            responsive: true
-        });
-    });
-
     $(function() {
         $('[data-toggle="datepicker"]').datepicker({
             autoHide: true,
@@ -271,35 +173,52 @@
             format: 'dd/mm/yyyy'
         });
     });
-    // $('.my-select').selectpicker();
-    // {dateFormat: "dd-mm-yyyy"}
     $('.datepicker').datepicker();
     $('#datee').change(function() {
-        $.ajax({
-            type: "GET",
-            url: "closed_job.php",
-            data: {
-                date_fi: $('#datee').val()
-            },
-            dataType: "JSON",
-            success: function(data) {
-                var countKey = (Object.keys(data).length + 1) / 5;
-                alert(countKey)
-                $('#closedJob').append('<tr id="addrr0"></tr>');
-                let j = 0
-                let g = 0
-                for (var k = 0; k < countKey; k++) {
-                    $('tr').find('input').prop('disabled', false)
-                    $('#addrr' + j).html("<td>" + data[0+g] + "</td><td>" + data[1+g] + "</td><td>" + data[2+g] + "</td><td>" + data[3+g] + "</td>")
-                    $('#closedJob').append('<tr id="addrr' + (j + 1) + '"></tr>');
-                    g = g+4
-                    j++
+        var dated = $('#datee').val()
+        $('#closedJob').DataTable({
+            "scrollY": "200px",
+            "scrollCollapse": true,
+            "paging": false,
+            "ajax": {
+                "url": "closed_job.php",
+                "type": "GET",
+                "contentType": "application/json",
+                "data": 
+                function(d) {
+                    d.date_fi = $('#datee').val()
+                    return d.data
                 }
-            },
-            error: function() {
-                $('#ct').html("Some problem fetching data.Please try again");
-            }
-        });
+                },
+                "columns":[
+                    { "data": "XVMajDocNo" },
+                    { "data": "XVVehCode" },
+                    { "data": "XVDptName" },
+                    { "data": "XVMajStatus" }
+                ]
+        })
+        // =========================================
+        $('#perDay').DataTable({
+            "scrollY": "200px",
+            "scrollCollapse": true,
+            "paging": false,
+            "ajax": {
+                "url": "perDay.php",
+                "type": "GET",
+                "contentType": "application/json",
+                "data": 
+                function(d) {
+                    d.date_fi = $('#datee').val()
+                    return d.data
+                }
+                },
+                "columns":[
+                    { "data": "XVMajDocNo" },
+                    { "data": "XVVehCode" },
+                    { "data": "XVDptName" },
+                    { "data": "XVMajStatus" }
+                ]
+        })
     });
     </script>
 
