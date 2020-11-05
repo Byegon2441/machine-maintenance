@@ -39,7 +39,7 @@
     $sqlarr = "INSERT INTO tdoctmarepair_tnc(XVEpyCode,XVMajDocNo) VALUES ('$arr[$i]','$id')";
     $queryarr = mysqli_query($connect,$sqlarr)or die("ERROR INSERT");
    }
-   $sqlda =  "UPDATE tdoctmajobdate  SET XDMajEstActualDate = '$newDate $newtime' WHERE XVMajDocNo = '$id'";
+   $sqlda =  "UPDATE tdoctmajobdate  SET XDMajRepairActualDate = '$newDate $newtime' WHERE XVMajDocNo = '$id'";
    $queryda = mysqli_query( $connect, $sqlda );
    $sqlda1 =  "UPDATE tdoctmajob  SET 	XVMajStatus = 'ดำเนินการซ่อม' WHERE XVMajDocNo = '$id'";
    $queryda1 = mysqli_query( $connect, $sqlda1 );
