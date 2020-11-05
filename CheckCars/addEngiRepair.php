@@ -151,7 +151,7 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <label>ใบแจ้งซ่อม</label>
-                            <form action="insertEngiRepair.php?id=<?php echo $_GET['id']; ?>" method='POST' class="form-inline">
+                            <form action="insertAllowFixDate.php" method='POST' class="form-inline">
 
 
                                 <div class="row">
@@ -239,14 +239,14 @@
 include '../database/connect.php';
 $sql2 = " SELECT   *
 FROM  tdoctmajob m,TDocTMaJobDetail detail
-WHERE  m.XVMajDocNo = detail.XVMajDocNo
+WHERE  m.XVMajDocNo = detail.XVMajDocNo 
 
 AND m.XVMajDocNo ='$id'"; //ค้นคืน รายการ เรื่องที่แจ้ง
 
 $result2 = mysqli_query($connect,$sql2) or die(mysqli_query($connect));
 while ($row2=mysqli_fetch_array($result2)){
-
-
+   
+   
 
 ?>
                                         <table class="table table-bordered" id="tab_logic">
@@ -282,18 +282,18 @@ while ($row2=mysqli_fetch_array($result2)){
                                                 <tr id='addr0'>
 
 
-                                                    <?php
+                                                    <?php  
        $count = 0 ;
-$sql3 = " SELECT   *
+$sql3 = " SELECT   * 
 FROM  TDocTMaJobDetail detail,TDocTMaMachine_parts_use partsuse ,TMstMMachine_parts parts
-WHERE  detail.XVMajDocNo = partsuse.XVMajDocNo
+WHERE  detail.XVMajDocNo = partsuse.XVMajDocNo 
 And detail.XIMajdSeqNo = partsuse.XIMajdSeqNo
 AND partsuse.XVMachinePartsCode = parts.XVMachinePartsCode
 AND detail.XVMajDocNo='$id'
 AND partsuse.XIMajdSeqNo = %s"; //ค้นคืน รายการ อะไหล่ของแต่ละรายการเรื่องที่แจ้ง
 $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
       $result3 = mysqli_query($connect,$sql3) or die(mysqli_query($connect));
-
+     
        while ($row3=mysqli_fetch_array($result3)){
     $count ++ ;
     ?>
@@ -313,20 +313,20 @@ $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
 
                                                     <td>
                                                         <?php echo $row3["XVMachinePartsName"];?>
-                                                        <?php
+                                                        <?php 
      $sql4 = "SELECT DATE_FORMAT(XDMachinePartsReady, '%d/%m/%Y') AS DA,DATE_FORMAT(XDMachinePartsUse, '%d/%m/%Y') AS DS,XDMachinePartsReady,XDMachinePartsUse
        FROM tdoctmamachine_parts_use
        WHERE XVMajDocNo='$id'
        AND XIMachinePartsSeqNo = '$row3[XIMachinePartsSeqNo]'
        AND XIMajdSeqNo = '$row2[XIMajdSeqNo]'"; //ค้นคืนวันที่เบิก วันที่ของมา ถ้ามีอยู่แล้ว
        $result4 = mysqli_query($connect,$sql4) or die(mysqli_query($connect));
-
+     
     ?>
 
                                                     </td>
 
                                                     <td style="width:60px;"> <?php echo $row3["XVAmount"]; ?></td>
-                                                    <?php if($row3["XVMajConfirm"]=="confirm"){
+                                                    <?php if($row3["XVMajConfirm"]=="confirm"){  
          while ($row4=mysqli_fetch_array($result4)){
        ?>
                                                     <td><input style="width:25px; height:25px; margin:5px 25px 0;"
@@ -380,7 +380,7 @@ $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
                                                     <?php } ?>
                                                 </tr>
                                                 <?php
-
+   
 
 }//sql3
 }//sql2
@@ -414,7 +414,6 @@ mysqli_close($connect);
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col text-left">
-
                                             <label for="numb">วันนัดประเมิน : <?php $datecon1 = $row1["XDMajEstAppPlanDate"];
                                                          $DN1 = str_replace('-', '/', $datecon1);
                                                           $Dnew1 =  date('d/m/Y H:i:s', strtotime($DN1));
@@ -440,39 +439,13 @@ mysqli_close($connect);
                                             </label>
                                             <label for="numb">วันที่นัดซ่อม : <input id="datepicker" size="6"
                                                     name="XDMajRepairAppPlanDate" class="form-control"
-                                                     value="<?php $ad = $row1['XDMajRepairAppPlanDate'];
-                                                     $naD = str_replace('-', '/', $ad);
-                                                     $newad =  date('d/m/Y', strtotime($naD));
-                                                     echo $newad;?>" disabled>
+                                                    data-toggle="datepicker" disabled>
                                             </label>
 
-                                            <?php if($row1['XDMajRepairActualDate'] != "0000-00-00 00:00:00"){
-                                              $oD = $row1['XDMajRepairActualDate'];
-                                              $nD = str_replace('-', '/', $oD);
-                                              $newa =  date('d/m/Y', strtotime($nD));
-                                              ?>
-
-
-                                              <label for="numb">วันซ่อมจริง : <input type="text" size="6" name="datee" id='dateinput'
-                                                    class="form-control" value="<?php echo "$newa"; ?>" disabled>
-                                              </label>
-
-
-                                              <?php
-                                            }else{
-                                              ?>
-
-                                              <label for="numb">วันซ่อมจริง : <input type="text" size="6" name="datee" id='dateinput'
-                                                       class="form-control" data-toggle="datepicker" value="<?php if(isset($_POST['date']) ){ $date= $_POST['date']; echo "$date";  }?>">
-                                              </label>
-
-                                              <?php
-                                            }?>
-
-                                            <!--label for="numb">วันซ่อมจริง : <input id="datepicker" size="6"
+                                            <label for="numb">วันซ่อมจริง : <input id="datepicker" size="6"
                                                     name="XDMajRepairAppPlanDate" class="form-control"
                                                     data-toggle="datepicker">
-                                            </label-->
+                                            </label>
                                         </div>
                                     </div>
 
@@ -516,11 +489,11 @@ mysqli_close($connect);
                                                 ;
                                                 } ?>" >
                                                 <?php
-                                                $sqldepart1 = "SELECT count(tn.XVEpyCode) AS tnXV FROM tdoctmarepair_tnc tn,tmstmtemployee tm WHERE tn.XVEpyCode = tm.XVEpyCode AND XVMajDocNo = '$id'";
+                                                $sqldepart1 = "SELECT count(tn.XVEpyCode) AS tnXV FROM tdoctmaestimation_tnc tn,tmstmtemployee tm WHERE tn.XVEpyCode = tm.XVEpyCode AND XVMajDocNo = '$id'";
                                                 $querydepart1 = mysqli_query($connect,$sqldepart1)or die("ERROR SELECT");
                                                 $fectdep = mysqli_fetch_array($querydepart1);
                                                 if($fectdep['tnXV'] != 0){
-                                                $sqldepart = "SELECT tn.XVEpyCode,tm.XVEpyFirstname,tm.XVpyLastname FROM tdoctmarepair_tnc tn,tmstmtemployee tm WHERE tn.XVEpyCode = tm.XVEpyCode AND XVMajDocNo = '$id'";
+                                                $sqldepart = "SELECT tn.XVEpyCode,tm.XVEpyFirstname,tm.XVpyLastname FROM tdoctmaestimation_tnc tn,tmstmtemployee tm WHERE tn.XVEpyCode = tm.XVEpyCode AND XVMajDocNo = '$id'";
                                                 $querydepart = mysqli_query($connect,$sqldepart)or die("ERROR SELECT");
                                                 while ($rowdepart=mysqli_fetch_array($querydepart)) {
                                                     echo $rowdepart['XVEpyCode']." ";
@@ -554,7 +527,7 @@ mysqli_close($connect);
                                     <div class="col-md-6">
                                         <div class="col text-left">
                                             <a type="button" class="btn btn-danger mr-auto"
-                                                href="ListEngiRepair.php">กลับ</a>
+                                                href="ListAllowMainte.php">กลับ</a>
                                                 <button type="button" class="btn btn-warning mr-auto" data-toggle="modal" data-target="#insertModal">เพิ่มช่างซ่อม</button>
                                         </div>
                                     </div>
@@ -599,14 +572,6 @@ mysqli_close($connect);
                 format: 'dd/mm/yyyy'
             });
         });
-        $('#dateinput').change(() => {
-            var dateinput  = $('#dateinput').val();
-
-
-
-              $('#date').val(dateinput)
-
-        })
         </script>
 
 
