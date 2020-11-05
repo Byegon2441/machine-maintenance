@@ -51,7 +51,6 @@
                                 <thead>
                                     <tr>
                                         <th>เลขที่ใบแจ้งซ่อม</th>
-                                        <th>วันที่แจ้ง</th>
                                         <th>หมายเลขเครื่องจักร</th>
                                         <th>ชื่องานหรือชื่อเครื่องจักร</th>
                                         <th>สถานะ</th>
@@ -104,7 +103,6 @@
                                 <thead>
                                     <tr>
                                         <th>เลขที่ใบแจ้งซ่อม</th>
-                                        <th>วันที่แจ้ง</th>
                                         <th>หมายเลขเครื่องจักร</th>
                                         <th>ชื่องานหรือชื่อเครื่องจักร</th>
                                         <th>สถานะ</th>
@@ -129,19 +127,18 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <table width="100%" class="table table-striped table-bordered table-hover display"
-                                id="dataTables-example2">
+                                id="closedJob">
                                 <thead>
                                     <tr>
                                         <th>เลขที่ใบแจ้งซ่อม</th>
-                                        <th>วันที่แจ้ง</th>
                                         <th>หมายเลขเครื่องจักร</th>
                                         <th>ชื่องานหรือชื่อเครื่องจักร</th>
                                         <th>สถานะ</th>
-                                        <th>จัดการ</th>
+                                        <!-- <th>จัดการ</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="odd gradeA"></tr>
+                                    <!-- <tr class="odd gradeA"></tr> -->
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->
@@ -179,6 +176,7 @@
     $('.datepicker').datepicker();
     $('#datee').change(function() {
 <<<<<<< HEAD
+<<<<<<< HEAD
         $.ajax({
             type: "GET",
             url: "closed_job.php",
@@ -201,9 +199,12 @@
                 $('#ct').html("Some problem fetching data.Please try again");
             }
         });
-=======
         var dated = $('#datee').val()
         $('#closedJob').DataTable({
+        var dated = $('#datee').val()
+
+        $('#closedJob').DataTable({
+            "destroy": true,
             "scrollY": "200px",
             "scrollCollapse": true,
             "paging": false,
@@ -246,9 +247,36 @@
                     { "data": "XVMajStatus" }
                 ]
         })
->>>>>>> parent of 6bafecd... a
+                    { "data": "XVMajDocNo"},
+                    { "data": "XVVehCode" },
+                    { "data": "XVDptName"},
+                    { "data": "XVMajStatus"}
+                ]
+        })
+        // =========================================
+        // $('#perDay').DataTable({
+        //     "destroy": true,
+        //     "scrollY": "200px",
+        //     "scrollCollapse": true,
+        //     "paging": false,
+        //     "ajax": {
+        //         "url": "perDay.php",
+        //         "type": "GET",
+        //         "contentType": "application/json",
+        //         "data": 
+        //         function(d) {
+        //             d.date_fi = $('#datee').val()
+        //             return d.data
+        //         }
+        //         },
+        //         "columns":[
+        //             { "data": "XVMajDocNo" },
+        //             { "data": "XVVehCode" },
+        //             { "data": "XVDptName" },
+        //             { "data": "XVMajStatus" }
+        //         ]
+        // })
     });
-    
     </script>
 
 </body>
