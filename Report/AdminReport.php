@@ -175,32 +175,10 @@
     });
     $('.datepicker').datepicker();
     $('#datee').change(function() {
-        $.ajax({
-            type: "GET",
-            url: "closed_job.php",
-            data: {
-                date_fi: $('#datee').val()
-            },
-            dataType: "JSON",
-            success: function(data) {
-                alert(data.Code)
-                $('table.display').DataTable({
-                    "scrollY": "200px",
-                    "scrollCollapse": true,
-                    // "processing": true,
-                    // "serverSide": true,
-                    "paging": false,
-                    responsive: true
-                });
-            },
-            error: function() {
-                $('#ct').html("Some problem fetching data.Please try again");
-            }
-        });
         var dated = $('#datee').val()
+
         $('#closedJob').DataTable({
-        var dated = $('#datee').val()
-        $('#closedJob').DataTable({
+            "destroy": true,
             "scrollY": "200px",
             "scrollCollapse": true,
             "paging": false,
@@ -215,34 +193,35 @@
                 }
                 },
                 "columns":[
-                    { "data": "XVMajDocNo" },
+                    { "data": "XVMajDocNo"},
                     { "data": "XVVehCode" },
-                    { "data": "XVDptName" },
-                    { "data": "XVMajStatus" }
+                    { "data": "XVDptName"},
+                    { "data": "XVMajStatus"}
                 ]
         })
         // =========================================
-        $('#perDay').DataTable({
-            "scrollY": "200px",
-            "scrollCollapse": true,
-            "paging": false,
-            "ajax": {
-                "url": "perDay.php",
-                "type": "GET",
-                "contentType": "application/json",
-                "data": 
-                function(d) {
-                    d.date_fi = $('#datee').val()
-                    return d.data
-                }
-                },
-                "columns":[
-                    { "data": "XVMajDocNo" },
-                    { "data": "XVVehCode" },
-                    { "data": "XVDptName" },
-                    { "data": "XVMajStatus" }
-                ]
-        })
+        // $('#perDay').DataTable({
+        //     "destroy": true,
+        //     "scrollY": "200px",
+        //     "scrollCollapse": true,
+        //     "paging": false,
+        //     "ajax": {
+        //         "url": "perDay.php",
+        //         "type": "GET",
+        //         "contentType": "application/json",
+        //         "data": 
+        //         function(d) {
+        //             d.date_fi = $('#datee').val()
+        //             return d.data
+        //         }
+        //         },
+        //         "columns":[
+        //             { "data": "XVMajDocNo" },
+        //             { "data": "XVVehCode" },
+        //             { "data": "XVDptName" },
+        //             { "data": "XVMajStatus" }
+        //         ]
+        // })
     });
     </script>
 
