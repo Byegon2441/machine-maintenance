@@ -40,7 +40,7 @@
 
     thead {
         /* width: 100%; */
-        width: calc( 100% - 16.5px )
+        width: calc(100% - 16.5px)
     }
 
     table {
@@ -58,12 +58,28 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">รายงาน</h1>
-                    <div class="col-md-2">
-                        <label for="name" class="control-label">เลือกวันที่:</label>
+                    <div class="col-sm-3"></div>
+                    <div class="form-group form-inline col-sm-3">
+                        <label for="datee" class="control-label">เลือกวันที่:</label>
+                        <input type="text" class="form-control datepicker" id="datee" placeholder="choose date" data-toggle="datepicker">
                     </div>
-                    <div class="form-group col-md-2 center">
-                        <input type="text" class="form-control datepicker" id="datee" data-toggle="datepicker">
+                    <div class="form-group form-inline col-sm-6">
+                        <label for="datee" class="control-label">สถานะใบแจ้งซ่อม:</label>
+                        <select name="status_major" id="status_major" class="form-control">
+
+                            <option value="" selected disabled hidden>select status</option>
+                            <option value="1">แจ้งซ่อม</option>
+                            <option value="2">รอนำรถประเมินอะไหล่</option>
+                            <option value="3">รออนุมัจิซ่อม</option>
+                            <option value="4">รออะไหล่</option>
+                            <option value="5">รอช่างรับอะไหล่</option>
+                            <option value="6">รอนำรถเข้าซ่อม</option>
+                            <option value="7">ดำเนินการซ่อม</option>
+                            <option value="8">ซ่อมเสร็จ</option>
+                            <option value="9">ปืดงาน</option>
+                        </select>
                     </div>
+
                 </div>
             </div>
 
@@ -84,7 +100,7 @@
                                         <th>สถานะ</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="bo">
 
                                 </tbody>
                             </table>
@@ -111,7 +127,7 @@
                                         <th>สถานะ</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="bo">
 
                                 </tbody>
                             </table>
@@ -138,61 +154,8 @@
                                         <th>สถานะ</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>AAAA</td>
-                                        <td>323232</td>
-                                        <td>323232</td>
-                                        <td>323232</td>
-                                    </tr>
-                                    <tr>
-                                        <td>BBBBB</td>
-                                        <td>323232</td>
-                                        <td>323232</td>
-                                        <td>323232</td>
-                                    </tr>
-                                    <tr>
-                                        <td>CCCCC</td>
-                                        <td>3435656</td>
-                                        <td>3435656</td>
-                                        <td>3435656</td>
-                                    </tr>
-                                    <tr>
-                                        <td>AAAA</td>
-                                        <td>323232</td>
-                                        <td>323232</td>
-                                        <td>323232</td>
-                                    </tr>
-                                    <tr>
-                                        <td>BBBBB</td>
-                                        <td>323232</td>
-                                        <td>323232</td>
-                                        <td>323232</td>
-                                    </tr>
-                                    <tr>
-                                        <td>CCCCC</td>
-                                        <td>3435656</td>
-                                        <td>3435656</td>
-                                        <td>3435656</td>
-                                    </tr>
-                                    <tr>
-                                        <td>AAAA</td>
-                                        <td>323232</td>
-                                        <td>323232</td>
-                                        <td>323232</td>
-                                    </tr>
-                                    <tr>
-                                        <td>BBBBB</td>
-                                        <td>323232</td>
-                                        <td>323232</td>
-                                        <td>323232</td>
-                                    </tr>
-                                    <tr>
-                                        <td>CCCCC</td>
-                                        <td>3435656</td>
-                                        <td>3435656</td>
-                                        <td>3435656</td>
-                                    </tr>
+                                <tbody class="bo">
+
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->
@@ -229,6 +192,7 @@
     });
     $('.datepicker').datepicker();
     $('#datee').change(function() {
+        $('.bo').empty()
         $.ajax({
             type: "GET",
             url: "closed_job.php",
@@ -238,7 +202,6 @@
             dataType: "JSON",
             success: function(data) {
                 var countKey = (Object.keys(data).length + 1) / 5;
-                // alert(countKey)
                 $('#closedJob').append('<tr id="addrr0"></tr>');
                 let j = 0
                 let g = 0
@@ -255,6 +218,33 @@
                 $('#ct').html("Some problem fetching data.Please try again");
             }
         });
+        
+        $.ajax({
+            type: "GET",
+            url: "perDay.php",
+            data: {
+                date_fi: $('#datee').val()
+            },
+            dataType: "JSON",
+            success: function(data) {
+                var countKey = (Object.keys(data).length + 1) / 5;
+                $('#perDay').append('<tr id="addrr0"></tr>');
+                let j = 0
+                let g = 0
+                for (var k = 0; k < countKey; k++) {
+                    $('tr').find('input').prop('disabled', false)
+                    $('#addrr' + j).html("<td>" + data[0 + g] + "</td><td>" + data[1 + g] +
+                        "</td><td>" + data[2 + g] + "</td><td>" + data[3 + g] + "</td>")
+                    $('#perDay').append('<tr id="addrr' + (j + 1) + '"></tr>');
+                    g = g + 4
+                    j++
+                }
+            },
+            error: function() {
+                $('#ct').html("Some problem fetching data.Please try again");
+            }
+        });
+       
     });
     </script>
 
