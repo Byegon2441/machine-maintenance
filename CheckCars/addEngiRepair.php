@@ -55,7 +55,7 @@
 
     .my-custom-scrollbar {
         position: relative;
-        height: 200px;
+        height: 500px;
         overflow: auto;
     }
 

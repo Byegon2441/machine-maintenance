@@ -37,7 +37,7 @@
     }
     .my-custom-scrollbar {
         position: relative;
-        height: 200px;
+        height: 500px;
         overflow: auto;
     }
     .table-wrapper-scroll-y {
@@ -329,8 +329,8 @@ while ($row=mysqli_fetch_array($result)){
                                     </div>
                                     <div class="col-md-7">
                                         <div class="col text-right">
-                                            <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="30"
-                                                    name="nameof" class="form-control" readonly></label>
+                                        <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="40" name="nameofuser"
+                                            id="nameofuser" value="ธุรการ" class="form-control" readonly></label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
