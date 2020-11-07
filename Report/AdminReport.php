@@ -198,15 +198,15 @@
             },
             dataType: "JSON",
             success: function(data3) {
-                var countKey = (Object.keys(data3).length + 1) / 5;
-                $('#closedJob').append('<tr id="addrr0"></tr>');
+                var countKey = Object.keys(data3).length / 4;
+                $('#closedJob').append('<tr id="addrrr0"></tr>');
                 let j = 0
                 let g = 0
                 for (var k = 0; k < countKey; k++) {
                     $('tr').find('input').prop('disabled', false)
-                    $('#addrr' + j).html("<td>" + data3[0 + g] + "</td><td>" + data3[1 + g] +
+                    $('#addrrr' + j).html("<td>" + data3[0 + g] + "</td><td>" + data3[1 + g] +
                         "</td><td>" + data3[2 + g] + "</td><td>" + data3[3 + g] + "</td>")
-                    $('#closedJob').append('<tr id="addrr' + (j + 1) + '"></tr>');
+                    $('#closedJob').append('<tr id="addrrr' + (j + 1) + '"></tr>');
                     g = g + 4
                     j++
                 }
@@ -226,14 +226,14 @@
             dataType: "JSON",
             success: function(data2) {
                 var countKey = Object.keys(data2).length / 4;
-                $('#perDay').append('<tr id="addrr0"></tr>');
+                $('#perDay').append('<tr id="addrrrr0"></tr>');
                 let j = 0
                 let g = 0
                 for (var k = 0; k < countKey; k++) {
                     $('tr').find('input').prop('disabled', false)
-                    $('#addrr' + j).html("<td>" + data2[0 + g] + "</td><td>" + data2[1 + g] +
+                    $('#addrrrr' + j).html("<td>" + data2[0 + g] + "</td><td>" + data2[1 + g] +
                         "</td><td>" + data2[2 + g] + "</td><td>" + data2[3 + g] + "</td>")
-                    $('#perDay').append('<tr id="addrr' + (j + 1) + '"></tr>');
+                    $('#perDay').append('<tr id="addrrrr' + (j + 1) + '"></tr>');
                     g = g + 4
                     j++
                 }
@@ -254,14 +254,14 @@
             dataType: "JSON",
             success: function(data1) {
                 var countKey = Object.keys(data1).length / 4;
-                $('#present').append('<tr id="addrr0"></tr>');
+                $('#present').append('<tr id="addrrrrr0"></tr>');
                 let j = 0
                 let g = 0
                 for (var k = 0; k < countKey; k++) {
                     $('tr').find('input').prop('disabled', false)
-                    $('#addrr' + j).html("<td>" + data1[0 + g] + "</td><td>" + data1[1 + g] +
+                    $('#addrrrrr' + j).html("<td>" + data1[0 + g] + "</td><td>" + data1[1 + g] +
                         "</td><td>" + data1[2 + g] + "</td><td>" + data1[3 + g] + "</td>")
-                    $('#present').append('<tr id="addrr' + (j + 1) + '"></tr>');
+                    $('#present').append('<tr id="addrrrrr' + (j + 1) + '"></tr>');
                     g = g + 4
                     j++
                 }
