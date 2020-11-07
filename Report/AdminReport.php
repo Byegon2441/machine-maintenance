@@ -25,27 +25,26 @@
         crossorigin="anonymous"></script>
 
     <style>
-    tbody {
-        display: block;
-        max-height: 160px;
-        overflow-y: scroll;
-    }
+        tbody {
+            display: block;
+            max-height: 160px;
+            overflow-y: scroll;
+        }
 
-    thead,
-    tbody tr {
-        display: table;
-        width: 100%;
-        table-layout: fixed;
-    }
+        thead,
+        tbody tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
 
-    thead {
-        /* width: 100%; */
-        width: calc(100% - 16.5px)
-    }
+        thead {
+            width: calc(100% - 16.5px)
+        }
 
-    table {
-        width: 100%;
-    }
+        table {
+            width: 100%;
+        }
     </style>
 </head>
 
@@ -64,19 +63,18 @@
                         <input type="text" class="form-control datepicker" id="datee" placeholder="choose date" data-toggle="datepicker">
                     </div>
                     <div class="form-group form-inline col-sm-6">
-                        <label for="datee" class="control-label">สถานะใบแจ้งซ่อม:</label>
+                        <label for="datee" class="control-label">สถานะการซ่อม:</label>
                         <select name="status_major" id="status_major" class="form-control">
-
-                            <option value="" selected disabled hidden>select status</option>
-                            <option value="1">แจ้งซ่อม</option>
-                            <option value="2">รอนำรถประเมินอะไหล่</option>
-                            <option value="3">รออนุมัจิซ่อม</option>
-                            <option value="4">รออะไหล่</option>
-                            <option value="5">รอช่างรับอะไหล่</option>
-                            <option value="6">รอนำรถเข้าซ่อม</option>
-                            <option value="7">ดำเนินการซ่อม</option>
-                            <option value="8">ซ่อมเสร็จ</option>
-                            <option value="9">ปืดงาน</option>
+                            <option value="" selected></option>
+                            <option value="การบำรุงรักษาตามรอบ 7 วัน">การบำรุงรักษาตามรอบ 7 วัน</option>
+                            <option value="การซ่อมแซมทั่วไป 7 วัน">การซ่อมแซมทั่วไป 7 วัน</option>
+                            <option value="การซ่อทแซมแบบเร่งด่วนเครื่องจักรจอด 3 วัน">การซ่อทแซมแบบเร่งด่วนเครื่องจักรจอด 3 วัน</option>
+                            <option value="การซ่อมแซมเชิงป้องกัน">การซ่อมแซมเชิงป้องกัน</option>
+                            <option value="เปลี่ยนยางล้อหมุน 7 วัน">เปลี่ยนยางล้อหมุน 7 วัน</option>
+                            <option value="การซ่อมแซมจากเคสอุบัติเหตุ 30 วัน">การซ่อมแซมจากเคสอุบัติเหตุ 30 วัน</option>
+                            <option value="เบิกของสิ้นเปลือง">เบิกของสิ้นเปลือง</option>
+                            <option value="ซ่อมแอร์ / ติดฟิล์ม 7 วัน">ซ่อมแอร์ / ติดฟิล์ม 7 วัน</option>
+                            <option value="เปลี่ยนยางเครื่องจักร 3 วัน">เปลี่ยนยางเครื่องจักร 3 วัน</option>
                         </select>
                     </div>
 
@@ -91,7 +89,7 @@
                         </div>
                         <div class="panel-body">
                             <table width="100%" class="table table-striped table-bordered table-hover display"
-                                id="dataTables-example">
+                                id="present">
                                 <thead>
                                     <tr>
                                         <th>เลขที่ใบแจ้งซ่อม</th>
@@ -172,9 +170,6 @@
 
     </div>
     <!-- /#wrapper -->
-
-
-    <!-- DataTables JavaScript -->
     <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
     <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
@@ -191,24 +186,26 @@
         });
     });
     $('.datepicker').datepicker();
-    $('#datee').change(function() {
+    $('#datee, #status_major').change(function() {
         $('.bo').empty()
         $.ajax({
             type: "GET",
             url: "closed_job.php",
+            contentType: "application/json; charset=utf-8",
             data: {
                 date_fi: $('#datee').val()
+                
             },
             dataType: "JSON",
-            success: function(data) {
-                var countKey = (Object.keys(data).length + 1) / 5;
+            success: function(data3) {
+                var countKey = (Object.keys(data3).length + 1) / 5;
                 $('#closedJob').append('<tr id="addrr0"></tr>');
                 let j = 0
                 let g = 0
                 for (var k = 0; k < countKey; k++) {
                     $('tr').find('input').prop('disabled', false)
-                    $('#addrr' + j).html("<td>" + data[0 + g] + "</td><td>" + data[1 + g] +
-                        "</td><td>" + data[2 + g] + "</td><td>" + data[3 + g] + "</td>")
+                    $('#addrr' + j).html("<td>" + data3[0 + g] + "</td><td>" + data3[1 + g] +
+                        "</td><td>" + data3[2 + g] + "</td><td>" + data3[3 + g] + "</td>")
                     $('#closedJob').append('<tr id="addrr' + (j + 1) + '"></tr>');
                     g = g + 4
                     j++
@@ -222,20 +219,49 @@
         $.ajax({
             type: "GET",
             url: "perDay.php",
+            contentType: "application/json; charset=utf-8",
             data: {
                 date_fi: $('#datee').val()
             },
             dataType: "JSON",
-            success: function(data) {
-                var countKey = (Object.keys(data).length + 1) / 5;
+            success: function(data2) {
+                var countKey = Object.keys(data2).length / 4;
                 $('#perDay').append('<tr id="addrr0"></tr>');
                 let j = 0
                 let g = 0
                 for (var k = 0; k < countKey; k++) {
                     $('tr').find('input').prop('disabled', false)
-                    $('#addrr' + j).html("<td>" + data[0 + g] + "</td><td>" + data[1 + g] +
-                        "</td><td>" + data[2 + g] + "</td><td>" + data[3 + g] + "</td>")
+                    $('#addrr' + j).html("<td>" + data2[0 + g] + "</td><td>" + data2[1 + g] +
+                        "</td><td>" + data2[2 + g] + "</td><td>" + data2[3 + g] + "</td>")
                     $('#perDay').append('<tr id="addrr' + (j + 1) + '"></tr>');
+                    g = g + 4
+                    j++
+                }
+            },
+            error: function() {
+                $('#ct').html("Some problem fetching data.Please try again");
+            }
+        });
+
+        $.ajax({
+            type: "GET",
+            url: "present.php",
+            contentType: "application/json; charset=utf-8",
+            data: {
+                date_fi: $('#datee').val(),
+                stts: $('#status_major').val()
+            },
+            dataType: "JSON",
+            success: function(data1) {
+                var countKey = Object.keys(data1).length / 4;
+                $('#present').append('<tr id="addrr0"></tr>');
+                let j = 0
+                let g = 0
+                for (var k = 0; k < countKey; k++) {
+                    $('tr').find('input').prop('disabled', false)
+                    $('#addrr' + j).html("<td>" + data1[0 + g] + "</td><td>" + data1[1 + g] +
+                        "</td><td>" + data1[2 + g] + "</td><td>" + data1[3 + g] + "</td>")
+                    $('#present').append('<tr id="addrr' + (j + 1) + '"></tr>');
                     g = g + 4
                     j++
                 }
