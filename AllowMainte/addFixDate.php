@@ -55,7 +55,7 @@
 
     .my-custom-scrollbar {
         position: relative;
-        height: 200px;
+        height: 500px;
         overflow: auto;
     }
 
@@ -94,7 +94,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">อนุมัติการซ่อม</h1>
+                    <h1 class="page-header">กำหนดวันนัดซ่อม</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -382,6 +382,9 @@ mysqli_close($connect);
                                                           $Dnew2 =  date('d/m/Y H:i:s', strtotime($DN2));
                                                           echo $Dnew2;?>
                                             </label>
+                                            <label for="numb">วันที่ประเมินเสร็จ : <?php echo $row1["XDMajFinishEstDate"];?>
+                                                    
+                                                    </label>
                                             <label for="numb">วันที่อนุมัติซ่อม : <input id="datepicker" size="6"
                                                     name="XDMajConfirmDate" class="form-control" value="<?php $datecon = $row1["XDMajConfirmDate"];
                                                                   $DN = str_replace('-', '/', $datecon);
