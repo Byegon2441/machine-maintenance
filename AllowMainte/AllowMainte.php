@@ -292,6 +292,9 @@
                                             <label for="numb">วันที่ประเมิน : <?php echo $row1["XDMajEstActualDate"];?>
                                                     
                                             </label>
+                                            <label for="numb">วันที่ประเมินเสร็จ : <?php echo $row1["XDMajFinishEstDate"];?>
+                                                    
+                                            </label>
                                             <label for="numb">วันที่อนุมัติซ่อม : <input id="datepicker" size="6" name="XDMajConfirmDate"
                                                     class="form-control" data-toggle="datepicker"
                                                     $(document).ready(function () {

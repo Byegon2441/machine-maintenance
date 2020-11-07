@@ -346,7 +346,14 @@ while ($row=mysqli_fetch_array($result)){
                                                    $DN1 = str_replace('-', '/', $datecon1);
                                                     $Dnew1 =  date('d/m/Y H:i:s', strtotime($DN1));
                                                     echo $Dnew1; }?>
+                                         </label>           
+                                         <label for="numb">วันที่ประเมินเสร็จ : <input id="XDMajFinishEstDate" size="6"
+                                                    name="XDMajFinishEstDate" class="form-control"
+                                                    data-toggle="datepicker">
+
+                                      </label>
                                         </div>
+
                                     </div>
                                     <div class="col-md-12">
                                         <div class="col text-left">

@@ -382,6 +382,9 @@ mysqli_close($connect);
                                                           $Dnew2 =  date('d/m/Y H:i:s', strtotime($DN2));
                                                           echo $Dnew2;?>
                                             </label>
+                                            <label for="numb">วันที่ประเมินเสร็จ : <?php echo $row1["XDMajFinishEstDate"];?>
+                                                    
+                                                    </label>
                                             <label for="numb">วันที่อนุมัติซ่อม : <input id="datepicker" size="6"
                                                     name="XDMajConfirmDate" class="form-control" value="<?php $datecon = $row1["XDMajConfirmDate"];
                                                                   $DN = str_replace('-', '/', $datecon);
@@ -408,6 +411,10 @@ mysqli_close($connect);
                                                           $Dnew3 =  date('d/m/Y', strtotime($DN3));
                                                           echo $Dnew3;?>"
                                                     data-toggle="datepicker" disabled>
+                                            </label>
+                                            <label for="numb">วันที่ซ่อมเสร็จ : <input id="datepicker" size="6"
+                                                    name="XDMajFinishRepairDate" class="form-control"
+                                                    data-toggle="datepicker">
                                             </label>
                                             <label for="numb">วันนัดรับรถ : <input id="datepicker" size="6"
                                                     name="XDMaPickupAppPlanDate" class="form-control"
@@ -466,7 +473,7 @@ mysqli_close($connect);
                                     <div class="col-md-6">
                                         <div class="col text-left">
                                             <a type="button" class="btn btn-danger mr-auto"
-                                                href="ListJobDone.php">กลับ</a>
+                                                href="ListDone.php">กลับ</a>
                                         </div>
                                     </div>
                                     <div class="col-md-6">

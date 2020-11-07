@@ -11,6 +11,7 @@
 include '../database/connect.php';
 session_start();
 $ide = $_POST['XVMajDocNo'];
+$XDMajFinishEstDate = $_POST['XDMajFinishEstDate'];
 foreach ($_POST['sequency'] as $key => $selectedOption){
     echo 'ลำดับอาการที่ : '.$selectedOption.'<br>';
     $make_dir = mkdir("$ide/$selectedOption",0777,true);
@@ -30,6 +31,14 @@ foreach ($_POST['sequency'] as $key => $selectedOption){
         echo 'ไม่มีรูป';
     }
 }
+ $oldDate = "$XDMajFinishEstDate";
+  $newD = str_replace('/', '-', $oldDate);
+  $newDate =  date('Y-m-d', strtotime($newD));
+  $showDate = date('d/m/Y', strtotime($newD));
+  $newtime = date("H:i:s");
+
+    $sql1 ="UPDATE tdoctmajobdate SET XDMajFinishEstDate = '$newDate $newtime' WHERE XVMajDocNo = '$ide'";
+    $query1 = mysqli_query( $connect, $sql1);
     $sql = "UPDATE TDocTMaJob SET XVMajStatus = 'รออนุมัติซ่อม' WHERE XVMajDocNo = '$ide' ";
     $query = mysqli_query( $connect, $sql );
     if ( $query1) {

@@ -382,6 +382,9 @@ mysqli_close($connect);
                                                           $Dnew2 =  date('d/m/Y H:i:s', strtotime($DN2));
                                                           echo $Dnew2;?>
                                             </label>
+                                            <label for="numb">วันที่ประเมินเสร็จ : <?php echo $row1["XDMajFinishEstDate"];?>
+                                                    
+                                                    </label>
                                             <label for="numb">วันที่อนุมัติซ่อม : <input id="datepicker" size="6"
                                                     name="XDMajConfirmDate" class="form-control" value="<?php $datecon = $row1["XDMajConfirmDate"];
                                                                   $DN = str_replace('-', '/', $datecon);
@@ -408,6 +411,9 @@ mysqli_close($connect);
                                                           echo $Dnew3;?>"
                                                     data-toggle="datepicker" disabled>
                                             </label>
+                                              <label for="numb">วันที่ซ่อมเสร็จ : <?php echo $row1["XDMajFinishRepairDate"];?>
+                                                    
+                                                    </label>
                                             <label for="numb">วันนัดรับรถ : <input id="datepicker" size="6"
                                                     name="XDMaPickupAppPlanDate" class="form-control" value="<?php $datecon3 = $row1["XDMaPickupAppPlanDate"];
                                                          $DN3 = str_replace('-', '/', $datecon3);

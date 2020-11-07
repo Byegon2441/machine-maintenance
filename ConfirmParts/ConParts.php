@@ -329,7 +329,10 @@
                                             <label for="numb">วันที่ประเมิน : <?php echo $row1["XDMajEstActualDate"];?>
                                                     
                                             </label>
-                                            </label>
+                                            <label for="numb">วันที่ประเมินเสร็จ : <?php echo $row1["XDMajFinishEstDate"];?>
+                                                    
+                                                    </label>
+                                          
                                             <label for="numb">วันที่อนุมัติซ่อม : <?php echo $row1["XDMajConfirmDate"];?>
                                                     
                                             </label>
