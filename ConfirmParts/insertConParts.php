@@ -140,11 +140,23 @@ if(isset($_POST['save'])){
                             WHERE XVMajDocNo= '$id' ;
                             ";
                             if(mysqli_query( $connect, $sql )){
+                                //เปลี่ยนสถานะเป็น รอช่างรับอะไหล่
+                                $sql = "UPDATE tdoctmajob
+                                SET XVMajStatus = 'รอช่างรับอะไหล่' 
+                                WHERE XVMajDocNo= '$id' ;
+                                ";
+                                   if(mysqli_query( $connect, $sql )){
+                                    success();
+                                   }else{
+                                       error();
+                                   }
+
                                 
-                                        success();
+
+                                      
                             }else{
                                 error();
-                                   echo mysqli_error($connect);
+                                   //echo mysqli_error($connect);
                             }
 
         }

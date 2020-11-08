@@ -65,7 +65,7 @@
                     <div class="form-group form-inline col-sm-6">
                         <label for="datee" class="control-label">สถานะการซ่อม:</label>
                         <select name="status_major" id="status_major" class="form-control">
-                            <option value="" selected></option>
+                            <option value="" selected>ทั้งหมด</option>
                             <option value="การบำรุงรักษาตามรอบ 7 วัน">การบำรุงรักษาตามรอบ 7 วัน</option>
                             <option value="การซ่อมแซมทั่วไป 7 วัน">การซ่อมแซมทั่วไป 7 วัน</option>
                             <option value="การซ่อทแซมแบบเร่งด่วนเครื่องจักรจอด 3 วัน">การซ่อทแซมแบบเร่งด่วนเครื่องจักรจอด 3 วัน</option>
@@ -85,7 +85,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            สถานะแจ้งซ่อมปัจจุบัน
+                            สถานะใบแจ้งซ่อมปัจจุบัน
                         </div>
                         <div class="panel-body">
                             <table width="100%" class="table table-striped table-bordered table-hover display"
@@ -95,7 +95,8 @@
                                         <th>เลขที่ใบแจ้งซ่อม</th>
                                         <th>หมายเลขเครื่องจักร</th>
                                         <th>ชื่องานหรือชื่อเครื่องจักร</th>
-                                        <th>สถานะ</th>
+                                        <th>สถานะใบแจ้งซ่อม</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody class="bo">
@@ -122,7 +123,8 @@
                                         <th>เลขที่ใบแจ้งซ่อม</th>
                                         <th>หมายเลขเครื่องจักร</th>
                                         <th>ชื่องานหรือชื่อเครื่องจักร</th>
-                                        <th>สถานะ</th>
+                                        <th>สถานะใบแจ้งซ่อม</th>
+                                      
                                     </tr>
                                 </thead>
                                 <tbody class="bo">
@@ -139,7 +141,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            ซ่อมเสร็จรายวัน
+                            ปิดงานรายวัน
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -149,7 +151,8 @@
                                         <th>เลขที่ใบแจ้งซ่อม</th>
                                         <th>หมายเลขเครื่องจักร</th>
                                         <th>ชื่องานหรือชื่อเครื่องจักร</th>
-                                        <th>สถานะ</th>
+                                        <th>สถานะใบแจ้งซ่อม</th>
+                                       
                                     </tr>
                                 </thead>
                                 <tbody class="bo">

@@ -107,7 +107,8 @@
                             <div class="col-md-7">
                                 <div class="col text-right">
                                     <label for="numb">ชื่อเครื่องจักร :</label>
-                                    <select id="XVVehName" name="XVVehName" class="form-control" style="width:60%">
+                                    <select id="XVVehName" name="XVVehName" class="form-control" style="width:60%" >
+                                    <option value="null">กรุณาเลือก</option>
                                         <?php
                                      include '../database/connect.php';
                                      $sql = "select * from tmstvehicle; ";
@@ -126,7 +127,7 @@
                             <div class="col-md-5">
                                 <div class="col text-right">
                                     <label for="numb">หมายเลขเครื่องจักร : <input type="text" size="17" name="noof"
-                                            class="form-control" id="noof" readonly></label>
+                                            class="form-control" id="noof" readonly ></label>
                                 </div>
                             </div>
                         </div>
@@ -218,7 +219,7 @@
                             <div class="col-md-6">
                                 <div class="col text-right">
                                     <!-- <button type="button" class="btn btn-primary" data-dismiss="modal">บันทึก</button> -->
-                                    <input type="submit" class="btn btn-success" value="บันทึก" name="submit">
+                                    <input type="submit" class="btn btn-success" value="บันทึก" name="submit" >
                                     <!-- <button type="submit" class="btn btn-success" data-dismiss="modal">ส่ง</button> -->
                                 </div>
                             </div>
@@ -252,6 +253,11 @@
                 format: 'dd/mm/yyyy'
             });
         });
+
+        
+       
+       
+        
 
         $('#XVVehName').change(() => {
             var id = $('#XVVehName').val();
@@ -308,7 +314,18 @@
 <?php
 include '../database/connect.php';
 if(isset($_POST['submit'])){
-
+        if($_POST['XVVehName']=='null'){
+            echo '<script>';
+            echo "Swal.fire({
+                title: 'เกิดข้อผิดพลาด!',
+                text: 'กรุณาเลือกเครื่องจักร',
+                 icon: 'error',
+                confirmButtonText: 'Back'
+            }).then(function() {
+                window.history.back()
+            });";
+            echo '</script>';
+        }
 
 $name = $_POST['nameofuser'];
 $dnum = $_POST['dnum'];
