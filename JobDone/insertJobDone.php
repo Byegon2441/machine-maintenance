@@ -17,20 +17,20 @@
   $newD = str_replace('/', '-', $oldDate);
   $newDate =  date('Y-m-d', strtotime($newD));
   $showDate = date('d/m/Y', strtotime($newD));
-  $newtime = date("H:i:s");
+  //$newtime = date("H:i:s");
 
-  
+
   $date1 = $_POST['XDMajFinishRepairDate'];
   $oldDate1 = "$date1";
   $newD1 = str_replace('/', '-', $oldDate1);
   $newDate1 =  date('Y-m-d', strtotime($newD1));
   $showDate1 = date('d/m/Y', strtotime($newD1));
-  $newtime1 = date("H:i:s");
+  //$newtime1 = date("H:i:s");
 
 
 
-  $query = "UPDATE tdoctmajobdate  SET XDMaPickupAppPlanDate = '$newDate $newtime'
-            , XDMajFinishRepairDate = '$newDate1 $newtime1'  WHERE XVMajDocNo = '$idno'";
+  $query = "UPDATE tdoctmajobdate  SET XDMaPickupAppPlanDate = '$newDate'
+            , XDMajFinishRepairDate = '$newDate1'  WHERE XVMajDocNo = '$idno'"; //$newtime and $newtime1
   $sql = mysqli_query( $connect, $query );
   $query1 = "UPDATE tdoctmajob  SET XVMajStatus = 'ซ่อมเสร็จ' WHERE XVMajDocNo = '$idno'";
   $sql1 = mysqli_query( $connect, $query1 );

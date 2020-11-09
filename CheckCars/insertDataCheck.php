@@ -17,8 +17,9 @@ date_default_timezone_set('Asia/Bangkok');
  $newD = str_replace('/', '-', $oldDate);
  $newDate =  date('Y-m-d', strtotime($newD));
  $showDate = date('d/m/Y', strtotime($newD));
- $newtime = date("H:i:s");
- $query = "UPDATE tdoctmajobdate  SET XDMajEstAppPlanDate = '$newDate $newtime' WHERE XVMajDocNo = '$id'";
+// $newtime = date("H:i:s");
+                                                            //$newtime
+ $query = "UPDATE tdoctmajobdate  SET XDMajEstAppPlanDate = '$newDate' WHERE XVMajDocNo = '$id'";
  $sql = mysqli_query( $connect, $query );
  $query1 = "UPDATE tdoctmajob  SET XVMajStatus = 'รอนำรถประเมินอะไหล่' WHERE XVMajDocNo = '$id'";
  $sql1 = mysqli_query( $connect, $query1 );

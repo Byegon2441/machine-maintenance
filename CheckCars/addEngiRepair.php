@@ -417,17 +417,17 @@ mysqli_close($connect);
 
                                             <label for="numb">วันนัดประเมิน : <?php $datecon1 = $row1["XDMajEstAppPlanDate"];
                                                          $DN1 = str_replace('-', '/', $datecon1);
-                                                          $Dnew1 =  date('d/m/Y H:i:s', strtotime($DN1));
+                                                          $Dnew1 =  date('d/m/Y', strtotime($DN1));
                                                           echo $Dnew1; ?>
 
                                             </label>
                                             <label for="numb">วันที่ประเมิน : <?php $datecon2 = $row1["XDMajEstActualDate"];
                                                          $DN2 = str_replace('-', '/', $datecon2);
-                                                          $Dnew2 =  date('d/m/Y H:i:s', strtotime($DN2));
+                                                          $Dnew2 =  date('d/m/Y', strtotime($DN2));
                                                           echo $Dnew2;?>
                                             </label>
                                             <label for="numb">วันที่ประเมินเสร็จ : <?php echo $row1["XDMajFinishEstDate"];?>
-                                                    
+
                                                     </label>
                                             <label for="numb">วันที่อนุมัติซ่อม : <input id="datepicker" size="6"
                                                     name="XDMajConfirmDate" class="form-control" value="<?php $datecon = $row1["XDMajConfirmDate"];
@@ -449,7 +449,7 @@ mysqli_close($connect);
                                                      echo $newad;?>" disabled>
                                             </label>
 
-                                            <?php if($row1['XDMajRepairActualDate'] != "0000-00-00 00:00:00"){
+                                            <?php if($row1['XDMajRepairActualDate'] != "0000-00-00"){
                                               $oD = $row1['XDMajRepairActualDate'];
                                               $nD = str_replace('-', '/', $oD);
                                               $newa =  date('d/m/Y', strtotime($nD));

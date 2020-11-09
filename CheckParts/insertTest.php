@@ -19,7 +19,7 @@ foreach ($_POST['sequency'] as $key => $selectedOption){
     if(!$img){
         echo 'มีรูป';
         $countfiles = count($_FILES["multiImg$selectedOption"]["name"]);//นับไฟล์
-        for ($i=0; $i < $countfiles; $i++) { 
+        for ($i=0; $i < $countfiles; $i++) {
             $upload = "$ide/$selectedOption/".$_FILES["multiImg$selectedOption"]["name"][$i];
             move_uploaded_file($_FILES["multiImg$selectedOption"]["tmp_name"][$i],$upload);
             $upload = "";
@@ -35,9 +35,9 @@ foreach ($_POST['sequency'] as $key => $selectedOption){
   $newD = str_replace('/', '-', $oldDate);
   $newDate =  date('Y-m-d', strtotime($newD));
   $showDate = date('d/m/Y', strtotime($newD));
-  $newtime = date("H:i:s");
-
-    $sql1 ="UPDATE tdoctmajobdate SET XDMajFinishEstDate = '$newDate $newtime' WHERE XVMajDocNo = '$ide'";
+//  $newtime = date("H:i:s");
+                                                            //$newtime
+    $sql1 ="UPDATE tdoctmajobdate SET XDMajFinishEstDate = '$newDate' WHERE XVMajDocNo = '$ide'";
     $query1 = mysqli_query( $connect, $sql1);
     $sql = "UPDATE TDocTMaJob SET XVMajStatus = 'รออนุมัติซ่อม' WHERE XVMajDocNo = '$ide' ";
     $query = mysqli_query( $connect, $sql );

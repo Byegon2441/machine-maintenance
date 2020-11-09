@@ -299,7 +299,7 @@ while ($row=mysqli_fetch_array($result)){
                                             <label for="numb">วันนัดประเมิน : <input type="text" size="6" name="numb"
                                                  value="<?php echo $newDate ?>"  class="form-control" disabled>
                                             </label>
-                                        <?php if($rowdate['XDMajEstActualDate'] != "0000-00-00 00:00:00"){
+                                        <?php if($rowdate['XDMajEstActualDate'] != "0000-00-00"){
                                           $oD = $rowdate['XDMajEstActualDate'];
                                           $nD = str_replace('-', '/', $oD);
                                           $newa =  date('d/m/Y', strtotime($nD));

@@ -17,8 +17,9 @@
   $newD = str_replace('/', '-', $oldDate);
   $newDate =  date('Y-m-d', strtotime($newD));
   $showDate = date('d/m/Y', strtotime($newD));
-  $newtime = date("H:i:s");
-  $query = "UPDATE tdoctmajobdate  SET XDMajRepairAppPlanDate = '$newDate $newtime' WHERE XVMajDocNo = '$idno'";
+  //$newtime = date("H:i:s");
+                                                                //$newtime
+  $query = "UPDATE tdoctmajobdate  SET XDMajRepairAppPlanDate = '$newDate' WHERE XVMajDocNo = '$idno'";
   $sql = mysqli_query( $connect, $query );
   $query1 = "UPDATE tdoctmajob  SET XVMajStatus = 'รอนำรถเข้าซ่อม' WHERE XVMajDocNo = '$idno'";
   $sql1 = mysqli_query( $connect, $query1 );

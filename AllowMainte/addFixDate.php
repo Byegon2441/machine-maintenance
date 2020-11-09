@@ -196,14 +196,14 @@
 include '../database/connect.php';
 $sql2 = " SELECT   *
 FROM  tdoctmajob m,TDocTMaJobDetail detail
-WHERE  m.XVMajDocNo = detail.XVMajDocNo 
+WHERE  m.XVMajDocNo = detail.XVMajDocNo
 
 AND m.XVMajDocNo ='$id'"; //ค้นคืน รายการ เรื่องที่แจ้ง
 
 $result2 = mysqli_query($connect,$sql2) or die(mysqli_query($connect));
 while ($row2=mysqli_fetch_array($result2)){
-   
-   
+
+
 
 ?>
                                         <table class="table table-bordered" id="tab_logic">
@@ -239,18 +239,18 @@ while ($row2=mysqli_fetch_array($result2)){
                                                 <tr id='addr0'>
 
 
-                                                    <?php  
+                                                    <?php
        $count = 0 ;
 $sql3 = " SELECT   * 
 FROM  TDocTMaJobDetail detail,TDocTMaMachine_parts_use partsuse ,TMstMMachine_parts parts
-WHERE  detail.XVMajDocNo = partsuse.XVMajDocNo 
+WHERE  detail.XVMajDocNo = partsuse.XVMajDocNo
 And detail.XIMajdSeqNo = partsuse.XIMajdSeqNo
 AND partsuse.XVMachinePartsCode = parts.XVMachinePartsCode
 AND detail.XVMajDocNo='$id'
 AND partsuse.XIMajdSeqNo = %s"; //ค้นคืน รายการ อะไหล่ของแต่ละรายการเรื่องที่แจ้ง
 $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
       $result3 = mysqli_query($connect,$sql3) or die(mysqli_query($connect));
-     
+
        while ($row3=mysqli_fetch_array($result3)){
     $count ++ ;
     ?>
@@ -270,20 +270,20 @@ $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
 
                                                     <td>
                                                         <?php echo $row3["XVMachinePartsName"];?>
-                                                        <?php 
+                                                        <?php
      $sql4 = "SELECT DATE_FORMAT(XDMachinePartsReady, '%d/%m/%Y') AS DA,DATE_FORMAT(XDMachinePartsUse, '%d/%m/%Y') AS DS,XDMachinePartsReady,XDMachinePartsUse
        FROM tdoctmamachine_parts_use
        WHERE XVMajDocNo='$id'
        AND XIMachinePartsSeqNo = '$row3[XIMachinePartsSeqNo]'
        AND XIMajdSeqNo = '$row2[XIMajdSeqNo]'"; //ค้นคืนวันที่เบิก วันที่ของมา ถ้ามีอยู่แล้ว
        $result4 = mysqli_query($connect,$sql4) or die(mysqli_query($connect));
-     
+
     ?>
 
                                                     </td>
 
                                                     <td style="width:60px;"> <?php echo $row3["XVAmount"]; ?></td>
-                                                    <?php if($row3["XVMajConfirm"]=="confirm"){  
+                                                    <?php if($row3["XVMajConfirm"]=="confirm"){
          while ($row4=mysqli_fetch_array($result4)){
        ?>
                                                     <td><input style="width:25px; height:25px; margin:5px 25px 0;"
@@ -337,7 +337,7 @@ $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
                                                     <?php } ?>
                                                 </tr>
                                                 <?php
-   
+
 
 }//sql3
 }//sql2
@@ -373,17 +373,17 @@ mysqli_close($connect);
                                         <div class="col text-left">
                                             <label for="numb">วันนัดประเมิน : <?php $datecon1 = $row1["XDMajEstAppPlanDate"];
                                                          $DN1 = str_replace('-', '/', $datecon1);
-                                                          $Dnew1 =  date('d/m/Y H:i:s', strtotime($DN1));
+                                                          $Dnew1 =  date('d/m/Y', strtotime($DN1));
                                                           echo $Dnew1; ?>
 
                                             </label>
                                             <label for="numb">วันที่ประเมิน : <?php $datecon2 = $row1["XDMajEstActualDate"];
                                                          $DN2 = str_replace('-', '/', $datecon2);
-                                                          $Dnew2 =  date('d/m/Y H:i:s', strtotime($DN2));
+                                                          $Dnew2 =  date('d/m/Y', strtotime($DN2));
                                                           echo $Dnew2;?>
                                             </label>
                                             <label for="numb">วันที่ประเมินเสร็จ : <?php echo $row1["XDMajFinishEstDate"];?>
-                                                    
+
                                                     </label>
                                             <label for="numb">วันที่อนุมัติซ่อม : <input id="datepicker" size="6"
                                                     name="XDMajConfirmDate" class="form-control" value="<?php $datecon = $row1["XDMajConfirmDate"];

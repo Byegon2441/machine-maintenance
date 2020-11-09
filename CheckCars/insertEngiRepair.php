@@ -17,7 +17,7 @@
  $sqldate = "SELECT XDMajDate,XDMajRepairActualDate FROM tdoctmajobdate WHERE XVMajDocNo = '$id'";
  $querydate = mysqli_query($connect,$sqldate)or die("ERROR SELECT DATE");
  $rowdate = mysqli_fetch_array($querydate);
- if($rowdate['XDMajRepairActualDate'] != "0000-00-00 00:00:00"){
+ if($rowdate['XDMajRepairActualDate'] != "0000-00-00"){
    echo '<script>';
    echo "Swal.fire({
        title: 'เกิดข้อผิดพลาด!',
@@ -34,12 +34,13 @@
     $oldDate = "$date";
     $newD = str_replace('/', '-', $oldDate);
     $newDate =  date('Y-m-d', strtotime($newD));
-    $newtime = Date("H:i:s");
+  //  $newtime = Date("H:i:s");
    for ($i=0; $i < count($arr)-1; $i++) {
     $sqlarr = "INSERT INTO tdoctmarepair_tnc(XVEpyCode,XVMajDocNo) VALUES ('$arr[$i]','$id')";
     $queryarr = mysqli_query($connect,$sqlarr)or die("ERROR INSERT");
    }
-   $sqlda =  "UPDATE tdoctmajobdate  SET XDMajRepairActualDate = '$newDate $newtime' WHERE XVMajDocNo = '$id'";
+                                                                 //$newtime
+   $sqlda =  "UPDATE tdoctmajobdate  SET XDMajRepairActualDate = '$newDate' WHERE XVMajDocNo = '$id'";
    $queryda = mysqli_query( $connect, $sqlda );
    $sqlda1 =  "UPDATE tdoctmajob  SET 	XVMajStatus = 'ดำเนินการซ่อม' WHERE XVMajDocNo = '$id'";
    $queryda1 = mysqli_query( $connect, $sqlda1 );
