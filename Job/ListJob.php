@@ -445,7 +445,7 @@
                                     </thead>
                                     <?php
           include '../database/connect.php';
-          $sql = " SELECT m.XVMajDocNo, d.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus 
+          $sql = " SELECT m.XVMajDocNo, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus,DATE_FORMAT(d.XDMajDate, '%d/%m/%Y') AS DS 
           FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v
           WHERE m.XVMajDocNo = d.XVMajDocNo 
           AND m.XVVehCode = v.XVVehCode;"; //ตัวสมบูรณ์
@@ -460,7 +460,7 @@
 
                                     <tr class="odd gradeA">
                                         <td><?php echo $row["XVMajDocNo"];?></td>
-                                        <td><?php echo $row["XDMajDate"];?></td>
+                                        <td><?php echo $row["DS"];?></td>
                                         <td><?php echo $row["XVVehCode"];?></td>
                                         <td><?php echo $row["XVVehName"];?></td>
                                         <td><?php echo $row["XVMajStatus"];?></td>

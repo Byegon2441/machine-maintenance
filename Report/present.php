@@ -3,21 +3,19 @@
 date_default_timezone_set( 'Asia/Bangkok' );
 include '../database/connect.php';
 isset($_GET['date_fi']) ? $date1 = $_GET['date_fi'] : NULL;
+$stts = "";
+if(isset($_GET['stts'])){
+    $stts = $_GET['stts'];
+}
 $oldDate1 = "$date1";
-$newDate1 = date( 'Y-m-d', strtotime( $oldDate1 ) );
+$DN = str_replace('/', '-', $oldDate1);
+    $newDate1 = date('Y-m-d', strtotime($DN)); 
 
 $arry = array( 'DATE(d.XDMajDate)', 'DATE(d.XDMajEstAppPlanDate)', 'DATE(d.XDMajFinishEstDate)', 'DATE(d.XDMajConfirmDate)', 'DATE(d.XDMajSpareDate)', 'DATE(d.XDMajRepairAppPlanDate)', 'DATE(d.XDMajRepairActualDate)' );
 $arry1 = array( 'แจ้งซ่อม', 'รอนำรถประเมินอะไหล่', 'รออนุมัติซ่อม', 'รออะไหล่', 'รอช่างรับอะไหล่', 'รอนำรถเข้าซ่อม', 'ดำเนินการซ่อม' );
-$sql = "";
-if(empty($_GET['stts'])){
-    $sql = "SELECT m.XVMajDocNo,m.XVVehCode,p.XVDptName,m.XVMajStatus,DATE(d.XDMajDate),DATE(d.XDMajEstAppPlanDate),DATE(d.XDMajFinishEstDate),DATE(d.XDMajConfirmDate),DATE(d.XDMajSpareDate),DATE(d.XDMajRepairAppPlanDate),DATE(d.XDMajRepairActualDate) FROM TDocTMaJobDate d, TDocTMaJob m, TMstVehicle v, TMstMDepartment p WHERE d.XVMajDocNo = m.XVMajDocNo AND m.XVVehCode = v.XVVehCode AND v.XVDptCode = p.XVDptCode";
-}else{
-    $stts = $_GET['stts'];
-    $sql = "SELECT m.XVMajDocNo,m.XVVehCode,p.XVDptName,m.XVMajStatus,DATE(d.XDMajDate),DATE(d.XDMajEstAppPlanDate),DATE(d.XDMajFinishEstDate),DATE(d.XDMajConfirmDate),DATE(d.XDMajSpareDate),DATE(d.XDMajRepairAppPlanDate),DATE(d.XDMajRepairActualDate) FROM TDocTMaJobDate d, TDocTMaJob m, TMstVehicle v, TMstMDepartment p WHERE d.XVMajDocNo = m.XVMajDocNo AND m.XVVehCode = v.XVVehCode AND v.XVDptCode = p.XVDptCode AND m.XVMaCarStatus = '$stts'";
-}
+$sql = "SELECT m.XVMajDocNo,m.XVVehCode,p.XVDptName,m.XVMajStatus,DATE(d.XDMajDate),DATE(d.XDMajEstAppPlanDate),DATE(d.XDMajFinishEstDate),DATE(d.XDMajConfirmDate),DATE(d.XDMajSpareDate),DATE(d.XDMajRepairAppPlanDate),DATE(d.XDMajRepairActualDate) FROM TDocTMaJobDate d, TDocTMaJob m, TMstVehicle v, TMstMDepartment p WHERE d.XVMajDocNo = m.XVMajDocNo AND m.XVVehCode = v.XVVehCode AND v.XVDptCode = p.XVDptCode AND m.XVMaCarStatus = '$stts'";
 $query = mysqli_query( $connect, $sql );
 $co = sizeof( $arry );
-// echo $sql.'<br>';
 while( $row = mysqli_fetch_array( $query ) )
  {
     for ( $i = $co-1; $i >= 0; $i-- ) {

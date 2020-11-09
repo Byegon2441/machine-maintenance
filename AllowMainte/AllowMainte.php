@@ -128,7 +128,10 @@
                             <div class="col-md-6 ml-auto">
                                 <div class="col text-right">
                                     <label for="numb">วันที่แจ้งซ่อม : <input type="text" name="numb"
-                                            class="form-control" value="<?php echo $row1["XDMajDate"];?>" readonly></label>
+                                            class="form-control" value="<?php $datecon = $row1["XDMajDate"];
+                                                         $DN = str_replace('-', '/', $datecon);
+                                                          $Dnew =  date('d/m/Y', strtotime($DN));
+                                                          echo $Dnew;?>" readonly></label>
                                 </div>
                             </div>
                         </div>
@@ -286,13 +289,22 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col text-left">
-                                            <label for="numb">วันนัดประเมิน : <?php echo $row1["XDMajEstAppPlanDate"];?>
+                                            <label for="numb">วันนัดประเมิน : <?php $datecon2 = $row1["XDMajEstAppPlanDate"];
+                                                         $DN2 = str_replace('-', '/', $datecon2);
+                                                          $Dnew2 =  date('d/m/Y', strtotime($DN2));
+                                                          echo $Dnew2;?>
                                                     
                                             </label>
-                                            <label for="numb">วันที่ประเมิน : <?php echo $row1["XDMajEstActualDate"];?>
+                                            <label for="numb">วันที่ประเมิน : <?php $datecon3 = $row1["XDMajEstActualDate"];
+                                                         $DN3 = str_replace('-', '/', $datecon3);
+                                                          $Dnew3 =  date('d/m/Y', strtotime($DN3));
+                                                          echo $Dnew3;?>
                                                     
                                             </label>
-                                            <label for="numb">วันที่ประเมินเสร็จ : <?php echo $row1["XDMajFinishEstDate"];?>
+                                            <label for="numb">วันที่ประเมินเสร็จ : <?php $datecon4 = $row1["XDMajFinishEstDate"];
+                                                         $DN4 = str_replace('-', '/', $datecon4);
+                                                          $Dnew4 =  date('d/m/Y', strtotime($DN4));
+                                                          echo $Dnew4;?>
                                                     
                                             </label>
                                             <label for="numb">วันที่อนุมัติซ่อม : <input id="datepicker" size="6" name="XDMajConfirmDate"

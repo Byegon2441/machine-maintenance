@@ -17,12 +17,6 @@
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="../vendor/css/datepicker.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"
-        integrity="sha512-BkpSL20WETFylMrcirBahHfSnY++H2O1W+UnEEO4yNIl+jI2+zowyoGJpbtk6bx97fBXf++WJHSSK2MV4ghPcg=="
-        crossorigin="anonymous"></script>
 
     <style>
         tbody {
@@ -60,7 +54,7 @@
                     <div class="col-sm-3"></div>
                     <div class="form-group form-inline col-sm-3">
                         <label for="datee" class="control-label">เลือกวันที่:</label>
-                        <input type="text" class="form-control datepicker" id="datee" placeholder="choose date" data-toggle="datepicker">
+                        <input type="text" class="form-control" id="datee" placeholder="choose date" data-toggle="datepicker">
                     </div>
                     <div class="form-group form-inline col-sm-6">
                         <label for="datee" class="control-label">สถานะการซ่อม:</label>
@@ -181,13 +175,11 @@
     <script>
     $(function() {
         $('[data-toggle="datepicker"]').datepicker({
-            autoHide: true,
-            autoPick: true,
-            language: 'th-TH',
-            zIndex: 2048,
-            format: 'dd/mm/yyyy'
-        });
+                language: 'th-TH',
+                format: 'dd/mm/yyyy'
+            });
     });
+    
     $('.datepicker').datepicker();
     $('#datee, #status_major').change(function() {
         $('.bo').empty()

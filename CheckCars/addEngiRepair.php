@@ -169,7 +169,10 @@
                                     <div class="col-md-6 ml-auto">
                                         <div class="col text-right">
                                             <label for="numb">วันที่แจ้งซ่อม : <input type="text" name="numb"
-                                                    class="form-control" value="<?php echo $row1["XDMajDate"];?>"
+                                                    class="form-control" value="<?php $datecon4 = $row1["XDMajDate"];
+                                                         $DN4 = str_replace('-', '/', $datecon4);
+                                                          $Dnew4 =  date('d/m/Y', strtotime($DN4));
+                                                          echo $Dnew4;?>"
                                                     readonly></label>
                                         </div>
                                     </div>
@@ -426,7 +429,10 @@ mysqli_close($connect);
                                                           $Dnew2 =  date('d/m/Y', strtotime($DN2));
                                                           echo $Dnew2;?>
                                             </label>
-                                            <label for="numb">วันที่ประเมินเสร็จ : <?php echo $row1["XDMajFinishEstDate"];?>
+                                            <label for="numb">วันที่ประเมินเสร็จ : <?php $datecon5 = $row1["XDMajFinishEstDate"];
+                                                         $DN5 = str_replace('-', '/', $datecon5);
+                                                          $Dnew5 =  date('d/m/Y', strtotime($DN5));
+                                                          echo $Dnew5;?>
 
                                                     </label>
                                             <label for="numb">วันที่อนุมัติซ่อม : <input id="datepicker" size="6"

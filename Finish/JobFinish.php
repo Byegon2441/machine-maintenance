@@ -126,7 +126,10 @@
                                     <div class="col-md-6 ml-auto">
                                         <div class="col text-right">
                                             <label for="numb">วันที่แจ้งซ่อม : <input type="text" name="numb"
-                                                    class="form-control" value="<?php echo $row1["XDMajDate"];?>"
+                                                    class="form-control" value="<?php $datecon = $row1["XDMajDate"];
+                                                         $DN = str_replace('-', '/', $datecon);
+                                                          $Dnew =  date('d/m/Y', strtotime($DN));
+                                                          echo $Dnew;?>"
                                                     readonly></label>
                                         </div>
                                     </div>
@@ -382,43 +385,49 @@ mysqli_close($connect);
                                                           $Dnew2 =  date('d/m/Y', strtotime($DN2));
                                                           echo $Dnew2;?>
                                             </label>
-                                            <label for="numb">วันที่ประเมินเสร็จ : <?php echo $row1["XDMajFinishEstDate"];?>
-
-                                                    </label>
-                                            <label for="numb">วันที่อนุมัติซ่อม : <input id="datepicker" size="6"
-                                                    name="XDMajConfirmDate" class="form-control" value="<?php $datecon = $row1["XDMajConfirmDate"];
-                                                                  $DN = str_replace('-', '/', $datecon);
-                                                                   $Dnew =  date('d/m/Y', strtotime($DN));
-                                                                   echo $Dnew;
-                                                                  ?>" disabled>
-                                            </label>
-                                            <label for="numb">วันที่อะไหล่พร้อม : <?php $datecon3 = $row1["XDMajSpareDate"];
+                                            <label for="numb">วันที่ประเมินเสร็จ : <?php $datecon3 = $row1["XDMajFinishEstDate"];
                                                          $DN3 = str_replace('-', '/', $datecon3);
                                                           $Dnew3 =  date('d/m/Y', strtotime($DN3));
                                                           echo $Dnew3;?>
+
+                                                    </label>
+                                            <label for="numb">วันที่อนุมัติซ่อม : <input id="datepicker" size="6"
+                                                    name="XDMajConfirmDate" class="form-control" value="<?php $datecon4 = $row1["XDMajConfirmDate"];
+                                                                  $DN4 = str_replace('-', '/', $datecon4);
+                                                                   $Dnew4 =  date('d/m/Y', strtotime($DN4));
+                                                                   echo $Dnew4;
+                                                                  ?>" disabled>
+                                            </label>
+                                            <label for="numb">วันที่อะไหล่พร้อม : <?php $datecon5 = $row1["XDMajSpareDate"];
+                                                         $DN5 = str_replace('-', '/', $datecon5);
+                                                          $Dnew5 =  date('d/m/Y', strtotime($DN5));
+                                                          echo $Dnew5;?>
                                             </label>
                                             <label for="numb">วันที่นัดซ่อม : <input id="datepicker" size="6"
-                                                    name="XDMajRepairAppPlanDate" class="form-control" value="<?php $datecon3 = $row1["XDMajRepairAppPlanDate"];
-                                                         $DN3 = str_replace('-', '/', $datecon3);
-                                                          $Dnew3 =  date('d/m/Y', strtotime($DN3));
-                                                          echo $Dnew3;?>"
+                                                    name="XDMajRepairAppPlanDate" class="form-control" value="<?php $datecon6 = $row1["XDMajRepairAppPlanDate"];
+                                                         $DN6 = str_replace('-', '/', $datecon6);
+                                                          $Dnew6 =  date('d/m/Y', strtotime($DN6));
+                                                          echo $Dnew6;?>"
                                                     data-toggle="datepicker" disabled>
                                             </label>
                                             <label for="numb">วันที่ซ่อม : <input id="datepicker" size="6"
-                                                    name="#" class="form-control" value="<?php $datecon3 = $row1["XDMajRepairActualDate"];
-                                                         $DN3 = str_replace('-', '/', $datecon3);
-                                                          $Dnew3 =  date('d/m/Y', strtotime($DN3));
-                                                          echo $Dnew3;?>"
+                                                    name="#" class="form-control" value="<?php $datecon7 = $row1["XDMajRepairActualDate"];
+                                                         $DN7 = str_replace('-', '/', $datecon7);
+                                                          $Dnew7 =  date('d/m/Y', strtotime($DN7));
+                                                          echo $Dnew7;?>"
                                                     data-toggle="datepicker" disabled>
                                             </label>
-                                              <label for="numb">วันที่ซ่อมเสร็จ : <?php echo $row1["XDMajFinishRepairDate"];?>
+                                              <label for="numb">วันที่ซ่อมเสร็จ : <?php $datecon8 = $row1["XDMajFinishRepairDate"];
+                                                         $DN8 = str_replace('-', '/', $datecon8);
+                                                          $Dnew8 =  date('d/m/Y', strtotime($DN8));
+                                                          echo $Dnew8;?>
 
                                                     </label>
                                             <label for="numb">วันนัดรับรถ : <input id="datepicker" size="6"
-                                                    name="XDMaPickupAppPlanDate" class="form-control" value="<?php $datecon3 = $row1["XDMaPickupAppPlanDate"];
-                                                         $DN3 = str_replace('-', '/', $datecon3);
-                                                          $Dnew3 =  date('d/m/Y', strtotime($DN3));
-                                                          echo $Dnew3;?>"
+                                                    name="XDMaPickupAppPlanDate" class="form-control" value="<?php $datecon9 = $row1["XDMaPickupAppPlanDate"];
+                                                         $DN9 = str_replace('-', '/', $datecon9);
+                                                          $Dnew9 =  date('d/m/Y', strtotime($DN9));
+                                                          echo $Dnew9;?>"
                                                     data-toggle="datepicker" disabled>
                                             </label>
                                             <label for="numb">วันที่รับรถ : <input id="datepicker" size="6"

@@ -117,7 +117,10 @@ while ($row=mysqli_fetch_array($result)){
                                     <div class="col-md-6 ml-auto">
                                         <div class="col text-right">
                                             <label for="numb">วันที่แจ้งซ่อม : <input type="text" name="numb"
-                                                    value="<?php echo $row["XDMajDate"];?>" class="form-control" disabled></label>
+                                                    value="<?php $datecon = $row["XDMajDate"];
+                                                         $DN = str_replace('-', '/', $datecon);
+                                                          $Dnew =  date('d/m/Y', strtotime($DN));
+                                                          echo $Dnew;?>" class="form-control" disabled></label>
                                         </div>
                                     </div>
                                 </div>

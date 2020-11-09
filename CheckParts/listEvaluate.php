@@ -53,7 +53,7 @@
                                 <tbody>
 
                                     <?php
-    $sql = "SELECT m.XVMajDocNo, j.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus
+    $sql = "SELECT m.XVMajDocNo, m.XVVehCode, v.XVVehName, m.XVMajStatus,DATE_FORMAT(j.XDMajDate, '%d/%m/%Y') AS DS
     FROM TDocTMaJob m, TDocTMaJobDate j, TMstVehicle v
     WHERE m.XVMajDocNo=j.XVMajDocNo
     AND v.XVVehCode = m.XVVehCode
@@ -65,7 +65,7 @@
 ?>
                                     <tr class="odd gradeA">
                                         <td><?php echo $row['XVMajDocNo']; ?></td>
-                                        <td><?php echo $row['XDMajDate']; ?></td>
+                                        <td><?php echo $row['DS']; ?></td>
                                         <td><?php echo $row['XVVehCode']; ?></td>
                                         <td><?php echo $row['XVVehName']; ?></td>
                                         <td><?php echo $row['XVMajStatus']; ?></td>
