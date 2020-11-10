@@ -31,7 +31,12 @@ if($cnt > 0){
     });";
     echo '</script>';
 }else{
+    // $query = "INSERT INTO tmstmvehicletype(XVVehTypeName) VALUES ('".$name."');";
+    // $sql = mysqli_query( $connect, $query );
+  
     echo '<script>';
+    // echo "alert('ทำการเพิ่มข้อมูลประเภทเครื่องจักรเรียบร้อยแล้ว');";
+    // echo "window.location='ListTypeMachine.php';";
     echo "Swal.fire({
         title: 'สำเร็จ!',
         text: 'ทำการเพิ่มข้อมูลประเภทเครื่องจักรเรียบร้อยแล้ว',
