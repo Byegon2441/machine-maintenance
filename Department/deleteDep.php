@@ -14,7 +14,7 @@ if ( isset( $_POST['deletedata'] ) ) {
     $id = $_POST['delete_id'];
     // $name = $_POST['XVVehTypeName'];
     $sql = "DELETE FROM tmstmdepartment WHERE XVDptCode = '$id'";
-    $result = mysqli_query( $connect, $sql );
+    $result = $dbh->query($sql);
 
     if ( $result ) {
         echo '<script>';
@@ -44,7 +44,7 @@ if ( isset( $_POST['deletedata'] ) ) {
         echo '</script>';
     }
 }
-
+$dbh = NULL;
 ?>
 </body>
 </html>

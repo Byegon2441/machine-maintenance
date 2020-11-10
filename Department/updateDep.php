@@ -23,10 +23,10 @@ if ( isset( $_POST['updatedata'] ) ) {
      XVDptNumber ='$XVDptNumber',
      XVDptProvince ='$XVDptProvince',
      XVDptDistrict ='$XVDptDistrict',
-     `XVDptSub-district` ='$XVDptSub'
+     XVDptSub_district ='$XVDptSub'
      WHERE XVDptCode = $XVDptCode;
      ";
-    $result = mysqli_query($connect,$sql);
+    $result = $dbh->query($sql);
    if ( $result ) {
         echo '<script>';
         // echo "alert('ทำการแก้ไขข้อมูลไซต์งานได้');";
@@ -55,7 +55,7 @@ if ( isset( $_POST['updatedata'] ) ) {
         echo '</script>';
     }
 }
-mysqli_close($connect);
+$dbh = NULL;
 ?>
 
 </body>

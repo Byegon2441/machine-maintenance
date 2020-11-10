@@ -16,11 +16,10 @@ $depdistrict = $_POST['depdistrict'];
 $depsub = $_POST['depsub'];
 $depprovince = $_POST['depprovince'];
 
-$query = "INSERT INTO tmstmdepartment(`XVDptNumber`, `XVDptSub-district`, `XVDptDistrict`, `XVDptProvince`, `XVDptname`) 
+$sql = "INSERT INTO tmstmdepartment(XVDptNumber,XVDptSub_district,XVDptDistrict,XVDptProvince,XVDptname)
 VALUES ('$depnumber','$depsub','$depdistrict','$depprovince','$depname')";
-$sql = mysqli_query( $connect, $query );
-
-if($sql){
+$query = $dbh->query($sql);
+if($query){
     echo '<script>';
     // echo "alert('ทำการเพิ่มไชต์งานได้ !!!');";
     // echo "window.location='../Department/ListDepartment.php';";
@@ -48,9 +47,9 @@ if($sql){
     echo '</script>';
 }
 
-mysqli_close( $connect );
+$dbh = NULL;
 
 ?>
-    
+
 </body>
 </html>

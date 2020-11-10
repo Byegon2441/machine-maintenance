@@ -191,7 +191,7 @@ include "../database/connect.php";?>
                 <div class="modal-body">
                     <input type="hidden" name="delete_id" id="delete_id">
                     ท่านต้องการลบไซต์งานนี้หรือไม่?<br>
-                   
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
@@ -240,9 +240,9 @@ include "../database/connect.php";?>
                                 <?php
     $sql = " SELECT *
     FROM tmstmdepartment ";
-    $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+    $result = $dbh->query($sql);
     $count = 1;
-    while ($row=mysqli_fetch_array($result)){
+    while ($row=$result->fetch(PDO::FETCH_ASSOC)){
 ?>
                                     <tr class="odd gradeA">
                                         <td><?php echo $count;?></td>
@@ -250,14 +250,15 @@ include "../database/connect.php";?>
                                         <td><?php echo $row["XVDptname"];?></td>
                                         <td><?php echo $row["XVDptNumber"];?></td>
                                         <td><?php echo $row["XVDptDistrict"];?></td>
-                                        <td><?php echo $row["XVDptSub-district"];?></td>
+                                        <td><?php echo $row["XVDptSub_district"];?></td>
                                         <td><?php echo $row["XVDptProvince"];?></td>
                                         <td align="center"><input class='btn btn-primary editbtn' type='button'
                                                 value='แก้ไข'></td>
                                         <td align="center"><input class='btn btn-danger deletebtn' type='button'
                                                 value='ลบ'></td>
                                     </tr>
-                                    <?php $count++;} ?>
+                                    <?php $count++;}
+                                    $dbh = null;?>
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->
@@ -282,7 +283,7 @@ include "../database/connect.php";?>
     <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    
+
 <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
