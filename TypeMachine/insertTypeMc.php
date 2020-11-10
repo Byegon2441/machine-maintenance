@@ -31,9 +31,9 @@ if($cnt > 0){
     });";
     echo '</script>';
 }else{
-  $sql1 = "INSERT INTO tmstmvehicletype (XVVehTypeName) VALUES ('$name')";
-  $check= $dbh->prepare($sql1);
-  $dbh->exec($sql1);
+    $sql1 = "INSERT INTO tmstmvehicletype(XVVehTypeName) VALUES ('$name');";
+    $quy = $dbh->query($sql1);
+
     echo '<script>';
     echo "Swal.fire({
         title: 'สำเร็จ!',
