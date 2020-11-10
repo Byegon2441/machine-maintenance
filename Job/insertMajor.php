@@ -208,7 +208,7 @@
                             </div>
                         </div>
                     </form>
-                        
+
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
@@ -237,10 +237,10 @@
             });
         });
 
-        
-       
-       
-        
+
+
+
+
 
         $('#XVVehName').change(() => {
             var id = $('#XVVehName').val();
@@ -289,7 +289,7 @@
 
 </script>
 
-   
+
 
 </body>
 
@@ -324,6 +324,7 @@ if ( $stmt ) {
     $stmt = $dbh->query($sql);
     $row=$stmt->fetch(PDO::FETCH_ASSOC);
     $last_id = $row['XVMajDocNo'];
+    echo $last_id;
     $cnt = 1;
     $nvals = count( $_REQUEST['n_sub'] );
     date_default_timezone_set( 'Asia/Bangkok' );
@@ -331,13 +332,13 @@ if ( $stmt ) {
     for ( $i = 0; $i < $nvals; $i++ ) {
         $n_sub = $_REQUEST['n_sub'][$i];
         $sub = $_REQUEST['sub'][$i];
-        $sql1 = "INSERT INTO tdoctmajobdetail(XVMajDocNo,XIMajdSeqNo,XVMajdSubject,XVMajdCause) VALUES ('$last_id', '$cnt', '$n_sub', '$sub')";
+        $sql1 = "INSERT INTO tdoctmajobdetail(XVMajDocNo,XIMajdSeqNo,XVMajdSubject,XVMajdCause,XVMajConfirm,XVPicturePath) VALUES ('$last_id', '$cnt', '$n_sub', '$sub','','')";
         $stmt = $dbh->query($sql1);
 
         $cnt++;
     }
     if ( $stmt ) {
-        $sql2 = "INSERT INTO tdoctmajobdate(XVMajDocNo,XDMajDate,XDMajKeyTime) VALUES ('$last_id', '$ti', '$ti')";
+        $sql2 = "INSERT INTO tdoctmajobdate(XVMajDocNo,XDMajEstAppPlanDate,XDMajEstActualDate,XDMajDate,XDMajSpareDate,XDMaPickupAppPlanDate,XDMajRepairAppPlanDate,XDMajRepairActualDate,XDMajPickupActualDate,XDMajFinishDate,XDMajConfirmDate,XDMajSendTime,XDMajKeyTime,XDMajFinishRepairDate,XDMajFinishEstDate) VALUES ('$last_id','0000-00-00','0000-00-00','$ti','0000-00-00','0000-00-00','0000-00-00','0000-00-00','0000-00-00','0000-00-00','0000-00-00','0000-00-00',','$ti','0000-00-00','0000-00-00')";
         $stmt2 = $dbh->query($sql2);
         if ( $stmt2 ) {
             echo '<script>';
