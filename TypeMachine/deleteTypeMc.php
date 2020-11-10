@@ -13,13 +13,13 @@ include '../database/connect.php';
 if ( isset( $_POST['deletedata'] ) ) {
     $id = $_POST['delete_id'];
     // $name = $_POST['XVVehTypeName'];
-    $sql = "DELETE FROM tmstmvehicletype WHERE XVVehTypeCode = '$id'";
-    $result = mysqli_query( $connect, $sql );
+    $sql = "DELETE FROM tmstmvehicletype WHERE XVVehTypeCode = :p_id";
+    $quy = $dbh->prepare($sql);
+    $quy->bindParam('p_id',$id);
+    $quy->execute();
 
-    if ( $result ) {
+    if ( $quy ) {
         echo '<script>';
-        // echo "alert('ทำการลบประเภทเครื่องจักรเรียบร้อยแล้ว !!!');";
-        // echo "window.location='ListTypeMachine.php';";
         echo "Swal.fire({
             title: 'สำเร็จ!',
             text: 'ทำการลบประเภทเครื่องจักรเรียบร้อยแล้ว',
@@ -31,8 +31,6 @@ if ( isset( $_POST['deletedata'] ) ) {
         echo '</script>';
     } else {
         echo '<script>';
-        // echo "alert('ไม่สามารถทำการลบประเภทเครื่องจักรได้ !!!');";
-        // echo "window.location='ListTypeMachine.php';";
         echo "Swal.fire({
             title: 'เกิดข้อผิดพลาด!',
             text: 'ไม่สามารถทำการลบประเภทเครื่องจักรได้',
