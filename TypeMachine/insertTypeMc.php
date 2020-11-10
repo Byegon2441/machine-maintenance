@@ -12,12 +12,13 @@
 include '../database/connect.php';
 
 $name = $_POST['name'];
-$sql = "SELECT XVVehTypeName FROM tmstmvehicletype WHERE XVVehTypeName = :p_name";
-$quy = $dbh->prepare($sql);
-$quy->bindParam('p_name',$name);
-$quy->execute();
+$sql = "SELECT XVVehTypeName FROM tmstmvehicletype WHERE XVVehTypeName = '$name'";
+$quy = $dbh->query($sql);
+// $quy->bindParam('p_name',$name);
+// $quy->execute();
 $quy->fetchAll();
 $cnt = $quy->rowCount();
+echo $cnt;
 
 if($cnt > 0){
     echo '<script>';

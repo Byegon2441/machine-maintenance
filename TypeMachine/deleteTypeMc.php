@@ -13,10 +13,10 @@ include '../database/connect.php';
 if ( isset( $_POST['deletedata'] ) ) {
     $id = $_POST['delete_id'];
     // $name = $_POST['XVVehTypeName'];
-    $sql = "DELETE FROM tmstmvehicletype WHERE XVVehTypeCode = :p_id";
-    $quy = $dbh->prepare($sql);
-    $quy->bindParam('p_id',$id);
-    $quy->execute();
+    $sql = "DELETE FROM tmstmvehicletype WHERE XVVehTypeCode = '$id'";
+    $quy = $dbh->query($sql);
+    // $quy->bindParam('p_id',$id);
+    // $quy->execute();
 
     if ( $quy ) {
         echo '<script>';

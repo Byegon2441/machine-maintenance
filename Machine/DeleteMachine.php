@@ -16,9 +16,8 @@
     include '../database/connect.php';
     if ( isset( $_POST['deletedata'] ) ) {
     $id = $_POST['delete_id'];
-    $query = "delete FROM tmstvehicle WHERE XVVehCode = $id;";
-    $sql = mysqli_query($connect,$query);
-    mysqli_close($connect);
+    $sql = "delete FROM tmstvehicle WHERE XVVehCode = $id;";
+    $stmt = $dbh->query($sql);
     if ( $sql ) {
         // echo '<script>';
         // echo "alert('ทำการลบเครื่องจักรเรียบร้อยแล้ว !!!');";
@@ -55,5 +54,6 @@
 
 
     }
+    $dbh = null;
 }
 ?>

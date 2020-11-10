@@ -13,11 +13,11 @@ include '../database/connect.php';
 if ( isset( $_POST['updatedata'] ) ) {
     $id = $_POST['update_id'];
     $name = $_POST['XVVehTypeName'];
-    $sql = "UPDATE tmstmvehicletype SET XVVehTypeName = :p_name WHERE XVVehTypeCode = :p_id";
-    $quy = $dbh->prepare($sql);
-    $quy->bindParam('p_name',$name);
-    $quy->bindParam('p_id',$id);
-    $quy->execute();
+    $sql = "UPDATE tmstmvehicletype SET XVVehTypeName = '$name' WHERE XVVehTypeCode = '$id'";
+    $quy = $dbh->query($sql);
+    // $quy->bindParam('p_name',$name);
+    // $quy->bindParam('p_id',$id);
+    // $quy->execute();
 
     if ( $quy ) {
         echo '<script>';

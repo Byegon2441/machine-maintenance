@@ -46,15 +46,15 @@
                               <select id="XVDptCode" name="XVDptCode" class="form-control">
                                   <?php
                                    include '../database/connect.php';
-                                   $sql = "select * from tmstmdepartment; ";
-                                   $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-                                   while ($row=mysqli_fetch_array($result)){
+                                   $sql = " SELECT * FROM tmstmdepartment ORDER BY XVDptCode ASC ";
+                                   $stmt = $dbh->query($sql);
+                                   while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                        ?>
                                   <option value="<?php echo $row["XVDptCode"];?>">
                                       <?php echo $row["XVDptname"]; ?></option>
                                   <?php
                                    }
-                                  mysqli_close($connect);
+                                   $dbh = null;
                                   ?>
                               </select>
                           </div>
@@ -66,15 +66,15 @@
                                 <select id="XVVehSelect" name="XVVehTypeName" class="form-control">
                                     <?php
                                      include '../database/connect.php';
-                                     $sql = "select * from tmstmvehicletype; ";
-                                     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-                                     while ($row=mysqli_fetch_array($result)){
+                                     $sql = "SELECT * FROM tmstmvehicletype ORDER BY XVVehTypeCode ASC ";
+                                     $stmt = $dbh->query($sql);
+                                     while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                          ?>
                                     <option value="<?php echo $row["XVVehTypeCode"];?>">
                                         <?php echo $row["XVVehTypeName"]; ?></option>
                                     <?php
                                      }
-                                    mysqli_close($connect);
+                                     $dbh = null;
                                     ?>
                                 </select>
                             </div>
@@ -185,15 +185,15 @@
                               <select id="XVDptCode" name="XVDptCode" class="form-control" >
                                   <?php
                                    include '../database/connect.php';
-                                   $sql = "select * from tmstmdepartment; ";
-                                   $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-                                   while ($row=mysqli_fetch_array($result)){
+                                   $sql = "SELECT * FROM tmstmdepartment ORDER BY XVDptCode ASC ";
+                                   $stmt = $dbh->query($sql);
+                                   while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                        ?>
                                   <option value="<?php echo $row["XVDptCode"];?>">
                                       <?php echo $row["XVDptname"]; ?></option>
                                   <?php
                                    }
-                                  mysqli_close($connect);
+                                   $dbh = null;
                                   ?>
                               </select>
                           </div>
@@ -205,15 +205,15 @@
                                 <select id="XVVehTypeName" name="XVVehTypeName" class="form-control">
                                     <?php
                                      include '../database/connect.php';
-                                     $sql = "select * from tmstmvehicletype; ";
-                                     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-                                     while ($row=mysqli_fetch_array($result)){
+                                     $sql = "SELECT * FROM tmstmvehicletype ORDER BY XVVehTypeCode ASC ";
+                                     $stmt = $dbh->query($sql);
+                                     while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                          ?>
                                     <option value="<?php echo $row["XVVehTypeCode"];?>">
                                         <?php echo $row["XVVehTypeName"]; ?></option>
                                     <?php
                                      }
-                                    mysqli_close($connect);
+                                     $dbh = null;
                                     ?>
                                 </select>
                             </div>
@@ -386,9 +386,9 @@
           FROM tmstvehicle v
           LEFT JOIN tmstmvehicletype vt ON v.XVVehTypeCode = vt.XVVehTypeCode
           LEFT JOIN tmstmdepartment d ON v.XVDptCode = d.XVDptCode";
-          $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+          $stmt = $dbh->query($sql);
           $count = 1;
-          while ($row=mysqli_fetch_array($result)){
+          while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
           ?>
 
                                         <tr class="odd gradeA">
@@ -415,7 +415,7 @@
 
                                         </tr>
                                         <?php $count++;}
-                                        mysqli_close($connect);
+                                        $dbh = null;
                                         ?>
 
 

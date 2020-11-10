@@ -24,10 +24,10 @@
     $XVVehChassisNumber = $_POST['XVVehChassisNumber'];
     $XVVehEngineNumber = $_POST['XVVehEngineNumber'];
     $XVVehTypeCode = $_POST['XVVehTypeName'];
-    $query = "INSERT INTO tmstvehicle(XVVehName,XVVehRegistration,XVVehNumber,XVVehMango,XVVehBrand,XVVehModel,XVVehChassisNumber,XVVehEngineNumber, XVVehTypeCode , XVDptCode)
+    $sql = "INSERT INTO tmstvehicle(XVVehName,XVVehRegistration,XVVehNumber,XVVehMango,XVVehBrand,XVVehModel,XVVehChassisNumber,XVVehEngineNumber, XVVehTypeCode , XVDptCode)
      VALUES ('$XVVehName','$XVVehRegistration','$XVVehNumber','$XVVehMango','$XVVehBrand','$XVVehModel','$XVVehChassisNumber','$XVVehEngineNumber','$XVVehTypeCode','$XVDptCode');";
-
-    if(mysqli_query($connect,$query)){
+    $stmt = $dbh->query($sql);
+    if($stmt){
         // echo '<script>';
         // echo "alert('ทำการเพิ่มเครื่องจักรเรียบร้อยแล้ว !!!');";
         // echo "window.location='ListMachine.php';";
@@ -78,6 +78,6 @@
         echo '</script>';
 
       }
-    mysqli_close($connect);
+    $dbh = null;
 
 ?>

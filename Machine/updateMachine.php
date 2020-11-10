@@ -36,8 +36,8 @@ if ( isset( $_POST['updatedata'] ) ) {
      XVDptCode ='$XVDptCode'
      WHERE XVVehCode = $id;
      ";
-    $result = mysqli_query($connect,$sql);
-   if ( $result ) {
+    $stmt = $dbh->query($sql);
+   if ( $stmt ) {
         // echo '<script>';
         // echo "alert('ทำการแก้ไขชื่อเครื่องจักรเรียบร้อย');";
         // echo "window.location='ListMachine.php';";
@@ -90,5 +90,5 @@ if ( isset( $_POST['updatedata'] ) ) {
             echo '</script>';
     }
 }
-mysqli_close($connect);
+$dbh = null;
 ?>

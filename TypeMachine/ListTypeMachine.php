@@ -152,16 +152,16 @@
 
                                     <?php
     $sql = " SELECT vt.XVVehTypeCode,vt.XVVehTypeName FROM tmstmvehicletype vt ORDER BY vt.XVVehTypeCode ASC";
-    $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-    $stmt = $dbh->prepare($sql);
-    $stmt->execute();
+    //$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    $stmt = $dbh->query($sql);
+    // $stmt->execute();
     $count = 1;
-    while ($row=$stmt->fetchObject()){
+    while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
 ?>
                                     <tr class="odd gradeA">
                                         <td><?php echo $count;?></td>
-                                        <td><?php echo $row->XVVehTypeCode ?></td>
-                                        <td><?php echo $row->XVVehTypeName ?></td>
+                                        <td><?php echo $row['XVVehTypeCode'] ?></td>
+                                        <td><?php echo $row['XVVehTypeName'] ?></td>
 
                                         <td align="center"><input class='btn btn-primary editbtn' type='button'
                                                 value='แก้ไข'></td>
