@@ -81,14 +81,14 @@
                                         <?php
                                      include '../database/connect.php';
                                      $sql = "select * from tmstvehicle; ";
-                                     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-                                     while ($row=mysqli_fetch_array($result)){
+                                     $stmt = $dbh->query($sql);
+                                     while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                          ?>
                                         <option value="<?php echo $row["XVVehCode"];?>">
                                             <?php echo $row["XVVehName"]; ?></option>
                                         <?php
                                      }
-                                    mysqli_close($connect);
+                                    $dbh = null;
                                     ?>
                                     </select>
                                 </div>
@@ -258,14 +258,14 @@
                                         <?php
                                      include '../database/connect.php';
                                      $sql = "select * from tmstvehicle; ";
-                                     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-                                     while ($row=mysqli_fetch_array($result)){
+                                     $stmt = $dbh->query($sql);
+                                     while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                          ?>
                                         <option value="<?php echo $row["XVVehCode"];?>">
                                             <?php echo $row["XVVehName"]; ?></option>
                                         <?php
                                      }
-                                    mysqli_close($connect);
+                                    $dbh = null;
                                     ?>
                                     </select>
                                 </div>
@@ -445,22 +445,20 @@
                                     </thead>
                                     <?php
           include '../database/connect.php';
-          $sql = " SELECT m.XVMajDocNo, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus,DATE_FORMAT(d.XDMajDate, '%d/%m/%Y') AS DS 
+          $sql = " SELECT m.XVMajDocNo, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus,d.XDMajDate 
           FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v
           WHERE m.XVMajDocNo = d.XVMajDocNo 
           AND m.XVVehCode = v.XVVehCode;"; //ตัวสมบูรณ์
         //   $sql = " SELECT m.XVMajDocNo, m.XVVehCode, v.XVVehName, m.XVMajStatus FROM tdoctmajob m, tmstvehicle v WHERE m.XVVehCode = v.XVVehCode ";
         //   ตัวทดสอบ
-         
-          
-          $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+          $stmt = $dbh->query($sql);
           $count = 1;
-          while ($row=mysqli_fetch_array($result)){
+          while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
           ?>
 
                                     <tr class="odd gradeA">
                                         <td><?php echo $row["XVMajDocNo"];?></td>
-                                        <td><?php echo $row["DS"];?></td>
+                                        <td><?php echo $row["XDMajDate"];?></td>
                                         <td><?php echo $row["XVVehCode"];?></td>
                                         <td><?php echo $row["XVVehName"];?></td>
                                         <td><?php echo $row["XVMajStatus"];?></td>
@@ -493,7 +491,8 @@
                                     <?php } ?>
                                     </tr>
                                     <?php $count++;}
-                                        mysqli_close($connect);
+                                    echo $stmt->rowCount();
+                                        $dbh = null;
                                         ?>
                                     </tbody>
                                 </table>
