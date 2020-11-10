@@ -13,11 +13,12 @@ include '../database/connect.php';
 if ( isset( $_POST['updatedata'] ) ) {
     $id = $_POST['update_id'];
     $name = $_POST['XVMachinePartsTypeName'];
-    $check = "SELECT XVMachinePartsTypeName FROM tmstmmachine_parts_type WHERE XVMachinePartsTypeName = '$name';";
-    $result = mysqli_query( $connect, $check );
-    $num=mysqli_num_rows($result);
+    $sql = "SELECT XVMachinePartsTypeName FROM tmstmmachine_parts_type WHERE XVMachinePartsTypeName = '$name';";
+    $stmt = $dbh->query($sql);
+    $stmt->fetchAll();
+    $cnt = $stmt->rowCount();
 
-    if ( $num > 0 ) {
+    if ( $cnt > 0 ) {
         echo '<script>';
         echo "Swal.fire({
             title: 'เกิดข้อผิดพลาด!',
@@ -30,8 +31,8 @@ if ( isset( $_POST['updatedata'] ) ) {
         echo '</script>';
     } else {
 
-        $sql = "UPDATE tmstmmachine_parts_type SET XVMachinePartsTypeName='$name' WHERE XVMachinePartsTypeCode = '$id'";
-        $query = $sql = mysqli_query( $connect, $sql );
+        $sql1 = "UPDATE tmstmmachine_parts_type SET XVMachinePartsTypeName='$name' WHERE XVMachinePartsTypeCode = '$id'";
+        $stmt = $dbh->query($sql1);
         echo '<script>';
         echo "Swal.fire({
             title: 'สำเร็จ!',
@@ -43,6 +44,7 @@ if ( isset( $_POST['updatedata'] ) ) {
         });";
         echo '</script>';
     }
+    $dbh = null;
 }
 
 ?>

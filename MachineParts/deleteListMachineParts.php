@@ -12,10 +12,9 @@
     include '../database/connect.php';
     if ( isset( $_POST['deletedata'] ) ) {
     $id = $_POST['delete_id'];
-    $query = "DELETE FROM tmstmmachine_parts WHERE XVMachinePartsCode = $id";
-    $sql = mysqli_query($connect,$query);
-    mysqli_close($connect);
-    if ( $sql ) {
+    $sql = "DELETE FROM tmstmmachine_parts WHERE XVMachinePartsCode = $id";
+    $stmt = $dbh->query($sql);
+    if ( $stmt ) {
         echo '<script>';
         // echo "alert('ทำการลบรายการอะไหล่เรียบร้อยแล้ว !!!');";
         // echo "window.location='ListMachineParts.php';";
@@ -42,6 +41,7 @@
         });";
         echo '</script>';
     }
+    $dbh = null;
 }
 ?>
 </body>

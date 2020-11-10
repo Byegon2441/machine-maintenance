@@ -14,9 +14,9 @@ if ( isset( $_POST['deletedata'] ) ) {
     $id = $_POST['delete_id'];
     // $name = $_POST['XVVehTypeName'];
     $sql = "DELETE FROM tmstmmachine_parts_type WHERE XVMachinePartsTypeCode = '$id'";
-    $result = mysqli_query( $connect, $sql );
+    $stmt = $dbh->query($sql);
 
-    if ( $result ) {
+    if ( $stmt ) {
         echo '<script>';
         echo "Swal.fire({
             title: 'สำเร็จ!',

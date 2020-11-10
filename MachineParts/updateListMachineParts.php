@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,9 @@
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <title></title>
 </head>
+
 <body>
-<?php
+    <?php
 include '../database/connect.php';
 if ( isset( $_POST['updatedata'] ) ) {
     $XVMachinePartsCode = $_POST['XVMachinePartsCode'];
@@ -18,8 +20,8 @@ if ( isset( $_POST['updatedata'] ) ) {
      SET  XVMachinePartsName ='$XVMachinePartsName',
      XVMachinePartsTypeCode ='$idcode'
      WHERE XVMachinePartsCode = $XVMachinePartsCode";
-    $result = mysqli_query($connect,$sql);
-   if ( $result ) {
+    $stmt = $dbh->query($sql);
+   if ( $stmt ) {
         echo '<script>';
         // echo "alert('ทำการแก้ไขข้อมูลอะไหล่เรียบร้อย');";
         // echo "window.location='ListMachineParts.php';";
@@ -54,8 +56,8 @@ if ( isset( $_POST['updatedata'] ) ) {
      
     }
 }
-mysqli_close($connect);
+$dbh = null;
 ?>
 </body>
-</html>
 
+</html>

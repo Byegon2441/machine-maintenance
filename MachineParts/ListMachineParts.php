@@ -73,14 +73,14 @@
                                     <?php
                                     include '../database/connect.php';
 
-                                    $sql = "SELECT * FROM tmstmmachine_parts_type";
-                                    $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-                                    while ($row=mysqli_fetch_array($result)){
+                                    $sql = "SELECT * FROM tmstmmachine_parts_type ORDER BY XVMachinePartsTypeCode ASC";
+                                    $stmt = $dbh->query($sql);
+                                    while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                         ?>
                                     <option value="<?php echo $row["XVMachinePartsTypeCode"];?>"><?php echo $row["XVMachinePartsTypeName"]; ?></option>
                                     <?php
                                     }
-                                    mysqli_close($connect);
+                                    $dbh = null;
                                     ?>
                                 </select>
                             </div>
@@ -131,14 +131,14 @@
                                     <?php
                                      include '../database/connect.php';
 
-                                     $sql = "SELECT * FROM tmstmmachine_parts_type";
-                                     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-                                     while ($row=mysqli_fetch_array($result)){
+                                     $sql = "SELECT * FROM tmstmmachine_parts_type ORDER BY XVMachinePartsTypeCode ASC";
+                                     $stmt = $dbh->query($sql);
+                                     while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                          ?>
                                     <option value="<?php echo $row["XVMachinePartsTypeCode"];?>"><?php echo $row["XVMachinePartsTypeName"]; ?></option>
                                     <?php
                                      }
-                                    mysqli_close($connect);
+                                    $dbh = null;
                                     ?>
                                 </select>
                             </div>
@@ -219,10 +219,10 @@
                                   $sql = "SELECT p.XVMachinePartsCode,p.XVMachinePartsName,p.XVMachinePartsTypeCode,pt.XVMachinePartsTypeName AS XVMPTN
                                   FROM tmstmmachine_parts p
                                   LEFT JOIN tmstmmachine_parts_type pt
-                                  ON p.XVMachinePartsTypeCode = pt.XVMachinePartsTypeCode";
-                                  $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+                                  ON p.XVMachinePartsTypeCode = pt.XVMachinePartsTypeCode ORDER BY p.XVMachinePartsCode ASC";
+                                  $stmt = $dbh->query($sql);
                                   $count = 1;
-                                  while ($row=mysqli_fetch_array($result)){
+                                  while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                   ?>
                                     <tr class="odd gradeA">
                                     <td><?php echo $count;?></td>
@@ -236,7 +236,7 @@
 
                                     </tr>
                                     <?php $count++;}
-                                    mysqli_close($connect);
+                                    $dbh = null;
                                     ?>
 
                                 </tbody>

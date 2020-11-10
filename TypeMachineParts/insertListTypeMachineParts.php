@@ -12,11 +12,12 @@
 include '../database/connect.php';
 $name = $_POST['name'];
 
-$check = "SELECT XVMachinePartsTypeName FROM tmstmmachine_parts_type WHERE XVMachinePartsTypeName = '$name';";
-$result = mysqli_query( $connect, $check );
-$num=mysqli_num_rows($result);
+$sql = "SELECT XVMachinePartsTypeName FROM tmstmmachine_parts_type WHERE XVMachinePartsTypeName = '$name';";
+$stmt = $dbh->query($sql);
+$stmt->fetchAll();
+$cnt = $stmt->rowCount();
 
-if($num > 0){
+if($cnt > 0){
     echo '<script>';
     echo "Swal.fire({
         title: 'เกิดข้อผิดพลาด!',
@@ -28,8 +29,8 @@ if($num > 0){
     });";
     echo '</script>';
 }else{
-    $query = "INSERT INTO tmstmmachine_parts_type(XVMachinePartsTypeName) VALUES ('".$name."');";
-    $sql = mysqli_query( $connect, $query );
+    $sql1 = "INSERT INTO tmstmmachine_parts_type(XVMachinePartsTypeName) VALUES ('".$name."');";
+    $stmt = $dbh->query($sql1);
 
     echo '<script>';
     echo "Swal.fire({
@@ -42,7 +43,7 @@ if($num > 0){
     });";
     echo '</script>';
 }
-mysqli_close( $connect );
+$dbh = null;
 
 ?>
 </body>

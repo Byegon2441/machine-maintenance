@@ -153,9 +153,9 @@
                                     <?php
     $sql = "SELECT ty.XVMachinePartsTypeCode,ty.XVMachinePartsTypeName
     FROM tmstmmachine_parts_type ty";
-    $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+    $stmt = $dbh->query($sql);
     $count = 1;
-    while ($row=mysqli_fetch_array($result)){
+    while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
 ?>
                                     <tr class="odd gradeA">
                                         <td><?php echo $count;?></td>

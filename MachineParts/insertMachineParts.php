@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.6.0/dist/sweetalert2.all.min.js"></script>
-  <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.6.0/dist/sweetalert2.all.min.js"></script>
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <title></title>
 </head>
+
 <body>
-<?php
+    <?php
 include '../database/connect.php';
 	$XVMachinePartsName = $_POST['XVMachinePartsName'];
   $XVMachinePartsTypeCode = $_POST['XVMachinePartsTypeCode'];
 
-  $check = "SELECT XVMachinePartsName FROM tmstmmachine_parts WHERE XVMachinePartsName = '$XVMachinePartsName';";
-  $result = mysqli_query( $connect, $check );
-  $num=mysqli_num_rows($result);
+  $sql = "SELECT XVMachinePartsName FROM tmstmmachine_parts WHERE XVMachinePartsName = '$XVMachinePartsName';";
+  $stmt = $dbh->query($sql);
+  $stmt->fetchAll();
+  $cnt = $stmt->rowCount();
 
-  if($num>0){
+  if($cnt>0){
     echo '<script>';
     // echo "alert('ไม่สามารถทำการเพิ่มข้อมูลอะไหล่ได้ ".'\n'."อะไหล่ ($XVMachinePartsName) มีการลงทะเบียนแล้ว');";
     // echo "window.location='ListMachineParts.php';";
@@ -31,8 +34,8 @@ include '../database/connect.php';
   });";
     echo '</script>';
   }else{
-    $sql  = "INSERT INTO tmstmmachine_parts(XVMachinePartsName,XVMachinePartsTypeCode) VALUES ('$XVMachinePartsName','$XVMachinePartsTypeCode')";
-    $query = mysqli_query( $connect, $sql );
+    $sql1  = "INSERT INTO tmstmmachine_parts(XVMachinePartsName,XVMachinePartsTypeCode) VALUES ('$XVMachinePartsName','$XVMachinePartsTypeCode')";
+    $stmt = $dbh->query($sql1);
   
       echo '<script>';
       // echo "alert('ทำการเพิ่มข้อมูลอะไหล่เรียบร้อย');";
@@ -46,13 +49,9 @@ include '../database/connect.php';
         window.location = 'ListMachineParts.php';
     });";
       echo '</script>';
-  
-
   }
-
-  
-mysqli_close($connect);
+$dbh = null;
  ?>
 </body>
-</html>
 
+</html>

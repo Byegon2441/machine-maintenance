@@ -13,12 +13,11 @@ include '../database/connect.php';
 
 $name = $_POST['name'];
 $sql = "SELECT XVVehTypeName FROM tmstmvehicletype WHERE XVVehTypeName = '$name'";
-$quy = $dbh->query($sql);
+$stmt = $dbh->query($sql);
 // $quy->bindParam('p_name',$name);
 // $quy->execute();
-$quy->fetchAll();
-$cnt = $quy->rowCount();
-echo $cnt;
+$stmt->fetchAll();
+$cnt = $stmt->rowCount();
 
 if($cnt > 0){
     echo '<script>';
@@ -33,7 +32,7 @@ if($cnt > 0){
     echo '</script>';
 }else{
     $sql1 = "INSERT INTO tmstmvehicletype(XVVehTypeName) VALUES ('$name');";
-    $quy = $dbh->query($sql1);
+    $stmt = $dbh->query($sql1);
 
     echo '<script>';
     echo "Swal.fire({
