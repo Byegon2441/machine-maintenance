@@ -13,13 +13,14 @@ include '../database/connect.php';
 if ( isset( $_POST['updatedata'] ) ) {
     $id = $_POST['update_id'];
     $name = $_POST['XVVehTypeName'];
-    $sql = "UPDATE tmstmvehicletype SET XVVehTypeName='$name' WHERE XVVehTypeCode = '$id'";
-    $result = mysqli_query( $connect, $sql );
+    $sql = "UPDATE tmstmvehicletype SET XVVehTypeName = :p_name WHERE XVVehTypeCode = :p_id";
+    $quy = $dbh->prepare($sql);
+    $quy->bindParam('p_name',$name);
+    $quy->bindParam('p_id',$id);
+    $quy->execute();
 
-    if ( $result ) {
+    if ( $quy ) {
         echo '<script>';
-        // echo "alert('ทำการแก้ไขชื่อประเภทเครื่องจักรเรียบร้อย');";
-        // echo "window.location='ListTypeMachine.php';";
         echo "Swal.fire({
             title: 'สำเร็จ!',
             text: 'ทำการแก้ไขชื่อประเภทเครื่องจักรเรียบร้อย',
@@ -34,8 +35,6 @@ if ( isset( $_POST['updatedata'] ) ) {
          $error_detail = mysqli_error($connect);
         if(strpos($error_detail, "XVVehTypeName_UQ")){
             echo '<script>';
-            // echo "alert('ไม่สามารถทำการแก้ไขชื่อประเภทเครื่องจักรได้ ".'\n'."ประเภทเครื่องจักร ($name) มีการลงทะเบียนแล้ว');";
-            //  echo "window.location='ListTypeMachine.php';";
             echo "Swal.fire({
                 title: 'เกิดข้อผิดพลาด!',
                 text: 'ไม่สามารถทำการแก้ไขชื่อประเภทเครื่องจักรได้ ".'\n'."ประเภทเครื่องจักร ($name) มีการลงทะเบียนแล้ว',

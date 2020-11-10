@@ -10,16 +10,17 @@
 <body>
 <?php
 include '../database/connect.php';
+
 $name = $_POST['name'];
+$sql = "SELECT XVVehTypeName FROM tmstmvehicletype WHERE XVVehTypeName = :p_name";
+$quy = $dbh->prepare($sql);
+$quy->bindParam('p_name',$name);
+$quy->execute();
+$quy->fetchAll();
+$cnt = $quy->rowCount();
 
-$check = "SELECT XVVehTypeName FROM tmstmvehicletype WHERE XVVehTypeName = '$name';";
-$result = mysqli_query( $connect, $check );
-$num=mysqli_num_rows($result);
-
-if($num > 0){
+if($cnt > 0){
     echo '<script>';
-    // echo "alert('ไม่สามารถทำการเพิ่มข้อมูลประเภทเครื่องจักรได้ ".'\n'."ประเภทเครื่องจักร ($name) มีการลงทะเบียนแล้ว');";
-    // echo "window.location='ListTypeMachine.php';";
     echo "Swal.fire({
         title: 'เกิดข้อผิดพลาด!',
         text: 'ไม่สามารถทำการเพิ่มข้อมูลประเภทเครื่องจักรได้ ".'\n'."ประเภทเครื่องจักร ($name) มีการลงทะเบียนแล้ว',
@@ -30,12 +31,7 @@ if($num > 0){
     });";
     echo '</script>';
 }else{
-    $query = "INSERT INTO tmstmvehicletype(XVVehTypeName) VALUES ('".$name."');";
-    $sql = mysqli_query( $connect, $query );
-  
     echo '<script>';
-    // echo "alert('ทำการเพิ่มข้อมูลประเภทเครื่องจักรเรียบร้อยแล้ว');";
-    // echo "window.location='ListTypeMachine.php';";
     echo "Swal.fire({
         title: 'สำเร็จ!',
         text: 'ทำการเพิ่มข้อมูลประเภทเครื่องจักรเรียบร้อยแล้ว',
@@ -46,7 +42,7 @@ if($num > 0){
     });";
     echo '</script>';
 }
-mysqli_close( $connect );
+$dbh = null;
 
 ?>
 </body>

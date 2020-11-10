@@ -1,13 +1,17 @@
-<?php
-$host ='localhost';
-$user ='root';
-$pass="";
-$database="tests";
-$connect = mysqli_connect("localhost","root","","cars");
-mysqli_query($connect,"SET NAMES UTF8");
+<?php 
+    $dsn = 'sqlsrv:Server=localhost\sqlexpress;Database=cars';
+    $username = null;
+    $password = null;
+    $options = array(
+        PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+    );
 
-if(!$connect){
-    die ("Connect Fail : ".mysqli_connect_error());
-} 
-
+    try {
+        $dbh = new PDO($dsn, $username, $password, $options);
+        $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        //echo 'Connected';
+    } catch (PDOException $e) {
+        //echo 'Unconnected'.$e->getMessage();
+    }
+    
 ?>
