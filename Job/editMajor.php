@@ -11,33 +11,15 @@
 
     <title>ระบบซ่อมบำรุงเครื่องจักร : แก้ไขใบแจ้งซ่อม</title>
 
-    <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-
-    <!-- DataTables CSS -->
     <link href="../vendor/datatables/css/dataTables.bootstrap.css" rel="stylesheet">
-
-    <!-- DataTables Responsive CSS -->
     <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.6.0/dist/sweetalert2.all.min.js"></script>
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    
     <style>
     table td {
         position: relative;
@@ -76,19 +58,17 @@
 
     if(isset($_GET['id'])){
         $id=$_GET['id'];
-    $sql = " SELECT  m.XVMajDocNo, d.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus ,depart.XVDptCode,depart.XVDptName,depart.XVDptNumber,depart.`XVDptSub-district`,depart.XVDptDistrict,depart.XVDptProvince 
+    $sql = " SELECT  m.XVMajDocNo, d.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus ,depart.XVDptCode,depart.XVDptName,depart.XVDptNumber,depart.XVDptSub_district,depart.XVDptDistrict,depart.XVDptProvince 
  FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v,tmstmdepartment depart
  WHERE m.XVMajDocNo = d.XVMajDocNo 
  AND m.XVVehCode = v.XVVehCode
  AND v.XVDptCode = depart.XVDptCode
  AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
 
-$result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-while ($row=mysqli_fetch_array($result)){
+$stmt = $dbh->query($sql);
+while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
 
 ?>
-
-
 
     <div id="wrapper">
         <div id="page-wrapper">
@@ -149,15 +129,15 @@ while ($row=mysqli_fetch_array($result)){
                                                 <?php
                                      include '../database/connect.php';
                                      $sql1 = "select * from tmstvehicle; ";
-                                     $result1 = mysqli_query($connect,$sql1) or die(mysqli_query($connect));
-                                     while ($row1=mysqli_fetch_array($result1)){
+                                     $stmt1 = $dbh->query($sql1);
+                                     while ($row1=$stmt1->fetch(PDO::FETCH_ASSOC)){
                                          ?>
                                                 <option value="<?php echo $row1["XVVehCode"];?>"
                                                     <?php if($row["XVVehCode"] == $row1["XVVehCode"]) echo "selected" ?>>
                                                     <?php echo $row1["XVVehName"]; ?></option>
                                                 <?php
                                      }
-                                    mysqli_close($connect);
+                                    $dbh = null;
                                     ?>
                                             </select>
                                         </div>
@@ -194,7 +174,7 @@ while ($row=mysqli_fetch_array($result)){
                                             <input type="text" style="margin: 0px 10px;" size="10" name="dnum" id="dnum"
                                                 value="<?php echo $row["XVDptNumber"];?>" class="form-control">
                                             ตำบล:<input type="text" style="margin: 0px 10px;" size="10" name="dsub"
-                                                id="dsub" value="<?php echo $row["XVDptSub-district"];?>"
+                                                id="dsub" value="<?php echo $row["XVDptSub_district"];?>"
                                                 class="form-control">
                                             อำเภอ:<input type="text" style="margin: 0px 10px;" size="10" name="ddis"
                                                 id="ddis" value="<?php echo $row["XVDptDistrict"];?>"
@@ -227,9 +207,11 @@ while ($row=mysqli_fetch_array($result)){
                                          FROM  tdoctmajob j ,tdoctmajobdetail jd
                                          WHERE  j.XVMajDocNo = jd.XVMajDocNo
                                          AND j.XVMajDocNo = '$id'";
-                                        $result2 = mysqli_query($connect,$sql2) or die(mysqli_query($connect));
-                                        $numof = mysqli_num_rows($result2); 
-                                        while ($row2=mysqli_fetch_array($result2)){
+                                        $stmt2 = $dbh->query($sql2);
+                                        // $stmt2->fetchAll();
+                                        // $numof = $stmt2->rowCount();
+                                        //$numof = mysqli_num_rows($result2); 
+                                        while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
                                     ?>
                                                 <tr id='addr0'>
                                                     <td><?php echo $row2["XIMajdSeqNo"];?></td>
@@ -243,7 +225,9 @@ while ($row=mysqli_fetch_array($result)){
                                                             class="btn btn-danger btn-circle increase-row RemoveRow "><i
                                                                 class="fa fa-minus"></button></td>
                                                 </tr>
-                                                <?php } ?>
+                                                <?php } 
+                                                $numof = $stmt2->rowCount();
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -361,38 +345,38 @@ $noof = $_POST['noof'];
     $sql = "UPDATE tdoctmajob
         SET XVMajWhoInformant = '$name' ,
         XVMajNumber = '$dnum',
-        `XVMajSub-district` = '$dsub',
+        XVMajSub_district = '$dsub',
         XVMajDistrict = '$ddis',
         XVMajProvince='$dpro',
         XVVehCode='$noof'
         WHERE XVMajDocNo = '$XVMajDocNo' ";
 
-$query = mysqli_query( $connect, $sql );
-if ( $query ) {
+$stmt = $dbh->query($sql);
+if ( $stmt ) {
         $sql = "SELECT XIMajdSeqNo FROM tdoctmajobdetail WHERE XVMajDocNo = '$XVMajDocNo'";
-        $query = mysqli_query( $connect, $sql );
-        $query1 = false;
-        while( $row = mysqli_fetch_array($query))
+        $stmt = $dbh->query($sql);
+        $stmt1 = false;
+        while($row=$stmt->fetch(PDO::FETCH_ASSOC))
         {
             $seq = $row['XIMajdSeqNo'];
             $sql1 = "DELETE FROM tdoctmajobdetail  WHERE XIMajdSeqNo = $seq AND XVMajDocNo = '$XVMajDocNo'";
-            $query1 = mysqli_query( $connect, $sql1 );
+            $stmt1 = $dbh->query($sql1);
             // echo $seq;
         }   
         $cnt = 1;
         $nvals = count( $_REQUEST['n_sub'] );
-        $query2 = false;
+        $stmt2 = false;
         for ( $i = 0; $i < $nvals; $i++ ) {
             $n_sub = $_REQUEST['n_sub'][$i];
             $sub = $_REQUEST['sub'][$i];
             if(!empty($n_sub) && !empty($sub)){
                 $sql2 = "INSERT INTO tdoctmajobdetail(XVMajDocNo,XIMajdSeqNo,XVMajdSubject,XVMajdCause) VALUES ('$XVMajDocNo', '$cnt', '$n_sub', '$sub')";
-                $query2 = mysqli_query( $connect, $sql2 );
+                $stmt2 = $dbh->query($sql2);
                 $cnt++;
             }
         }
-        if($query2){
-            if($query2){
+        if($stmt2){
+            if($stmt2){
                 echo '<script>';
             echo "Swal.fire({
                 title: 'สำเร็จ!',
@@ -421,7 +405,7 @@ $noof = $_POST['noof'];
     $sql = "UPDATE tdoctmajob
         SET XVMajWhoInformant = '$name' ,
         XVMajNumber = '$dnum',
-        `XVMajSub-district` = '$dsub',
+        XVMajSub_district = '$dsub',
         XVMajStatus='แจ้งซ่อม',
         XVMajDocStatus ='2',
         XVMajDistrict = '$ddis',
@@ -429,31 +413,31 @@ $noof = $_POST['noof'];
         XVVehCode='$noof'
         WHERE XVMajDocNo = '$XVMajDocNo' ";
         
-        $query = mysqli_query( $connect, $sql );
-        if ( $query ) {
+        $stmt = $dbh->query($sql);
+        if ( $stmt ) {
             $sql = "SELECT XIMajdSeqNo FROM tdoctmajobdetail WHERE XVMajDocNo = '$XVMajDocNo'";
-            $query = mysqli_query( $connect, $sql );
-            $query1 = false;
-            while( $row = mysqli_fetch_array($query))
+            $stmt = $dbh->query($sql);
+            $stmt1 = false;
+            while($row=$stmt->fetch(PDO::FETCH_ASSOC))
             {
                 $seq = $row['XIMajdSeqNo'];
                 $sql1 = "DELETE FROM tdoctmajobdetail  WHERE XIMajdSeqNo = $seq AND XVMajDocNo = '$XVMajDocNo'";
-                $query1 = mysqli_query( $connect, $sql1 );
+                $stmt1 = $dbh->query($sql1);
                 // echo $seq;
             }   
             $cnt = 1;
             $nvals = count( $_REQUEST['n_sub'] );
-            $query2 = false;
+            $stmt2 = false;
             for ( $i = 0; $i < $nvals; $i++ ) {
                 $n_sub = $_REQUEST['n_sub'][$i];
                 $sub = $_REQUEST['sub'][$i];
                 if(!empty($n_sub) && !empty($sub)){
                     $sql2 = "INSERT INTO tdoctmajobdetail(XVMajDocNo,XIMajdSeqNo,XVMajdSubject,XVMajdCause) VALUES ('$XVMajDocNo', '$cnt', '$n_sub', '$sub')";
-                    $query2 = mysqli_query( $connect, $sql2 );
+                    $stmt2 = $dbh->query($sql2);
                     $cnt++;
                 }
             }
-                if($query2){
+                if($stmt2){
                     echo '<script>';
                                 echo "Swal.fire({
                                     title: 'สำเร็จ!',

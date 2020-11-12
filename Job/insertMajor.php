@@ -328,17 +328,18 @@ if ( $stmt ) {
     $cnt = 1;
     $nvals = count( $_REQUEST['n_sub'] );
     date_default_timezone_set( 'Asia/Bangkok' );
-     $ti =  date ( 'Y-m-d H:i:S' );
+     $ti =  date("Y-m-d");
+     echo $ti;
     for ( $i = 0; $i < $nvals; $i++ ) {
         $n_sub = $_REQUEST['n_sub'][$i];
         $sub = $_REQUEST['sub'][$i];
-        $sql1 = "INSERT INTO tdoctmajobdetail(XVMajDocNo,XIMajdSeqNo,XVMajdSubject,XVMajdCause,XVMajConfirm,XVPicturePath) VALUES ('$last_id', '$cnt', '$n_sub', '$sub','','')";
+        $sql1 = "INSERT INTO tdoctmajobdetail(XVMajDocNo,XIMajdSeqNo,XVMajdSubject,XVMajdCause) VALUES ('$last_id', '$cnt', '$n_sub', '$sub')";
         $stmt = $dbh->query($sql1);
 
         $cnt++;
     }
     if ( $stmt ) {
-        $sql2 = "INSERT INTO tdoctmajobdate(XVMajDocNo,XDMajEstAppPlanDate,XDMajEstActualDate,XDMajDate,XDMajSpareDate,XDMaPickupAppPlanDate,XDMajRepairAppPlanDate,XDMajRepairActualDate,XDMajPickupActualDate,XDMajFinishDate,XDMajConfirmDate,XDMajSendTime,XDMajKeyTime,XDMajFinishRepairDate,XDMajFinishEstDate) VALUES ('$last_id','0000-00-00','0000-00-00','$ti','0000-00-00','0000-00-00','0000-00-00','0000-00-00','0000-00-00','0000-00-00','0000-00-00','0000-00-00',','$ti','0000-00-00','0000-00-00')";
+        $sql2 = "INSERT INTO tdoctmajobdate(XVMajDocNo,XDMajDate,XDMajKeyTime) VALUES ('$last_id','$ti','$ti')";
         $stmt2 = $dbh->query($sql2);
         if ( $stmt2 ) {
             echo '<script>';
