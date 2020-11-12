@@ -85,8 +85,9 @@
      AND v.XVDptCode = depart.XVDptCode
      AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
     
-    $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-    while ($row1=mysqli_fetch_array($result)){
+    // $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+    $stmt = $dbh->query($sql);
+    while ($row1=$stmt->fetch(PDO::FETCH_ASSOC)){
 
     
     ?>
@@ -197,8 +198,9 @@
                                
                                      AND m.XVMajDocNo ='$id'"; //ค้นคืน รายการ เรื่องที่แจ้ง
                         
-                                    $result2 = mysqli_query($connect,$sql2) or die(mysqli_query($connect));
-                                    while ($row2=mysqli_fetch_array($result2)){
+                                    // $result2 = mysqli_query($connect,$sql2) or die(mysqli_query($connect));
+                                    $stmt2 = $dbh->query($sql2);
+                                    while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
                                         
                                         
                                
@@ -243,9 +245,9 @@
                                     AND detail.XVMajDocNo='$id'
                                     AND partsuse.XIMajdSeqNo = %s"; //ค้นคืน รายการ อะไหล่ของแต่ละรายการเรื่องที่แจ้ง
                                      $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
-                                           $result3 = mysqli_query($connect,$sql3) or die(mysqli_query($connect));
-                                          
-                                            while ($row3=mysqli_fetch_array($result3)){
+                                        //    $result3 = mysqli_query($connect,$sql3) or die(mysqli_query($connect));
+                                          $stmt3 = $dbh->query($sql3);
+                                            while ($row3=$stmt3->fetch(PDO::FETCH_ASSOC)){
                                          $count ++ ;
                                          ?>
                                           
@@ -261,7 +263,8 @@
                                          </tr>
                                         <?php
                                      }}
-                                    mysqli_close($connect);
+                                    // mysqli_close($connect);
+                                    $dbh=NULL;
                                     ?> 
                                                 <tr id='addr1'></tr>
 
@@ -328,8 +331,9 @@
                                                     WHERE  j.XVMajDocNo = tnc.XVMajDocNo
                                                     AND tnc.XVEpyCode = e.XVEpyCode
                                                     AND j.XVMajDocNo = '$id' ";
-                                                     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-                                                     while ($row=mysqli_fetch_array($result)){
+                                                        $stmt4 = $dbh->query($sql);
+                                                        while ($row=$stmt4->fetch(PDO::FETCH_ASSOC)){
+            
                                                     ?>
 
                                             <label for=""> <?php echo  $row["XVEpyCode"]." ".$row["XVEpyFirstname"]." ".$row["XVpyLastname"];?> </label>
