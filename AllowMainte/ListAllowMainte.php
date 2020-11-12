@@ -54,14 +54,14 @@
 
                                     <?php
                                     include "../database/connect.php";
-     $sql = " SELECT m.XVMajDocNo, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus,DATE_FORMAT(d.XDMajDate, '%d/%m/%Y') AS DS 
+     $sql = " SELECT m.XVMajDocNo, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus,FORMAT(d.XDMajDate, 'dd/MM/yyyy') AS DS 
      FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v
      WHERE m.XVMajDocNo = d.XVMajDocNo 
      AND m.XVVehCode = v.XVVehCode
      AND m.XVMajStatus = 'รออนุมัติซ่อม' "; //แสดงใบแจ้งซ่อมทีเป็นสถานะ "รออนุมัติซ่อม"
-    $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+    $stmt = $dbh->query($sql);
     $count = 1;
-    while ($row=mysqli_fetch_array($result)){
+    while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
 ?>
                                     <tr class="odd gradeA">
                                     <td><?php echo $row["XVMajDocNo"];?></td>
@@ -72,7 +72,9 @@
                                         <td align="center"><a class='btn btn-primary editbtn' href="AllowMainte.php?id=<?php echo $row["XVMajDocNo"] ?>"
                                                 >อนุมัติการซ่อม</a></td>
                                     </tr>
-                                    <?php $count++;} ?>
+                                    <?php $count++;} 
+                                    $dbh = null;
+                                    ?>
                                 </tbody>
                             </table>
                         </div>

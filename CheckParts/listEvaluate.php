@@ -53,15 +53,15 @@
                                 <tbody>
 
                                     <?php
-    $sql = "SELECT m.XVMajDocNo, m.XVVehCode, v.XVVehName, m.XVMajStatus,DATE_FORMAT(j.XDMajDate, '%d/%m/%Y') AS DS
+    $sql = "SELECT m.XVMajDocNo, m.XVVehCode, v.XVVehName, m.XVMajStatus,FORMAT(j.XDMajDate, 'dd/MM/yyyy') AS DS
     FROM TDocTMaJob m, TDocTMaJobDate j, TMstVehicle v
     WHERE m.XVMajDocNo=j.XVMajDocNo
     AND v.XVVehCode = m.XVVehCode
     AND m.XVMajStatus = 'รอนำรถประเมินอะไหล่'
      ";
-    $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+    $stmt = $dbh->query($sql);
     $count = 1;
-    while ($row=mysqli_fetch_array($result)){
+    while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
 ?>
                                     <tr class="odd gradeA">
                                         <td><?php echo $row['XVMajDocNo']; ?></td>
@@ -75,7 +75,9 @@
                                                 href="addParts.php?id=<?php echo $row["XVMajDocNo"] ?>">ประเมิน</a>
                                         </td>
                                     </tr>
-                                    <?php $count++;} ?>
+                                    <?php $count++;} 
+                                        $dbh = null;
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
