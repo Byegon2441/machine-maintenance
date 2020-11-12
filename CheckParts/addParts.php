@@ -45,16 +45,8 @@
     }
     </style>
 </head>
-<!-- <<<<<<< HEAD -->
 <?php
-// =======
-
-// <body>
-
-//     <?php include '../Template/temTechnician.php';
-// >>>>>>> 8ff2228f701344c9827cd8e9e46cc952ec997013
-//          include '../database/connect.php';
-
+        include '../database/connect.php';
 ?>
 <?php
     if(isset($_GET['id'])){
@@ -86,9 +78,9 @@
                                     <?php
                                     include'../database/connect.php';
                                     $sql = "select * from tmstmmachine_parts";
-                                    $query = mysqli_query($connect,$sql);
-                                    if($query){
-                                        while($row=mysqli_fetch_array($query)){
+                                    $stmt = $dbh->query($sql);
+                                    if($stmt){
+                                        while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                             ?>
                                                 <option value="<?php echo $row['XVMachinePartsCode']; ?>"><?php echo $row['XVMachinePartsName'];?></option>
                                             <?php
@@ -162,8 +154,8 @@ include '../Template/templsidebar.php';
         AND v.XVDptCode = depart.XVDptCode
         AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
 
-$result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-while ($row=mysqli_fetch_array($result)){
+$stmt = $dbh->query($sql);
+while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
 ?>
     <div id="wrapper">
         <div id="page-wrapper">
@@ -284,8 +276,8 @@ while ($row=mysqli_fetch_array($result)){
                                                 FROM  tdoctmajob j ,tdoctmajobdetail jd
                                                 WHERE  j.XVMajDocNo = jd.XVMajDocNo
                                                 AND j.XVMajDocNo = '$id'";
-                                                $result2 = mysqli_query($connect,$sql2) or die(mysqli_query($connect));
-                                                while ($row2=mysqli_fetch_array($result2)){
+                                                $stmt2 = $dbh->query($sql2);
+                                                while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
 
                                             ?>
                                                 <tr id='addr0'>
@@ -322,10 +314,8 @@ while ($row=mysqli_fetch_array($result)){
                                         FROM  tdoctmajob m, tdoctmajobdate d
                                         WHERE  m.XVMajDocNo = d.XVMajDocNo
                                         AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
-
-
-                                    $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-                                    while ($row=mysqli_fetch_array($result)){
+                                    $stmt = $dbh->query($sql);
+                                    while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                         ?>
                                         <label for="numb">สถานะรถ : <?php echo $row["XVMaCarStatus"];?>
                                         </div>
@@ -370,8 +360,8 @@ while ($row=mysqli_fetch_array($result)){
                                                     WHERE  j.XVMajDocNo = tnc.XVMajDocNo
                                                     AND tnc.XVEpyCode = e.XVEpyCode
                                                     AND j.XVMajDocNo = '$id' ";
-                                                     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-                                                     while ($row=mysqli_fetch_array($result)){
+                                                     $stmt = $dbh->query($sql);
+                                                     while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                                     ?>
 
                                             <label for=""> <?php echo  $row["XVEpyCode"]." ".$row["XVEpyFirstname"]." ".$row["XVpyLastname"];?> </label>

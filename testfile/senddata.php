@@ -8,6 +8,7 @@
 <body>
     <a href="test1.php">1</a>
     <a href="test2.php">2</a>
+    <a href="logout.php">logout</a>
 </body>
 <!-- <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
 <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
@@ -31,8 +32,11 @@ $(document).ready(function(){
             //     }
             // });
             <?php 
+            if(isset($_POST['user']) && isset($_POST['pass'])){
                 $user = $_POST['user'];
                 $pass = $_POST['pass'];
+            
+              
             ?>
                     $.ajax({
                     'url':'https://networklink.co.th/ConCenter_Service/api/login',
@@ -49,9 +53,9 @@ $(document).ready(function(){
                     var decoded = jwt_decode(data);
                 
                     console.log( decoded)//obj
-                    // console.log(decoded.TSysSUserMenu)  
-                    // console.log(decoded.TSysSUserProgram)
-                    // console.log(decoded.TSysSUserReport)  
+                    // console.log(decoded.TSysSUserMenu[0].XVMnuCode)  
+                    // console.log(decoded.TSysSUserProgram[0].XVPrgCode)
+                    // console.log(decoded.TSysSUserReport[0].XVRptCode)  
 
                    
                     $.post( "set_ses.php", {
@@ -60,11 +64,15 @@ $(document).ready(function(){
                         XVUsrCode: decoded.XVUsrCode,
                         XVUsrEmail: decoded.XVUsrEmail,
                         XVUsrName: decoded.XVUsrName,
-                        exp: decoded.exp, 
+                        XVUsrName: decoded.XVUsrName,
+                        XVMnuCode : decoded.TSysSUserMenu[0].XVMnuCode,
+                        XVPrgCode : decoded.TSysSUserProgram[0].XVPrgCode,
+                        exp: decoded.exp,   
                           
                           })
                           .done(function( data ) {
-                          console.log( "Data Loaded: " +  data );
+                          //console.log( "Data Loaded: " +  data );
+                            window.location.href='test1.php';
                            });
 
                    
@@ -75,7 +83,8 @@ $(document).ready(function(){
                 }
 
 });
-            
+<?php } ?>
+
 });
 </script>
 
