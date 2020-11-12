@@ -16,12 +16,12 @@
     include '../database/connect.php';
     if ( isset( $_POST['cancle'] ) ) {
     $id = $_POST['cancle_id'];
-    $query = "UPDATE tdoctmajob
+    $sql = "UPDATE tdoctmajob
              SET XVMajDocStatus = '3' 
              WHERE XVMajDocNo ='$id'";
-    $sql = mysqli_query($connect,$query);
-    mysqli_close($connect);
-    if ( $sql ) {
+    $stmt = $dbh->query($sql);
+    $dbh = null;
+    if ( $stmt ) {
         // echo '<script>';
         // echo "alert('ทำการลบเครื่องจักรเรียบร้อยแล้ว !!!');";
         // echo "window.location='ListMachine.php';";
