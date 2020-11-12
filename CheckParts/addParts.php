@@ -236,7 +236,7 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                 <label for="numb">ตำแหน่งเครื่องจักร ณ ปัจจุบัน เลขที่:
                                     <input type="text" style="margin: 0px 10px;" size="10" name="dnum" id="dnum" value="<?php echo $row["XVDptNumber"];?>" readonly
                                         class="form-control">
-                                   ตำบล:<input type="text" style="margin: 0px 10px;" size="10" name="dsub" id="dsub" value="<?php echo $row["XVDptSub-district"];?>" readonly
+                                   ตำบล:<input type="text" style="margin: 0px 10px;" size="10" name="dsub" id="dsub" value="<?php echo $row["XVDptSub_district"];?>" readonly
                                         class="form-control">
                                     อำเภอ:<input type="text" style="margin: 0px 10px;" size="10" name="ddis" id="ddis" value="<?php echo $row["XVDptDistrict"];?>" readonly
                                         class="form-control">
@@ -354,17 +354,17 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                             </label>
 
                                             <?php
-                                                    include '../database/connect.php';
-                                                    $sql = "  SELECT *
-                                                    FROM  tdoctmajob j ,TdocTMaEstimation_Tnc tnc,TMstMTEmployee e
-                                                    WHERE  j.XVMajDocNo = tnc.XVMajDocNo
-                                                    AND tnc.XVEpyCode = e.XVEpyCode
-                                                    AND j.XVMajDocNo = '$id' ";
-                                                     $stmt = $dbh->query($sql);
-                                                     while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+                                                    // include '../database/connect.php';
+                                                    // $sql = "  SELECT *
+                                                    // FROM  tdoctmajob j ,TdocTMaEstimation_Tnc tnc,TMstMTEmployee e
+                                                    // WHERE  j.XVMajDocNo = tnc.XVMajDocNo
+                                                    // AND tnc.XVEpyCode = e.XVEpyCode
+                                                    // AND j.XVMajDocNo = '$id' ";
+                                                    //  $stmt = $dbh->query($sql);
+                                                    //  while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                                     ?>
 
-                                            <label for=""> <?php echo  $row["XVEpyCode"]." ".$row["XVEpyFirstname"]." ".$row["XVpyLastname"];?> </label>
+                                            <label for=""> <?php //echo  $row["XVEpyCode"]." ".$row["XVEpyFirstname"]." ".$row["XVpyLastname"];?> </label>
                                             <?php } ?>
                                         </div>
                                     </div>
@@ -534,5 +534,5 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
         });
         </script>
 </body>
-<?php } ?>
+<?php //} ?>
 </html>

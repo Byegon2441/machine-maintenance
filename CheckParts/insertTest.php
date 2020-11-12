@@ -13,11 +13,11 @@ session_start();
 $ide = $_POST['XVMajDocNo'];
 $XDMajFinishEstDate = $_POST['XDMajFinishEstDate'];
 foreach ($_POST['sequency'] as $key => $selectedOption){
-    echo 'ลำดับอาการที่ : '.$selectedOption.'<br>';
+    //echo 'ลำดับอาการที่ : '.$selectedOption.'<br>';
     $make_dir = mkdir("$ide/$selectedOption",0777,true);
     $img = (isset($_POST["multiImg$selectedOption"])) ? $_POST["multiImg$selectedOption"] : NULL;//ภาพมีหรือเปล่า
     if(!$img){
-        echo 'มีรูป';
+        //echo 'มีรูป';
         $countfiles = count($_FILES["multiImg$selectedOption"]["name"]);//นับไฟล์
         for ($i=0; $i < $countfiles; $i++) {
             $upload = "$ide/$selectedOption/".$_FILES["multiImg$selectedOption"]["name"][$i];
@@ -25,7 +25,7 @@ foreach ($_POST['sequency'] as $key => $selectedOption){
             $upload = "";
             $upload = "$ide/$selectedOption/";
             $sql1 = "UPDATE tdoctmajobdetail SET XVPicturePath = '$upload' WHERE XVMajDocNo = '$ide' AND XIMajdSeqNo = $selectedOption";
-            $query1 = mysqli_query( $connect, $sql1 );
+            $stmt1 = $dbh->query($sql1);
         }
     }else{
         echo 'ไม่มีรูป';
@@ -35,13 +35,11 @@ foreach ($_POST['sequency'] as $key => $selectedOption){
   $newD = str_replace('/', '-', $oldDate);
   $newDate =  date('Y-m-d', strtotime($newD));
   $showDate = date('d/m/Y', strtotime($newD));
-//  $newtime = date("H:i:s");
-                                                            //$newtime
     $sql1 ="UPDATE tdoctmajobdate SET XDMajFinishEstDate = '$newDate' WHERE XVMajDocNo = '$ide'";
-    $query1 = mysqli_query( $connect, $sql1);
+    $stmt1 = $dbh->query($sql1);
     $sql = "UPDATE TDocTMaJob SET XVMajStatus = 'รออนุมัติซ่อม' WHERE XVMajDocNo = '$ide' ";
-    $query = mysqli_query( $connect, $sql );
-    if ( $query1) {
+    $stmt = $dbh->query($sql);
+    if ( $stmt1) {
         echo '<script>';
                 echo "Swal.fire({
                     title: 'สำเร็จ!',
@@ -53,7 +51,17 @@ foreach ($_POST['sequency'] as $key => $selectedOption){
                 });";
                 echo '</script>';
     } else {
-        echo mysqli_error( $connect );
+        //echo mysqli_error( $connect );
+        echo '<script>';
+                echo "Swal.fire({
+                    title: 'เกิดข้อผิดพลาด!',
+                    text: 'ทำการส่งข้อมูลใบแจ้งซ่อมให้หัวหน้าช่างเรียบร้อยแล้ว',
+                    icon: 'error',
+                    confirmButtonText: 'Back'
+                    }).then(function() {
+                    window.location = 'listEvaluate.php';
+                });";
+                echo '</script>';
     }
 
 ?>

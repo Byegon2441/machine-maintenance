@@ -9,49 +9,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
 <?php 
-// Turn off all error reporting
-error_reporting(0);
-
-// Report simple running errors
-error_reporting(E_ERROR | E_WARNING | E_PARSE);
-
-// Reporting E_NOTICE can be good too (to report uninitialized
-// variables or catch variable name misspellings ...)
-error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
-
-// Report all errors except E_NOTICE
-error_reporting(E_ALL & ~E_NOTICE);
-
-// Report all PHP errors
-error_reporting(E_ALL);
-
-// Report all PHP errors
-error_reporting(-1);
-
-// Same as error_reporting(E_ALL);
-ini_set('error_reporting', E_ALL);
 ?>
     <title>ระบบซ่อมบำรุงเครื่องจักร : แก้ไขใบแจ้งซ่อม</title>
-
-    <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-
-    <!-- DataTables CSS -->
     <link href="../vendor/datatables/css/dataTables.bootstrap.css" rel="stylesheet">
-
-    <!-- DataTables Responsive CSS -->
     <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.6.0/dist/sweetalert2.all.min.js"></script>
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     </head>
@@ -62,19 +27,19 @@ include '../database/connect.php';
     $XVMajDocNo = $_POST['docno'];
     $seqqq = $_POST['seqq'];
     $sql = "DELETE FROM TDocTMaMachine_parts_use WHERE XVMajDocNo = '$XVMajDocNo' AND XIMajdSeqNo = $seqqq";
-    $query = mysqli_query( $connect, $sql );
+    $stmt = $dbh->query($sql);
     $nvals = count($_REQUEST['n_sub']);
-    $query2 = false;
-    if($query){
+    $stmt2 = false;
+    if($stmt){
         $nvals = count($_REQUEST['n_sub']);
         for ( $i = 0; $i < $nvals; $i++ ) {
             $n_sub = $_REQUEST['n_sub'][$i];
             $sub = $_REQUEST['sub'][$i];
             $sql2 = "INSERT INTO TDocTMaMachine_parts_use(XVMajDocNo,XIMajdSeqNo,XVMachinePartsCode,XVAmount) VALUES ('$XVMajDocNo', '$seqqq', '$n_sub', '$sub')";
-            $query2 = mysqli_query( $connect, $sql2 );
+            $stmt2 = $dbh->query($sql2);
             echo $n_sub;
         }
-        if ( $query2 ) {
+        if ( $stmt2 ) {
             echo '<script>';
             echo "Swal.fire({
                 title: 'สำเร็จ!',
@@ -86,7 +51,7 @@ include '../database/connect.php';
             });";
             echo '</script>';
         } else {
-            echo mysqli_error( $connect );
+            //echo mysqli_error( $connect );
             echo '<script>';
             echo "Swal.fire({
                 title: 'เกิดข้อผิดพลาด!',
