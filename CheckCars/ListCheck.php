@@ -52,15 +52,16 @@
                                 </thead>
                                 <tbody>
 <?php
-    $sql = "SELECT tj.XVMajStatus,tj.XVMajDocNo,tj.XVMaCarStatus,tv.XVVehEngineNumber,tv.XVVehName,DATE_FORMAT(td.XDMajEstAppPlanDate, '%d/%m/%Y') AS DA,DATE_FORMAT(td.XDMajDate, '%d/%m/%Y') AS DS
+    $sql = "SELECT tj.XVMajStatus,tj.XVMajDocNo,tj.XVMaCarStatus,tv.XVVehEngineNumber,tv.XVVehName,FORMAT (td.XDMajEstAppPlanDate, 'dd/MM/yyyy') AS DA,FORMAT (td.XDMajDate, 'dd/MM/yyyy') AS DS
     FROM tdoctmajob tj,tmstvehicle tv,tdoctmajobdate td
     WHERE tj.XVVehCode = tv.XVVehCode
     AND tj.XVMajDocNo = td.XVMajDocNo
     AND XVMajDocStatus = 2
     AND tj.XVMajStatus = 'แจ้งซ่อม'";
-    $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+    $stmt = $dbh->query($sql);
     $count = 1;
-    while ($row=mysqli_fetch_array($result)){
+    
+    while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
 ?>
                                     <tr class="odd gradeA">
                                         <td><?php echo $row["XVMajDocNo"];?></td>
@@ -74,7 +75,7 @@
                                         </td>
                                     </tr>
                                     <?php $count++;}
-                                    mysqli_close($connect); ?>
+                                 $dbh=NULL;?>
                                 </tbody>
                             </table>
                         </div>
