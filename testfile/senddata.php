@@ -13,7 +13,9 @@
 <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script> -->
 <script src="../vendor/jquery/jquery.js"></script>
 <script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../jwt-decode-master/build/jwt-decode.js"></script>
 <script>
+    
 $(document).ready(function(){
             // $.ajax({
             //     type: 'POST',
@@ -37,9 +39,13 @@ $(document).ready(function(){
                         "XVUsrCode": "TestPBRU",
                         "XVUsrPwd" : "123456789"
                     }),
-                    'success': function (data) {
-                    console.log(data);
-                    console.log("OK");
+                    'success': function (token) {
+                    var data = JSON.stringify(token);
+                    var decoded = jwt_decode(data);
+                
+                    console.log( decoded)//obj
+                    console.log(decoded.XVEmpCode)
+                   
                 },
                 error: function(error) {
                     console.log('Error: ' , error);
