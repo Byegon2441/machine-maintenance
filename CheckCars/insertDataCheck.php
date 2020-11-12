@@ -11,19 +11,18 @@
  <?php
 date_default_timezone_set('Asia/Bangkok');
  include '../database/connect.php';
- $id = $_POST['id_Data'];
+//  $id = $_POST['id_Data'];
+ $id = $_POST['noum'];
  $date = $_POST['numDate'];
  $oldDate = "$date";
  $newD = str_replace('/', '-', $oldDate);
  $newDate =  date('Y-m-d', strtotime($newD));
  $showDate = date('d/m/Y', strtotime($newD));
-// $newtime = date("H:i:s");
-                                                            //$newtime
  $query = "UPDATE tdoctmajobdate  SET XDMajEstAppPlanDate = '$newDate' WHERE XVMajDocNo = '$id'";
- $sql = mysqli_query( $connect, $query );
+ $stmt = $dbh->query($query);
  $query1 = "UPDATE tdoctmajob  SET XVMajStatus = 'รอนำรถประเมินอะไหล่' WHERE XVMajDocNo = '$id'";
- $sql1 = mysqli_query( $connect, $query1 );
- if($sql){
+ $stmt1 = $dbh->query($query1);
+ if($stmt1){
    echo '<script>';
    echo "Swal.fire({
        title: 'สำเร็จ!',
@@ -47,8 +46,7 @@ date_default_timezone_set('Asia/Bangkok');
    });";
    echo '</script>';
  }
- mysqli_close( $connect );
-
+$dbh=NULL;
  ?>
  </body>
  </html>

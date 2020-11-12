@@ -71,15 +71,14 @@
 <?php
 if(isset($_GET['id'])){
       $id=$_GET['id'];
-  $sql = " SELECT  m.XVMajDocNo, d.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus ,depart.XVDptCode,depart.XVDptName,depart.XVDptNumber,depart.`XVDptSub-district`,depart.XVDptDistrict,depart.XVDptProvince
+  $sql = " SELECT  m.XVMajDocNo, d.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus ,depart.XVDptCode,depart.XVDptName,depart.XVDptNumber,depart.XVDptSub_district,depart.XVDptDistrict,depart.XVDptProvince
 FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v,tmstmdepartment depart
 WHERE m.XVMajDocNo = d.XVMajDocNo
 AND m.XVVehCode = v.XVVehCode
 AND v.XVDptCode = depart.XVDptCode
 AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
-
-$result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-while ($row=mysqli_fetch_array($result)){
+$stmt = $dbh->query($sql);
+while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
  ?>
 <div id="wrapper">
         <div id="page-wrapper">
@@ -106,8 +105,8 @@ while ($row=mysqli_fetch_array($result)){
                                     <div class="col-md-6"></div>
                                     <div class="col-md-6 ml-auto">
                                         <div class="col text-right">
-                                            <label for="numb">เลขที่ใบแจ้งซ่อม : <input type="text" name="numb"
-                                                    value="<?php echo $row["XVMajDocNo"];?>" class="form-control" disabled></label>
+                                            <label for="numb">เลขที่ใบแจ้งซ่อม : <input type="text" name="noum"
+                                                    value="<?php echo $row["XVMajDocNo"];?>" class="form-control" readonly></label>
                                         </div>
                                     </div>
                                 </div>
@@ -161,7 +160,7 @@ while ($row=mysqli_fetch_array($result)){
                                         <label for="numb">ตำแหน่งเครื่องจักร ณ ปัจจุบัน เลขที่ :
                                             <input type="text" style="margin: 0px 10px;" size="10" name="numb" value="<?php echo $row["XVDptNumber"];?>"
                                                 class="form-control" readonly>
-                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb" value="<?php echo $row["XVDptSub-district"];?>"
+                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb" value="<?php echo $row["XVDptSub_district"];?>"
                                                 class="form-control" readonly>
                                             <input type="text" style="margin: 0px 10px;" size="10" name="numb" value="<?php echo $row["XVDptDistrict"];?>"
                                                 class="form-control" readonly>
@@ -189,14 +188,16 @@ while ($row=mysqli_fetch_array($result)){
                                             </thead>
                                             <tbody class="sub">
                                               <?php
+                                              }
                                             //  include '../database/connect.php';
                                                   $sql2 = "SELECT jd.XIMajdSeqNo,jd.XVMajdSubject,jd.XVMajdCause
                                                    FROM  tdoctmajob j ,tdoctmajobdetail jd
                                                    WHERE  j.XVMajDocNo = jd.XVMajDocNo
                                                    AND j.XVMajDocNo = '$id'";
-                                                  $result2 = mysqli_query($connect,$sql2) or die(mysqli_query($connect));
+                                                //   $result2 = mysqli_query($connect,$sql2) or die(mysqli_query($connect));
+                                                  $stmt = $dbh -> query($sql2);
                                                   $number = 0;
-                                                  while ($row2=mysqli_fetch_array($result2)){
+                                                  while ($row2=$stmt->fetch(PDO::FETCH_ASSOC)){
                                                   $number++;
                                               ?>
 
@@ -267,9 +268,9 @@ while ($row=mysqli_fetch_array($result)){
 </div>
         <!-- /#wrapper -->
 
-<?php
-                }
-                        }?>
+<!-- <?php
+                // }
+                        }?> -->
         <script src="../vendor/js/datepicker.js"></script>
         <script src="../vendor/js/datepicker.th-TH.js"></script>
         <script>
