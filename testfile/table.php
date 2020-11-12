@@ -51,7 +51,10 @@
 
 <body>
 
-    <?php include '../Template/templsidebar.php';?>
+    <?php include '../Template/templsidebar.php';
+    
+    
+    ?>
 
     <!-- modal insert -->
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
