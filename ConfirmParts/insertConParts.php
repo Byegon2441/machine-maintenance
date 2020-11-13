@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.6.0/dist/sweetalert2.all.min.js"></script>
     <title></title>
 </head>
+
 <body>
-<?php 
+    <?php 
      function success()
     {
         echo '<script>';
@@ -40,6 +42,7 @@ include '../database/connect.php';
 if(isset($_POST['save'])){
     $id = $_POST['id'];   
         // เพิ่มข้อมูล เฉพาะ จำนวนวัน , วันที่ของมา  , อะไหล่ที่มาจาก 
+        echo $id;
         if(isset($_POST['check_source'])  ){
            
             foreach ($_POST['check_source'] as $key => $value) {
@@ -52,7 +55,7 @@ if(isset($_POST['save'])){
                       AND XIMachinePartsSeqNo = '$key';
                       ";
   
-                          if(mysqli_query( $connect, $sql )){
+                          if($dbh->query($sql)){
                             success();
                           }else{
                               echo mysqli_error($connect);
@@ -74,7 +77,7 @@ if(isset($_POST['save'])){
                       AND XIMachinePartsSeqNo = '$key';
                       ";
   
-                          if(mysqli_query( $connect, $sql )){
+                          if($dbh->query($sql)){
                                success();
                           }else{
                               echo mysqli_error($connect);
@@ -96,7 +99,7 @@ if(isset($_POST['save'])){
                 WHERE XVMajDocNo= '$id'
                 AND XIMachinePartsSeqNo = '$key';
                 ";
-                  if(mysqli_query( $connect, $sql )){
+                  if($dbh->query($sql)){
                    success();
                 }else{
                 echo mysqli_error($connect);
@@ -120,7 +123,7 @@ if(isset($_POST['save'])){
                             WHERE XVMajDocNo= '$id'
                             AND XIMachinePartsSeqNo = '$key';
                             ";
-                            if(mysqli_query( $connect, $sql )){
+                            if($dbh->query($sql)){
                                                     success();
                             }else{
                                    echo mysqli_error($connect);
@@ -139,39 +142,23 @@ if(isset($_POST['save'])){
                             SET XDMajSpareDate = '$newDate' 
                             WHERE XVMajDocNo= '$id' ;
                             ";
-                            if(mysqli_query( $connect, $sql )){
+                            if($dbh->query($sql)){
                                 //เปลี่ยนสถานะเป็น รอช่างรับอะไหล่
                                 $sql = "UPDATE tdoctmajob
                                 SET XVMajStatus = 'รอช่างรับอะไหล่' 
                                 WHERE XVMajDocNo= '$id' ;
                                 ";
-                                   if(mysqli_query( $connect, $sql )){
+                                   if($dbh->query($sql)){
                                     success();
                                    }else{
                                        error();
                                    }
-
-                                
-
-                                      
                             }else{
                                 error();
-                                   //echo mysqli_error($connect);
                             }
-
         }
-
         success();
-
-
 }
-
 ?>
-
-
-
-
-
-
 </body>
 </html>
