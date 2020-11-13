@@ -15,9 +15,10 @@
  $empar = $_POST['empar'];
  $arr = explode(" ",$empar);
  $sqldate = "SELECT XDMajDate,XDMajRepairActualDate FROM tdoctmajobdate WHERE XVMajDocNo = '$id'";
- $querydate = mysqli_query($connect,$sqldate)or die("ERROR SELECT DATE");
- $rowdate = mysqli_fetch_array($querydate);
- if($rowdate['XDMajRepairActualDate'] != "0000-00-00"){
+//  $querydate = mysqli_query($connect,$sqldate)or die("ERROR SELECT DATE");
+$querydate = $dbh->query($sqldate);
+$rowdate = $querydate->fetch(PDO::FETCH_ASSOC);
+ if($rowdate['XDMajRepairActualDate'] != NULL){
    echo '<script>';
    echo "Swal.fire({
        title: 'เกิดข้อผิดพลาด!',
@@ -37,13 +38,18 @@
   //  $newtime = Date("H:i:s");
    for ($i=0; $i < count($arr)-1; $i++) {
     $sqlarr = "INSERT INTO tdoctmarepair_tnc(XVEpyCode,XVMajDocNo) VALUES ('$arr[$i]','$id')";
-    $queryarr = mysqli_query($connect,$sqlarr)or die("ERROR INSERT");
+    $queryarr = $dbh->query($sqlarr);
+
    }
                                                                  //$newtime
    $sqlda =  "UPDATE tdoctmajobdate  SET XDMajRepairActualDate = '$newDate' WHERE XVMajDocNo = '$id'";
-   $queryda = mysqli_query( $connect, $sqlda );
+  //  $queryda = mysqli_query( $connect, $sqlda );
+   $queryda = $dbh->query($sqlda);
+
    $sqlda1 =  "UPDATE tdoctmajob  SET 	XVMajStatus = 'ดำเนินการซ่อม' WHERE XVMajDocNo = '$id'";
-   $queryda1 = mysqli_query( $connect, $sqlda1 );
+  //  $queryda1 = mysqli_query( $connect, $sqlda1 );
+   $queryda1 = $dbh->query($sqlda1);
+
    if($queryda1 && $queryda){
      echo '<script>';
      echo "Swal.fire({
@@ -81,8 +87,8 @@
    echo '</script>';
  }
 }
- mysqli_close( $connect );
-
+//  mysqli_close( $connect );
+$dbh=NULL;
  ?>
  </body>
  </html>
