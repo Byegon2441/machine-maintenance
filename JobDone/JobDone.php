@@ -82,8 +82,8 @@
      AND v.XVDptCode = depart.XVDptCode
      AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
 
-    $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-    while ($row1=mysqli_fetch_array($result)){
+    $stmt = $dbh->query($sql);
+    while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
 
 
     ?>
@@ -203,8 +203,8 @@ WHERE  m.XVMajDocNo = detail.XVMajDocNo
 
 AND m.XVMajDocNo ='$id'"; //ค้นคืน รายการ เรื่องที่แจ้ง
 
-$result2 = mysqli_query($connect,$sql2) or die(mysqli_query($connect));
-while ($row2=mysqli_fetch_array($result2)){
+$stmt = $dbh->query($sql);
+    while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
 
 
 
@@ -252,9 +252,8 @@ AND partsuse.XVMachinePartsCode = parts.XVMachinePartsCode
 AND detail.XVMajDocNo='$id'
 AND partsuse.XIMajdSeqNo = %s"; //ค้นคืน รายการ อะไหล่ของแต่ละรายการเรื่องที่แจ้ง
 $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
-      $result3 = mysqli_query($connect,$sql3) or die(mysqli_query($connect));
-
-       while ($row3=mysqli_fetch_array($result3)){
+$stmt = $dbh->query($sql);
+while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
     $count ++ ;
     ?>
                                                     <?php if($row3["XVMajConfirm"]=="confirm"){?>
@@ -279,15 +278,15 @@ $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
        WHERE XVMajDocNo='$id'
        AND XIMachinePartsSeqNo = '$row3[XIMachinePartsSeqNo]'
        AND XIMajdSeqNo = '$row2[XIMajdSeqNo]'"; //ค้นคืนวันที่เบิก วันที่ของมา ถ้ามีอยู่แล้ว
-       $result4 = mysqli_query($connect,$sql4) or die(mysqli_query($connect));
-
+       $stmt = $dbh->query($sql);
     ?>
 
                                                     </td>
 
                                                     <td style="width:60px;"> <?php echo $row3["XVAmount"]; ?></td>
                                                     <?php if($row3["XVMajConfirm"]=="confirm"){
-         while ($row4=mysqli_fetch_array($result4)){
+         
+         while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
        ?>
                                                     <td><input style="width:25px; height:25px; margin:5px 25px 0;"
                                                             type="radio"
@@ -344,7 +343,7 @@ $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
 
 }//sql3
 }//sql2
-mysqli_close($connect);
+  $dbh = null;
 ?>
                                                 <tr id='addr1'></tr>
 
@@ -440,8 +439,8 @@ mysqli_close($connect);
                                                     WHERE  j.XVMajDocNo = tnc.XVMajDocNo
                                                     AND tnc.XVEpyCode = e.XVEpyCode
                                                     AND j.XVMajDocNo = '$id' ";
-                                                     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-                                                     while ($row=mysqli_fetch_array($result)){
+                                                    $stmt = $dbh->query($sql);
+                                                    while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                                     ?>
 
                                             <label for="">
@@ -462,8 +461,8 @@ mysqli_close($connect);
                                                     WHERE  j.XVMajDocNo = tnc.XVMajDocNo
                                                     AND tnc.XVEpyCode = e.XVEpyCode
                                                     AND j.XVMajDocNo = '$id' ";
-                                                     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-                                                     while ($row=mysqli_fetch_array($result)){
+                                                     $stmt = $dbh->query($sql);
+                                                     while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                                     ?>
 
                                             <label for="">

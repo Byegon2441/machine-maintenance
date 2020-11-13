@@ -31,10 +31,10 @@
 
   $query = "UPDATE tdoctmajobdate  SET XDMaPickupAppPlanDate = '$newDate'
             , XDMajFinishRepairDate = '$newDate1'  WHERE XVMajDocNo = '$idno'"; //$newtime and $newtime1
-  $sql = mysqli_query( $connect, $query );
+ $stmt = $dbh->query($query);
   $query1 = "UPDATE tdoctmajob  SET XVMajStatus = 'ซ่อมเสร็จ' WHERE XVMajDocNo = '$idno'";
-  $sql1 = mysqli_query( $connect, $query1 );
-  if($sql){
+  $stmt1 = $dbh->query($query1);
+  if($stmt1){
     echo '<script>';
     echo "Swal.fire({
         title: 'สำเร็จ!',
@@ -58,7 +58,7 @@
     });";
     echo '</script>';
   }
-  mysqli_close( $connect );
+  $dbh = null;
 
   ?>
   </body>

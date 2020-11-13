@@ -58,7 +58,7 @@
     });";
     echo '</script>';
   }
-  mysqli_close( $connect );
+  $dbh = null;
 
   ?>
   </body>
