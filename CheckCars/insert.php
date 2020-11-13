@@ -16,9 +16,9 @@
  $empar = $_POST['empar'];
  $arr = explode(" ",$empar);
  $sqldate = "SELECT XDMajDate,XDMajEstActualDate FROM tdoctmajobdate WHERE XVMajDocNo = '$id'";
- $querydate = mysqli_query($connect,$sqldate)or die("ERROR SELECT DATE");
- $rowdate = mysqli_fetch_array($querydate);
- if($rowdate['XDMajEstActualDate'] != "0000-00-00"){
+ $stmt = $dbh->query($sqldate);
+ $row=$stmt->fetch(PDO::FETCH_ASSOC);
+ if($row['XDMajEstActualDate'] != null){
    echo '<script>';
    echo "Swal.fire({
        title: 'เกิดข้อผิดพลาด!',
@@ -38,14 +38,14 @@
     //$newtime = Date("H:i:s");
    for ($i=0; $i < count($arr)-1; $i++) {
     $sqlarr = "INSERT INTO tdoctmaestimation_tnc(XVEpyCode,XVMajDocNo) VALUES ('$arr[$i]','$id')";
-    $queryarr = mysqli_query($connect,$sqlarr)or die("ERROR INSERT");
+    $stmt = $dbh->query($sqlarr);
    }
                                                               //$newtime
    $sqlda =  "UPDATE tdoctmajobdate  SET XDMajEstActualDate = '$newDate' WHERE XVMajDocNo = '$id'";
-   $queryda = mysqli_query( $connect, $sqlda );
+   $stmtda = $dbh->query($sqlda);
    $sqlda1 =  "UPDATE tdoctmajob  SET XVMaCarStatus = '$statuscar' WHERE XVMajDocNo = '$id'";
-   $queryda1 = mysqli_query( $connect, $sqlda1 );
-   if($queryda1 && $queryda){
+   $stmtda1 = $dbh->query($sqlda1);
+   if($stmtda && $stmtda1){
      echo '<script>';
      echo "Swal.fire({
          title: 'สำเร็จ!',
@@ -82,7 +82,7 @@
    echo '</script>';
  }
 }
- mysqli_close( $connect );
+ $dbh = null;
 
  ?>
  </body>
