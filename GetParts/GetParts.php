@@ -176,7 +176,7 @@
                                                 value="<?php echo $row1["XVDptNumber"];?>" readonly
                                                 class="form-control">
                                             ตำบล:<input type="text" style="margin: 0px 10px;" size="10" name="dsub"
-                                                id="dsub" value="<?php echo $row1["XVDptSub-district"];?>" readonly
+                                                id="dsub" value="<?php echo $row1["XVDptSub_district"];?>" readonly
                                                 class="form-control">
                                             อำเภอ:<input type="text" style="margin: 0px 10px;" size="10" name="ddis"
                                                 id="ddis" value="<?php echo $row1["XVDptDistrict"];?>" readonly
@@ -202,6 +202,8 @@ FROM  tdoctmajob m,TDocTMaJobDetail detail
 WHERE  m.XVMajDocNo = detail.XVMajDocNo
 
 AND m.XVMajDocNo ='$id'"; //ค้นคืน รายการ เรื่องที่แจ้ง
+    $stmt2 = $dbh->query($sql2);
+    while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
 
 $stmt2 = $dbh->query($sql2);
 while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
@@ -312,7 +314,7 @@ $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
                                                             name="XDMachinePartsReady[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
                                                             id="XDMachinePartsReady[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
                                                             class="form-control" data-toggle="datepicker"
-                                                            value="<?php if(isset($row4['DA']) && $row4['XDMachinePartsReady']!= "0000-00-00"){echo $row4['DA'];}?>"
+                                                            value="<?php if(isset($row4['DA']) && $row4['XDMachinePartsReady']!= NULL){echo $row4['DA'];}?>"
                                                             disabled> </td> <!-- วันที่ของจะมา-->
                                                     <td><input style="width:25px; height:25px; margin:5px 20px 0;"
                                                             type="checkbox"
@@ -326,7 +328,7 @@ $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
                                                             name="XDMachinePartsUse[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
                                                             id="XDMachinePartsUse<?php echo $row3["XIMachinePartsSeqNo"];?>"
                                                             class="form-control hid" data-toggle="datepicker" disabled
-                                                            value="<?php if(isset($row4['DS']) && $row4['XDMachinePartsUse']!= "0000-00-00"){echo $row4['DS'];}?>">
+                                                            value="<?php if(isset($row4['DS']) && $row4['XDMachinePartsUse']!= NULL){echo $row4['DS'];}?>">
                                                     </td> <!-- วันที่เบิก-->
                                                     <?php
 }//sql4
