@@ -354,17 +354,17 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                             </label>
 
                                             <?php
-                                                    // include '../database/connect.php';
-                                                    // $sql = "  SELECT *
-                                                    // FROM  tdoctmajob j ,TdocTMaEstimation_Tnc tnc,TMstMTEmployee e
-                                                    // WHERE  j.XVMajDocNo = tnc.XVMajDocNo
-                                                    // AND tnc.XVEpyCode = e.XVEpyCode
-                                                    // AND j.XVMajDocNo = '$id' ";
-                                                    //  $stmt = $dbh->query($sql);
-                                                    //  while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+                                                    include '../database/connect.php';
+                                                    $sql = "  SELECT *
+                                                    FROM  tdoctmajob j ,TdocTMaEstimation_Tnc tnc,TMstMTEmployee e
+                                                    WHERE  j.XVMajDocNo = tnc.XVMajDocNo
+                                                    AND tnc.XVEpyCode = e.XVEmpCode
+                                                    AND j.XVMajDocNo = '$id' ";
+                                                     $stmt = $dbh->query($sql);
+                                                     while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                                     ?>
 
-                                            <label for=""> <?php //echo  $row["XVEpyCode"]." ".$row["XVEpyFirstname"]." ".$row["XVpyLastname"];?> </label>
+                                            <label for=""> <?php echo  $row["XVEpyCode"]." ".$row["XVEmpName"];?> </label>
                                             <?php } ?>
                                         </div>
                                     </div>
@@ -534,5 +534,5 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
         });
         </script>
 </body>
-<?php //} ?>
+<?php } ?>
 </html>

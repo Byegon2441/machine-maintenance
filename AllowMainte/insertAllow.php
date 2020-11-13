@@ -44,18 +44,21 @@ if(isset($_POST['save'])){
  $newD = str_replace('/', '-', $oldDate);
  $newDate =  date('Y-m-d', strtotime($newD));
  $showDate = date('d/m/Y', strtotime($newD));
- $newtime = date("h:i:sa");  
+//  $newtime = date("h:i:sa");  
    
- $sql = "UPDATE tdoctmajobdate  SET XDMajConfirmDate = '$newDate $newtime' WHERE XVMajDocNo = '$id'";
-        if(mysqli_query( $connect, $sql )){
+ $sql = "UPDATE tdoctmajobdate  SET XDMajConfirmDate = '$newDate' WHERE XVMajDocNo = '$id'";
+        // $stmt0 = $dbh->query($sql);
+        if($dbh->query($sql)){
+        // if(mysqli_query( $connect, $sql )){
 
             $sql2 = "UPDATE TDocTMaJob
             SET XVMajStatus = 'รออะไหล่'
             WHERE XVMajDocNo = '$id'";
           
             
-             
-             if(mysqli_query( $connect, $sql2 )){
+            //  $stmt = $dbh->query($sql2);
+             if($dbh->query($sql2)){
+            //  if(mysqli_query( $connect, $sql2 )){
               
               if(  isset($_POST['check'])  ){
 
@@ -69,7 +72,8 @@ if(isset($_POST['save'])){
                     SET XVMajConfirm = '$value'
                     WHERE XVMajDocNo = '$id'
                     AND XIMajdSeqNo= '$key'";
-                   mysqli_query( $connect, $sql3); 
+                //    mysqli_query( $connect, $sql3); 
+                   $dbh->query($sql3);
                 }
             }
                             
