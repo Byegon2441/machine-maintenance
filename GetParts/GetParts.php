@@ -176,7 +176,7 @@
                                                 value="<?php echo $row1["XVDptNumber"];?>" readonly
                                                 class="form-control">
                                             ตำบล:<input type="text" style="margin: 0px 10px;" size="10" name="dsub"
-                                                id="dsub" value="<?php echo $row1["XVDptSub-district"];?>" readonly
+                                                id="dsub" value="<?php echo $row1["XVDptSub_district"];?>" readonly
                                                 class="form-control">
                                             อำเภอ:<input type="text" style="margin: 0px 10px;" size="10" name="ddis"
                                                 id="ddis" value="<?php echo $row1["XVDptDistrict"];?>" readonly
@@ -405,28 +405,29 @@ $dbh = null;
                                             </label>
                                         </div>
                                     </div>
+                                    
 
-                                    <!-- <div class="col-md-12">
+                                    <div class="col-md-12">
                                         <div class="col text-left">
                                             <label for="numb">ช่างประเมิน :
-                                            </label>
+                                            </label> 
                                             <?php
-                                                    // include '../database/connect.php';
-                                                    // $sql = "  SELECT *
-                                                    // FROM  tdoctmajob j ,TdocTMaEstimation_Tnc tnc,TMstMTEmployee e
-                                                    // WHERE  j.XVMajDocNo = tnc.XVMajDocNo
-                                                    // AND tnc.XVEmpCode = e.XVEmpCode
-                                                    // AND j.XVMajDocNo = '$id' ";
-                                                    //  $stmt = $dbh->query($sql);
-                                                    //  while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+                                                    include '../database/connect.php';
+                                                    $sql = "  SELECT *
+                                                    FROM  tdoctmajob j ,TdocTMaEstimation_Tnc tnc,TMstMTEmployee e
+                                                    WHERE  j.XVMajDocNo = tnc.XVMajDocNo
+                                                    AND tnc.XVEpyCode = e.XVEmpCode
+                                                    AND j.XVMajDocNo = '$id' ";
+                                                     $stmt5 = $dbh->query($sql);
+                                                     while ($row5=$stmt5->fetch(PDO::FETCH_ASSOC)){
                                                     ?>
 
                                             <label for="">
-                                                <?php //echo  $row["XVEmpCode"]." ".$row["XVEmpFirstname"];?>
+                                                <?php echo  $row5["XVEmpCode"]." ".$row5["XVEmpName"];?>
                                             </label>
-                                            <?php //} ?>
+                                            <?php } ?>
                                         </div>
-                                    </div> -->
+                                    </div>
 
                                 </div>
 

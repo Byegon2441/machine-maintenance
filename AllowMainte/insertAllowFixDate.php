@@ -20,10 +20,12 @@
   //$newtime = date("H:i:s");
                                                                 //$newtime
   $query = "UPDATE tdoctmajobdate  SET XDMajRepairAppPlanDate = '$newDate' WHERE XVMajDocNo = '$idno'";
-  $sql = mysqli_query( $connect, $query );
+  $stmt = $dbh->query($query);
+  // $sql = mysqli_query( $connect, $query );
   $query1 = "UPDATE tdoctmajob  SET XVMajStatus = 'รอนำรถเข้าซ่อม' WHERE XVMajDocNo = '$idno'";
-  $sql1 = mysqli_query( $connect, $query1 );
-  if($sql){
+  $stmt1 = $dbh->query($query1);
+  // $sql1 = mysqli_query( $connect, $query1 );
+  if($stmt1){
     echo '<script>';
     echo "Swal.fire({
         title: 'สำเร็จ!',
@@ -47,7 +49,8 @@
     });";
     echo '</script>';
   }
-  mysqli_close( $connect );
+  // mysqli_close( $connect );
+  $dbh= NULL;
 
   ?>
   </body>
