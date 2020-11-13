@@ -200,7 +200,7 @@ while ($row=$stmt1->fetch(PDO::FETCH_ASSOC)){
                                             <input type="text" style="margin: 0px 10px;" size="10" name="numb"
                                                 value="<?php echo $row["XVDptNumber"];?>" class="form-control" readonly>
                                             <input type="text" style="margin: 0px 10px;" size="10" name="numb"
-                                                value="<?php echo $row["XVDptSub-district"];?>" class="form-control"
+                                                value="<?php echo $row["XVDptSub_district"];?>" class="form-control"
                                                 readonly>
                                             <input type="text" style="margin: 0px 10px;" size="10" name="numb"
                                                 value="<?php echo $row["XVDptDistrict"];?>" class="form-control"
@@ -320,7 +320,7 @@ while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
                                             <label for="numb">วันนัดประเมิน : <input type="text" size="6" name="numb"
                                                     value="<?php echo $newDate ?>" class="form-control" disabled>
                                             </label>
-                                            <?php if($rowdate['XDMajEstActualDate'] != "0000-00-00"){
+                                            <?php if($rowdate['XDMajEstActualDate'] != NULL){
                                           $oD = $rowdate['XDMajEstActualDate'];
                                           $nD = str_replace('-', '/', $oD);
                                           $newa =  date('d/m/Y', strtotime($nD));
@@ -369,12 +369,12 @@ while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
                                             // $sqldepart1 = "SELECT count(tn.XVEpyCode) AS tnXV FROM tdoctmaestimation_tnc tn,tmstmtemployee tm WHERE tn.XVEpyCode = tm.XVEpyCode AND XVMajDocNo = '$id'";
                                             // $stmt4=$dbh->query($sqldepart1);
                                             // $fectdep=$stmt4->fetch(PDO::FETCH_ASSOC);
-    
+
                                             // if($fectdep['tnXV'] != 0){
                                             //   $sqldepart = "SELECT tn.XVEpyCode,tm.XVEpyFirstname,tm.XVpyLastname FROM tdoctmaestimation_tnc tn,tmstmtemployee tm WHERE tn.XVEpyCode = tm.XVEpyCode AND XVMajDocNo = '$id'";
                                             //   $stmt5=$dbh->query($querydepart);
                                             //   while ($rowdepart=$stmt5->fetch(PDO::FETCH_ASSOC)) {
-                                                
+
                                             //     echo $rowdepart['XVEpyCode']." ";
                                             //     echo $rowdepart['XVEpyFirstname']." ";
                                             //     echo $rowdepart['XVpyLastname']." ";
@@ -472,7 +472,7 @@ while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
 <!-- <div class="col-sm-7">
                                 <select name="selectemployee[]" class="selectpicker form-control"
                                     data-live-search="true" multiple>
-                                   // <?php 
+                                   // <?php
                                     // $emp_sql = "SELECT * FROM tmstmtemployee ORDER BY XVEpyJobPosition ASC";
                                     // $stmt = $dbh->query($emp_sql);
                                     // while ($emp_row=$stmt->fetch(PDO::FETCH_ASSOC)){
