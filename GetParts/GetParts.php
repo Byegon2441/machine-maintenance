@@ -82,8 +82,8 @@
      AND v.XVDptCode = depart.XVDptCode
      AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
 
-    $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-    while ($row1=mysqli_fetch_array($result)){
+    $stmt = $dbh->query($sql);
+    while ($row1=$stmt->fetch(PDO::FETCH_ASSOC)){
 
 
     ?>
@@ -203,8 +203,8 @@ WHERE  m.XVMajDocNo = detail.XVMajDocNo
 
 AND m.XVMajDocNo ='$id'"; //ค้นคืน รายการ เรื่องที่แจ้ง
 
-$result2 = mysqli_query($connect,$sql2) or die(mysqli_query($connect));
-while ($row2=mysqli_fetch_array($result2)){
+$stmt2 = $dbh->query($sql2);
+while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
 
 
 
@@ -252,9 +252,9 @@ AND partsuse.XVMachinePartsCode = parts.XVMachinePartsCode
 AND detail.XVMajDocNo='$id'
 AND partsuse.XIMajdSeqNo = %s"; //ค้นคืน รายการ อะไหล่ของแต่ละรายการเรื่องที่แจ้ง
 $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
-      $result3 = mysqli_query($connect,$sql3) or die(mysqli_query($connect));
+    $stmt3 = $dbh->query($sql3);
 
-       while ($row3=mysqli_fetch_array($result3)){
+       while ($row3=$stmt3->fetch(PDO::FETCH_ASSOC)){
     $count ++ ;
     ?>
                                                     <?php if($row3["XVMajConfirm"]=="confirm"){?>
@@ -274,12 +274,12 @@ $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
                                                     <td>
                                                         <?php echo $row3["XVMachinePartsName"];?>
                                                         <?php
-     $sql4 = "SELECT DATE_FORMAT(XDMachinePartsReady, '%d/%m/%Y') AS DA,DATE_FORMAT(XDMachinePartsUse, '%d/%m/%Y') AS DS,XDMachinePartsReady,XDMachinePartsUse
+     $sql4 = "SELECT FORMAT(XDMachinePartsReady, 'dd/MM/yyyy') AS DA,FORMAT(XDMachinePartsUse, 'dd/MM/yyyy') AS DS,XDMachinePartsReady,XDMachinePartsUse
        FROM tdoctmamachine_parts_use
        WHERE XVMajDocNo='$id'
        AND XIMachinePartsSeqNo = '$row3[XIMachinePartsSeqNo]'
        AND XIMajdSeqNo = '$row2[XIMajdSeqNo]'"; //ค้นคืนวันที่เบิก วันที่ของมา ถ้ามีอยู่แล้ว
-       $result4 = mysqli_query($connect,$sql4) or die(mysqli_query($connect));
+       $stmt4 = $dbh->query($sql4);
 
     ?>
 
@@ -287,7 +287,7 @@ $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
 
                                                     <td style="width:60px;"> <?php echo $row3["XVAmount"]; ?></td>
                                                     <?php if($row3["XVMajConfirm"]=="confirm"){
-         while ($row4=mysqli_fetch_array($result4)){
+         while ($row4=$stmt4->fetch(PDO::FETCH_ASSOC)){
        ?>
                                                     <td><input style="width:25px; height:25px; margin:5px 25px 0;"
                                                             type="radio"
@@ -344,7 +344,7 @@ $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
 
 }//sql3
 }//sql2
-mysqli_close($connect);
+$dbh = null;
 ?>
                                                 <tr id='addr1'></tr>
 
@@ -406,27 +406,27 @@ mysqli_close($connect);
                                         </div>
                                     </div>
 
-                                    <div class="col-md-12">
+                                    <!-- <div class="col-md-12">
                                         <div class="col text-left">
                                             <label for="numb">ช่างประเมิน :
                                             </label>
                                             <?php
-                                                    include '../database/connect.php';
-                                                    $sql = "  SELECT *
-                                                    FROM  tdoctmajob j ,TdocTMaEstimation_Tnc tnc,TMstMTEmployee e
-                                                    WHERE  j.XVMajDocNo = tnc.XVMajDocNo
-                                                    AND tnc.XVEpyCode = e.XVEpyCode
-                                                    AND j.XVMajDocNo = '$id' ";
-                                                     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-                                                     while ($row=mysqli_fetch_array($result)){
+                                                    // include '../database/connect.php';
+                                                    // $sql = "  SELECT *
+                                                    // FROM  tdoctmajob j ,TdocTMaEstimation_Tnc tnc,TMstMTEmployee e
+                                                    // WHERE  j.XVMajDocNo = tnc.XVMajDocNo
+                                                    // AND tnc.XVEmpCode = e.XVEmpCode
+                                                    // AND j.XVMajDocNo = '$id' ";
+                                                    //  $stmt = $dbh->query($sql);
+                                                    //  while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                                     ?>
 
                                             <label for="">
-                                                <?php echo  $row["XVEpyCode"]." ".$row["XVEpyFirstname"]." ".$row["XVpyLastname"];?>
+                                                <?php //echo  $row["XVEmpCode"]." ".$row["XVEmpFirstname"];?>
                                             </label>
-                                            <?php } ?>
+                                            <?php //} ?>
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                 </div>
 
