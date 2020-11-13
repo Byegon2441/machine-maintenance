@@ -82,8 +82,9 @@
      AND v.XVDptCode = depart.XVDptCode
      AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
 
-    $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-    while ($row1=mysqli_fetch_array($result)){
+    // $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+    $stmt = $dbh->query($sql);
+    while ($row1=$stmt->fetch(PDO::FETCH_ASSOC)){
 
 
     ?>
@@ -176,7 +177,7 @@
                                                 value="<?php echo $row1["XVDptNumber"];?>" readonly
                                                 class="form-control">
                                             ตำบล:<input type="text" style="margin: 0px 10px;" size="10" name="dsub"
-                                                id="dsub" value="<?php echo $row1["XVDptSub-district"];?>" readonly
+                                                id="dsub" value="<?php echo $row1["XVDptSub_district"];?>" readonly
                                                 class="form-control">
                                             อำเภอ:<input type="text" style="margin: 0px 10px;" size="10" name="ddis"
                                                 id="ddis" value="<?php echo $row1["XVDptDistrict"];?>" readonly
@@ -202,9 +203,11 @@ FROM  tdoctmajob m,TDocTMaJobDetail detail
 WHERE  m.XVMajDocNo = detail.XVMajDocNo
 
 AND m.XVMajDocNo ='$id'"; //ค้นคืน รายการ เรื่องที่แจ้ง
+    $stmt2 = $dbh->query($sql2);
+    while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
 
-$result2 = mysqli_query($connect,$sql2) or die(mysqli_query($connect));
-while ($row2=mysqli_fetch_array($result2)){
+// $result2 = mysqli_query($connect,$sql2) or die(mysqli_query($connect));
+// while ($row2=mysqli_fetch_array($result2)){
 
 
 
@@ -252,9 +255,13 @@ AND partsuse.XVMachinePartsCode = parts.XVMachinePartsCode
 AND detail.XVMajDocNo='$id'
 AND partsuse.XIMajdSeqNo = %s"; //ค้นคืน รายการ อะไหล่ของแต่ละรายการเรื่องที่แจ้ง
 $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
-      $result3 = mysqli_query($connect,$sql3) or die(mysqli_query($connect));
 
-       while ($row3=mysqli_fetch_array($result3)){
+$stmt3 = $dbh->query($sql3);
+while ($row3=$stmt3->fetch(PDO::FETCH_ASSOC)){
+
+    //   $result3 = mysqli_query($connect,$sql3) or die(mysqli_query($connect));
+
+    //    while ($row3=mysqli_fetch_array($result3)){
     $count ++ ;
     ?>
                                                     <?php if($row3["XVMajConfirm"]=="confirm"){?>
@@ -274,20 +281,23 @@ $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
                                                     <td>
                                                         <?php echo $row3["XVMachinePartsName"];?>
                                                         <?php
-     $sql4 = "SELECT DATE_FORMAT(XDMachinePartsReady, '%d/%m/%Y') AS DA,DATE_FORMAT(XDMachinePartsUse, '%d/%m/%Y') AS DS,XDMachinePartsReady,XDMachinePartsUse
+     $sql4 = "SELECT format(XDMachinePartsReady, 'dd/MM/yyyy') AS DA,format(XDMachinePartsUse, 'dd/MM/yyyy') AS DS,XDMachinePartsReady,XDMachinePartsUse
        FROM tdoctmamachine_parts_use
        WHERE XVMajDocNo='$id'
        AND XIMachinePartsSeqNo = '$row3[XIMachinePartsSeqNo]'
        AND XIMajdSeqNo = '$row2[XIMajdSeqNo]'"; //ค้นคืนวันที่เบิก วันที่ของมา ถ้ามีอยู่แล้ว
-       $result4 = mysqli_query($connect,$sql4) or die(mysqli_query($connect));
-
-    ?>
+    //    $result4 = mysqli_query($connect,$sql4) or die(mysqli_query($connect));
+       $stmt4 = $dbh->query($sql4);
+       
+       
+       ?>
 
                                                     </td>
 
                                                     <td style="width:60px;"> <?php echo $row3["XVAmount"]; ?></td>
                                                     <?php if($row3["XVMajConfirm"]=="confirm"){
-         while ($row4=mysqli_fetch_array($result4)){
+           while ($row4=$stmt4->fetch(PDO::FETCH_ASSOC)){
+        //  while ($row4=mysqli_fetch_array($result4)){
        ?>
                                                     <td><input style="width:25px; height:25px; margin:5px 25px 0;"
                                                             type="radio"
@@ -312,7 +322,7 @@ $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
                                                             name="XDMachinePartsReady[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
                                                             id="XDMachinePartsReady[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
                                                             class="form-control" data-toggle="datepicker"
-                                                            value="<?php if(isset($row4['DA']) && $row4['XDMachinePartsReady']!= "0000-00-00"){echo $row4['DA'];}?>"
+                                                            value="<?php if(isset($row4['DA']) && $row4['XDMachinePartsReady']!= NULL){echo $row4['DA'];}?>"
                                                             disabled> </td> <!-- วันที่ของจะมา-->
                                                     <td><input style="width:25px; height:25px; margin:5px 20px 0;"
                                                             type="checkbox"
@@ -326,7 +336,7 @@ $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
                                                             name="XDMachinePartsUse[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
                                                             id="XDMachinePartsUse<?php echo $row3["XIMachinePartsSeqNo"];?>"
                                                             class="form-control hid" data-toggle="datepicker" disabled
-                                                            value="<?php if(isset($row4['DS']) && $row4['XDMachinePartsUse']!= "0000-00-00"){echo $row4['DS'];}?>">
+                                                            value="<?php if(isset($row4['DS']) && $row4['XDMachinePartsUse']!= NULL){echo $row4['DS'];}?>">
                                                     </td> <!-- วันที่เบิก-->
                                                     <?php
 }//sql4
@@ -344,7 +354,8 @@ $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
 
 }//sql3
 }//sql2
-mysqli_close($connect);
+// mysqli_close($connect);
+$dbh=NULL;
 ?>
                                                 <tr id='addr1'></tr>
 
@@ -415,14 +426,16 @@ mysqli_close($connect);
                                                     $sql = "  SELECT *
                                                     FROM  tdoctmajob j ,TdocTMaEstimation_Tnc tnc,TMstMTEmployee e
                                                     WHERE  j.XVMajDocNo = tnc.XVMajDocNo
-                                                    AND tnc.XVEpyCode = e.XVEpyCode
+                                                    AND tnc.XVEpyCode = e.XVEmpCode
                                                     AND j.XVMajDocNo = '$id' ";
-                                                     $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
-                                                     while ($row=mysqli_fetch_array($result)){
-                                                    ?>
+                                                    //  $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+                                                    //  while ($row=mysqli_fetch_array($result)){
+                                                        $stmt = $dbh->query($sql);
+                                                        while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+?>
 
                                             <label for="">
-                                                <?php echo  $row["XVEpyCode"]." ".$row["XVEpyFirstname"]." ".$row["XVpyLastname"];?>
+                                                <?php echo  $row["XVEmpCode"]." ".$row["XVEmpName"];?>
                                             </label>
                                             <?php } ?>
                                         </div>
