@@ -76,12 +76,12 @@
             $id=$_GET['id'];
             //m.XVMaCarStatus,/* เลขที่ใบแจ้งซ่อม */ m.XVMajDocNo,/* วันที่ใบแจ้งซ่อม */ d.XDMajDate, /* รหัสเครื่องจักร */m.XVVehCode, /* ชื่อเครื่องจักร */v.XVVehName, /* รหัสไซต์งาน */depart.XVDptCode,/* ชื่อไซต์งาน */depart.XVDptName,/* เลขที่ */depart.XVDptNumber,/* ตำบล */depart.`XVDptSub-district`,/* อำเภอ */depart.XVDptDistrict,/* จังหวัด */depart.XVDptProvince
         $sql = " SELECT   *
-     FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v,tmstmdepartment depart 
-     WHERE  m.XVMajDocNo = d.XVMajDocNo 
+     FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v,tmstmdepartment depart
+     WHERE  m.XVMajDocNo = d.XVMajDocNo
      AND m.XVVehCode = v.XVVehCode
      AND v.XVDptCode = depart.XVDptCode
      AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
-    
+
     // $result = mysqli_query($connect,$sql) or die(mysqli_query($connect));
     $stmt = $dbh->query($sql);
     while ($row1=$stmt->fetch(PDO::FETCH_ASSOC)){
@@ -189,21 +189,21 @@
                                     </div>
 
                                     <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                                        <?php 
+                                        <?php
 
                         include '../database/connect.php';
                                      $sql2 = " SELECT   *
                                      FROM  tdoctmajob m,TDocTMaJobDetail detail
-                                     WHERE  m.XVMajDocNo = detail.XVMajDocNo 
-                               
+                                     WHERE  m.XVMajDocNo = detail.XVMajDocNo
+
                                      AND m.XVMajDocNo ='$id'"; //ค้นคืน รายการ เรื่องที่แจ้ง
-                        
+
                                     // $result2 = mysqli_query($connect,$sql2) or die(mysqli_query($connect));
                                     $stmt2 = $dbh->query($sql2);
                                     while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
-                                        
-                                        
-                               
+
+
+
                                     ?>
                                         <table class="table table-bordered" id="tab_logic">
                                             <thead>
@@ -240,11 +240,11 @@
                                                 <tr id='addr0'>
 
 
-                                                    <?php  
+                                                    <?php
                                             $count = 0 ;
                                     $sql3 = " SELECT   *
                                     FROM  TDocTMaJobDetail detail,TDocTMaMachine_parts_use partsuse ,TMstMMachine_parts parts
-                                    WHERE  detail.XVMajDocNo = partsuse.XVMajDocNo 
+                                    WHERE  detail.XVMajDocNo = partsuse.XVMajDocNo
                                     And detail.XIMajdSeqNo = partsuse.XIMajdSeqNo
                                     AND partsuse.XVMachinePartsCode = parts.XVMachinePartsCode
                                     AND detail.XVMajDocNo='$id'
@@ -301,19 +301,19 @@
                                             <label for="numb">วันนัดประเมิน : <?php $datecon2 = $row1["XDMajEstAppPlanDate"];
                                                          $DN2 = str_replace('-', '/', $datecon2);
                                                           $Dnew2 =  date('d/m/Y', strtotime($DN2));
-                                                          echo $Dnew2;?>
+                                                          ?><input type="text" class="form-control" size="6" value="<?php echo $Dnew2;?>" disabled>
 
                                             </label>
                                             <label for="numb">วันที่ประเมิน : <?php $datecon3 = $row1["XDMajEstActualDate"];
                                                          $DN3 = str_replace('-', '/', $datecon3);
                                                           $Dnew3 =  date('d/m/Y', strtotime($DN3));
-                                                          echo $Dnew3;?>
+                                                          ?><input type="text" class="form-control" size="6" value="<?php echo $Dnew3;?>" disabled>
 
                                             </label>
                                             <label for="numb">วันที่ประเมินเสร็จ : <?php $datecon4 = $row1["XDMajFinishEstDate"];
                                                          $DN4 = str_replace('-', '/', $datecon4);
                                                           $Dnew4 =  date('d/m/Y', strtotime($DN4));
-                                                          echo $Dnew4;?>
+                                                          ?><input type="text" class="form-control" size="6" value="<?php echo $Dnew4;?>" disabled>
 
                                             </label>
                                             <label for="numb">วันที่อนุมัติซ่อม : <input id="datepicker" size="6"
@@ -336,7 +336,7 @@
                                                     AND j.XVMajDocNo = '$id' ";
                                                         $stmt4 = $dbh->query($sql);
                                                         while ($row=$stmt4->fetch(PDO::FETCH_ASSOC)){
-            
+
                                                     ?>
 
                                             <label for=""> <?php echo  $row["XVEpyCode"]." ".$row["XVEmpName"];?>
@@ -377,7 +377,7 @@
         </div>
         <!-- /#wrapper -->
         <?php
-    } 
+    }
 }
         ?>
 

@@ -76,13 +76,13 @@
             $id=$_GET['id'];
             //m.XVMaCarStatus,/* เลขที่ใบแจ้งซ่อม */ m.XVMajDocNo,/* วันที่ใบแจ้งซ่อม */ d.XDMajDate, /* รหัสเครื่องจักร */m.XVVehCode, /* ชื่อเครื่องจักร */v.XVVehName, /* รหัสไซต์งาน */depart.XVDptCode,/* ชื่อไซต์งาน */depart.XVDptName,/* เลขที่ */depart.XVDptNumber,/* ตำบล */depart.`XVDptSub-district`,/* อำเภอ */depart.XVDptDistrict,/* จังหวัด */depart.XVDptProvince
         $sql = " SELECT   *
-     FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v,tmstmdepartment depart 
-     WHERE  m.XVMajDocNo = d.XVMajDocNo 
+     FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v,tmstmdepartment depart
+     WHERE  m.XVMajDocNo = d.XVMajDocNo
      AND m.XVVehCode = v.XVVehCode
      AND v.XVDptCode = depart.XVDptCode
      AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
     $stmt = $dbh->query($sql);
-    while ($row1=$stmt->fetch(PDO::FETCH_ASSOC)){    
+    while ($row1=$stmt->fetch(PDO::FETCH_ASSOC)){
     ?>
     <div id="wrapper">
         <div id="page-wrapper">
@@ -187,13 +187,13 @@
                                     </div>
 
                                     <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                                        <?php 
+                                        <?php
 
                         include '../database/connect.php';
                                      $sql2 = " SELECT   *
                                      FROM  tdoctmajob m,TDocTMaJobDetail detail
-                                     WHERE  m.XVMajDocNo = detail.XVMajDocNo 
-                                     AND m.XVMajDocNo ='$id'"; //ค้นคืน รายการ เรื่องที่แจ้ง                        
+                                     WHERE  m.XVMajDocNo = detail.XVMajDocNo
+                                     AND m.XVMajDocNo ='$id'"; //ค้นคืน รายการ เรื่องที่แจ้ง
                                     $stmt2 = $dbh->query($sql2);
                                     while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
                                     ?>
@@ -221,11 +221,11 @@
                                             <tbody class="sub">
                                                 <?php ?>
                                                 <tr id='addr0'>
-                                                    <?php  
+                                                    <?php
                                             $count = 0 ;
-                                    $sql3 = " SELECT   * 
+                                    $sql3 = " SELECT   *
                                     FROM  TDocTMaJobDetail detail,TDocTMaMachine_parts_use partsuse ,TMstMMachine_parts parts
-                                    WHERE  detail.XVMajDocNo = partsuse.XVMajDocNo 
+                                    WHERE  detail.XVMajDocNo = partsuse.XVMajDocNo
                                     And detail.XIMajdSeqNo = partsuse.XIMajdSeqNo
                                     AND partsuse.XVMachinePartsCode = parts.XVMachinePartsCode
                                     AND detail.XVMajDocNo='$id'
@@ -252,7 +252,7 @@
 
                                                     <td>
                                                         <?php echo $row3["XVMachinePartsName"];?>
-                                                        <?php 
+                                                        <?php
                                           $sql4 = "SELECT FORMAT(XDMachinePartsReady, 'dd/MM/yyyy') AS DA,FORMAT(XDMachinePartsUse, 'dd/MM/yyyy') AS DS,XDMachinePartsReady,XDMachinePartsUse
                                             FROM tdoctmamachine_parts_use
                                             WHERE XVMajDocNo='$id'
@@ -265,7 +265,7 @@
                                                     </td>
 
                                                     <td style="width:60px;"> <?php echo $row3["XVAmount"]; ?></td>
-                                                    <?php if($row3["XVMajConfirm"]=="confirm"){  
+                                                    <?php if($row3["XVMajConfirm"]=="confirm"){
                                               while ($row4=$stmt4->fetch(PDO::FETCH_ASSOC)){
                                             ?>
                                                     <td><input style="width:25px; height:25px; margin:5px 25px 0;"
@@ -319,8 +319,8 @@
                                                     <?php } ?>
                                                 </tr>
                                                 <?php
-                                        
-                                     
+
+
                                      }//sql3
                                     }//sql2
                                     $dbh=NULL;
@@ -355,30 +355,30 @@
                                             <label for="numb">วันนัดประเมิน : <?php $datecon2 = $row1["XDMajEstAppPlanDate"];
                                                          $DN2 = str_replace('-', '/', $datecon2);
                                                           $Dnew2 =  date('d/m/Y', strtotime($DN2));
-                                                          echo $Dnew2;?>
+                                                          ?><input type="text" class="form-control" size="6" value="<?php echo $Dnew2;?>" disabled>
 
                                             </label>
                                             <label for="numb">วันที่ประเมิน : <?php $datecon3 = $row1["XDMajEstActualDate"];
                                                          $DN3 = str_replace('-', '/', $datecon3);
                                                           $Dnew3 =  date('d/m/Y', strtotime($DN3));
-                                                          echo $Dnew3;?>
+                                                          ?><input type="text" class="form-control" size="6" value="<?php echo $Dnew3;?>" disabled>
 
                                             </label>
                                             <label for="numb">วันที่ประเมินเสร็จ : <?php $datecon4 = $row1["XDMajFinishEstDate"];
                                                          $DN4 = str_replace('-', '/', $datecon4);
                                                           $Dnew4 =  date('d/m/Y', strtotime($DN4));
-                                                          echo $Dnew4;?>
+                                                          ?><input type="text" class="form-control" size="6" value="<?php echo $Dnew4;?>" disabled>
 
                                             </label>
 
                                             <label for="numb">วันที่อนุมัติซ่อม : <?php $datecon5 = $row1["XDMajConfirmDate"];
                                                          $DN5 = str_replace('-', '/', $datecon5);
                                                           $Dnew5 =  date('d/m/Y', strtotime($DN5));
-                                                          echo $Dnew5;?>
+                                                          ?><input type="text" class="form-control" size="6" value="<?php echo $Dnew5;?>" disabled>
 
                                             </label>
                                             <?php if(isset($row1['XDMajSpareDate']) && $row1['XDMajSpareDate'] != "0000-00-00"){
-                                          
+
                                             echo "<label for='numb'>วันที่อะไหล่พร้อม : ".$row1['XDMajSpareDate']."</label>";
                                         }else{?>
                                             <label for="numb">วันที่อะไหล่พร้อม : <input id="XDMajSpareDate" size="6"
@@ -457,7 +457,7 @@
         </div>
         <!-- /#wrapper -->
         <?php
-    } 
+    }
 }
         ?>
 
@@ -502,7 +502,7 @@
         //     const date1 = new Date('7/13/2010');
         //     const date2 = new Date();
         //     const diffTime = Math.abs(date2 - date1);
-        //     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+        //     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
         //     console.log( $('#XDMachinePartsReady').val())
         //     // console.log(diffTime + " milliseconds");
         //     // console.log(diffDays + " days");
