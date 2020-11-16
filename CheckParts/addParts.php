@@ -332,14 +332,14 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                         <label for="numb">วันนัดประเมิน : <?php $datecon2 = $row["XDMajEstAppPlanDate"];
                                                      $DN2 = str_replace('-', '/', $datecon2);
                                                       $Dnew2 =  date('d/m/Y', strtotime($DN2));
-                                                      echo $Dnew2;?>
+                                                      ?> <input type="text" class="form-control" size="6" value="<?php echo $Dnew2;?>" disabled>
 
                                       </label>
                                       <label for="numb">วันที่ประเมิน : <?php $datecon1 = $row["XDMajEstActualDate"];
                                                    $DN1 = str_replace('-', '/', $datecon1);
                                                     $Dnew1 =  date('d/m/Y', strtotime($DN1));
-                                                    echo $Dnew1; }?>
-                                         </label>           
+                                                    ?><input type="text" class="form-control" size="6" value="<?php echo $Dnew1; }?>" disabled>
+                                         </label>
                                          <label for="numb">วันที่ประเมินเสร็จ : <input id="XDMajFinishEstDate" size="6"
                                                     name="XDMajFinishEstDate" class="form-control"
                                                     data-toggle="datepicker">

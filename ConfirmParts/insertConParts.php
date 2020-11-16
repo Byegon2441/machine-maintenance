@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <?php 
+    <?php
      function success()
     {
         echo '<script>';
@@ -40,35 +40,35 @@
 
 include '../database/connect.php';
 if(isset($_POST['save'])){
-    $id = $_POST['id'];   
-        // เพิ่มข้อมูล เฉพาะ จำนวนวัน , วันที่ของมา  , อะไหล่ที่มาจาก 
-        echo $id;
+    $id = $_POST['id'];
+        // เพิ่มข้อมูล เฉพาะ จำนวนวัน , วันที่ของมา  , อะไหล่ที่มาจาก
+      //  echo $id;
         if(isset($_POST['check_source'])  ){
-           
+
             foreach ($_POST['check_source'] as $key => $value) {
-  
+
                    if($_POST['check_source'][$key] == "คลัง"){
-                     
+
                      $sql = "UPDATE tdoctmamachine_parts_use
                       SET XVSource= '$value'
                       WHERE XVMajDocNo= '$id'
                       AND XIMachinePartsSeqNo = '$key';
                       ";
-  
+
                           if($dbh->query($sql)){
                             success();
                           }else{
                               echo mysqli_error($connect);
                           }
-  
+
                   }else if($_POST['check_source'][$key] =="สั่งซื้อ" && isset($_POST['dateforcoming']) &&  isset($_POST['XDMachinePartsReady']) ) {
-                    
+
                       $XVNumOfDays = $_POST['dateforcoming'][$key];
                       $XDMachinePartsReady = $_POST['XDMachinePartsReady'][$key];
                       $oldDate = "$XDMachinePartsReady";
                       $newD = str_replace('/', '-', $oldDate);
                       $newDate =  date('Y-m-d', strtotime($newD));
-                  
+
                       $sql = "UPDATE tdoctmamachine_parts_use
                       SET XVSource= '$value'
                       , XDMachinePartsReady = '$newDate'
@@ -76,23 +76,23 @@ if(isset($_POST['save'])){
                       WHERE XVMajDocNo= '$id'
                       AND XIMachinePartsSeqNo = '$key';
                       ";
-  
+
                           if($dbh->query($sql)){
                                success();
                           }else{
                               echo mysqli_error($connect);
-                              
+
                           }
-  
+
                   }else{
                     error();
                   }
-            }//foreach  
-                 
+            }//foreach
+
           }//isset($_POST['check_source']
 
 
-          if(isset($_POST['parts_ready'])){ // เพิ่มข้อมูล เฉพาะ เช็คว่าอะไหล่พร้อม  
+          if(isset($_POST['parts_ready'])){ // เพิ่มข้อมูล เฉพาะ เช็คว่าอะไหล่พร้อม
             foreach ($_POST['parts_ready'] as $key => $value) {
                 $sql = "UPDATE tdoctmamachine_parts_use
                 SET XVPartsReady= '$value'
@@ -105,12 +105,12 @@ if(isset($_POST['save'])){
                 echo mysqli_error($connect);
                 }
             }//foreach
-            
+
 
         }//isset($_POST['parts_ready'])
-  
 
-        if(isset($_POST['dateforusing']) && isset($_POST['XDMachinePartsUse']) ){  // เพิ่มข้อมูล เฉพาะ เช็คว่าเบิก , วันที่เบิก  
+
+        if(isset($_POST['dateforusing']) && isset($_POST['XDMachinePartsUse']) ){  // เพิ่มข้อมูล เฉพาะ เช็คว่าเบิก , วันที่เบิก
             foreach ($_POST['dateforusing'] as $key => $value) {
                 $XDMachinePartsUse = $_POST['XDMachinePartsUse'][$key];
                             $oldDate = "$XDMachinePartsUse";
@@ -128,24 +128,24 @@ if(isset($_POST['save'])){
                             }else{
                                    echo mysqli_error($connect);
                             }
-            }//foreach 
-            
-        }//isset($_POST['dateforusing']) && isset($_POST['XDMachinePartsUse']) 
+            }//foreach
+
+        }//isset($_POST['dateforusing']) && isset($_POST['XDMachinePartsUse'])
 
         if(isset($_POST['XDMajSpareDate'])){ // เพิ่มข้อมูล วันที่อะไหล่พร้อม
              $confirm_date = $_POST['XDMajSpareDate'];
              $oldDate = "$confirm_date";
              $newD = str_replace('/', '-', $oldDate);
              $newDate =  date('Y-m-d', strtotime($newD));
-            
+
                             $sql = "UPDATE tdoctmajobdate
-                            SET XDMajSpareDate = '$newDate' 
+                            SET XDMajSpareDate = '$newDate'
                             WHERE XVMajDocNo= '$id' ;
                             ";
                             if($dbh->query($sql)){
                                 //เปลี่ยนสถานะเป็น รอช่างรับอะไหล่
                                 $sql = "UPDATE tdoctmajob
-                                SET XVMajStatus = 'รอช่างรับอะไหล่' 
+                                SET XVMajStatus = 'รอช่างรับอะไหล่'
                                 WHERE XVMajDocNo= '$id' ;
                                 ";
                                    if($dbh->query($sql)){
