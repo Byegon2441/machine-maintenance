@@ -175,7 +175,7 @@
                                                 value="<?php echo $row1["XVDptNumber"];?>" readonly
                                                 class="form-control">
                                             ตำบล:<input type="text" style="margin: 0px 10px;" size="10" name="dsub"
-                                                id="dsub" value="<?php echo $row1["XVDptSub-district"];?>" readonly
+                                                id="dsub" value="<?php echo $row1["XVDptSub_district"];?>" readonly
                                                 class="form-control">
                                             อำเภอ:<input type="text" style="margin: 0px 10px;" size="10" name="ddis"
                                                 id="ddis" value="<?php echo $row1["XVDptDistrict"];?>" readonly
@@ -252,7 +252,7 @@ AND partsuse.XVMachinePartsCode = parts.XVMachinePartsCode
 AND detail.XVMajDocNo='$id'
 AND partsuse.XIMajdSeqNo = %s"; //ค้นคืน รายการ อะไหล่ของแต่ละรายการเรื่องที่แจ้ง
 $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
-$stmt3 = $dbh->query($sql);
+$stmt3 = $dbh->query($sql3);
 while ($row3=$stmt3->fetch(PDO::FETCH_ASSOC)){
     $count ++ ;
     ?>
