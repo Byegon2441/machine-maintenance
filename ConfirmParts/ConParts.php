@@ -291,7 +291,7 @@
                                                             name="XDMachinePartsReady[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
                                                             id="XDMachinePartsReady[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
                                                             class="form-control" data-toggle="datepicker"
-                                                            value="<?php if(isset($row4['DA']) && $row4['XDMachinePartsReady']!= "0000-00-00"){echo $row4['DA'];}?>">
+                                                            value="<?php if(isset($row4['DA']) && $row4['XDMachinePartsReady']!= null){echo $row4['DA'];}?>">
                                                     </td> <!-- วันที่ของจะมา-->
                                                     <td><input style="width:25px; height:25px; margin:5px 20px 0;"
                                                             type="checkbox"
@@ -469,7 +469,7 @@
         $(function() {
             $('[data-toggle="datepicker"]').datepicker({
                 autoHide: true,
-                autoPick: true,
+                //autoPick: true,
                 language: 'th-TH',
                 zIndex: 2048,
                 format: 'dd/mm/yyyy'

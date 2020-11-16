@@ -67,6 +67,92 @@
 
 <body>
 
+<!-- modal เพิ่มอะไหล่ -->
+    <div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">เพิ่มอะไหล่</h5>
+                </div>
+                <form class="form-horizontal" id="insert" role="form" method="POST" action="insertt.php"
+                    enctype="multipart/form-data">
+                    <div class="modal-body mx-3">
+                        <div class="form-group">
+                            <label for="name" class="col-sm-4 control-label">
+                                <span class="required"></span> เลือกอะไหล่:</label>
+                                <input type="hidden" name="pp" id="pp">
+                                <input type="hidden" name="seqq" id="seqqe">
+                                <input type="hidden" name="docno" id="docno" value="<?php echo $id; ?>">
+                            <div class="col-sm-4">
+                                <select name="select2" id="select2" class="selectpicker form-control" data-live-search="true">
+                                    <?php
+                                    include'../database/connect.php';
+                                    $sql = "select * from tmstmmachine_parts";
+                                    $stmt = $dbh->query($sql);
+                                    if($stmt){
+                                        while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+                                            ?>
+                                                <option value="<?php echo $row['XVMachinePartsCode']; ?>"><?php echo $row['XVMachinePartsName'];?></option>
+                                            <?php
+                                        }
+                                        }else{
+                                            echo "<script type='text/javascript'>alert('fail');</script>";
+                                    }
+                                ?>
+                                </select>
+                            </div>
+                            <div class="col-sm-2">
+                                <select class="form-control 1-100" id="val_select2"></select>
+                            </div>
+                            <div class="col-sm-1">
+                                <button type="button" id="add_row" class="btn btn-success btn-circle add_row"
+                                    style="float: right;"><i class="fa fa-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default" style="margin-left:20px; margin-right:20px;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">รายการอะไหล่</h3>
+                        </div>
+
+                        <table class="table table-bordered" id="tab_logic3">
+                            <thead>
+                                <tr>
+                                    <th style="background:#CCCCCC;">ชื่ออะไหล่</th>
+                                    <th style="background:#CCCCCC;">จำนวน</th>
+                                    <th style="background:#CCCCCC;"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="sub" id="div1">
+                            <tr id='addrr0'>
+                                            <td><input type="text" name="n_sub[]" placeholder="">
+                                            </td>
+                                            <td><input type="text" name="sub[]" placeholder=""></td>
+                                            <td><button type="button"
+                                                    class="btn btn-danger btn-circle increase-row RemoveRow btndis"><i
+                                                        class="fa fa-minus"></button></td>
+                                        </tr>
+                                        <tr id='addrr1'></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                        <input type="submit" value="ยืนยัน" name="save" class="btn btn-primary">
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+<!-- modal เพิ่มอะไหล่ -->
+
     <?php include '../Template/templsidebar.php';
          include '../database/connect.php';
 
@@ -438,6 +524,11 @@ $dbh = null;
                                                 href="ListGetParts.php">กลับ</a>
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="col text-left">
+                                        <button type="button" id="parts" class="btn btn-success mr-auto addPart">เพิ่มอะไหล่</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </form>
 
@@ -471,6 +562,97 @@ $dbh = null;
                 zIndex: 2048,
                 format: 'dd/mm/yyyy'
             });
+        });
+
+
+
+        $(document).ready(()=> {
+            $('.addPart').on('click',function() {
+                $('#insertModal').modal('show')
+                $('#div1').empty()
+                $tr = $(this).closest('tr')
+
+                var data = $tr.children("td").map(function() {
+                    return $(this).text()
+                }).get()
+
+                $('#seqqe').val(data[1])
+                var jobi = $('#jobid').val()
+                console.log(data)
+                $.ajax({
+                    url: "test_t.php",
+                    method: "POST",
+                    data: {
+                        id: data[1],
+                        jobid: jobi
+                    },
+                    dataType: "JSON",
+                    success: function(rows) {
+                        countKey = Object.keys(rows).length;
+                        addNo(countKey)
+                        $('#tab_logic3').append('<tr id="addrr0"></tr>');
+                        let j = 0
+                        for (var k = 0; k < countKey; k = k+3) {
+                            $('tr').find('input').prop('disabled', true)
+                            $('#addrr' + j).html("<td hidden><input type='hidden' name='n_sub[]' value='" +
+                                rows[k] +
+                                "'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='n_suub[]' value='" +
+                                rows[k+1] +
+                                "'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='sub[]' value='" +
+                                rows[k+2] +
+                                "' placeholder='กรุณากรอกสาเหตุ'/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td>"
+                            );
+
+                            $('#tab_logic3').append('<tr id="addrr' + (j + 1) + '"></tr>');
+
+                            j++
+                        }
+                    }
+
+                })
+            })
+        })
+
+
+        function addNo(a) {
+            let j = a
+            $("#add_row1").click(() => {
+                $('tr').find('input').prop('disabled', true)
+                $('#addrr' + j).html("<td>" + (j + 1) +
+                    "</td><td><input type='text' name='n_sub[]'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='sub[]' placeholder='กรุณากรอกสาเหตุ'/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td>"
+                );
+
+                $('#tab_logic3').append('<tr id="addrr' + (j + 1) + '"></tr>');
+                j++;
+            });
+        }
+
+
+        $(document).ready(function() {
+            let i = 0;
+            $("#add_row").click(function() {
+                var select2 = $('#select2').val()
+                var val_select2 = $('#val_select2').val()
+                var value = $("#select2 option:selected");
+                $('#tab_logic3').append('<tr id="addr' + (i) + '"></tr>');
+                $('tr').find('input').prop('disabled', true)
+                $('#addr' + i).html(
+                    "<td hidden><input type='hidden' name='n_sub[]' value='"+ select2 +"' placeholder=''/></td><td><input type='text' name='name_sub[]' value='"+ value.text() +"' placeholder=''/></td><td><input type='text' name='sub[]' value='"+val_select2+"' placeholder=''/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td>"
+                );
+                $('#tab_logic3').append('<tr id="addr' + (i + 1) + '"></tr>');
+                i++;
+            });
+        });
+
+        $('table').on('click', '.RemoveRow', function() {
+            $(this).closest('tr').remove();
+        });
+
+        $(function(){
+            var $select = $(".1-100");
+            for (i=1;i<=100;i++){
+                $select.append($('<option></option>').val(i).html(i))
+            }
         });
         </script>
 

@@ -58,7 +58,7 @@
      FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v
      WHERE m.XVMajDocNo = d.XVMajDocNo 
      AND m.XVVehCode = v.XVVehCode
-     AND m.XVMajStatus = 'รออะไหล่' "; //แสดงใบแจ้งซ่อมทีเป็นสถานะ "รออนุมัติซ่อม"
+     AND (m.XVMajStatus = 'รออะไหล่' OR m.XVMajStatus = 'รอช่างรับอะไหล่' OR m.XVMajStatus = 'รอนำรถเข้าซ่อม')"; //แสดงใบแจ้งซ่อมทีเป็นสถานะ "รออนุมัติซ่อม"
     $stmt = $dbh->query($sql);
     $count = 1;
     while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){

@@ -391,7 +391,7 @@ while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
 
                                             if($fectdep['tnXV'] != 0){
                                               $sqldepart = "SELECT tn.XVEpyCode,tm.XVEmpName FROM tdoctmaestimation_tnc tn,tmstmtemployee tm WHERE tn.XVEpyCode = tm.XVEmpCode AND XVMajDocNo = '$id'";
-                                              $stmt5=$dbh->query($querydepart);
+                                              $stmt5=$dbh->query($sqldepart);
                                               while ($rowdepart=$stmt5->fetch(PDO::FETCH_ASSOC)) {
 
                                                 echo $rowdepart['XVEpyCode'];
