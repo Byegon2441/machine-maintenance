@@ -89,7 +89,26 @@
                         <div class="form-group">
                             <label for="name" class="col-sm-4 control-label">
                                 <span class="required"></span> เลือกช่างประเมิน:</label>
-                           <!--check point for last file  -->
+                           <div class="col-sm-7">
+                                <select name="selectemployee[]" class="selectpicker form-control"
+                                    data-live-search="true" multiple>
+                                    <?php
+                                    $emp_sql = "SELECT * FROM tmstmtemployee";
+                                    $stmt = $dbh->query($emp_sql);
+                                    while ($emp_row=$stmt->fetch(PDO::FETCH_ASSOC)){
+                               ?>
+                                    <option
+                                        value="
+                                        <?php echo $emp_row["XVEmpCode"]; ?> <?php echo $emp_row["XVEmpName"]; ?>">
+                                        <?php echo $emp_row["XVEmpName"]; ?>
+                                        </option>
+                                    <?php
+                               }
+                                  ?>
+                                </select>
+                                <input type="hidden" id="date" value="" name="date">
+                                <input type="hidden" id="carstatus" value="" name="carstatus">
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -366,35 +385,34 @@ while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
                                               ;
                                             } ?>">
                                                 <?php
-                                            // $sqldepart1 = "SELECT count(tn.XVEpyCode) AS tnXV FROM tdoctmaestimation_tnc tn,tmstmtemployee tm WHERE tn.XVEpyCode = tm.XVEpyCode AND XVMajDocNo = '$id'";
-                                            // $stmt4=$dbh->query($sqldepart1);
-                                            // $fectdep=$stmt4->fetch(PDO::FETCH_ASSOC);
+                                            $sqldepart1 = "SELECT count(tn.XVEpyCode) AS tnXV FROM tdoctmaestimation_tnc tn,tmstmtemployee tm WHERE tn.XVEpyCode = tm.XVEmpCode AND XVMajDocNo = '$id'";
+                                            $stmt4=$dbh->query($sqldepart1);
+                                            $fectdep=$stmt4->fetch(PDO::FETCH_ASSOC);
 
-                                            // if($fectdep['tnXV'] != 0){
-                                            //   $sqldepart = "SELECT tn.XVEpyCode,tm.XVEpyFirstname,tm.XVpyLastname FROM tdoctmaestimation_tnc tn,tmstmtemployee tm WHERE tn.XVEpyCode = tm.XVEpyCode AND XVMajDocNo = '$id'";
-                                            //   $stmt5=$dbh->query($querydepart);
-                                            //   while ($rowdepart=$stmt5->fetch(PDO::FETCH_ASSOC)) {
+                                            if($fectdep['tnXV'] != 0){
+                                              $sqldepart = "SELECT tn.XVEpyCode,tm.XVEmpName FROM tdoctmaestimation_tnc tn,tmstmtemployee tm WHERE tn.XVEpyCode = tm.XVEmpCode AND XVMajDocNo = '$id'";
+                                              $stmt5=$dbh->query($querydepart);
+                                              while ($rowdepart=$stmt5->fetch(PDO::FETCH_ASSOC)) {
 
-                                            //     echo $rowdepart['XVEpyCode']." ";
-                                            //     echo $rowdepart['XVEpyFirstname']." ";
-                                            //     echo $rowdepart['XVpyLastname']." ";
-                                            //   }
-                                            // }else{
-                                            //   if(isset($_POST['selectemployee'])){
-                                            //     $emp =  $_POST['selectemployee'];
-                                            //     if(isset($emp)){
-                                            //       if(count($emp) == 1){
-                                            //         echo $emp[0]." ";
-                                            //     }else{
-                                            //       for ($i=0; $i < count($emp); $i++) {
-                                            //         echo $emp[$i]." ";
-                                            //       }
-                                            //     }
-                                            //     }
-                                            //   }else{
-                                            //       echo "";
-                                            //   }
-                                            // }
+                                                echo $rowdepart['XVEpyCode']." ";
+                                                echo $rowdepart['XVEmpName']." ";
+                                              }
+                                            }else{
+                                              if(isset($_POST['selectemployee'])){
+                                                $emp =  $_POST['selectemployee'];
+                                                if(isset($emp)){
+                                                  if(count($emp) == 1){
+                                                    echo $emp[0]." ";
+                                                }else{
+                                                  for ($i=0; $i < count($emp); $i++) {
+                                                    echo $emp[$i]." ";
+                                                  }
+                                                }
+                                                }
+                                              }else{
+                                                  echo "";
+                                              }
+                                            }
                                             ?>
                                             </label>
                                         </div>
@@ -469,24 +487,4 @@ while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
 </body>
 
 </html>
-<!-- <div class="col-sm-7">
-                                <select name="selectemployee[]" class="selectpicker form-control"
-                                    data-live-search="true" multiple>
-                                   // <?php
-                                    // $emp_sql = "SELECT * FROM tmstmtemployee ORDER BY XVEpyJobPosition ASC";
-                                    // $stmt = $dbh->query($emp_sql);
-                                    // while ($emp_row=$stmt->fetch(PDO::FETCH_ASSOC)){
-                            //   ?>
-                                    <option
-                                        value="
-                                        <?php// echo $emp_row["XVEpyCode"]; ?> <?php// echo $emp_row["XVEpyFirstname"]; ?> <?php// echo	$emp_row["XVpyLastname"]; ?>">
-                                        <?php// echo //$emp_row["XVEpyFirstname"]; ?>
-                                        <?php// echo	//$emp_row["XVpyLastname"]; ?>
-                                        </option>
-                                    <?php
-                            //   }
-                                //  ?>
-                                </select>
-                                <input type="hidden" id="date" value="" name="date">
-                                <input type="hidden" id="carstatus" value="" name="carstatus">
-                            </div> -->
+
