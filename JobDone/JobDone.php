@@ -82,8 +82,8 @@
      AND v.XVDptCode = depart.XVDptCode
      AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
 
-    $stmt = $dbh->query($sql);
-    while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+    $stmt8 = $dbh->query($sql);
+    while ($row1=$stmt8->fetch(PDO::FETCH_ASSOC)){
 
 
     ?>
@@ -129,8 +129,7 @@
                                                     class="form-control" value="<?php $datecon = $row1["XDMajDate"];
                                                          $DN = str_replace('-', '/', $datecon);
                                                           $Dnew =  date('d/m/Y', strtotime($DN));
-                                                          echo $Dnew;?>"
-                                                    readonly></label>
+                                                          echo $Dnew;?>" readonly></label>
                                         </div>
                                     </div>
                                 </div>
@@ -176,7 +175,7 @@
                                                 value="<?php echo $row1["XVDptNumber"];?>" readonly
                                                 class="form-control">
                                             ตำบล:<input type="text" style="margin: 0px 10px;" size="10" name="dsub"
-                                                id="dsub" value="<?php echo $row1["XVDptSub-district"];?>" readonly
+                                                id="dsub" value="<?php echo $row1["XVDptSub_district"];?>" readonly
                                                 class="form-control">
                                             อำเภอ:<input type="text" style="margin: 0px 10px;" size="10" name="ddis"
                                                 id="ddis" value="<?php echo $row1["XVDptDistrict"];?>" readonly
@@ -203,8 +202,8 @@ WHERE  m.XVMajDocNo = detail.XVMajDocNo
 
 AND m.XVMajDocNo ='$id'"; //ค้นคืน รายการ เรื่องที่แจ้ง
 
-$stmt = $dbh->query($sql);
-    while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+$stmt2 = $dbh->query($sql2);
+    while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
 
 
 
@@ -212,7 +211,7 @@ $stmt = $dbh->query($sql);
                                         <table class="table table-bordered" id="tab_logic">
                                             <thead>
                                                 อนุมัติการซ่อม :
-                                                <?php if($row2["XVMajConfirm"]=="confirm"){ echo 'อนุมัติแล้ว';}else{echo 'ไม่อนุมัติ';}?>
+                                                <?php if($row2["XVMajConfirm"]=='confirm'){ echo 'อนุมัติแล้ว';}else{echo 'ไม่อนุมัติ';}?>
                                                 <br>
 
                                                 รายการที่ : <?php echo $row2["XIMajdSeqNo"];?>
@@ -252,8 +251,8 @@ AND partsuse.XVMachinePartsCode = parts.XVMachinePartsCode
 AND detail.XVMajDocNo='$id'
 AND partsuse.XIMajdSeqNo = %s"; //ค้นคืน รายการ อะไหล่ของแต่ละรายการเรื่องที่แจ้ง
 $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
-$stmt = $dbh->query($sql);
-while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+$stmt3 = $dbh->query($sql3);
+while ($row3=$stmt3->fetch(PDO::FETCH_ASSOC)){
     $count ++ ;
     ?>
                                                     <?php if($row3["XVMajConfirm"]=="confirm"){?>
@@ -273,12 +272,12 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                                     <td>
                                                         <?php echo $row3["XVMachinePartsName"];?>
                                                         <?php
-     $sql4 = "SELECT DATE_FORMAT(XDMachinePartsReady, '%d/%m/%Y') AS DA,DATE_FORMAT(XDMachinePartsUse, '%d/%m/%Y') AS DS,XDMachinePartsReady,XDMachinePartsUse
+     $sql4 = "SELECT FORMAT(XDMachinePartsReady, 'dd/MM/yyyy') AS DA,FORMAT(XDMachinePartsUse, 'dd/MM/yyyy') AS DS,XDMachinePartsReady,XDMachinePartsUse
        FROM tdoctmamachine_parts_use
        WHERE XVMajDocNo='$id'
        AND XIMachinePartsSeqNo = '$row3[XIMachinePartsSeqNo]'
        AND XIMajdSeqNo = '$row2[XIMajdSeqNo]'"; //ค้นคืนวันที่เบิก วันที่ของมา ถ้ามีอยู่แล้ว
-       $stmt = $dbh->query($sql);
+       $stmt4 = $dbh->query($sql4);
     ?>
 
                                                     </td>
@@ -286,7 +285,7 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                                     <td style="width:60px;"> <?php echo $row3["XVAmount"]; ?></td>
                                                     <?php if($row3["XVMajConfirm"]=="confirm"){
          
-         while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+         while ($row4=$stmt4->fetch(PDO::FETCH_ASSOC)){
        ?>
                                                     <td><input style="width:25px; height:25px; margin:5px 25px 0;"
                                                             type="radio"
@@ -389,7 +388,7 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                                           $Dnew3 =  date('d/m/Y', strtotime($DN3));
                                                           echo $Dnew3;?>
 
-                                                    </label>
+                                            </label>
                                             <label for="numb">วันที่อนุมัติซ่อม : <input id="datepicker" size="6"
                                                     name="XDMajConfirmDate" class="form-control" value="<?php $datecon4 = $row1["XDMajConfirmDate"];
                                                                   $DN4 = str_replace('-', '/', $datecon4);
@@ -407,15 +406,13 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                                     name="XDMajRepairAppPlanDate" class="form-control" value="<?php $datecon6 = $row1["XDMajRepairAppPlanDate"];
                                                          $DN6 = str_replace('-', '/', $datecon6);
                                                           $Dnew6 =  date('d/m/Y', strtotime($DN6));
-                                                          echo $Dnew6;?>"
-                                                    data-toggle="datepicker" disabled>
+                                                          echo $Dnew6;?>" data-toggle="datepicker" disabled>
                                             </label>
-                                            <label for="numb">วันที่ซ่อม : <input id="datepicker" size="6"
-                                                    name="#" class="form-control" value="<?php $datecon7 = $row1["XDMajRepairActualDate"];
+                                            <label for="numb">วันที่ซ่อม : <input id="datepicker" size="6" name="#"
+                                                    class="form-control" value="<?php $datecon7 = $row1["XDMajRepairActualDate"];
                                                          $DN7 = str_replace('-', '/', $datecon7);
                                                           $Dnew7 =  date('d/m/Y', strtotime($DN7));
-                                                          echo $Dnew7;?>"
-                                                    data-toggle="datepicker" disabled>
+                                                          echo $Dnew7;?>" data-toggle="datepicker" disabled>
                                             </label>
                                             <label for="numb">วันที่ซ่อมเสร็จ : <input id="datepicker" size="6"
                                                     name="XDMajFinishRepairDate" class="form-control"
@@ -437,14 +434,14 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                                     $sql = "  SELECT *
                                                     FROM  tdoctmajob j ,TdocTMaEstimation_Tnc tnc,TMstMTEmployee e
                                                     WHERE  j.XVMajDocNo = tnc.XVMajDocNo
-                                                    AND tnc.XVEpyCode = e.XVEpyCode
+                                                    AND tnc.XVEpyCode = e.XVEmpCode
                                                     AND j.XVMajDocNo = '$id' ";
                                                     $stmt = $dbh->query($sql);
                                                     while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                                     ?>
 
                                             <label for="">
-                                                <?php echo  $row["XVEpyCode"]." ".$row["XVEpyFirstname"]." ".$row["XVpyLastname"];?>
+                                                <?php echo  $row["XVEpyCode"]." ".$row["XVEmpName"];?>
                                             </label>
                                             <?php } ?>
                                         </div>
@@ -459,7 +456,7 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                                     $sql = "  SELECT *
                                                     FROM  tdoctmajob j ,tdoctmarepair_tnc tnc,TMstMTEmployee e
                                                     WHERE  j.XVMajDocNo = tnc.XVMajDocNo
-                                                    AND tnc.XVEpyCode = e.XVEpyCode
+                                                    AND tnc.XVEpyCode = e.XVEmpCode
                                                     AND j.XVMajDocNo = '$id' ";
                                                      $stmt = $dbh->query($sql);
                                                      while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
@@ -477,8 +474,7 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                 <div class="modal-footer">
                                     <div class="col-md-6">
                                         <div class="col text-left">
-                                            <a type="button" class="btn btn-danger mr-auto"
-                                                href="ListDone.php">กลับ</a>
+                                            <a type="button" class="btn btn-danger mr-auto" href="ListDone.php">กลับ</a>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -505,6 +501,7 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
         <!-- /#wrapper -->
         <?php
     }
+    $dbh=NULL;
 }
         ?>
 

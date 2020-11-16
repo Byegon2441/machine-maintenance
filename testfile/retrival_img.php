@@ -51,10 +51,10 @@
             $ig = $_GET['id'];
             $igg = $_GET['seq'];
             $sql = "SELECT XVPicturePath FROM tdoctmajobdetail WHERE XVMajDocNo = '$ig' AND XIMajdSeqNo = $igg";
-            $result2 = mysqli_query($connect,$sql) or die(mysqli_query($connect));
+            $stmt = $dbh->query($sql);
             $pat = "";
-            while ($row2=mysqli_fetch_array($result2)){
-                $pat = $row2['XVPicturePath'];
+            while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+                $pat = $row['XVPicturePath'];
             }
             // echo $pat;
             $dirname = "../checkParts/$pat";

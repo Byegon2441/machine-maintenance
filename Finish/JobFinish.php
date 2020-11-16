@@ -82,8 +82,8 @@
      AND v.XVDptCode = depart.XVDptCode
      AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
 
-    $stmt = $dbh->query($sql);
-    while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+    $stmt1 = $dbh->query($sql);
+    while ($row1=$stmt1->fetch(PDO::FETCH_ASSOC)){
 
     ?>
 
@@ -175,7 +175,7 @@
                                                 value="<?php echo $row1["XVDptNumber"];?>" readonly
                                                 class="form-control">
                                             ตำบล:<input type="text" style="margin: 0px 10px;" size="10" name="dsub"
-                                                id="dsub" value="<?php echo $row1["XVDptSub-district"];?>" readonly
+                                                id="dsub" value="<?php echo $row1["XVDptSub_district"];?>" readonly
                                                 class="form-control">
                                             อำเภอ:<input type="text" style="margin: 0px 10px;" size="10" name="ddis"
                                                 id="ddis" value="<?php echo $row1["XVDptDistrict"];?>" readonly
@@ -202,8 +202,8 @@ WHERE  m.XVMajDocNo = detail.XVMajDocNo
 
 AND m.XVMajDocNo ='$id'"; //ค้นคืน รายการ เรื่องที่แจ้ง
 
-$stmt = $dbh->query($sql);
-while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+$stmt2 = $dbh->query($sql2);
+while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
 
 
 
@@ -252,8 +252,8 @@ AND partsuse.XVMachinePartsCode = parts.XVMachinePartsCode
 AND detail.XVMajDocNo='$id'
 AND partsuse.XIMajdSeqNo = %s"; //ค้นคืน รายการ อะไหล่ของแต่ละรายการเรื่องที่แจ้ง
 $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
-$stmt = $dbh->query($sql);
-while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+$stmt3 = $dbh->query($sql3);
+while ($row3=$stmt3->fetch(PDO::FETCH_ASSOC)){
     $count ++ ;
     ?>
                                                     <?php if($row3["XVMajConfirm"]=="confirm"){?>
@@ -273,12 +273,12 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                                     <td>
                                                         <?php echo $row3["XVMachinePartsName"];?>
                                                         <?php
-     $sql4 = "SELECT DATE_FORMAT(XDMachinePartsReady, '%d/%m/%Y') AS DA,DATE_FORMAT(XDMachinePartsUse, '%d/%m/%Y') AS DS,XDMachinePartsReady,XDMachinePartsUse
+     $sql4 = "SELECT FORMAT(XDMachinePartsReady, 'dd/MM/yyyy') AS DA,FORMAT(XDMachinePartsUse, 'dd/MM/yyyy') AS DS,XDMachinePartsReady,XDMachinePartsUse
        FROM tdoctmamachine_parts_use
        WHERE XVMajDocNo='$id'
        AND XIMachinePartsSeqNo = '$row3[XIMachinePartsSeqNo]'
        AND XIMajdSeqNo = '$row2[XIMajdSeqNo]'"; //ค้นคืนวันที่เบิก วันที่ของมา ถ้ามีอยู่แล้ว
-        $stmt = $dbh->query($sql); 
+        $stmt4 = $dbh->query($sql4); 
     
 
     ?>
@@ -287,7 +287,7 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
 
                                                     <td style="width:60px;"> <?php echo $row3["XVAmount"]; ?></td>
                                                     <?php if($row3["XVMajConfirm"]=="confirm"){
-           while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+           while ($row4=$stmt4->fetch(PDO::FETCH_ASSOC)){
       
        ?>
                                                     <td><input style="width:25px; height:25px; margin:5px 25px 0;"
@@ -448,18 +448,18 @@ $dbh = null;
                                             </label>
                                             <?php
                                                     include '../database/connect.php';
-                                                    $sql = "  SELECT *
+                                                    $sql6 = "  SELECT *
                                                     FROM  tdoctmajob j ,TdocTMaEstimation_Tnc tnc,TMstMTEmployee e
                                                     WHERE  j.XVMajDocNo = tnc.XVMajDocNo
-                                                    AND tnc.XVEpyCode = e.XVEpyCode
+                                                    AND tnc.XVEpyCode = e.XVEmpCode
                                                     AND j.XVMajDocNo = '$id' ";
-                                                      $stmt = $dbh->query($sql);
-                                                      while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+                                                      $stmt6 = $dbh->query($sql6);
+                                                      while ($row=$stmt6->fetch(PDO::FETCH_ASSOC)){
                                                   
                                                     ?>
 
                                             <label for="">
-                                                <?php echo  $row["XVEpyCode"]." ".$row["XVEpyFirstname"]." ".$row["XVpyLastname"];?>
+                                                <?php echo  $row["XVEpyCode"]." ".$row["XVEmpName"];?>
                                             </label>
                                             <?php } ?>
                                         </div>
@@ -471,18 +471,18 @@ $dbh = null;
                                             </label>
                                             <?php
                                                     include '../database/connect.php';
-                                                    $sql = "  SELECT *
+                                                    $sql7 = "  SELECT *
                                                     FROM  tdoctmajob j ,tdoctmarepair_tnc tnc,TMstMTEmployee e
                                                     WHERE  j.XVMajDocNo = tnc.XVMajDocNo
-                                                    AND tnc.XVEpyCode = e.XVEpyCode
+                                                    AND tnc.XVEpyCode = e.XVEmpCode
                                                     AND j.XVMajDocNo = '$id' ";
-                                                     $stmt = $dbh->query($sql);
-                                                     while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+                                                     $stmt7 = $dbh->query($sql7);
+                                                     while ($row=$stmt7->fetch(PDO::FETCH_ASSOC)){
                                                  
                                                     ?>
 
                                             <label for="">
-                                                <?php echo  $row["XVEpyCode"]." ".$row["XVEpyFirstname"]." ".$row["XVpyLastname"];?>
+                                                <?php echo  $row["XVEpyCode"]." ".$row["XVEmpName"];?>
                                             </label>
                                             <?php } ?>
                                         </div>
