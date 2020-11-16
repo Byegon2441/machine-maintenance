@@ -142,9 +142,9 @@
                                 <li>
                                     <a href="../TypeMachineParts/ListTypeMachineParts.php"><i class="fa fa-edit fa-fw"></i> ประเภทอะไหล่</a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="../Employee/ListEmployee.php"><i class="fa fa-edit fa-fw"></i> พนักงาน</a>
-                                </li>
+                                </li> -->
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
