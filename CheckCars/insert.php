@@ -14,7 +14,19 @@
  $statuscar = $_POST['statuscar'];
  $id = $_GET['id'];
  $empar = $_POST['empar'];
- $arr = explode(" ",$empar);
+ $j = 0;
+  for ($i=0; $i < strlen($empar) ; $i++){
+   if(is_numeric($empar[$i])){
+     if(is_numeric($empar[$i+1])){
+       $arr[$j] = $empar[$i];
+     }else{
+       error_reporting(E_ALL & ~E_NOTICE);
+       $arr[$j] .= $empar[$i];
+       $j++;
+     }
+    }
+   }
+  //var_dump($arr);
  $sqldate = "SELECT XDMajDate,XDMajEstActualDate FROM tdoctmajobdate WHERE XVMajDocNo = '$id'";
  $stmt = $dbh->query($sqldate);
  $row=$stmt->fetch(PDO::FETCH_ASSOC);
@@ -36,8 +48,8 @@
     $newD = str_replace('/', '-', $oldDate);
     $newDate =  date('Y-m-d', strtotime($newD));
     //$newtime = Date("H:i:s");
-   for ($i=0; $i < count($arr)-1; $i++) {
-    $sqlarr = "INSERT INTO tdoctmaestimation_tnc(XVEpyCode,XVMajDocNo) VALUES ('$arr[$i]','$id')";
+   for ($i=0; $i < count($arr); $i++) {
+    $sqlarr = "INSERT INTO tdoctmaestimation_tnc(XVEpyCode,XVMajDocNo) VALUES ($arr[$i],'$id')";
     $stmt = $dbh->query($sqlarr);
    }
                                                               //$newtime
@@ -45,6 +57,7 @@
    $stmtda = $dbh->query($sqlda);
    $sqlda1 =  "UPDATE tdoctmajob  SET XVMaCarStatus = '$statuscar' WHERE XVMajDocNo = '$id'";
    $stmtda1 = $dbh->query($sqlda1);
+
    if($stmtda && $stmtda1){
      echo '<script>';
      echo "Swal.fire({

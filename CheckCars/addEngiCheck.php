@@ -99,7 +99,7 @@
                                ?>
                                     <option
                                         value="
-                                        <?php echo $emp_row["XVEmpCode"]; ?> <?php echo $emp_row["XVEmpName"]; ?>">
+                                        <?php echo $emp_row["XVEmpCode"]." ".$emp_row["XVEmpName"];?>">
                                         <?php echo $emp_row["XVEmpName"]; ?>
                                         </option>
                                     <?php
@@ -368,8 +368,8 @@ while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
                                     </div>
                                     <div class="col-md-12">
                                         <div class="col text-left">
-                                            <label for="numb">ช่างประเมิน : <input style="border: none; width:auto;"
-                                                    type="hidden" name="empar" value="<?php if(isset($_POST['selectemployee'])){
+                                            <label for="numb">ช่างประเมิน : <!--input style="border: none; width:auto;"
+                                                    type="text" name="empar" value="<?php/* if(isset($_POST['selectemployee'])){
                                               $emp =  $_POST['selectemployee'];
                                               if(isset($emp)){
                                                 if(count($emp) == 1){
@@ -383,7 +383,7 @@ while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
                                                   echo "";
                                               }
                                               ;
-                                            } ?>">
+                                            */} ?>"-->
                                                 <?php
                                             $sqldepart1 = "SELECT count(tn.XVEpyCode) AS tnXV FROM tdoctmaestimation_tnc tn,tmstmtemployee tm WHERE tn.XVEpyCode = tm.XVEmpCode AND XVMajDocNo = '$id'";
                                             $stmt4=$dbh->query($sqldepart1);
@@ -394,8 +394,8 @@ while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
                                               $stmt5=$dbh->query($querydepart);
                                               while ($rowdepart=$stmt5->fetch(PDO::FETCH_ASSOC)) {
 
-                                                echo $rowdepart['XVEpyCode']." ";
-                                                echo $rowdepart['XVEmpName']." ";
+                                                echo $rowdepart['XVEpyCode'];
+                                                echo $rowdepart['XVEmpName'];
                                               }
                                             }else{
                                               if(isset($_POST['selectemployee'])){
@@ -403,10 +403,14 @@ while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
                                                 if(isset($emp)){
                                                   if(count($emp) == 1){
                                                     echo $emp[0]." ";
+                                                    ?><input style="border: none;"
+                                                            type="hidden" name="empar" value="<?php echo str_replace(" ","",$emp[0]); ?>"><?php
                                                 }else{
                                                   for ($i=0; $i < count($emp); $i++) {
                                                     echo $emp[$i]." ";
-                                                  }
+                                                    }
+                                                    ?><input style="border: none;"
+                                                            type="hidden" name="empar" value="<?php for ($i=0; $i < count($emp); $i++) { echo str_replace(" ","",$emp[$i]); }?>"><?php
                                                 }
                                                 }
                                               }else{
@@ -487,4 +491,3 @@ while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
 </body>
 
 </html>
-
