@@ -82,8 +82,8 @@
      AND v.XVDptCode = depart.XVDptCode
      AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
 
-    $stmt = $dbh->query($sql);
-    while ($row1=$stmt->fetch(PDO::FETCH_ASSOC)){
+    $stmt8 = $dbh->query($sql);
+    while ($row1=$stmt8->fetch(PDO::FETCH_ASSOC)){
 
 
     ?>
@@ -285,7 +285,7 @@ while ($row3=$stmt3->fetch(PDO::FETCH_ASSOC)){
                                                     <td style="width:60px;"> <?php echo $row3["XVAmount"]; ?></td>
                                                     <?php if($row3["XVMajConfirm"]=="confirm"){
          
-         while ($row4=$stmt->fetch(PDO::FETCH_ASSOC)){
+         while ($row4=$stmt4->fetch(PDO::FETCH_ASSOC)){
        ?>
                                                     <td><input style="width:25px; height:25px; margin:5px 25px 0;"
                                                             type="radio"
@@ -434,14 +434,14 @@ while ($row3=$stmt3->fetch(PDO::FETCH_ASSOC)){
                                                     $sql = "  SELECT *
                                                     FROM  tdoctmajob j ,TdocTMaEstimation_Tnc tnc,TMstMTEmployee e
                                                     WHERE  j.XVMajDocNo = tnc.XVMajDocNo
-                                                    AND tnc.XVEpyCode = e.XVEpyCode
+                                                    AND tnc.XVEpyCode = e.XVEmpCode
                                                     AND j.XVMajDocNo = '$id' ";
                                                     $stmt = $dbh->query($sql);
                                                     while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                                     ?>
 
                                             <label for="">
-                                                <?php echo  $row["XVEpyCode"]." ".$row["XVEpyFirstname"]." ".$row["XVpyLastname"];?>
+                                                <?php echo  $row["XVEpyCode"]." ".$row["XVEmpName"];?>
                                             </label>
                                             <?php } ?>
                                         </div>
@@ -456,7 +456,7 @@ while ($row3=$stmt3->fetch(PDO::FETCH_ASSOC)){
                                                     $sql = "  SELECT *
                                                     FROM  tdoctmajob j ,tdoctmarepair_tnc tnc,TMstMTEmployee e
                                                     WHERE  j.XVMajDocNo = tnc.XVMajDocNo
-                                                    AND tnc.XVEpyCode = e.XVEpyCode
+                                                    AND tnc.XVEpyCode = e.XVEmpCode
                                                     AND j.XVMajDocNo = '$id' ";
                                                      $stmt = $dbh->query($sql);
                                                      while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
