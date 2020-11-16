@@ -13,7 +13,7 @@
   include '../database/connect.php';
  $statuscar = $_POST['statuscar'];
  $id = $_GET['id'];
- $empar = $_POST['empar'];
+ $empar = (int)$_POST['empar'];
  $arr = explode(" ",$empar);
  $sqldate = "SELECT XDMajDate,XDMajEstActualDate FROM tdoctmajobdate WHERE XVMajDocNo = '$id'";
  $stmt = $dbh->query($sqldate);

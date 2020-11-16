@@ -83,7 +83,7 @@
      AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
 
     $stmt = $dbh->query($sql);
-    while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+    while ($row1=$stmt->fetch(PDO::FETCH_ASSOC)){
 
 
     ?>
@@ -176,7 +176,7 @@
                                                 value="<?php echo $row1["XVDptNumber"];?>" readonly
                                                 class="form-control">
                                             ตำบล:<input type="text" style="margin: 0px 10px;" size="10" name="dsub"
-                                                id="dsub" value="<?php echo $row1["XVDptSub-district"];?>" readonly
+                                                id="dsub" value="<?php echo $row1["XVDptSub_district"];?>" readonly
                                                 class="form-control">
                                             อำเภอ:<input type="text" style="margin: 0px 10px;" size="10" name="ddis"
                                                 id="ddis" value="<?php echo $row1["XVDptDistrict"];?>" readonly
@@ -203,8 +203,8 @@ WHERE  m.XVMajDocNo = detail.XVMajDocNo
 
 AND m.XVMajDocNo ='$id'"; //ค้นคืน รายการ เรื่องที่แจ้ง
 
-$stmt = $dbh->query($sql);
-    while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+$stmt = $dbh->query($sql2);
+    while ($row2=$stmt->fetch(PDO::FETCH_ASSOC)){
 
 
 
@@ -212,7 +212,7 @@ $stmt = $dbh->query($sql);
                                         <table class="table table-bordered" id="tab_logic">
                                             <thead>
                                                 อนุมัติการซ่อม :
-                                                <?php if($row2["XVMajConfirm"]=="confirm"){ echo 'อนุมัติแล้ว';}else{echo 'ไม่อนุมัติ';}?>
+                                                <?php if($row2["XVMajConfirm"]=='confirm'){ echo 'อนุมัติแล้ว';}else{echo 'ไม่อนุมัติ';}?>
                                                 <br>
 
                                                 รายการที่ : <?php echo $row2["XIMajdSeqNo"];?>
@@ -252,8 +252,8 @@ AND partsuse.XVMachinePartsCode = parts.XVMachinePartsCode
 AND detail.XVMajDocNo='$id'
 AND partsuse.XIMajdSeqNo = %s"; //ค้นคืน รายการ อะไหล่ของแต่ละรายการเรื่องที่แจ้ง
 $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
-$stmt = $dbh->query($sql);
-while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+$stmt = $dbh->query($sql3);
+while ($row3=$stmt->fetch(PDO::FETCH_ASSOC)){
     $count ++ ;
     ?>
                                                     <?php if($row3["XVMajConfirm"]=="confirm"){?>
@@ -273,12 +273,12 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                                     <td>
                                                         <?php echo $row3["XVMachinePartsName"];?>
                                                         <?php
-     $sql4 = "SELECT DATE_FORMAT(XDMachinePartsReady, '%d/%m/%Y') AS DA,DATE_FORMAT(XDMachinePartsUse, '%d/%m/%Y') AS DS,XDMachinePartsReady,XDMachinePartsUse
+     $sql4 = "SELECT FORMAT(XDMachinePartsReady, 'dd/MM/yyyy') AS DA,FORMAT(XDMachinePartsUse, 'dd/MM/yyyy') AS DS,XDMachinePartsReady,XDMachinePartsUse
        FROM tdoctmamachine_parts_use
        WHERE XVMajDocNo='$id'
        AND XIMachinePartsSeqNo = '$row3[XIMachinePartsSeqNo]'
        AND XIMajdSeqNo = '$row2[XIMajdSeqNo]'"; //ค้นคืนวันที่เบิก วันที่ของมา ถ้ามีอยู่แล้ว
-       $stmt = $dbh->query($sql);
+       $stmt = $dbh->query($sql4);
     ?>
 
                                                     </td>
@@ -286,7 +286,7 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                                     <td style="width:60px;"> <?php echo $row3["XVAmount"]; ?></td>
                                                     <?php if($row3["XVMajConfirm"]=="confirm"){
          
-         while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+         while ($row4=$stmt->fetch(PDO::FETCH_ASSOC)){
        ?>
                                                     <td><input style="width:25px; height:25px; margin:5px 25px 0;"
                                                             type="radio"
