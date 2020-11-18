@@ -371,14 +371,18 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                 </div>
 
                                 <div class="modal-footer">
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                         <div class="col text-left">
                                             <button type="button" class="btn btn-danger mr-auto"
                                                 onclick="window.location.href='listEvaluate.php'">กลับ</button>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-7">
                                         <div class="col text-right">
+                                        <input type="hidden" value="<?php echo $id?>" name='id'>
+                                            หมายเหตุปิดงาน : <input type="text" value="" name="XVMajFinishRmk" class="form-control" >
+                                            <input type="submit" class="btn btn-info" name="done"
+                                                value="ปิดงาน">
                                             <button type="submit" class="btn btn-primary submit_file"
                                                 data-dismiss="modal" name="save">บันทึก</button>
                                         </div>
