@@ -13,7 +13,19 @@
   include '../database/connect.php';
  $id = $_GET['id'];
  $empar = $_POST['empar'];
- $arr = explode(" ",$empar);
+ $j = 0;
+  for ($i=0; $i < strlen($empar) ; $i++){
+   if(is_numeric($empar[$i])){
+     if(is_numeric($empar[$i+1])){
+       $arr[$j] = $empar[$i];
+     }else{
+       error_reporting(E_ALL & ~E_NOTICE);
+       $arr[$j] .= $empar[$i];
+       $j++;
+     }
+    }
+   }
+  // var_dump($arr);
  $sqldate = "SELECT XDMajDate,XDMajRepairActualDate FROM tdoctmajobdate WHERE XVMajDocNo = '$id'";
 //  $querydate = mysqli_query($connect,$sqldate)or die("ERROR SELECT DATE");
 $querydate = $dbh->query($sqldate);
@@ -36,10 +48,9 @@ $rowdate = $querydate->fetch(PDO::FETCH_ASSOC);
     $newD = str_replace('/', '-', $oldDate);
     $newDate =  date('Y-m-d', strtotime($newD));
   //  $newtime = Date("H:i:s");
-   for ($i=0; $i < count($arr)-1; $i++) {
-    $sqlarr = "INSERT INTO tdoctmarepair_tnc(XVEpyCode,XVMajDocNo) VALUES ('$arr[$i]','$id')";
+   for ($i=0; $i < count($arr); $i++) {
+    $sqlarr = "INSERT INTO tdoctmarepair_tnc(XVEpyCode,XVMajDocNo) VALUES ($arr[$i],'$id')";
     $queryarr = $dbh->query($sqlarr);
-
    }
                                                                  //$newtime
    $sqlda =  "UPDATE tdoctmajobdate  SET XDMajRepairActualDate = '$newDate' WHERE XVMajDocNo = '$id'";
