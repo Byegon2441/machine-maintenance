@@ -491,7 +491,6 @@
                                     <?php } ?>
                                     </tr>
                                     <?php $count++;}
-                                    echo $stmt->rowCount();
                                         $dbh = null;
                                         ?>
                                     </tbody>
