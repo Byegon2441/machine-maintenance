@@ -278,8 +278,8 @@ while ($row3=$stmt3->fetch(PDO::FETCH_ASSOC)){
        WHERE XVMajDocNo='$id'
        AND XIMachinePartsSeqNo = '$row3[XIMachinePartsSeqNo]'
        AND XIMajdSeqNo = '$row2[XIMajdSeqNo]'"; //ค้นคืนวันที่เบิก วันที่ของมา ถ้ามีอยู่แล้ว
-        $stmt4 = $dbh->query($sql4); 
-    
+        $stmt4 = $dbh->query($sql4);
+
 
     ?>
 
@@ -288,7 +288,7 @@ while ($row3=$stmt3->fetch(PDO::FETCH_ASSOC)){
                                                     <td style="width:60px;"> <?php echo $row3["XVAmount"]; ?></td>
                                                     <?php if($row3["XVMajConfirm"]=="confirm"){
            while ($row4=$stmt4->fetch(PDO::FETCH_ASSOC)){
-      
+
        ?>
                                                     <td><input style="width:25px; height:25px; margin:5px 25px 0;"
                                                             type="radio"
@@ -389,12 +389,14 @@ $dbh = null;
                                                     name="XDMajEstActualDate" class="form-control" value="<?php $datecon2 = $row1["XDMajEstActualDate"];
                                                          $DN2 = str_replace('-', '/', $datecon2);
                                                           $Dnew2 =  date('d/m/Y', strtotime($DN2));
-                                                          echo $Dnew2;?>" disabled >
+                                                          //echo $Dnew2;?>
+                                                          <input type="text" class="form-control" size="6" value="<?php echo $Dnew2;?>" disabled>
                                             </label>
                                             <label for="numb">วันที่ประเมินเสร็จ : <?php $datecon3 = $row1["XDMajFinishEstDate"];
                                                          $DN3 = str_replace('-', '/', $datecon3);
                                                           $Dnew3 =  date('d/m/Y', strtotime($DN3));
-                                                          echo $Dnew3;?>
+                                                          //echo $Dnew3;?>
+                                                          <input type="text" class="form-control" size="6" value="<?php echo $Dnew3;?>" disabled>
 
                                                     </label>
                                             <label for="numb">วันที่อนุมัติซ่อม : <input id="datepicker" size="6"
@@ -409,7 +411,8 @@ $dbh = null;
                                             <label for="numb">วันที่อะไหล่พร้อม : <?php $datecon5 = $row1["XDMajSpareDate"];
                                                          $DN5 = str_replace('-', '/', $datecon5);
                                                           $Dnew5 =  date('d/m/Y', strtotime($DN5));
-                                                          echo $Dnew5;?>
+                                                          //echo $Dnew5;?>
+                                                          <input type="text" class="form-control" size="6" value="<?php echo $Dnew5;?>" disabled>
                                             </label>
                                             <label for="numb">วันที่นัดซ่อม : <input id="datepicker" size="6"
                                                     name="XDMajRepairAppPlanDate" class="form-control" value="<?php $datecon6 = $row1["XDMajRepairAppPlanDate"];
@@ -428,7 +431,8 @@ $dbh = null;
                                               <label for="numb">วันที่ซ่อมเสร็จ : <?php $datecon8 = $row1["XDMajFinishRepairDate"];
                                                          $DN8 = str_replace('-', '/', $datecon8);
                                                           $Dnew8 =  date('d/m/Y', strtotime($DN8));
-                                                          echo $Dnew8;?>
+                                                          //echo $Dnew8;?>
+                                                          <input type="text" class="form-control" size="6" value="<?php echo $Dnew8;?>" disabled>
 
                                                     </label>
                                             <label for="numb">วันนัดรับรถ : <input id="datepicker" size="6"
@@ -462,7 +466,7 @@ $dbh = null;
                                                     AND j.XVMajDocNo = '$id' ";
                                                       $stmt6 = $dbh->query($sql6);
                                                       while ($row=$stmt6->fetch(PDO::FETCH_ASSOC)){
-                                                  
+
                                                     ?>
 
                                             <label for="">
@@ -485,7 +489,7 @@ $dbh = null;
                                                     AND j.XVMajDocNo = '$id' ";
                                                      $stmt7 = $dbh->query($sql7);
                                                      while ($row=$stmt7->fetch(PDO::FETCH_ASSOC)){
-                                                 
+
                                                     ?>
 
                                             <label for="">
