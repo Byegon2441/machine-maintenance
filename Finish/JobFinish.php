@@ -379,8 +379,10 @@ $dbh = null;
                                                     name="XDMajEstAppPlanDate" class="form-control" value="<?php if($row1["XDMajEstAppPlanDate"]!= NULL){$datecon1 = $row1["XDMajEstAppPlanDate"];
                                                          $DN1 = str_replace('-', '/', $datecon1);
                                                           $Dnew1 =  date('d/m/Y', strtotime($DN1));
-                                                          //echo $Dnew1; ?>
-                                                          <input type="text" class="form-control" size="6" value="<?php echo $Dnew1;?>" disabled>
+                                                          echo $Dnew1;}
+                                                          else{
+                                                            echo "-- / -- / ----";
+                                                          } ?>" disabled>
 
                                             </label>
                                             <label for="numb">วันที่ประเมิน : <?php $datecon2 = $row1["XDMajEstActualDate"];
