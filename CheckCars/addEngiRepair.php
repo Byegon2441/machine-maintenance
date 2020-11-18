@@ -115,7 +115,7 @@ $stmt = $dbh->query($sql);
 
                                     // while ($emp_row=mysqli_fetch_array($emp_query)){
                               ?>
-                                <option value="<?php echo $emp_row["XVEmpCode"]; ?> <?php echo $emp_row["XVEmpName"]; ?>"><?php echo $emp_row["XVEmpCode"]; ?>  <?php echo	$emp_row["XVEmpName"]; ?></option>
+                                <option value="<?php echo $emp_row["XVEmpCode"]; ?> <?php echo $emp_row["XVEmpName"]; ?>"><?php// echo $emp_row["XVEmpCode"]; ?>  <?php echo	$emp_row["XVEmpName"]; ?></option>
                                 <?php
                               }
                                  ?>
@@ -252,7 +252,7 @@ AND m.XVMajDocNo ='$id'"; //ค้นคืน รายการ เรื่�
 // $result2 = mysqli_query($connect,$sql2) or die(mysqli_query($connect));
 $stmt3 = $dbh->query($sql2);
     while ($row2=$stmt3->fetch(PDO::FETCH_ASSOC)){
-    
+
 
 
 
@@ -305,7 +305,7 @@ $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
     //    while ($row3=mysqli_fetch_array($result3)){
         $stmt4 = $dbh->query($sql3);
         while ($row3=$stmt4->fetch(PDO::FETCH_ASSOC)){
-    
+
     $count ++ ;
     ?>
                                                     <?php if($row3["XVMajConfirm"]=="confirm"){?>
@@ -332,8 +332,8 @@ $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
        AND XIMajdSeqNo = '$row2[XIMajdSeqNo]'"; //ค้นคืนวันที่เบิก วันที่ของมา ถ้ามีอยู่แล้ว
     //    $result4 = mysqli_query($connect,$sql4) or die(mysqli_query($connect));
        $stmt5 = $dbh->query($sql4);
-       
-       
+
+
        ?>
 
                                                     </td>
@@ -433,18 +433,21 @@ $dbh= NULL;
                                             <label for="numb">วันนัดประเมิน : <?php $datecon1 = $row1["XDMajEstAppPlanDate"];
                                                          $DN1 = str_replace('-', '/', $datecon1);
                                                           $Dnew1 =  date('d/m/Y', strtotime($DN1));
-                                                          echo $Dnew1; ?>
+                                                           ?>
+                                                          <input type="text" class="form-control" size="6" value="<?php echo $Dnew1;?>" disabled>
 
                                             </label>
                                             <label for="numb">วันที่ประเมิน : <?php $datecon2 = $row1["XDMajEstActualDate"];
                                                          $DN2 = str_replace('-', '/', $datecon2);
                                                           $Dnew2 =  date('d/m/Y', strtotime($DN2));
-                                                          echo $Dnew2;?>
+                                                          ?>
+                                                          <input type="text" class="form-control" size="6" value="<?php echo $Dnew2;?>" disabled>
                                             </label>
                                             <label for="numb">วันที่ประเมินเสร็จ : <?php $datecon5 = $row1["XDMajFinishEstDate"];
                                                          $DN5 = str_replace('-', '/', $datecon5);
                                                           $Dnew5 =  date('d/m/Y', strtotime($DN5));
-                                                          echo $Dnew5;?>
+                                                          ?>
+                                                          <input type="text" class="form-control" size="6" value="<?php echo $Dnew5;?>" disabled>
 
                                                     </label>
                                             <label for="numb">วันที่อนุมัติซ่อม : <input id="datepicker" size="6"
@@ -457,7 +460,8 @@ $dbh= NULL;
                                             <label for="numb">วันที่อะไหล่พร้อม : <?php $datecon3 = $row1["XDMajSpareDate"];
                                                          $DN3 = str_replace('-', '/', $datecon3);
                                                           $Dnew3 =  date('d/m/Y', strtotime($DN3));
-                                                          echo $Dnew3;?>
+                                                          ?>
+                                                          <input type="text" class="form-control" size="6" value="<?php echo $Dnew3;?>" disabled>
                                             </label>
                                             <label for="numb">วันที่นัดซ่อม : <input id="datepicker" size="6"
                                                     name="XDMajRepairAppPlanDate" class="form-control"
@@ -500,7 +504,7 @@ $dbh= NULL;
                                     <div class="col-md-12">
                                         <div class="col text-left">
                                             <label for="numb">ช่างประเมิน :
-                                            </label> 
+                                            </label>
                                             <?php
                                                     include '../database/connect.php';
                                                     $sql = "  SELECT *
@@ -521,49 +525,53 @@ $dbh= NULL;
 
                                     <div class="col-md-12">
                                         <div class="col text-left">
-                                            <label for="numb">ช่างซ่อม : <input style="border: none; width:auto;" type="hidden" name="empar" value="<?php if(isset($_POST['selectemployee'])){
-                                                $emp =  $_POST['selectemployee'];
-                                                if(isset($emp)){
-                                                    if(count($emp) == 1){
-                                                    echo $emp[0][0]." ";
-                                                }else{
-                                                    for ($i=0; $i < count($emp); $i++) {
-                                                    echo $emp[$i][0]." ";
-                                                    }
-                                                }
-                                                }else{
-                                                    echo "";
-                                                }
-                                                ;
-                                                } ?>" >
+                                            <label for="numb">ช่างซ่อม : <!--input style="border: none; width:auto;" type="hidden" name="empar" value="<?php // if(isset($_POST['selectemployee'])){
+                                              //   $emp =  $_POST['selectemployee'];
+                                              //   if(isset($emp)){
+                                              //       if(count($emp) == 1){
+                                              //       echo $emp[0][0]." ";
+                                              //   }else{
+                                              //       for ($i=0; $i < count($emp); $i++) {
+                                              //       echo $emp[$i][0]." ";
+                                              //       }
+                                              //   }
+                                              //   }else{
+                                              //       echo "";
+                                              //   }
+                                              //   ;
+                                              // } ?>" -->
                                                 <?php
                                                 $sqldepart1 = "SELECT count(tn.XVEpyCode) AS tnXV FROM tdoctmarepair_tnc tn,tmstmtemployee tm WHERE tn.XVEpyCode = tm.XVEmpCode AND XVMajDocNo = '$id'";
-                                                $querydepart1 = $dbh->query($sqldepart1);
-                                                $fectdep = $querydepart1->fetch(PDO::FETCH_ASSOC);
+                                                $stmt4=$dbh->query($sqldepart1);
+                                                $fectdep=$stmt4->fetch(PDO::FETCH_ASSOC);
+
                                                 if($fectdep['tnXV'] != 0){
-                                                $sqldepart = "SELECT tn.XVEpyCode,tm.XVEpyFirstname,tm.XVpyLastname FROM tdoctmarepair_tnc tn,tmstmtemployee tm WHERE tn.XVEpyCode = tm.XVEmpCode AND XVMajDocNo = '$id'";
-                                                $querydepart = $dbh->query($sqldepart);
-                                                while ($rowdepart=$querydepart->fetch(PDO::FETCH_ASSOC)) {
-                                                    
-                                                    echo $rowdepart['XVEpyCode']." ";
-                                                    echo $rowdepart['XVEpyFirstname']." ";
-                                                    echo $rowdepart['XVpyLastname']." ";
-                                                }
+                                                  $sqldepart = "SELECT tn.XVEpyCode,tm.XVEmpName FROM tdoctmarepair_tnc tn,tmstmtemployee tm WHERE tn.XVEpyCode = tm.XVEmpCode AND XVMajDocNo = '$id'";
+                                                  $stmt5=$dbh->query($sqldepart);
+                                                  while ($rowdepart=$stmt5->fetch(PDO::FETCH_ASSOC)) {
+
+                                                    echo $rowdepart['XVEpyCode'];
+                                                    echo $rowdepart['XVEmpName'];
+                                                  }
                                                 }else{
-                                                if(isset($_POST['selectemployee'])){
+                                                  if(isset($_POST['selectemployee'])){
                                                     $emp =  $_POST['selectemployee'];
                                                     if(isset($emp)){
-                                                    if(count($emp) == 1){
+                                                      if(count($emp) == 1){
                                                         echo $emp[0]." ";
+                                                        ?><input style="border: none;"
+                                                                type="hidden" name="empar" value="<?php echo str_replace(" ","",$emp[0]); ?>"><?php
                                                     }else{
-                                                    for ($i=0; $i < count($emp); $i++) {
+                                                      for ($i=0; $i < count($emp); $i++) {
                                                         echo $emp[$i]." ";
+                                                        }
+                                                        ?><input style="border: none;"
+                                                                type="hidden" name="empar" value="<?php for ($i=0; $i < count($emp); $i++) { echo str_replace(" ","",$emp[$i]); }?>"><?php
                                                     }
                                                     }
-                                                    }
-                                                }else{
-                                                    echo "";
-                                                }
+                                                  }else{
+                                                      echo "";
+                                                  }
                                                 }
                                                 ?>
                                             </label>
