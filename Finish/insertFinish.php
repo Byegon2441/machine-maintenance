@@ -27,14 +27,14 @@
   $showDate1 = date('d/m/Y', strtotime($newD1));
   //$newtime1 = date("H:i:s");
 
-  $query2 = "UPDATE tdoctmajob SET XVMajFinishRmk = '$note' WHERE XVMajDocNo = '$idno'";
-  $sql2 = mysqli_query( $connect, $query2 );
-  $query = "UPDATE tdoctmajobdate  SET XDMajPickupActualDate = '$newDate',
+  $sql2 = "UPDATE tdoctmajob SET XVMajFinishRmk = '$note' WHERE XVMajDocNo = '$idno'";
+  $stmt2 = $dbh->query($sql2);
+  $sql = "UPDATE tdoctmajobdate  SET XDMajPickupActualDate = '$newDate',
             XDMajFinishDate = '$newDate1' WHERE XVMajDocNo = '$idno'"; //$newtime and $newtime1
-  $sql = mysqli_query( $connect, $query );
-  $query1 = "UPDATE tdoctmajob  SET XVMajStatus = 'ปิดงาน' WHERE XVMajDocNo = '$idno'";
-  $sql1 = mysqli_query( $connect, $query1 );
-  if($sql){
+  $stmt = $dbh->query($sql);
+  $sql1 = "UPDATE tdoctmajob  SET XVMajStatus = 'ปิดงาน' WHERE XVMajDocNo = '$idno'";
+  $stmt1 = $dbh->query($sql1);
+  if($stmt){
     echo '<script>';
     echo "Swal.fire({
         title: 'สำเร็จ!',
