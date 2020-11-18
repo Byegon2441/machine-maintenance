@@ -385,7 +385,8 @@ $dbh = null;
                                                           } ?>" disabled>
 
                                             </label>
-                                            <label for="numb">วันที่ประเมิน : <?php $datecon2 = $row1["XDMajEstActualDate"];
+                                            <label for="numb">วันที่ประเมิน : <input id="datepicker" size="6"
+                                                    name="XDMajEstActualDate" class="form-control" value="<?php $datecon2 = $row1["XDMajEstActualDate"];
                                                          $DN2 = str_replace('-', '/', $datecon2);
                                                           $Dnew2 =  date('d/m/Y', strtotime($DN2));
                                                           //echo $Dnew2;?>

@@ -372,50 +372,58 @@ while ($row3=$stmt3->fetch(PDO::FETCH_ASSOC)){
 
                                     <div class="col-md-6">
                                         <div class="col text-left">
-                                            <label for="numb">วันนัดประเมิน : <?php $datecon1 = $row1["XDMajEstAppPlanDate"];
+                                            <label for="numb">วันนัดประเมิน : <input id="datepicker" size="6"
+                                                    name="XDMajEstAppPlanDate" class="form-control" value="<?php $datecon1 = $row1["XDMajEstAppPlanDate"];
                                                          $DN1 = str_replace('-', '/', $datecon1);
                                                           $Dnew1 =  date('d/m/Y', strtotime($DN1));
-                                                          //echo $Dnew1; ?>
-                                                          <input type="text" class="form-control" size="6" value="<?php echo $Dnew1;?>" disabled>
+                                                          echo $Dnew1; ?>" disabled>
+
                                             </label>
-                                            <label for="numb">วันที่ประเมิน : <?php $datecon2 = $row1["XDMajEstActualDate"];
+                                            <label for="numb">วันที่ประเมิน : <input id="datepicker" size="6"
+                                                    name="XDMajEstActualDate" class="form-control" value="<?php $datecon2 = $row1["XDMajEstActualDate"];
                                                          $DN2 = str_replace('-', '/', $datecon2);
                                                           $Dnew2 =  date('d/m/Y', strtotime($DN2));
-                                                          //echo $Dnew2;?>
-                                                          <input type="text" class="form-control" size="6" value="<?php echo $Dnew2;?>" disabled>
+                                                          echo $Dnew2;?>" disabled>
                                             </label>
-                                            <label for="numb">วันที่ประเมินเสร็จ : <?php $datecon3 = $row1["XDMajFinishEstDate"];
+                                            <label for="numb">วันที่ประเมินเสร็จ : <input id="datepicker" size="6"
+                                                    name="XDMajFinishEstDate" class="form-control" value="<?php $datecon3 = $row1["XDMajFinishEstDate"];
                                                          $DN3 = str_replace('-', '/', $datecon3);
                                                           $Dnew3 =  date('d/m/Y', strtotime($DN3));
-                                                          //echo $Dnew3;?>
-                                                          <input type="text" class="form-control" size="6" value="<?php echo $Dnew3;?>" disabled>
+                                                          echo $Dnew3;?>" disabled>
 
                                             </label>
                                             <label for="numb">วันที่อนุมัติซ่อม : <input id="datepicker" size="6"
-                                                    name="XDMajConfirmDate" class="form-control" value="<?php $datecon4 = $row1["XDMajConfirmDate"];
+                                                    name="XDMajConfirmDate" class="form-control" value="<?php if($row1["XDMajConfirmDate"]!= NULL){$datecon4 = $row1["XDMajConfirmDate"];
                                                                   $DN4 = str_replace('-', '/', $datecon4);
                                                                    $Dnew4 =  date('d/m/Y', strtotime($DN4));
-                                                                   echo $Dnew4;
-                                                                  ?>" disabled>
+                                                                   echo $Dnew4;}else {
+                                                                    echo "-- / -- / ----";
+                                                                   }?>" disabled>
                                             </label>
-                                            <label for="numb">วันที่อะไหล่พร้อม : <?php $datecon5 = $row1["XDMajSpareDate"];
+                                            <label for="numb">วันที่อะไหล่พร้อม : <input id="datepicker" size="6"
+                                                    name="XDMajConfirmDate" class="form-control" value="<?php if($row1["XDMajSpareDate"]!= NULL){$datecon5 = $row1["XDMajSpareDate"];
                                                          $DN5 = str_replace('-', '/', $datecon5);
                                                           $Dnew5 =  date('d/m/Y', strtotime($DN5));
-                                                          //echo $Dnew5;?>
-                                                          <input type="text" class="form-control" size="6" value="<?php echo $Dnew5;?>" disabled>
+                                                          echo $Dnew5;}else {
+                                                            echo "-- / -- / ----";
+                                                           }?>" disabled>
                                             </label>
 
                                             <label for="numb">วันที่นัดซ่อม : <input id="datepicker" size="6"
-                                                    name="XDMajRepairAppPlanDate" class="form-control" value="<?php $datecon6 = $row1["XDMajRepairAppPlanDate"];
+                                                    name="XDMajRepairAppPlanDate" class="form-control" value="<?php if($row1["XDMajRepairAppPlanDate"]!= NULL){$datecon6 = $row1["XDMajRepairAppPlanDate"];
                                                          $DN6 = str_replace('-', '/', $datecon6);
                                                           $Dnew6 =  date('d/m/Y', strtotime($DN6));
-                                                          echo $Dnew6;?>" data-toggle="datepicker" disabled>
+                                                          echo $Dnew6;}else {
+                                                            echo "-- / -- / ----";
+                                                           }?>" data-toggle="datepicker" disabled>
                                             </label>
                                             <label for="numb">วันที่ซ่อม : <input id="datepicker" size="6" name="#"
-                                                    class="form-control" value="<?php $datecon7 = $row1["XDMajRepairActualDate"];
+                                                    class="form-control" value="<?php if($row1["XDMajRepairActualDate"]!= NULL){$datecon7 = $row1["XDMajRepairActualDate"];
                                                          $DN7 = str_replace('-', '/', $datecon7);
                                                           $Dnew7 =  date('d/m/Y', strtotime($DN7));
-                                                          echo $Dnew7;?>" data-toggle="datepicker" disabled>
+                                                          echo $Dnew7;}else {
+                                                            echo "-- / -- / ----";
+                                                           }?>" data-toggle="datepicker" disabled>
                                             </label>
                                             <label for="numb">วันที่ซ่อมเสร็จ : <input id="datepicker" size="6"
                                                     name="XDMajFinishRepairDate" class="form-control"
@@ -516,7 +524,7 @@ while ($row3=$stmt3->fetch(PDO::FETCH_ASSOC)){
         $(function() {
             $('[data-toggle="datepicker"]').datepicker({
                 autoHide: true,
-                autoPick: true,
+                //autoPick: true,
                 language: 'th-TH',
                 zIndex: 2048,
                 format: 'dd/mm/yyyy'
