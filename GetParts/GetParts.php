@@ -67,7 +67,7 @@
 
 <body>
 
-<!-- modal เพิ่มอะไหล่ -->
+    <!-- modal เพิ่มอะไหล่ -->
     <div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -78,17 +78,19 @@
                     </button>
                     <h5 class="modal-title" id="exampleModalLabel">เพิ่มอะไหล่</h5>
                 </div>
-                <form class="form-horizontal" id="insert" role="form" method="POST" action="insertt.php"
+                <form class="form-horizontal" id="insert" role="form" method="POST" action="insert_another.php"
                     enctype="multipart/form-data">
+                    <!-- action="insertt.php" -->
                     <div class="modal-body mx-3">
                         <div class="form-group">
                             <label for="name" class="col-sm-4 control-label">
                                 <span class="required"></span> เลือกอะไหล่:</label>
-                                <input type="hidden" name="pp" id="pp">
-                                <input type="hidden" name="seqq" id="seqqe">
-                                <input type="hidden" name="docno" id="docno" value="<?php echo $id; ?>">
+                            <!-- <input type="hidden" name="pp" id="pp"> -->
+                            <input type="hidden" name="seqq" id="seqqe">
+                            <input type="hidden" name="docno" id="docno" value="<?php echo $id; ?>">
                             <div class="col-sm-4">
-                                <select name="select2" id="select2" class="selectpicker form-control" data-live-search="true">
+                                <select name="select2" id="select2" class="selectpicker form-control"
+                                    data-live-search="true">
                                     <?php
                                     include'../database/connect.php';
                                     $sql = "select * from tmstmmachine_parts";
@@ -96,8 +98,9 @@
                                     if($stmt){
                                         while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                             ?>
-                                                <option value="<?php echo $row['XVMachinePartsCode']; ?>"><?php echo $row['XVMachinePartsName'];?></option>
-                                            <?php
+                                    <option value="<?php echo $row['XVMachinePartsCode']; ?>">
+                                        <?php echo $row['XVMachinePartsName'];?></option>
+                                    <?php
                                         }
                                         }else{
                                             echo "<script type='text/javascript'>alert('fail');</script>";
@@ -129,29 +132,29 @@
                                 </tr>
                             </thead>
                             <tbody class="sub" id="div1">
-                            <tr id='addrr0'>
-                                            <td><input type="text" name="n_sub[]" placeholder="">
-                                            </td>
-                                            <td><input type="text" name="sub[]" placeholder=""></td>
-                                            <td><button type="button"
-                                                    class="btn btn-danger btn-circle increase-row RemoveRow btndis"><i
-                                                        class="fa fa-minus"></button></td>
-                                        </tr>
-                                        <tr id='addrr1'></tr>
+                                <tr id='addrr0'>
+                                    <td><input type="text" name="n_sub[]" placeholder="">
+                                    </td>
+                                    <td><input type="text" name="sub[]" placeholder=""></td>
+                                    <td><button type="button"
+                                            class="btn btn-danger btn-circle increase-row RemoveRow btndis"><i
+                                                class="fa fa-minus"></button></td>
+                                </tr>
+                                <tr id='addrr1'></tr>
                             </tbody>
                         </table>
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                        <input type="submit" value="ยืนยัน" name="save" class="btn btn-primary">
+                        <input type="submit" value="ยืนยัน" name="save" id="paramsOkay" class="btn btn-primary">
                     </div>
                 </form>
 
             </div>
         </div>
     </div>
-<!-- modal เพิ่มอะไหล่ -->
+    <!-- modal เพิ่มอะไหล่ -->
 
     <?php include '../Template/templsidebar.php';
          include '../database/connect.php';
@@ -215,8 +218,7 @@
                                                     class="form-control" value="<?php $datecon4 = $row1["XDMajDate"];
                                                          $DN4 = str_replace('-', '/', $datecon4);
                                                           $Dnew4 =  date('d/m/Y', strtotime($DN4));
-                                                          echo $Dnew4; ?>"
-                                                    readonly></label>
+                                                          echo $Dnew4; ?>" readonly></label>
                                         </div>
                                     </div>
                                 </div>
@@ -288,26 +290,40 @@ FROM  tdoctmajob m,TDocTMaJobDetail detail
 WHERE  m.XVMajDocNo = detail.XVMajDocNo
 
 AND m.XVMajDocNo ='$id'"; //ค้นคืน รายการ เรื่องที่แจ้ง
-
+$idx = 1;
 $stmt2 = $dbh->query($sql2);
 while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
+    
 
 
 
 ?>
                                         <table class="table table-bordered" id="tab_logic">
                                             <thead>
-                                                อนุมัติการซ่อม :
-                                                <?php if($row2["XVMajConfirm"]=="confirm"){ echo 'อนุมัติแล้ว';}else{echo 'ไม่อนุมัติ';}?>
-                                                <br>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        อนุมัติการซ่อม :
+                                                        <?php if($row2["XVMajConfirm"]=="confirm"){ echo 'อนุมัติแล้ว';}else{echo 'ไม่อนุมัติ';}?>
+                                                        <br>
 
-                                                รายการที่ : <?php echo $row2["XIMajdSeqNo"];?>
-                                                เรื่องที่แจ้ง : <?php echo $row2["XVMajdSubject"];?>
+                                                        รายการที่ : <?php echo $row2["XIMajdSeqNo"];?>
+                                                        เรื่องที่แจ้ง : <?php echo $row2["XVMajdSubject"];?>
 
 
-                                                สาเหตุที่ทราบ : <?php echo $row2["XVMajdCause"];?>
-
-
+                                                        สาเหตุที่ทราบ : <?php echo $row2["XVMajdCause"];?>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="text-right">
+                                                            <button type="button" id="parts" name="adparts"
+                                                                class="btn btn-success mx-auto addPart"
+                                                                value="<?php echo $idx; ?>">เพิ่มอะไหล่</button>
+                                                        </div>
+                                                    </div>
+                                                    <?php 
+                                                        //   echo $idx;
+                                                        //   echo 'why no increate';
+                                                          ?>
+                                                </div>
                                                 <th style="background:#CCCCCC;">อะไหล่พร้อม</th>
                                                 <th style="background:#CCCCCC;">ลำดับ</th>
                                                 <th style="background:#CCCCCC;">รายการอะไหล่ </th>
@@ -320,14 +336,8 @@ while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
                                                 <th style="background:#CCCCCC;">วันที่เบิก</th>
                                                 </tr>
                                             </thead>
-
                                             <tbody class="sub">
-
-                                                <?php ?>
-
                                                 <tr id='addr0'>
-
-
                                                     <?php
        $count = 0 ;
 $sql3 = " SELECT   *
@@ -429,6 +439,8 @@ $sql3 = sprintf($sql3,$row2['XIMajdSeqNo']);
 
 
 }//sql3
+// echo $idx;
+$idx++;
 }//sql2
 $dbh = null;
 ?>
@@ -463,20 +475,20 @@ $dbh = null;
                                             <label for="numb">วันนัดประเมิน : <?php $datecon1 = $row1["XDMajEstAppPlanDate"];
                                                          $DN1 = str_replace('-', '/', $datecon1);
                                                           $Dnew1 =  date('d/m/Y', strtotime($DN1));
-                                                          ?><input type="text" class="form-control" size="6" value="<?php echo $Dnew1;?>" disabled>
+                                                          echo $Dnew1; ?>
 
                                             </label>
                                             <label for="numb">วันที่ประเมิน : <?php $datecon2 = $row1["XDMajEstActualDate"];
                                                          $DN2 = str_replace('-', '/', $datecon2);
                                                           $Dnew2 =  date('d/m/Y', strtotime($DN2));
-                                                          ?><input type="text" class="form-control" size="6" value="<?php echo $Dnew2;?>" disabled>
+                                                          echo $Dnew2;?>
                                             </label>
                                             <label for="numb">วันที่ประเมินเสร็จ : <?php $datecon5 = $row1["XDMajFinishEstDate"];
                                                          $DN5 = str_replace('-', '/', $datecon5);
                                                           $Dnew5 =  date('d/m/Y', strtotime($DN5));
-                                                          ?><input type="text" class="form-control" size="6" value="<?php echo $Dnew5;?>" disabled>
+                                                          echo $Dnew5; ?>
 
-                                                    </label>
+                                            </label>
                                             <label for="numb">วันที่อนุมัติซ่อม : <input id="datepicker" size="6"
                                                     name="XDMajConfirmDate" class="form-control" value="<?php $datecon = $row1["XDMajConfirmDate"];
                                                                   $DN = str_replace('-', '/', $datecon);
@@ -487,7 +499,7 @@ $dbh = null;
                                             <label for="numb">วันที่อะไหล่พร้อม : <?php $datecon3 = $row1["XDMajSpareDate"];
                                                          $DN3 = str_replace('-', '/', $datecon3);
                                                           $Dnew3 =  date('d/m/Y', strtotime($DN3));
-                                                          ?><input type="text" class="form-control" size="6" value="<?php echo $Dnew3;?>" disabled>
+                                                          echo $Dnew3;?>
                                             </label>
                                         </div>
                                     </div>
@@ -522,11 +534,6 @@ $dbh = null;
                                         <div class="col text-left">
                                             <a type="button" class="btn btn-danger mr-auto"
                                                 href="ListGetParts.php">กลับ</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="col text-left">
-                                        <button type="button" id="parts" class="btn btn-success mr-auto addPart">เพิ่มอะไหล่</button>
                                         </div>
                                     </div>
                                 </div>
@@ -566,52 +573,37 @@ $dbh = null;
 
 
 
-        $(document).ready(()=> {
-            $('.addPart').on('click',function() {
+
+        // $(document).ready(() => {
+        //     $('.addPart').click(function() {
+        //         var vaid = $(this).val()
+        //         var jobb = $('#jobid').val()
+
+        //         $('#insertModal').modal('show')
+        //         $('#div1').empty()
+        //         $('#insertModal').on('click', '#paramsOkay', function(e) {
+        //             // console.log($('#select2').val());
+        //             alert(jobb)
+        //             alert(vaid)
+        //             alert($('#select2').val());
+        //             //ต้องแก้เป็นการเพิ่มแถวให้กับหน้าอะไหล่
+        //         })
+        //     })
+        // })โค้ดยืนยัน
+        $(document).ready(() => {
+            $('.addPart').on('click', function() {
                 $('#insertModal').modal('show')
                 $('#div1').empty()
-                $tr = $(this).closest('tr')
-
-                var data = $tr.children("td").map(function() {
-                    return $(this).text()
-                }).get()
-
-                $('#seqqe').val(data[1])
-                var jobi = $('#jobid').val()
-                console.log(data)
-                $.ajax({
-                    url: "test_t.php",
-                    method: "POST",
-                    data: {
-                        id: data[1],
-                        jobid: jobi
-                    },
-                    dataType: "JSON",
-                    success: function(rows) {
-                        countKey = Object.keys(rows).length;
-                        addNo(countKey)
-                        $('#tab_logic3').append('<tr id="addrr0"></tr>');
-                        let j = 0
-                        for (var k = 0; k < countKey; k = k+3) {
-                            $('tr').find('input').prop('disabled', true)
-                            $('#addrr' + j).html("<td hidden><input type='hidden' name='n_sub[]' value='" +
-                                rows[k] +
-                                "'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='n_suub[]' value='" +
-                                rows[k+1] +
-                                "'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='sub[]' value='" +
-                                rows[k+2] +
-                                "' placeholder='กรุณากรอกสาเหตุ'/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td>"
-                            );
-
-                            $('#tab_logic3').append('<tr id="addrr' + (j + 1) + '"></tr>');
-
-                            j++
-                        }
-                    }
-
-                })
+                var vaid = $(this).val()
+                var jobb = $('#jobid').val()
+                $('#docno').val(jobb)
+                $('#seqqe').val(vaid)
+                // alert(vaid)
+                // alert(jobb)
             })
         })
+
+
 
 
         function addNo(a) {
@@ -637,7 +629,12 @@ $dbh = null;
                 $('#tab_logic3').append('<tr id="addr' + (i) + '"></tr>');
                 $('tr').find('input').prop('disabled', true)
                 $('#addr' + i).html(
-                    "<td hidden><input type='hidden' name='n_sub[]' value='"+ select2 +"' placeholder=''/></td><td><input type='text' name='name_sub[]' value='"+ value.text() +"' placeholder=''/></td><td><input type='text' name='sub[]' value='"+val_select2+"' placeholder=''/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td>"
+                    "<td hidden><input type='hidden' name='n_sub[]' value='" + select2 +
+                    "' placeholder=''/></td><td><input type='text' name='name_sub[]' value='" +
+                    value.text() +
+                    "' placeholder=''/></td><td><input type='text' name='sub[]' value='" +
+                    val_select2 +
+                    "' placeholder=''/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td>"
                 );
                 $('#tab_logic3').append('<tr id="addr' + (i + 1) + '"></tr>');
                 i++;
@@ -648,9 +645,9 @@ $dbh = null;
             $(this).closest('tr').remove();
         });
 
-        $(function(){
+        $(function() {
             var $select = $(".1-100");
-            for (i=1;i<=100;i++){
+            for (i = 1; i <= 100; i++) {
                 $select.append($('<option></option>').val(i).html(i))
             }
         });
