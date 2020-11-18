@@ -320,8 +320,13 @@ while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
                                                         </div>
                                                     </div>
                                                     <?php 
+<<<<<<< Updated upstream
                                                         //   echo $idx;
                                                         //   echo 'why no increate';
+=======
+                                                          echo $idx;
+                                                          echo 'why no increate';
+>>>>>>> Stashed changes
                                                           ?>
                                                 </div>
                                                 <th style="background:#CCCCCC;">อะไหล่พร้อม</th>

@@ -26,6 +26,7 @@
         include '../database/connect.php';
         $jobid = $_POST['docno'];
         $sq = $_POST['seqq'];
+<<<<<<< Updated upstream
         $boo = false;
         if(isset($_REQUEST['n_sub'])){
             $nvals = count($_REQUEST['n_sub']);
@@ -40,6 +41,21 @@
             }
         }
         if ($boo) {
+=======
+        echo $jobid;
+        echo $sq; 
+        if(isset($_REQUEST['n_sub'])){
+            $nvals = count($_REQUEST['n_sub']);
+            for ( $i = 0; $i < $nvals; $i++ ) {
+                $n_sub = $_REQUEST['name_sub'][$i];
+                $sub = $_REQUEST['sub'][$i];
+                $sql2 = "INSERT INTO TDocTMaMachine_parts_use(XVMajDocNo,XIMajdSeqNo,XVMachinePartsCode,XVAmount) VALUES ('$jobid', '$sq', '$n_sub', '$sub')";
+                $stmt2 = $dbh->query($sql2);
+                echo $n_sub;
+            }
+        }
+        if ( $stmt2 ) {
+>>>>>>> Stashed changes
             echo '<script>';
             echo "Swal.fire({
                 title: 'สำเร็จ!',
@@ -47,7 +63,11 @@
                 icon: 'success',
                 confirmButtonText: 'Back'
                 }).then(function() {
+<<<<<<< Updated upstream
                 window.location = 'GetParts.php?id=$jobid';
+=======
+                window.location = 'addParts.php?id=$XVMajDocNo';
+>>>>>>> Stashed changes
             });";
             echo '</script>';
         } else {
@@ -59,7 +79,11 @@
                 icon: 'warning',
                 confirmButtonText: 'Back'
                 }).then(function() {
+<<<<<<< Updated upstream
                 window.location = 'GetParts.php?id=$jobid';
+=======
+                window.location = 'addParts.php?id=$XVMajDocNo';
+>>>>>>> Stashed changes
             });";
             echo '</script>';
         }

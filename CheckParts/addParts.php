@@ -477,11 +477,11 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                         let j = 0
                         for (var k = 0; k < countKey; k = k+3) {
                             $('tr').find('input').prop('disabled', false)
-                            $('#addrr' + j).html("<td hidden><input type='hidden' name='n_sub[]' value='" +
+                            $('#addrr' + j).html("<td hidden><input type='hidden' name='n_sub[]' readonly value='" +
                                 rows[k] +
-                                "'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='n_suub[]' value='" +
+                                "'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='n_suub[]' readonly value='" +
                                 rows[k+1] +
-                                "'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='sub[]' value='" +
+                                "'  placeholder='กรุณากรอกเรื่องที่แจ้ง'/></td><td><input type='text' name='sub[]' readonly value='" +
                                 rows[k+2] +
                                 "' placeholder='กรุณากรอกสาเหตุ'/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td>"
                             );
@@ -519,7 +519,7 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                 $('#tab_logic3').append('<tr id="addr' + (i) + '"></tr>');
                 $('tr').find('input').prop('disabled', false)
                 $('#addr' + i).html(
-                    "<td hidden><input type='hidden' name='n_sub[]' value='"+ select2 +"' placeholder=''/></td><td><input type='text' name='name_sub[]' value='"+ value.text() +"' placeholder=''/></td><td><input type='text' name='sub[]' value='"+val_select2+"' placeholder=''/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td>"
+                    "<td hidden><input type='hidden' name='n_sub[]' readonly value='"+ select2 +"' placeholder=''/></td><td><input type='text' name='name_sub[]' readonly value='"+ value.text() +"' placeholder=''/></td><td><input type='text' name='sub[]' readonly value='"+val_select2+"' placeholder=''/></td><td><button type='button' id='add_row1' class='btn btn-danger btn-circle increase-row RemoveRow'><i class='fa fa-minus'></button></td>"
                 );
                 $('#tab_logic3').append('<tr id="addr' + (i + 1) + '"></tr>');
                 i++;
