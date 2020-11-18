@@ -284,7 +284,7 @@ while ($row3=$stmt3->fetch(PDO::FETCH_ASSOC)){
 
                                                     <td style="width:60px;"> <?php echo $row3["XVAmount"]; ?></td>
                                                     <?php if($row3["XVMajConfirm"]=="confirm"){
-         
+
          while ($row4=$stmt4->fetch(PDO::FETCH_ASSOC)){
        ?>
                                                     <td><input style="width:25px; height:25px; margin:5px 25px 0;"
@@ -375,18 +375,20 @@ while ($row3=$stmt3->fetch(PDO::FETCH_ASSOC)){
                                             <label for="numb">วันนัดประเมิน : <?php $datecon1 = $row1["XDMajEstAppPlanDate"];
                                                          $DN1 = str_replace('-', '/', $datecon1);
                                                           $Dnew1 =  date('d/m/Y', strtotime($DN1));
-                                                          echo $Dnew1; ?>
-
+                                                          //echo $Dnew1; ?>
+                                                          <input type="text" class="form-control" size="6" value="<?php echo $Dnew1;?>" disabled>
                                             </label>
                                             <label for="numb">วันที่ประเมิน : <?php $datecon2 = $row1["XDMajEstActualDate"];
                                                          $DN2 = str_replace('-', '/', $datecon2);
                                                           $Dnew2 =  date('d/m/Y', strtotime($DN2));
-                                                          echo $Dnew2;?>
+                                                          //echo $Dnew2;?>
+                                                          <input type="text" class="form-control" size="6" value="<?php echo $Dnew2;?>" disabled>
                                             </label>
                                             <label for="numb">วันที่ประเมินเสร็จ : <?php $datecon3 = $row1["XDMajFinishEstDate"];
                                                          $DN3 = str_replace('-', '/', $datecon3);
                                                           $Dnew3 =  date('d/m/Y', strtotime($DN3));
-                                                          echo $Dnew3;?>
+                                                          //echo $Dnew3;?>
+                                                          <input type="text" class="form-control" size="6" value="<?php echo $Dnew3;?>" disabled>
 
                                             </label>
                                             <label for="numb">วันที่อนุมัติซ่อม : <input id="datepicker" size="6"
@@ -399,7 +401,8 @@ while ($row3=$stmt3->fetch(PDO::FETCH_ASSOC)){
                                             <label for="numb">วันที่อะไหล่พร้อม : <?php $datecon5 = $row1["XDMajSpareDate"];
                                                          $DN5 = str_replace('-', '/', $datecon5);
                                                           $Dnew5 =  date('d/m/Y', strtotime($DN5));
-                                                          echo $Dnew5;?>
+                                                          //echo $Dnew5;?>
+                                                          <input type="text" class="form-control" size="6" value="<?php echo $Dnew5;?>" disabled>
                                             </label>
 
                                             <label for="numb">วันที่นัดซ่อม : <input id="datepicker" size="6"
@@ -441,7 +444,7 @@ while ($row3=$stmt3->fetch(PDO::FETCH_ASSOC)){
                                                     ?>
 
                                             <label for="">
-                                                <?php echo  $row["XVEpyCode"]." ".$row["XVEmpName"];?>
+                                                <?php echo  $row["XVEmpCode"]." ".$row["XVEmpName"];?>
                                             </label>
                                             <?php } ?>
                                         </div>
@@ -463,7 +466,7 @@ while ($row3=$stmt3->fetch(PDO::FETCH_ASSOC)){
                                                     ?>
 
                                             <label for="">
-                                                <?php echo  $row["XVEpyCode"]." ".$row["XVEpyFirstname"]." ".$row["XVpyLastname"];?>
+                                                <?php echo  $row["XVEmpCode"]." ".$row["XVEmpName"];?>
                                             </label>
                                             <?php } ?>
                                         </div>
