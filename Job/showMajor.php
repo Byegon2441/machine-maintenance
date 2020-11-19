@@ -76,7 +76,7 @@
 
     if(isset($_GET['id'])){
         $id=$_GET['id'];
-    $sql = " SELECT  m.XVMajDocNo, d.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus ,depart.XVDptCode,depart.XVDptName,depart.XVDptNumber,depart.XVDptSub_district,depart.XVDptDistrict,depart.XVDptProvince 
+    $sql = " SELECT  m.XVMajDocNo, d.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus ,depart.XVDptCode,depart.XVDptName,m.XVMajNumber,m.XVMajSub_district,m.XVMajDistrict,m.XVMajProvince 
  FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v,tmstmdepartment depart
  WHERE m.XVMajDocNo = d.XVMajDocNo 
  AND m.XVVehCode = v.XVVehCode
@@ -180,15 +180,15 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                     <div class="col">
                                         <label for="numb">ตำแหน่งเครื่องจักร ณ ปัจจุบัน เลขที่:
                                             <input type="text" style="margin: 0px 10px;" size="10" name="dnum" id="dnum"
-                                                value="<?php echo $row["XVDptNumber"];?>" readonly class="form-control">
+                                                value="<?php echo $row["XVMajNumber"];?>" readonly class="form-control">
                                             ตำบล:<input type="text" style="margin: 0px 10px;" size="10" name="dsub"
-                                                id="dsub" value="<?php echo $row["XVDptSub_district"];?>" readonly
+                                                id="dsub" value="<?php echo $row["XVMajSub_district"];?>" readonly
                                                 class="form-control">
                                             อำเภอ:<input type="text" style="margin: 0px 10px;" size="10" name="ddis"
-                                                id="ddis" value="<?php echo $row["XVDptDistrict"];?>" readonly
+                                                id="ddis" value="<?php echo $row["XVMajDistrict"];?>" readonly
                                                 class="form-control">
                                             จังหวัด:<input type="text" style="margin: 0px 10px;" size="10" name="dpro"
-                                                id="dpro" value="<?php echo $row["XVDptProvince"];?>" readonly
+                                                id="dpro" value="<?php echo $row["XVMajProvince"];?>" readonly
                                                 class="form-control"></label>
                                     </div>
                                 </div>
