@@ -11,22 +11,11 @@
 
     <title>ระบบซ่อมบำรุงเครื่องจักร : แก้ไขใบแจ้งซ่อม</title>
 
-    <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-
-    <!-- DataTables CSS -->
     <link href="../vendor/datatables/css/dataTables.bootstrap.css" rel="stylesheet">
-
-    <!-- DataTables Responsive CSS -->
     <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 
@@ -44,40 +33,29 @@ if(isset($_POST['save'])){
  $newD = str_replace('/', '-', $oldDate);
  $newDate =  date('Y-m-d', strtotime($newD));
  $showDate = date('d/m/Y', strtotime($newD));
-//  $newtime = date("h:i:sa");  
    
  $sql = "UPDATE tdoctmajobdate  SET XDMajConfirmDate = '$newDate' WHERE XVMajDocNo = '$id'";
-        // $stmt0 = $dbh->query($sql);
         if($dbh->query($sql)){
-        // if(mysqli_query( $connect, $sql )){
 
             $sql2 = "UPDATE TDocTMaJob
             SET XVMajStatus = 'รออะไหล่'
             WHERE XVMajDocNo = '$id'";
-          
-            
-            //  $stmt = $dbh->query($sql2);
              if($dbh->query($sql2)){
-            //  if(mysqli_query( $connect, $sql2 )){
               
-              if(  isset($_POST['check'])  ){
-
+                if(isset($_POST['check'])){
              foreach ($_POST['check'] as $key => $value) {
-                
-            
-                
-                   
-                    
                     $sql3 = "UPDATE TDocTMaJobDetail
                     SET XVMajConfirm = '$value'
                     WHERE XVMajDocNo = '$id'
                     AND XIMajdSeqNo= '$key'";
-                //    mysqli_query( $connect, $sql3); 
                    $dbh->query($sql3);
                 }
+            }else{
+                $sql4 = "UPDATE TDocTMaJob
+            SET XVMajStatus = 'ดำเนินการซ่อม'
+            WHERE XVMajDocNo = '$id'";
+            $dbh->query($sql4);
             }
-                            
-                   
                     echo '<script>';
                     echo "Swal.fire({
                         title: 'สำเร็จ!',

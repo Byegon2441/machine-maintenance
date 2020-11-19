@@ -58,7 +58,7 @@ if(isset($_POST['save'])){
                           if($dbh->query($sql)){
                             success();
                           }else{
-                              echo mysqli_error($connect);
+                              //echo mysqli_error($connect);
                           }
 
                   }else if($_POST['check_source'][$key] =="สั่งซื้อ" && isset($_POST['dateforcoming']) &&  isset($_POST['XDMachinePartsReady']) ) {
@@ -80,7 +80,7 @@ if(isset($_POST['save'])){
                           if($dbh->query($sql)){
                                success();
                           }else{
-                              echo mysqli_error($connect);
+                              //echo mysqli_error($connect);
 
                           }
 

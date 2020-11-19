@@ -172,16 +172,16 @@
                                     <div class="col">
                                         <label for="numb">ตำแหน่งเครื่องจักร ณ ปัจจุบัน เลขที่:
                                             <input type="text" style="margin: 0px 10px;" size="10" name="dnum" id="dnum"
-                                                value="<?php echo $row1["XVDptNumber"];?>" readonly
+                                                value="<?php echo $row1["XVMajNumber"];?>" readonly
                                                 class="form-control">
                                             ตำบล:<input type="text" style="margin: 0px 10px;" size="10" name="dsub"
-                                                id="dsub" value="<?php echo $row1["XVDptSub_district"];?>" readonly
+                                                id="dsub" value="<?php echo $row1["XVMajSub_district"];?>" readonly
                                                 class="form-control">
                                             อำเภอ:<input type="text" style="margin: 0px 10px;" size="10" name="ddis"
-                                                id="ddis" value="<?php echo $row1["XVDptDistrict"];?>" readonly
+                                                id="ddis" value="<?php echo $row1["XVMajDistrict"];?>" readonly
                                                 class="form-control">
                                             จังหวัด:<input type="text" style="margin: 0px 10px;" size="10" name="dpro"
-                                                id="dpro" value="<?php echo $row1["XVDptProvince"];?>" readonly
+                                                id="dpro" value="<?php echo $row1["XVMajProvince"];?>" readonly
                                                 class="form-control"></label>
                                     </div>
                                 </div>
@@ -520,7 +520,17 @@ $dbh = null;
                                     <div class="col-md-6">
                                         <div class="col text-right">
                                             <input type="hidden" value="<?php echo $id?>" name='id'>
-                                            หมายเหตุปิดงาน : <input type="text" value="" name="XVMajFinishRmk" class="form-control" >
+                                            หมายเหตุปิดงาน : <input type="text" value="<?php 
+                                             include '../database/connect.php';
+                                             $sql8 = "  SELECT XVMajFinishRmk
+                                             FROM  tdoctmajob
+                                             WHERE XVMajDocNo = '$id' ";
+                                              $stmt8 = $dbh->query($sql8);
+                                              while ($row8=$stmt8->fetch(PDO::FETCH_ASSOC)){
+                                             echo $row8['XVMajFinishRmk'];
+                                              }
+                                            ?>"
+                                             name="XVMajFinishRmk" class="form-control">
                                             <input type="submit" class="btn btn-info" name="save"
                                                 value="ปิดงาน">
                                         </div>
