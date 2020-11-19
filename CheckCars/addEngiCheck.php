@@ -394,8 +394,8 @@ while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
                                               $stmt5=$dbh->query($sqldepart);
                                               while ($rowdepart=$stmt5->fetch(PDO::FETCH_ASSOC)) {
 
-                                                echo $rowdepart['XVEpyCode'];
-                                                echo $rowdepart['XVEmpName'];
+                                                echo $rowdepart['XVEpyCode']." ";
+                                                echo $rowdepart['XVEmpName']." ";
                                               }
                                             }else{
                                               if(isset($_POST['selectemployee'])){
@@ -428,15 +428,26 @@ while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
                                         <div class="col text-left">
                                             <a type="button" class="btn btn-danger mr-auto"
                                                 href="ListCheckDataEngi.php">กลับ</a>
-                                            <button type="button" class="btn btn-warning mr-auto" data-toggle="modal"
-                                                data-target="#insertModal">เพิ่มช่างประเมิน</button>
+                                                <?php   $ssql = "SELECT jd.XDMajEstActualDate
+                                                   FROM  tdoctmajob j ,tdoctmajobdate jd
+                                                   WHERE  j.XVMajDocNo = jd.XVMajDocNo
+                                                   AND j.XVMajDocNo = '$id'";
+                                                   $stmtda1=$dbh->query($ssql);
+                                                   $rowda1=$stmtda1->fetch(PDO::FETCH_ASSOC);
+                                             if ($rowda1['XDMajEstActualDate'] == NULL) {
+                                             ?><button type="button" class="btn btn-warning mr-auto" data-toggle="modal"
+                                                data-target="#insertModal">เพิ่มช่างประเมิน</button><?php
+                                            } ?>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
+                                      <?php  if ($rowda1['XDMajEstActualDate'] == NULL) {
+                                       ?>
                                         <div class="col text-right">
                                             <button type="submit" class="btn btn-primary"
                                                 data-dismiss="modal">บันทึก</button>
                                         </div>
+                                      <?php } ?>
                                     </div>
                                 </div>
                             </form>

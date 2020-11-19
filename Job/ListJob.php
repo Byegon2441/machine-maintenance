@@ -438,16 +438,16 @@
                                             <th>ชื่อเครื่องจักร</th>
                                             <th>สถานะใบแจ้งซ่อม</th>
                                             <th>สถานะเอกสาร</th>
-                                           
+
                                             <th>รายละเอียด</th>
                                             <th>จัดการ</th>
                                         </tr>
                                     </thead>
                                     <?php
           include '../database/connect.php';
-          $sql = " SELECT m.XVMajDocNo, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus,d.XDMajDate 
+          $sql = " SELECT m.XVMajDocNo, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus,d.XDMajDate,d.XDMajEstActualDate
           FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v
-          WHERE m.XVMajDocNo = d.XVMajDocNo 
+          WHERE m.XVMajDocNo = d.XVMajDocNo
           AND m.XVVehCode = v.XVVehCode;"; //ตัวสมบูรณ์
         //   $sql = " SELECT m.XVMajDocNo, m.XVVehCode, v.XVVehName, m.XVMajStatus FROM tdoctmajob m, tmstvehicle v WHERE m.XVVehCode = v.XVVehCode ";
         //   ตัวทดสอบ
@@ -467,9 +467,9 @@
                                             }else if($row["XVMajDocStatus"] == 2){
                                                 echo 'ส่งแล้ว';
                                             }else{
-                                                echo 'ยกเลิก'; 
+                                                echo 'ยกเลิก';
                                             } ?></td>
-                                           
+
 
                                     <?php if($row["XVMajDocStatus"]==1){
 
@@ -478,12 +478,56 @@
                                                 >รายละเอียด</a></td>
                                                 <td align="center"><button class='btn btn-danger canclebtn' type='button'
                                                 >ยกเลิก</button></td>
-                                    <?php }else if($row["XVMajDocStatus"]==2){ ?>
-                                        <td align="center"><a class='btn btn-primary editbtn' href="showMajor.php?id=<?php echo $row["XVMajDocNo"] ?>"
+                                    <?php }else if($row["XVMajStatus"] == 'แจ้งซ่อม' && $row["XVMajDocStatus"] != 3){ ?>
+                                        <td align="center"><a class='btn btn-primary editbtn' href="../CheckCars/addDataCheck.php?id=<?php echo $row["XVMajDocNo"] ?>"
                                                 >รายละเอียด</a></td>
                                                 <td align="center"><button class='btn btn-danger canclebtn' type='button'
                                                 >ยกเลิก</button></td>
-                                                
+                                    <?php }else if($row["XVMajStatus"] == 'รอนำรถประเมินอะไหล่' && $row["XVMajDocStatus"] != 3){ ?>
+                                        <td align="center"><a class='btn btn-primary editbtn' href="../CheckCars/addEngiCheck.php?id=<?php echo $row["XVMajDocNo"] ?>"
+                                                >รายละเอียด</a></td>
+                                                <td align="center"><button class='btn btn-danger canclebtn' type='button'
+                                                >ยกเลิก</button></td>
+                                    <?php }else if($row["XVMajStatus"] == 'รออนุมัติซ่อม' && $row["XVMajDocStatus"] != 3){ ?>
+                                        <td align="center"><a class='btn btn-primary editbtn' href="../AllowMainte/AllowMainte.php?id=<?php echo $row["XVMajDocNo"] ?>"
+                                                >รายละเอียด</a></td>
+                                                <td align="center"><button class='btn btn-danger canclebtn' type='button'
+                                                >ยกเลิก</button></td>
+                                    <?php }else if($row["XVMajStatus"] == 'รออะไหล่' && $row["XVMajDocStatus"] != 3){ ?>
+                                        <td align="center"><a class='btn btn-primary editbtn' href="../ConfirmParts/ConParts.php?id=<?php echo $row["XVMajDocNo"] ?>"
+                                                >รายละเอียด</a></td>
+                                                <td align="center"><button class='btn btn-danger canclebtn' type='button'
+                                                >ยกเลิก</button></td>
+                                    <?php }else if($row["XVMajStatus"] == 'รอช่างรับอะไหล่' && $row["XVMajDocStatus"] != 3){ ?>
+                                        <td align="center"><a class='btn btn-primary editbtn' href="../AllowMainte/addFixDate.php?id=<?php echo $row["XVMajDocNo"] ?>"
+                                                >รายละเอียด</a></td>
+                                                <td align="center"><button class='btn btn-danger canclebtn' type='button'
+                                                >ยกเลิก</button></td>
+                                    <?php }else if($row["XVMajStatus"] == 'รอนำรถเข้าซ่อม' && $row["XVMajDocStatus"] != 3){ ?>
+                                        <td align="center"><a class='btn btn-primary editbtn' href="../CheckCars/addEngiRepair.php?id=<?php echo $row["XVMajDocNo"] ?>"
+                                                >รายละเอียด</a></td>
+                                                <td align="center"><button class='btn btn-danger canclebtn' type='button'
+                                                >ยกเลิก</button></td>
+                                    <?php }else if($row["XVMajStatus"] == 'ดำเนินการซ่อม' && $row["XVMajDocStatus"] != 3){ ?>
+                                        <td align="center"><a class='btn btn-primary editbtn' href="../JobDone/JobDone.php?id=<?php echo $row["XVMajDocNo"] ?>"
+                                                >รายละเอียด</a></td>
+                                                <td align="center"><button class='btn btn-danger canclebtn' type='button'
+                                                >ยกเลิก</button></td>
+                                    <?php }else if($row["XVMajStatus"] == 'ซ่อมเสร็จ' && $row["XVMajDocStatus"] != 3){ ?>
+                                                <td align="center"><a class='btn btn-primary editbtn' href="../Finish/JobFinish.php?id=<?php echo $row["XVMajDocNo"] ?>"
+                                                >รายละเอียด</a></td>
+                                                <td align="center"><button class='btn btn-danger canclebtn' type='button'
+                                                >ยกเลิก</button></td>
+                                    <?php }else if($row["XVMajStatus"] == 'ปิดงาน' && $row["XVMajDocStatus"] != 3){ ?>
+                                                <td align="center"><a class='btn btn-primary editbtn' href="../Finish/JobFinishDone.php?id=<?php echo $row["XVMajDocNo"] ?>"
+                                                >รายละเอียด</a></td>
+                                                <td align="center"><button class='btn btn-danger canclebtn' type='button'
+                                                >ยกเลิก</button></td>
+                                    <?php }else if($row["XVMajDocStatus"]==2){ ?>
+                                        <td align="center"><a class='btn btn-primary editbtn' href="../CheckCars/addEngiCheck.php?id=<?php echo $row["XVMajDocNo"] ?>"
+                                                >รายละเอียด</a></td>
+                                                <td align="center"><button class='btn btn-danger canclebtn' type='button'
+                                                >ยกเลิก</button></td>
                                     <?php }else{ ?>
                                         <td align="center"><a class='btn btn-primary editbtn' href="showMajor.php?id=<?php echo $row["XVMajDocNo"] ?>"
                                                 >รายละเอียด</a></td>
@@ -550,7 +594,7 @@
                 $('#cancle_id').val(data[0])
             })
         })
-    
+
         </script>
 
 </body>

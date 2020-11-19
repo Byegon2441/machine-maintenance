@@ -17,7 +17,8 @@
     if ( isset( $_POST['cancle'] ) ) {
     $id = $_POST['cancle_id'];
     $sql = "UPDATE tdoctmajob
-             SET XVMajDocStatus = '3' 
+             SET XVMajDocStatus = '3',
+                 XVMajStatus = 'ยกเลิกใบแจ้งซ่อม'
              WHERE XVMajDocNo ='$id'";
     $stmt = $dbh->query($sql);
     $dbh = null;

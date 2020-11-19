@@ -53,12 +53,14 @@
                                 </thead>
                                 <tbody>
 <?php
-    $sql = "SELECT tj.XVMajStatus,tj.XVMajDocNo,tj.XVMaCarStatus,tv.XVVehEngineNumber,tv.XVVehName,FORMAT(td.XDMajEstAppPlanDate, 'dd/MM/yyyy') AS DA,FORMAT(td.XDMajDate, 'dd/MM/yyyy') AS DS
+    $sql = "SELECT tj.XVMajStatus,tj.XVMajDocNo,tj.XVMaCarStatus,tv.XVVehEngineNumber,tv.XVVehName,FORMAT(td.XDMajEstAppPlanDate, 'dd/MM/yyyy') AS DA,FORMAT(td.XDMajDate, 'dd/MM/yyyy') AS DS,XDMajEstActualDate
     FROM tdoctmajob tj,tmstvehicle tv,tdoctmajobdate td
     WHERE tj.XVVehCode = tv.XVVehCode
     AND tj.XVMajDocNo = td.XVMajDocNo
+    AND td.XDMajEstActualDate IS NULL
     AND XVMajDocStatus = 2
-    AND tj.XVMajStatus = 'รอนำรถประเมินอะไหล่'";
+    AND tj.XVMajStatus = 'รอนำรถประเมินอะไหล่'
+    ";
     $stmt = $dbh->query($sql);
     $count = 1;
     while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){

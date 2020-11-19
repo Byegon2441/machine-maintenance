@@ -550,8 +550,8 @@ $dbh= NULL;
                                                   $stmt5=$dbh->query($sqldepart);
                                                   while ($rowdepart=$stmt5->fetch(PDO::FETCH_ASSOC)) {
 
-                                                    echo $rowdepart['XVEpyCode'];
-                                                    echo $rowdepart['XVEmpName'];
+                                                    echo $rowdepart['XVEpyCode']." ";
+                                                    echo $rowdepart['XVEmpName']." ";
                                                   }
                                                 }else{
                                                   if(isset($_POST['selectemployee'])){
