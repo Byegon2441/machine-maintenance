@@ -445,7 +445,7 @@
                                     </thead>
                                     <?php
           include '../database/connect.php';
-          $sql = " SELECT m.XVMajDocNo, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus,d.XDMajDate,d.XDMajEstActualDate
+          $sql = " SELECT m.XVMajDocNo, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus,FORMAT(d.XDMajDate, 'dd/MM/yyyy') AS XDMajDate,d.XDMajEstActualDate
           FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v
           WHERE m.XVMajDocNo = d.XVMajDocNo
           AND m.XVVehCode = v.XVVehCode;"; //ตัวสมบูรณ์

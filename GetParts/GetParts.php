@@ -477,18 +477,18 @@ $dbh = null;
                                             <label for="numb">วันนัดประเมิน : <?php $datecon1 = $row1["XDMajEstAppPlanDate"];
                                                          $DN1 = str_replace('-', '/', $datecon1);
                                                           $Dnew1 =  date('d/m/Y', strtotime($DN1));
-                                                          echo $Dnew1; ?>
+                                                         ?><input type="text" class="form-control" value="<?php echo $Dnew1; ?>" size="6" disabled>
 
                                             </label>
                                             <label for="numb">วันที่ประเมิน : <?php $datecon2 = $row1["XDMajEstActualDate"];
                                                          $DN2 = str_replace('-', '/', $datecon2);
                                                           $Dnew2 =  date('d/m/Y', strtotime($DN2));
-                                                          echo $Dnew2;?>
+                                                          ?><input type="text" class="form-control" value="<?php echo $Dnew2; ?>" size="6" disabled>
                                             </label>
                                             <label for="numb">วันที่ประเมินเสร็จ : <?php $datecon5 = $row1["XDMajFinishEstDate"];
                                                          $DN5 = str_replace('-', '/', $datecon5);
                                                           $Dnew5 =  date('d/m/Y', strtotime($DN5));
-                                                          echo $Dnew5; ?>
+                                                          ?><input type="text" class="form-control" value="<?php echo $Dnew5; ?>" size="6" disabled>
 
                                             </label>
                                             <label for="numb">วันที่อนุมัติซ่อม : <input id="datepicker" size="6"
@@ -501,7 +501,8 @@ $dbh = null;
                                             <label for="numb">วันที่อะไหล่พร้อม : <?php $datecon3 = $row1["XDMajSpareDate"];
                                                          $DN3 = str_replace('-', '/', $datecon3);
                                                           $Dnew3 =  date('d/m/Y', strtotime($DN3));
-                                                          echo $Dnew3;?>
+                                                          ?>
+                                                          <input type="text" class="form-control" value="<?php echo $Dnew3; ?>" size="6" disabled>
                                             </label>
                                         </div>
                                     </div>
