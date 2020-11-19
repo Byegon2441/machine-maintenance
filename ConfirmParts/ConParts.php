@@ -243,7 +243,8 @@
                                                             name="parts_ready[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
                                                             id="<?php echo $row3["XIMachinePartsSeqNo"];?>"
                                                             class="parts_ready" value="1"
-                                                            <?php if(isset($row3['XVPartsReady']) && $row3['XVPartsReady']=="1"){echo "checked";}?>>
+                                                            <?php if(isset($row3['XVPartsReady']) && $row3['XVPartsReady']=="1"){echo "checked";}?> 
+                                                            <?php if (isset($row3['XVPartsReady'])) {echo "disabled";}?>>
                                                     </td>
                                                     <?php }else{?>
                                                     <td></td>
@@ -272,33 +273,38 @@
                                                             type="radio"
                                                             name="check_source[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
                                                             value="คลัง"
-                                                            <?php if(isset($row3['XVSource']) && $row3['XVSource']=="คลัง"){echo "checked";}?>>
+                                                            <?php if(isset($row3['XVSource']) && $row3['XVSource']=="คลัง"){echo "checked";}?>
+                                                            <?php if (isset($row3['XVSource'])) {echo "disabled";}?>>
                                                     </td> <!-- คลัง -->
                                                     <td><input style="width:25px; height:25px; margin:5px 25px 0;"
                                                             type="radio"
                                                             name="check_source[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
                                                             value="สั่งซื้อ"
-                                                            <?php if(isset($row3['XVSource']) && $row3['XVSource']=="สั่งซื้อ"){echo "checked";}?>>
+                                                            <?php if(isset($row3['XVSource']) && $row3['XVSource']=="สั่งซื้อ"){echo "checked";}?>
+                                                            <?php if (isset($row3['XVSource'])) {echo "disabled";}?>>
                                                     </td> <!-- สั่งซื้อ -->
                                                     <td style="width:80px;"><input type="number"
                                                             name="dateforcoming[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
                                                             id="dateforcoming[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
                                                             min="0"
-                                                            value="<?php if(isset($row3['XVNumOfDays']) ){echo $row3['XVNumOfDays'];}?>">
+                                                            value="<?php if(isset($row3['XVNumOfDays']) ){echo $row3['XVNumOfDays'];}?>"
+                                                            <?php if (isset($row3['XVNumOfDays'])) {echo "disabled";}?>>
                                                     </td> <!-- จำนวนวันที่ของจะมา-->
 
                                                     <td> <input size="11"
                                                             name="XDMachinePartsReady[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
                                                             id="XDMachinePartsReady[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
                                                             class="form-control" data-toggle="datepicker"
-                                                            value="<?php if(isset($row4['DA']) && $row4['XDMachinePartsReady']!= null){echo $row4['DA'];}?>">
+                                                            value="<?php if(isset($row4['DA']) && $row4['XDMachinePartsReady']!= null){echo $row4['DA'];}?>"
+                                                            <?php if (isset($row3['XDMachinePartsReady'])) {echo "disabled";}?>>
                                                     </td> <!-- วันที่ของจะมา-->
                                                     <td><input style="width:25px; height:25px; margin:5px 20px 0;"
                                                             type="checkbox"
                                                             name="dateforusing[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
                                                             id="<?php echo $row3["XIMachinePartsSeqNo"];?>"
                                                             class="dateforusing" value="1"
-                                                            <?php if(isset($row3['XVPickupParts']) && $row3['XVPickupParts']=="1"){echo "checked";}?>>
+                                                            <?php if(isset($row3['XVPickupParts']) && $row3['XVPickupParts']=="1"){echo "checked";}?>
+                                                            <?php if (isset($row3['XVPickupParts'])) {echo "disabled";}?>>
                                                     </td> <!-- การเบิก-->
 
                                                     <td> <input size="6"
@@ -377,9 +383,11 @@
                                                           ?><input type="text" class="form-control" size="6" value="<?php echo $Dnew5;?>" disabled>
 
                                             </label>
-                                            <?php if(isset($row1['XDMajSpareDate']) && $row1['XDMajSpareDate'] != "0000-00-00"){
-
-                                            echo "<label for='numb'>วันที่อะไหล่พร้อม : ".$row1['XDMajSpareDate']."</label>";
+                                            <?php if(isset($row1['XDMajSpareDate']) && $row1['XDMajSpareDate'] != NULL){
+                                                 $datecon6 = $row1["XDMajSpareDate"];
+                                                 $DN6 = str_replace('-', '/', $datecon6);
+                                                 $Dnew6 =  date('d/m/Y', strtotime($DN6));
+                                            echo "<label for='numb'>วันที่อะไหล่พร้อม : <input type='text' class='form-control' size='6' value='$Dnew6' disabled> </label>";
                                         }else{?>
                                             <label for="numb">วันที่อะไหล่พร้อม : <input id="XDMajSpareDate" size="6"
                                                     name="XDMajSpareDate" class="form-control" data-toggle="datepicker">
