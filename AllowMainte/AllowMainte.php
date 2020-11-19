@@ -207,17 +207,20 @@
                                     ?>
                                         <table class="table table-bordered" id="tab_logic">
                                             <thead>
-                                                อนุมัติการซ่อม :
+                                                <label for="">อนุมัติการซ่อม :</label>
+
                                                 <input style="width:25px; height:25px;" class="form-check-input"
                                                     type="checkbox" value="confirm"
                                                     id="check[<?php echo $row2["XIMajdSeqNo"];?>]"
                                                     name='check[<?php echo $row2["XIMajdSeqNo"];?>]'> <br>
-                                                รายการที่ : <?php echo $row2["XIMajdSeqNo"];?>
-                                                เรื่องที่แจ้ง : <?php echo $row2["XVMajdSubject"];?>
-
-
-                                                สาเหตุที่ทราบ : <?php echo $row2["XVMajdCause"];?>
+                                                <label for="">รายการที่ : </label><?php echo $row2["XIMajdSeqNo"];?>
+                                                &nbsp;&nbsp;<label for="">เรื่องที่แจ้ง :
+                                                </label><?php echo $row2["XVMajdSubject"];?>
+                                                &nbsp;&nbsp;<label for="">สาเหตุที่ทราบ :
+                                                </label><?php echo $row2["XVMajdCause"];?>
                                                 <!-- <button style="position:static;" class="btn btn-info">ดูรูปภาพ</button> -->
+                                                &nbsp;&nbsp;<label for="" style="color:red;">หมายเหตุ :
+                                                </label><?php echo $row2["XVComment"];?>
                                                 <a type="button" style="position:static;"
                                                     href="../testfile/retrival_img.php?id=<?php echo $row1["XVMajDocNo"];?>&seq=<?php echo $row2["XIMajdSeqNo"];?>"
                                                     value="facebook" target="_blank" class="btn btn-info">ดูรูปภาพ</a>
@@ -229,7 +232,7 @@
 
                                                 </th>
                                                 <th style="background:#CCCCCC;">จำนวน</th>
-                                                <th style="background:#CCCCCC;">หมายเหตุ</th>
+                                                <!-- <th style="background:#CCCCCC;">หมายเหตุ</th> -->
                                                 </tr>
                                             </thead>
 
@@ -264,7 +267,7 @@
                                                     </td>
 
                                                     <td> <?php echo $row3["XVAmount"]; ?></td>
-                                                    <td><input type="text" name="note[]"></td>
+                                                    <!-- <td><input type="text" name="note[]"></td> -->
                                                 </tr>
                                                 <?php
                                      }}
@@ -301,19 +304,22 @@
                                             <label for="numb">วันนัดประเมิน : <?php $datecon2 = $row1["XDMajEstAppPlanDate"];
                                                          $DN2 = str_replace('-', '/', $datecon2);
                                                           $Dnew2 =  date('d/m/Y', strtotime($DN2));
-                                                          ?><input type="text" class="form-control" size="6" value="<?php echo $Dnew2;?>" disabled>
+                                                          ?><input type="text" class="form-control" size="6"
+                                                    value="<?php echo $Dnew2;?>" disabled>
 
                                             </label>
                                             <label for="numb">วันที่ประเมิน : <?php $datecon3 = $row1["XDMajEstActualDate"];
                                                          $DN3 = str_replace('-', '/', $datecon3);
                                                           $Dnew3 =  date('d/m/Y', strtotime($DN3));
-                                                          ?><input type="text" class="form-control" size="6" value="<?php echo $Dnew3;?>" disabled>
+                                                          ?><input type="text" class="form-control" size="6"
+                                                    value="<?php echo $Dnew3;?>" disabled>
 
                                             </label>
                                             <label for="numb">วันที่ประเมินเสร็จ : <?php $datecon4 = $row1["XDMajFinishEstDate"];
                                                          $DN4 = str_replace('-', '/', $datecon4);
                                                           $Dnew4 =  date('d/m/Y', strtotime($DN4));
-                                                          ?><input type="text" class="form-control" size="6" value="<?php echo $Dnew4;?>" disabled>
+                                                          ?><input type="text" class="form-control" size="6"
+                                                    value="<?php echo $Dnew4;?>" disabled>
 
                                             </label>
                                             <label for="numb">วันที่อนุมัติซ่อม : <input id="datepicker" size="6"
@@ -387,15 +393,15 @@
         <script src="../vendor/js/bootstrap-select.js"></script>
         <script>
         // $(document).ready(function() {}
-                $(function() {
-                    $('[data-toggle="datepicker"]').datepicker({
-                        autoHide: true,
-                        autoPick: true,
-                        language: 'th-TH',
-                        zIndex: 2048,
-                        format: 'dd/mm/yyyy'
-                    });
-                });
+        $(function() {
+            $('[data-toggle="datepicker"]').datepicker({
+                autoHide: true,
+                autoPick: true,
+                language: 'th-TH',
+                zIndex: 2048,
+                format: 'dd/mm/yyyy'
+            });
+        });
         </script>
 </body>
 

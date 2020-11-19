@@ -520,7 +520,17 @@ $dbh = null;
                                     <div class="col-md-6">
                                         <div class="col text-right">
                                             <input type="hidden" value="<?php echo $id?>" name='id'>
-                                            หมายเหตุปิดงาน : <input type="text" value="" name="XVMajFinishRmk" class="form-control" >
+                                            หมายเหตุปิดงาน : <input type="text" value="<?php 
+                                             include '../database/connect.php';
+                                             $sql8 = "  SELECT XVMajFinishRmk
+                                             FROM  tdoctmajob
+                                             WHERE XVMajDocNo = '$id' ";
+                                              $stmt8 = $dbh->query($sql8);
+                                              while ($row8=$stmt8->fetch(PDO::FETCH_ASSOC)){
+                                             echo $row8['XVMajFinishRmk'];
+                                              }
+                                            ?>"
+                                             name="XVMajFinishRmk" class="form-control">
                                             <input type="submit" class="btn btn-info" name="save"
                                                 value="ปิดงาน">
                                         </div>
