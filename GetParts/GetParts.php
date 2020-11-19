@@ -293,7 +293,7 @@ AND m.XVMajDocNo ='$id'"; //ค้นคืน รายการ เรื่�
 $idx = 1;
 $stmt2 = $dbh->query($sql2);
 while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
-    
+
 
 
 
@@ -319,14 +319,11 @@ while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
                                                                 value="<?php echo $idx; ?>">เพิ่มอะไหล่</button>
                                                         </div>
                                                     </div>
-                                                    <?php 
-<<<<<<< Updated upstream
+                                                    <?php
                                                         //   echo $idx;
                                                         //   echo 'why no increate';
-=======
                                                           echo $idx;
                                                           echo 'why no increate';
->>>>>>> Stashed changes
                                                           ?>
                                                 </div>
                                                 <th style="background:#CCCCCC;">อะไหล่พร้อม</th>
