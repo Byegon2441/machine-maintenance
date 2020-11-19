@@ -168,16 +168,16 @@
                                     <div class="col">
                                         <label for="numb">ตำแหน่งเครื่องจักร ณ ปัจจุบัน เลขที่:
                                             <input type="text" style="margin: 0px 10px;" size="10" name="dnum" id="dnum"
-                                                value="<?php echo $row1["XVDptNumber"];?>" readonly
+                                                value="<?php echo $row1["XVMajNumber"];?>" readonly
                                                 class="form-control">
                                             ตำบล:<input type="text" style="margin: 0px 10px;" size="10" name="dsub"
-                                                id="dsub" value="<?php echo $row1["XVDptSub_district"];?>" readonly
+                                                id="dsub" value="<?php echo $row1["XVMajSub_district"];?>" readonly
                                                 class="form-control">
                                             อำเภอ:<input type="text" style="margin: 0px 10px;" size="10" name="ddis"
-                                                id="ddis" value="<?php echo $row1["XVDptDistrict"];?>" readonly
+                                                id="ddis" value="<?php echo $row1["XVMajDistrict"];?>" readonly
                                                 class="form-control">
                                             จังหวัด:<input type="text" style="margin: 0px 10px;" size="10" name="dpro"
-                                                id="dpro" value="<?php echo $row1["XVDptProvince"];?>" readonly
+                                                id="dpro" value="<?php echo $row1["XVMajProvince"];?>" readonly
                                                 class="form-control"></label>
                                     </div>
                                 </div>

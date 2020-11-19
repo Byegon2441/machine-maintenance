@@ -71,7 +71,7 @@
 <?php
 if(isset($_GET['id'])){
       $id=$_GET['id'];
-  $sql = " SELECT  m.XVMajDocNo, d.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus ,depart.XVDptCode,depart.XVDptName,depart.XVDptNumber,depart.XVDptSub_district,depart.XVDptDistrict,depart.XVDptProvince
+  $sql = " SELECT  m.XVMajDocNo, d.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus ,depart.XVDptCode,depart.XVDptName,m.XVMajNumber,m.XVMajSub_district,m.XVMajDistrict,m.XVMajProvince
 FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v,tmstmdepartment depart
 WHERE m.XVMajDocNo = d.XVMajDocNo
 AND m.XVVehCode = v.XVVehCode
@@ -158,13 +158,13 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                 <div class="form-row">
                                     <div class="col">
                                         <label for="numb">ตำแหน่งเครื่องจักร ณ ปัจจุบัน เลขที่ :
-                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb" value="<?php echo $row["XVDptNumber"];?>"
+                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb" value="<?php echo $row["XVMajNumber"];?>"
                                                 class="form-control" readonly>
-                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb" value="<?php echo $row["XVDptSub_district"];?>"
+                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb" value="<?php echo $row["XVMajSub_district"];?>"
                                                 class="form-control" readonly>
-                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb" value="<?php echo $row["XVDptDistrict"];?>"
+                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb" value="<?php echo $row["XVMajDistrict"];?>"
                                                 class="form-control" readonly>
-                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb" value="<?php echo $row["XVDptProvince"];?>"
+                                            <input type="text" style="margin: 0px 10px;" size="10" name="numb" value="<?php echo $row["XVMajProvince"];?>"
                                                 class="form-control" readonly></label>
                                     </div>
                                 </div>
