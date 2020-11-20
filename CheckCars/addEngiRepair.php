@@ -165,6 +165,16 @@ $stmt = $dbh->query($sql);
                             <label>ใบแจ้งซ่อม</label>
                             <form action="insertEngiRepair.php?id=<?php echo $_GET['id']; ?>" method='POST' class="form-inline">
 
+                            <div class="row">
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-6 ml-auto">
+                                        <div class="col text-right">
+                                            <label for="numb">สถานะใบแจ้งซ่อม : <input type="text" name="XVMajDocstatus"
+                                                    id="jobstatus" class="form-control"
+                                                    value="<?php echo $row1["XVMajStatus"];?>" readonly></label>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <div class="row">
                                     <div class="col-md-6"></div>
@@ -626,6 +636,7 @@ $dbh= NULL;
 
         </div>
         <!-- /#wrapper -->
+        </div>
         <?php
     }
 }
