@@ -19,7 +19,7 @@
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.6.0/dist/sweetalert2.all.min.js"></script>
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    
+
     <style>
     table td {
         position: relative;
@@ -62,13 +62,13 @@
             if(in_array("M-000021",$_SESSION['menu']) || in_array("M-000018",$_SESSION['menu'])){
     include '../Template/templsidebar.php';
          include '../database/connect.php';
-  
+
 
     if(isset($_GET['id'])){
         $id=$_GET['id'];
-    $sql = " SELECT  m.XVMajDocNo, d.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus ,depart.XVDptCode,depart.XVDptName,m.XVMajNumber,m.XVMajSub_district,m.XVMajDistrict,m.XVMajProvince, m.XVMajWhoInformant
+    $sql = " SELECT  m.XVMajDocNo,FORMAT(d.XDMajDate,'dd/MM/yyyy') AS XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus ,depart.XVDptCode,depart.XVDptName,m.XVMajNumber,m.XVMajSub_district,m.XVMajDistrict,m.XVMajProvince ,m.XVMajWhoInformant
  FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v,tmstmdepartment depart
- WHERE m.XVMajDocNo = d.XVMajDocNo 
+ WHERE m.XVMajDocNo = d.XVMajDocNo
  AND m.XVVehCode = v.XVVehCode
  AND v.XVDptCode = depart.XVDptCode
  AND m.XVMajDocNo ='$id'"; //ตัวสมบูรณ์
@@ -209,7 +209,7 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                                 </tr>
                                             </thead>
                                             <tbody class="sub">
-                                                <?php 
+                                                <?php
                                     include '../database/connect.php';
                                         $sql2 = "SELECT  jd.XIMajdSeqNo,jd.XVMajdSubject,jd.XVMajdCause
                                          FROM  tdoctmajob j ,tdoctmajobdetail jd
@@ -218,7 +218,7 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                         $stmt2 = $dbh->query($sql2);
                                         // $stmt2->fetchAll();
                                         // $numof = $stmt2->rowCount();
-                                        //$numof = mysqli_num_rows($result2); 
+                                        //$numof = mysqli_num_rows($result2);
                                         while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
                                     ?>
                                                 <tr id='addr0'>
@@ -239,7 +239,7 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                                             </td>
                                                                 
                                                 </tr>
-                                                <?php } 
+                                                <?php }
                                                 $numof = $stmt2->rowCount();
                                                 ?>
                                             </tbody>
@@ -380,7 +380,7 @@ if ( $stmt ) {
             $sql1 = "DELETE FROM tdoctmajobdetail  WHERE XIMajdSeqNo = $seq AND XVMajDocNo = '$XVMajDocNo'";
             $stmt1 = $dbh->query($sql1);
             // echo $seq;
-        }   
+        }
         $cnt = 1;
         $nvals = count( $_REQUEST['n_sub'] );
         $stmt2 = false;
@@ -406,7 +406,7 @@ if ( $stmt ) {
             });";
             echo '</script>';
                         }else{ echo mysqli_error( $connect );
-                       
+
                                         }
         }
     }//save
@@ -430,7 +430,7 @@ $noof = $_POST['noof'];
         XVMajProvince='$dpro',
         XVVehCode='$noof'
         WHERE XVMajDocNo = '$XVMajDocNo' ";
-        
+
         $stmt = $dbh->query($sql);
         if ( $stmt ) {
             $sql = "SELECT XIMajdSeqNo FROM tdoctmajobdetail WHERE XVMajDocNo = '$XVMajDocNo'";
@@ -442,7 +442,7 @@ $noof = $_POST['noof'];
                 $sql1 = "DELETE FROM tdoctmajobdetail  WHERE XIMajdSeqNo = $seq AND XVMajDocNo = '$XVMajDocNo'";
                 $stmt1 = $dbh->query($sql1);
                 // echo $seq;
-            }   
+            }
             $cnt = 1;
             $nvals = count( $_REQUEST['n_sub'] );
             $stmt2 = false;
@@ -466,7 +466,7 @@ $noof = $_POST['noof'];
                                     window.location = 'ListJob.php';
                                 });";
                                 echo '</script>';
-                            }else{ 
+                            }else{
                                 echo '<script>';
                                 echo "Swal.fire({
                                     title: 'สำเร็จ!',
@@ -477,9 +477,9 @@ $noof = $_POST['noof'];
                                     window.location = 'ListJob.php';
                                 });";
                                 echo '</script>';
-                           
+
                                             }
-            
+
         }
 }//submit
 
