@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>ระบบซ่อมบำรุงเครื่องจักร : ลงชื่อเข้าใช้</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -50,11 +50,7 @@
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Password" name="pass" type="password" value="">
                                 </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                    </label>
-                                </div>
+                                
                                 <!-- Change this to a button or input when using this as a form -->
                                 <input type="submit" class="btn btn-lg btn-success btn-block" value="Login" name="login">
                             </fieldset>

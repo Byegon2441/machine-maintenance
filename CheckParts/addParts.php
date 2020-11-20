@@ -46,6 +46,16 @@
     </style>
 </head>
 <?php
+
+if(!isset($_SESSION)){
+    session_start();
+}
+  
+    if($_SESSION['XVPrgCode'] == 'P-03'){
+
+        if(in_array("M-000024",$_SESSION['menu']) ){
+
+
         include '../database/connect.php';
 ?>
 <?php
@@ -380,7 +390,7 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                     <div class="col-md-7">
                                         <div class="col text-right">
                                         <input type="hidden" value="<?php echo $id?>" name='id'>
-                                            หมายเหตุปิดงาน : <input type="text" value="" name="XVMajFinishRmk" class="form-control" >
+                                            หมายเหตุปิดงาน : <input type="text" value="1" name="XVMajFinishRmk" class="form-control" >
                                             <input type="submit" class="btn btn-info" name="done"
                                                 value="ปิดงาน">
                                             <button type="submit" class="btn btn-primary submit_file"
@@ -399,7 +409,40 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                 <!-- /.row -->
             </div>
             <!-- /#page-wrapper -->
-            <?php } ?>
+            <?php } 
+
+
+
+             }else{//if check menu
+                echo '<script>';
+            echo "Swal.fire({
+                title: 'แจ้งเตือน',
+                text: 'คุณไม่มีสิทธ์เข้าถึงเมนูนี้',
+                icon: 'warning',
+                confirmButtonText: 'Back'
+                }).then(function() {
+                    window.history.back();
+            });";
+            echo '</script>';
+            }
+
+            }else{
+            //if check program
+            echo '<script>';
+            echo "Swal.fire({
+            title: 'คุณยังไม่ได้ลงชื่อเข้าใช้!',
+            text: 'กรุณาลงชื่อเข้าใช้',
+            icon: 'warning',
+            confirmButtonText: 'Back'
+            }).then(function() {
+            window.location = '../Login/login.php';
+            });";
+            echo '</script>';
+            }
+
+
+
+            ?>
         </div>
         <!-- /#wrapper -->
 

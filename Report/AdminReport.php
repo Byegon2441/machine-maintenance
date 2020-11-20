@@ -17,6 +17,7 @@
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="../vendor/css/datepicker.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.6.0/dist/sweetalert2.all.min.js"></script>
 
     <style>
         tbody {
@@ -44,7 +45,17 @@
 
 <body>
 
-    <?php include '../Template/templsidebar.php';?>
+    <?php 
+    
+if(!isset($_SESSION)){
+    session_start();
+}
+  
+    if($_SESSION['XVPrgCode'] == 'P-03'){
+
+        if(in_array("R-000008",$_SESSION['report']) ){
+    
+    include '../Template/templsidebar.php';?>
 
     <div id="wrapper">
         <div id="page-wrapper">
@@ -164,7 +175,38 @@
             <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
+<?php  
 
+
+
+}else{//if check menu
+    echo '<script>';
+echo "Swal.fire({
+    title: 'แจ้งเตือน',
+    text: 'คุณไม่มีสิทธ์เข้าถึงเมนูนี้',
+    icon: 'warning',
+    confirmButtonText: 'Back'
+    }).then(function() {
+        window.history.back();
+});";
+echo '</script>';
+}
+
+}else{
+//if check program
+echo '<script>';
+echo "Swal.fire({
+title: 'คุณยังไม่ได้ลงชื่อเข้าใช้!',
+text: 'กรุณาลงชื่อเข้าใช้',
+icon: 'warning',
+confirmButtonText: 'Back'
+}).then(function() {
+window.location = '../Login/login.php';
+});";
+echo '</script>';
+}
+
+?>
     </div>
     <!-- /#wrapper -->
     <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>

@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.6.0/dist/sweetalert2.all.min.js"></script>
+      <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <title>Document</title>
 </head>
 <body>
-    <a href="test1.php">1</a>
-    <a href="test2.php">2</a>
-    <a href="logout.php">logout</a>
+  
 </body>
 <!-- <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
 <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
@@ -39,7 +39,7 @@ $(document).ready(function(){
               
             ?>
                     $.ajax({
-                    'url':'https://networklink.co.th/ConCenter_Service/api/login',
+                    'url':'https://networklink.co.th/ConCenter_Service_test/api/login',
                     'method':'POST',
                     'dataType': 'json',
                     processData: false,
@@ -53,33 +53,47 @@ $(document).ready(function(){
                     var decoded = jwt_decode(data);
                 
                     console.log( decoded)//obj
-                    // console.log(decoded.TSysSUserMenu[0].XVMnuCode)  
+                   
+                     //console.log(decoded.TSysSUserMenu[0].XVMnuCode)  
                     // console.log(decoded.TSysSUserProgram[0].XVPrgCode)
                     // console.log(decoded.TSysSUserReport[0].XVRptCode)  
 
                    
-                    $.post( "set_ses.php", {
+                    $.post( "set_session.php", {
                         XVEmpCode: decoded.XVEmpCode,
                         XVEmpName: decoded.XVEmpName,
                         XVUsrCode: decoded.XVUsrCode,
                         XVUsrEmail: decoded.XVUsrEmail,
                         XVUsrName: decoded.XVUsrName,
                         XVUsrName: decoded.XVUsrName,
-                        XVMnuCode : decoded.TSysSUserMenu[0].XVMnuCode,
+                        XVMnuCode : decoded.TSysSUserMenu,
                         XVPrgCode : decoded.TSysSUserProgram[0].XVPrgCode,
+                        XVRptCode :  decoded.TSysSUserReport,
                         exp: decoded.exp,   
                           
                           })
                           .done(function( data ) {
                           //console.log( "Data Loaded: " +  data );
-                            window.location.href='test1.php';
-                           });
+                           window.location.href='set_path.php';
+                       
+
+
+                           });//done
 
                    
                 },//success
                 error: function(error) {
                     console.log('Error: ' , error);
+                     Swal.fire({
+                            title: 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง',
+                            text: 'กรุณาลงชื่อเข้าใช้อีกครั้ง',
+                            icon: 'error',
+                            confirmButtonText: 'Back'
+                        }).then(function() {
+                            window.location = 'login.php';
+                        })
                     
+
                 }
 
 });

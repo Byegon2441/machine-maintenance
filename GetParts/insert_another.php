@@ -23,25 +23,16 @@
 
 <body>
     <?php
+     if(!isset($_SESSION)){
+        session_start();
+    }
+      
+        if($_SESSION['XVPrgCode'] == 'P-03'){
+    
+            if(in_array("M-000029",$_SESSION['menu']) ){
         include '../database/connect.php';
         $jobid = $_POST['docno'];
         $sq = $_POST['seqq'];
-<<<<<<< Updated upstream
-        $boo = false;
-        if(isset($_REQUEST['n_sub'])){
-            $nvals = count($_REQUEST['n_sub']);
-            for ( $i = 0; $i < $nvals; $i++ ) {
-                $n_sub = $_REQUEST['n_sub'][$i];
-                $sub = $_REQUEST['sub'][$i];
-                $sql2 = "INSERT INTO TDocTMaMachine_parts_use(XVMajDocNo,XIMajdSeqNo,XVMachinePartsCode,XVAmount) VALUES ('$jobid', '$sq', '$n_sub', '$sub')";
-                $stmt2 = $dbh->query($sql2);
-                if($stmt2->rowCount()>=0){
-                    $boo = true;
-                }
-            }
-        }
-        if ($boo) {
-=======
         echo $jobid;
         echo $sq; 
         if(isset($_REQUEST['n_sub'])){
@@ -55,7 +46,6 @@
             }
         }
         if ( $stmt2 ) {
->>>>>>> Stashed changes
             echo '<script>';
             echo "Swal.fire({
                 title: 'สำเร็จ!',
@@ -63,11 +53,7 @@
                 icon: 'success',
                 confirmButtonText: 'Back'
                 }).then(function() {
-<<<<<<< Updated upstream
-                window.location = 'GetParts.php?id=$jobid';
-=======
                 window.location = 'addParts.php?id=$XVMajDocNo';
->>>>>>> Stashed changes
             });";
             echo '</script>';
         } else {
@@ -79,14 +65,36 @@
                 icon: 'warning',
                 confirmButtonText: 'Back'
                 }).then(function() {
-<<<<<<< Updated upstream
-                window.location = 'GetParts.php?id=$jobid';
-=======
                 window.location = 'addParts.php?id=$XVMajDocNo';
->>>>>>> Stashed changes
             });";
             echo '</script>';
         }
+    }else{//if check menu
+        echo '<script>';
+    echo "Swal.fire({
+        title: 'แจ้งเตือน',
+        text: 'คุณไม่มีสิทธ์เข้าถึงเมนูนี้',
+        icon: 'warning',
+        confirmButtonText: 'Back'
+        }).then(function() {
+            window.history.back();
+    });";
+    echo '</script>';
+    }
+
+    }else{
+    //if check program
+    echo '<script>';
+    echo "Swal.fire({
+    title: 'คุณยังไม่ได้ลงชื่อเข้าใช้!',
+    text: 'กรุณาลงชื่อเข้าใช้',
+    icon: 'warning',
+    confirmButtonText: 'Back'
+    }).then(function() {
+    window.location = '../Login/login.php';
+    });";
+    echo '</script>';
+    }
 ?>
 </body>
 

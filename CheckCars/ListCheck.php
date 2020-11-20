@@ -16,11 +16,21 @@
     <link href="../vendor/datatables/css/dataTables.bootstrap.css" rel="stylesheet">
     <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.6.0/dist/sweetalert2.all.min.js"></script>
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-    <?php include '../Template/templsidebar.php';
+    <?php
+    if(!isset($_SESSION)){
+        session_start();
+    }
+      
+        if($_SESSION['XVPrgCode'] == 'P-03'){
+    
+            if(in_array("M-000022",$_SESSION['menu']) || in_array("M-000023",$_SESSION['menu'])){
+    
+    include '../Template/templsidebar.php';
     include "../database/connect.php";
     ?>
 
@@ -75,7 +85,34 @@
                                         </td>
                                     </tr>
                                     <?php $count++;}
-                                 $dbh=NULL;?>
+                                 $dbh=NULL;
+                                }else{//if check menu
+                                    echo '<script>';
+                                echo "Swal.fire({
+                                    title: 'แจ้งเตือน',
+                                    text: 'คุณไม่มีสิทธ์เข้าถึงเมนูนี้',
+                                    icon: 'warning',
+                                    confirmButtonText: 'Back'
+                                    }).then(function() {
+                                        window.history.back();
+                                });";
+                                echo '</script>';
+                                }
+            
+                                }else{
+                                //if check program
+                                echo '<script>';
+                                echo "Swal.fire({
+                                title: 'คุณยังไม่ได้ลงชื่อเข้าใช้!',
+                                text: 'กรุณาลงชื่อเข้าใช้',
+                                icon: 'warning',
+                                confirmButtonText: 'Back'
+                                }).then(function() {
+                                window.location = '../Login/login.php';
+                                });";
+                                echo '</script>';
+                                }
+                                 ?>
                                 </tbody>
                             </table>
                         </div>

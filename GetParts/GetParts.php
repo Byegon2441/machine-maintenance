@@ -66,7 +66,15 @@
 </head>
 
 <body>
+<?php 
+if(!isset($_SESSION)){
+    session_start();
+}
+  
+    if($_SESSION['XVPrgCode'] == 'P-03'){
 
+        if(in_array("M-000029",$_SESSION['menu']) ){
+?>
     <!-- modal เพิ่มอะไหล่ -->
     <div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -156,7 +164,11 @@
     </div>
     <!-- modal เพิ่มอะไหล่ -->
 
-    <?php include '../Template/templsidebar.php';
+    <?php 
+    
+    
+    
+    include '../Template/templsidebar.php';
          include '../database/connect.php';
 
 
@@ -319,11 +331,9 @@ while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
                                                                 value="<?php echo $idx; ?>">เพิ่มอะไหล่</button>
                                                         </div>
                                                     </div>
-                                                    <?php
+                                                    <?php 
                                                         //   echo $idx;
                                                         //   echo 'why no increate';
-                                                          echo $idx;
-                                                          echo 'why no increate';
                                                           ?>
                                                 </div>
                                                 <th style="background:#CCCCCC;">อะไหล่พร้อม</th>
@@ -555,6 +565,34 @@ $dbh = null;
         <!-- /#wrapper -->
         <?php
     }
+}
+
+
+}else{//if check menu
+    echo '<script>';
+echo "Swal.fire({
+    title: 'แจ้งเตือน',
+    text: 'คุณไม่มีสิทธ์เข้าถึงเมนูนี้',
+    icon: 'warning',
+    confirmButtonText: 'Back'
+    }).then(function() {
+        window.history.back();
+});";
+echo '</script>';
+}
+
+}else{
+//if check program
+echo '<script>';
+echo "Swal.fire({
+title: 'คุณยังไม่ได้ลงชื่อเข้าใช้!',
+text: 'กรุณาลงชื่อเข้าใช้',
+icon: 'warning',
+confirmButtonText: 'Back'
+}).then(function() {
+window.location = '../Login/login.php';
+});";
+echo '</script>';
 }
         ?>
 

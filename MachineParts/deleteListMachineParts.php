@@ -9,6 +9,15 @@
 </head>
 <body>
 <?php
+
+if(!isset($_SESSION)){
+    session_start();
+}
+  
+    if($_SESSION['XVPrgCode'] == 'P-03'){
+
+        if(in_array("M-000040",$_SESSION['menu']) ){
+
     include '../database/connect.php';
     if ( isset( $_POST['deletedata'] ) ) {
     $id = $_POST['delete_id'];
@@ -42,6 +51,34 @@
         echo '</script>';
     }
     $dbh = null;
+}
+
+
+}else{//if check menu
+    echo '<script>';
+echo "Swal.fire({
+    title: 'แจ้งเตือน',
+    text: 'คุณไม่มีสิทธ์เข้าถึงเมนูนี้',
+    icon: 'warning',
+    confirmButtonText: 'Back'
+    }).then(function() {
+        window.history.back();
+});";
+echo '</script>';
+}
+
+}else{
+//if check program
+echo '<script>';
+echo "Swal.fire({
+title: 'คุณยังไม่ได้ลงชื่อเข้าใช้!',
+text: 'กรุณาลงชื่อเข้าใช้',
+icon: 'warning',
+confirmButtonText: 'Back'
+}).then(function() {
+window.location = '../Login/login.php';
+});";
+echo '</script>';
 }
 ?>
 </body>

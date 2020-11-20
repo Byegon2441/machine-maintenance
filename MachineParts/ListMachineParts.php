@@ -13,7 +13,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.6.0/dist/sweetalert2.all.min.js"></script>
     <!-- MetisMenu CSS -->
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
@@ -40,7 +40,17 @@
 
 <body>
 
-<?php include '../Template/templsidebar.php';?>
+<?php 
+
+if(!isset($_SESSION)){
+    session_start();
+}
+  
+    if($_SESSION['XVPrgCode'] == 'P-03'){
+
+        if(in_array("M-000040",$_SESSION['menu']) ){
+
+include '../Template/templsidebar.php';?>
 
 <!--  modal insertMachinePart -->
     <div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -237,6 +247,34 @@
                                     </tr>
                                     <?php $count++;}
                                     $dbh = null;
+
+                                    
+}else{//if check menu
+    echo '<script>';
+echo "Swal.fire({
+    title: 'แจ้งเตือน',
+    text: 'คุณไม่มีสิทธ์เข้าถึงเมนูนี้',
+    icon: 'warning',
+    confirmButtonText: 'Back'
+    }).then(function() {
+        window.history.back();
+});";
+echo '</script>';
+}
+
+}else{
+//if check program
+echo '<script>';
+echo "Swal.fire({
+title: 'คุณยังไม่ได้ลงชื่อเข้าใช้!',
+text: 'กรุณาลงชื่อเข้าใช้',
+icon: 'warning',
+confirmButtonText: 'Back'
+}).then(function() {
+window.location = '../Login/login.php';
+});";
+echo '</script>';
+}
                                     ?>
 
                                 </tbody>
