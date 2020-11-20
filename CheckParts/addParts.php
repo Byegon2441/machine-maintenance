@@ -451,6 +451,18 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
         <script src="../vendor/js/datepicker.th-TH.js"></script>
         <script src="../vendor/js/bootstrap-select.js"></script>
         <script>
+        jQuery($ => {
+            var arr = JSON.parse(localStorage.getItem('checked')) || [];
+            arr.forEach(function(checked, i) {
+                $('.repair_check').eq(i).prop('checked', checked);
+                $('.addPart').eq(i).prop('disabled', !checked);
+            });
+
+            $(".repair_check").click(() => {
+                var arr = $('.repair_check').map((i, el) => el.checked).get();
+                localStorage.setItem("checked", JSON.stringify(arr));
+            });
+        });
         $(document).ready(function(){
             $(".submit_file").click(function(e){
                 var $fileUpload = $("input[type='file']");

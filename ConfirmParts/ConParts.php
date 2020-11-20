@@ -253,7 +253,7 @@
                                                             name="parts_ready[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
                                                             id="<?php echo $row3["XIMachinePartsSeqNo"];?>"
                                                             class="parts_ready" value="1"
-                                                            <?php if(isset($row3['XVPartsReady']) && $row3['XVPartsReady']=="1"){echo "checked";}?> 
+                                                            <?php if(isset($row3['XVPartsReady']) && $row3['XVPartsReady']=="1"){echo "checked";}?>
                                                             <?php if (isset($row3['XVPartsReady'])) {echo "disabled";}?>>
                                                     </td>
                                                     <?php }else{?>
@@ -277,12 +277,15 @@
 
                                                     <td style="width:60px;"> <?php echo $row3["XVAmount"]; ?></td>
                                                     <?php if($row3["XVMajConfirm"]=="confirm"){
+
                                               while ($row4=$stmt4->fetch(PDO::FETCH_ASSOC)){
+                                                //echo $row3["XIMachinePartsSeqNo"];
                                             ?>
                                                     <td><input style="width:25px; height:25px; margin:5px 25px 0;"
                                                             type="radio"
                                                             name="check_source[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
                                                             value="คลัง"
+                                                            onchange="Iclick('<?php echo $row3["XIMachinePartsSeqNo"]; ?>')"
                                                             <?php if(isset($row3['XVSource']) && $row3['XVSource']=="คลัง"){echo "checked";}?>
                                                             <?php if (isset($row3['XVSource'])) {echo "disabled";}?>>
                                                     </td> <!-- คลัง -->
@@ -290,6 +293,7 @@
                                                             type="radio"
                                                             name="check_source[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
                                                             value="สั่งซื้อ"
+                                                              onchange="Kclick('<?php echo $row3["XIMachinePartsSeqNo"]; ?>')"
                                                             <?php if(isset($row3['XVSource']) && $row3['XVSource']=="สั่งซื้อ"){echo "checked";}?>
                                                             <?php if (isset($row3['XVSource'])) {echo "disabled";}?>>
                                                     </td> <!-- สั่งซื้อ -->
@@ -506,7 +510,6 @@ echo '</script>';
 }
         ?>
 
-
         <script src="../vendor/js/datepicker.js"></script>
         <script src="../vendor/js/datepicker.th-TH.js"></script>
         <script src="../vendor/js/bootstrap-select.js"></script>
@@ -540,8 +543,15 @@ echo '</script>';
 
             })
 
-
         });
+        function Iclick(a) {
+          document.getElementById('dateforcoming'+'['+a+']').disabled = true;
+          document.getElementById('XDMachinePartsReady'+'['+a+']').disabled = true;
+        }
+        function Kclick(a) {
+          document.getElementById('dateforcoming'+'['+a+']').disabled = false;
+          document.getElementById('XDMachinePartsReady'+'['+a+']').disabled = false;
+        }
         // $('#XDMachinePartsReady').change(() => {
         //      $('#XDMachinePartsReady').val()
         //     const date1 = new Date('7/13/2010');

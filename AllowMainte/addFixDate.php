@@ -454,7 +454,7 @@ $dbh = NULL;
                                     <div class="col-md-6">
                                         <div class="col text-left">
                                             <a type="button" class="btn btn-danger mr-auto"
-                                                href="ListAllowMainte.php">กลับ</a>
+                                                href="../AllowMainte/ListFixDate.php">กลับ</a>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
