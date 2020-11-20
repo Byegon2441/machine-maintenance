@@ -64,10 +64,13 @@
 
                                     <?php
                                     include "../database/connect.php";
+                                    echo $emp = $_SESSION['XVEmpCode'];
      $sql = " SELECT m.XVMajDocNo, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus,FORMAT(d.XDMajDate, 'dd/MM/yyyy') AS DS
-     FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v
+     FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v,tdoctmaestimation_tnc tnc
      WHERE m.XVMajDocNo = d.XVMajDocNo 
+     AND tnc.XVMajDocNo = m.XVMajDocNo
      AND m.XVVehCode = v.XVVehCode
+     And tnc.XVEpyCode = '$emp'
      AND (m.XVMajStatus = 'รอช่างรับอะไหล่' OR m.XVMajStatus = 'รออะไหล่')"; //แสดงใบแจ้งซ่อมทีเป็นสถานะ "รออนุมัติซ่อม"
     $stmt = $dbh->query($sql);
     $count = 1;

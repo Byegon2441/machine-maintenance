@@ -63,11 +63,19 @@
                                 <tbody>
 
                                     <?php
+                                  
+                                  
+                
+    echo $emp = $_SESSION['XVEmpCode'];
+
     $sql = "SELECT m.XVMajDocNo, m.XVVehCode, v.XVVehName, m.XVMajStatus,FORMAT(j.XDMajDate, 'dd/MM/yyyy') AS DS
-    FROM TDocTMaJob m, TDocTMaJobDate j, TMstVehicle v
+    FROM TDocTMaJob m, TDocTMaJobDate j, TMstVehicle v ,tdoctmaestimation_tnc tnc
     WHERE m.XVMajDocNo=j.XVMajDocNo
+    AND tnc.XVMajDocNo = m.XVMajDocNo
     AND v.XVVehCode = m.XVVehCode
+    And tnc.XVEpyCode = '$emp'
     AND m.XVMajStatus = 'รอนำรถประเมินอะไหล่'
+    
      ";
     $stmt = $dbh->query($sql);
     $count = 1;
