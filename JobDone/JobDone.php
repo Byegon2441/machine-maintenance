@@ -118,6 +118,16 @@
                             <label>ใบแจ้งซ่อม</label>
                             <form action="insertJobDone.php" method='POST' class="form-inline">
 
+                            <div class="row">
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-6 ml-auto">
+                                        <div class="col text-right">
+                                            <label for="numb">สถานะใบแจ้งซ่อม : <input type="text" name="XVMajDocstatus"
+                                                    id="jobstatus" class="form-control"
+                                                    value="<?php echo $row1["XVMajStatus"];?>" readonly></label>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <div class="row">
                                     <div class="col-md-6"></div>
@@ -520,6 +530,7 @@ while ($row3=$stmt3->fetch(PDO::FETCH_ASSOC)){
             </div>
             <!-- /#page-wrapper -->
 
+        </div>
         </div>
         <!-- /#wrapper -->
         <?php
