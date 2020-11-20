@@ -109,7 +109,16 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                         <div class="panel-body">
                         <label>ใบแจ้งซ่อม</label>
                             <form action="insertDataCheck.php" class="form-inline" method="post">
-
+                            <div class="row">
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-6 ml-auto">
+                                        <div class="col text-right">
+                                            <label for="numb">สถานะใบแจ้งซ่อม : <input type="text" name="XVMajDocstatus"
+                                                    id="jobstatus" class="form-control"
+                                                    value="<?php echo $row["XVMajStatus"];?>" readonly></label>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <div class="row">
                                     <div class="col-md-6"></div>
@@ -282,6 +291,7 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
 
 </div>
         <!-- /#wrapper -->
+        </div>
 
  <?php
                 // }
