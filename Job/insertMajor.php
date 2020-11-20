@@ -196,7 +196,7 @@ include '../Template/templsidebar.php';?>
                             <div class="col-md-6">
                                 <div class="col text-right">
                                     <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="40" name="nameofuser"
-                                            id="nameofuser" value="ธุรการ" class="form-control" readonly></label>
+                                            id="nameofuser" value="<?php echo $_SESSION['XVEmpName']?>" class="form-control" readonly></label>
                                 </div>
                             </div>
                         </div>

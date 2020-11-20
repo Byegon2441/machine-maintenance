@@ -333,7 +333,7 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                     <div class="col-md-7">
                                         <div class="col text-right">
                                         <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="40" name="nameofuser"
-                                            id="nameofuser" value="ธุรการ" class="form-control" readonly></label>
+                                            id="nameofuser" value="<?php echo $row['XVMajWhoInformant']?>" class="form-control" readonly></label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">

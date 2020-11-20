@@ -382,7 +382,7 @@
                                     <div class="col-md-7">
                                         <div class="col text-right">
                                             <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="40"
-                                                    name="nameofuser" id="nameofuser" value="ธุรการ"
+                                                    name="nameofuser" id="nameofuser" value="<?php echo $row1['XVMajWhoInformant']?>"
                                                     class="form-control" readonly></label>
                                         </div>
                                     </div>

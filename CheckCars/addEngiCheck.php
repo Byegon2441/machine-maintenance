@@ -132,7 +132,7 @@
     <!-- modal เพิ่มช่างประเมิน -->
     <?php     if(isset($_GET['id'])){
         $id=$_GET['id'];
-    $sql = " SELECT  m.XVMajDocNo, d.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus ,depart.XVDptCode,depart.XVDptName,m.XVMajNumber,m.XVMajSub_district,m.XVMajDistrict,m.XVMajProvince
+    $sql = " SELECT  m.XVMajDocNo, d.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus ,depart.XVDptCode,depart.XVDptName,m.XVMajNumber,m.XVMajSub_district,m.XVMajDistrict,m.XVMajProvince, m.XVMajWhoInformant
  FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v,tmstmdepartment depart
  WHERE m.XVMajDocNo = d.XVMajDocNo
  AND m.XVVehCode = v.XVVehCode
@@ -332,7 +332,7 @@ while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
                                     <div class="col-md-7">
                                         <div class="col text-right">
                                             <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="30" name="numb"
-                                                    class="form-control" value="ธุรการ" readonly></label>
+                                                    class="form-control" value="<?php echo $row['XVMajWhoInformant']?>" readonly></label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">

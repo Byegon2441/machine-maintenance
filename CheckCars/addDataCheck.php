@@ -81,7 +81,7 @@
 <?php
 if(isset($_GET['id'])){
       $id=$_GET['id'];
-  $sql = " SELECT  m.XVMajDocNo, d.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus ,depart.XVDptCode,depart.XVDptName,m.XVMajNumber,m.XVMajSub_district,m.XVMajDistrict,m.XVMajProvince
+  $sql = " SELECT  m.XVMajDocNo, d.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus ,depart.XVDptCode,depart.XVDptName,m.XVMajNumber,m.XVMajSub_district,m.XVMajDistrict,m.XVMajProvince, m.XVMajWhoInformant
 FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v,tmstmdepartment depart
 WHERE m.XVMajDocNo = d.XVMajDocNo
 AND m.XVVehCode = v.XVVehCode
@@ -235,8 +235,13 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                     </div>
                                     <div class="col-md-7">
                                         <div class="col text-right">
+                                            <?php  $sql3 = "SELECT * FROM  tdoctmajob j  WHERE j.XVMajDocNo = '$id'"; 
+                                                      $stmt = $dbh -> query($sql3);
+                                                      while ($row3=$stmt->fetch(PDO::FETCH_ASSOC)){
+                                                   ?>
                                         <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="40" name="nameofuser"
-                                            id="nameofuser" value="ธุรการ" class="form-control" readonly></label>
+                                            id="nameofuser" value="<?php echo $row3['XVMajWhoInformant']?>" class="form-control" readonly></label>
+                                                      <?php  }?>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
