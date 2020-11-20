@@ -150,7 +150,7 @@ while ($row=$stmt1->fetch(PDO::FETCH_ASSOC)){
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">ใบการซ่อม</h1>
+                    <h1 class="page-header">กำหนดช่างประเมินและสถานะการซ่อมของรถ</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -293,6 +293,7 @@ while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
 
                                 <div class="row">
                                     <div class="col-md-5">
+                                    <?php if(array_search('M-000044',$_SESSION['menu'])!=null ){ ?>     
                                         <div class="col text-left">
                                             <label for="numb">สถานะรถ :
                                                 <select name="statuscar" id="carstatusinput" class="form-control">
@@ -326,6 +327,7 @@ while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
                                                 </select>
                                             </label>
                                         </div>
+                                            <?php } ?>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="col text-right">
@@ -348,7 +350,9 @@ while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
                                             <label for="numb">วันนัดประเมิน : <input type="text" size="6" name="numb"
                                                     value="<?php echo $newDate ?>" class="form-control" disabled>
                                             </label>
-                                            <?php if($rowdate['XDMajEstActualDate'] != NULL){
+                                            <?php 
+                                             if(array_search('M-000044',$_SESSION['menu'])!=null ){ 
+                                            if($rowdate['XDMajEstActualDate'] != NULL){
                                           $oD = $rowdate['XDMajEstActualDate'];
                                           $nD = str_replace('-', '/', $oD);
                                           $newa =  date('d/m/Y', strtotime($nD));
@@ -371,12 +375,13 @@ while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
                                             </label>
 
                                             <?php
-                                        }?>
+                                        } }?>
 
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <div class="col text-left">
+                                    <?php if(array_search('M-000044',$_SESSION['menu'])!=null ){ ?>     
+                                    <div class="col text-left">
                                             <label for="numb">ช่างประเมิน : <!--input style="border: none; width:auto;"
                                                     type="text" name="empar" value="<?php/* if(isset($_POST['selectemployee'])){
                                               $emp =  $_POST['selectemployee'];
@@ -429,6 +434,7 @@ while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
                                             ?>
                                             </label>
                                         </div>
+                                        <?php } ?>
                                     </div>
                                 </div>
 
@@ -443,18 +449,21 @@ while ($row2=$stmt2->fetch(PDO::FETCH_ASSOC)){
                                                    AND j.XVMajDocNo = '$id'";
                                                    $stmtda1=$dbh->query($ssql);
                                                    $rowda1=$stmtda1->fetch(PDO::FETCH_ASSOC);
+                                                   if(array_search('M-000044',$_SESSION['menu'])!=null ){  
                                              if ($rowda1['XDMajEstActualDate'] == NULL) {
                                              ?><button type="button" class="btn btn-warning mr-auto" data-toggle="modal"
                                                 data-target="#insertModal">เพิ่มช่างประเมิน</button><?php
-                                            } ?>
+                                            }} ?>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                       <?php  if ($rowda1['XDMajEstActualDate'] == NULL) {
                                        ?>
                                         <div class="col text-right">
+                                        <?php if(array_search('M-000044',$_SESSION['menu'])!=null ){ ?>     
                                             <button type="submit" class="btn btn-primary"
                                                 data-dismiss="modal">บันทึก</button>
+                                        <?php }?>
                                         </div>
                                       <?php } ?>
                                     </div>

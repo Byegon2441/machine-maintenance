@@ -229,9 +229,15 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                                     </td>
                                                     <td><input type="text" name="sub[]" placeholder="กรุณากรอกสาเหตุ"
                                                             value="<?php echo $row2["XVMajdCause"];?>" readonly></td>
-                                                    <td><button type="button"
+                                                   
+                                                            <td>
+                                                            <?php if($_SESSION['save'][array_search('M-000018',$_SESSION['menu'])]==true ){ ?>     
+                                                                <button type="button"
                                                             class="btn btn-danger btn-circle increase-row RemoveRow "><i
-                                                                class="fa fa-minus"></button></td>
+                                                                class="fa fa-minus"></button>
+                                                            <?php  }?>
+                                                            </td>
+                                                                
                                                 </tr>
                                                 <?php } 
                                                 $numof = $stmt2->rowCount();
@@ -239,11 +245,13 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                             </tbody>
                                         </table>
                                     </div>
+                                    <?php if($_SESSION['save'][array_search('M-000018',$_SESSION['menu'])]==true ){ ?>     
                                     <div class="panel-body" style="margin:0px;">
                                         <button type="button" id="add_row" class="btn btn-success btn-circle add-row"
                                             style="float:right;" title="คลิกเพื่อเพิ่มแถว"><i class="fa fa-plus"></i>
                                         </button>
                                     </div>
+                                    <?php }?>
                                 </div>
 
                                 <div class="row">
@@ -265,10 +273,12 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                         </div>
                                     </div>
                                     <div class="col-md-6">
+                                    <?php if($_SESSION['save'][array_search('M-000018',$_SESSION['menu'])]==true ){ ?>     
                                         <div class="col text-right">
                                             <input type="submit" class="btn btn-primary " name="sendjob" value="ส่งใบแจ้งซ่อม">
                                             <input type="submit" class="btn btn-success " name="save"  value="บันทึก">
                                         </div>
+                                    <?php } ?>
                                     </div>
                                 </div>
                             </form>

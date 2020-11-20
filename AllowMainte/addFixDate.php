@@ -419,10 +419,12 @@ $dbh = NULL;
                                                           ?>
                                                           <input type="text" class="form-control" size="6" value="<?php echo $Dnew1;?>" disabled>
                                             </label>
+                                            <?php if(array_search('M-000031',$_SESSION['menu'])!=null ){ ?>  
                                             <label for="numb">วันที่นัดซ่อม : <input id="datepicker" size="6"
                                                     name="XDMajRepairAppPlanDate" class="form-control"
                                                     data-toggle="datepicker">
                                             </label>
+                                            <?php  }?>
                                         </div>
                                     </div>
 
@@ -460,8 +462,10 @@ $dbh = NULL;
                                     <div class="col-md-6">
                                         <div class="col text-right">
                                             <input type="hidden" value="<?php echo $id?>" name='id'>
+                                            <?php if(array_search('M-000031',$_SESSION['menu'])!=null ){ ?>  
                                             <input type="submit" class="btn btn-success btndis" name="save"
                                                 value="บันทึก">
+                                            <?php  }?>
                                         </div>
                                     </div>
                                 </div>

@@ -73,7 +73,7 @@ $(document).ready(function(){
                           
                           })
                           .done(function( data ) {
-                          //console.log( "Data Loaded: " +  data );
+                          console.log( "Data Loaded: " +  data );
                            window.location.href='set_path.php';
                        
 

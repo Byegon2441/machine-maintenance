@@ -479,14 +479,14 @@ $dbh= NULL;
                                                      $newad =  date('d/m/Y', strtotime($naD));
                                                      echo $newad;?>" disabled>
                                             </label>
-
+                                            <?php if(array_search('M-000033',$_SESSION['menu'])!=null ){ ?> 
                                             <?php if($row1['XDMajRepairActualDate'] != NULL){
                                               $oD = $row1['XDMajRepairActualDate'];
                                               $nD = str_replace('-', '/', $oD);
                                               $newa =  date('d/m/Y', strtotime($nD));
                                               ?>
 
-
+                                     
                                               <label for="numb">วันซ่อมจริง : <input type="text" size="6" name="datee" id='dateinput'
                                                     class="form-control" value="<?php echo "$newa"; ?>" disabled>
                                               </label>
@@ -501,7 +501,7 @@ $dbh= NULL;
                                               </label>
 
                                               <?php
-                                            }?>
+                                            }}?>
 
                                             <!--label for="numb">วันซ่อมจริง : <input id="datepicker" size="6"
                                                     name="XDMajRepairAppPlanDate" class="form-control"
@@ -534,6 +534,7 @@ $dbh= NULL;
 
                                     <div class="col-md-12">
                                         <div class="col text-left">
+                                        <?php if(array_search('M-000033',$_SESSION['menu'])!=null ){ ?>  
                                             <label for="numb">ช่างซ่อม : <!--input style="border: none; width:auto;" type="hidden" name="empar" value="<?php // if(isset($_POST['selectemployee'])){
                                               //   $emp =  $_POST['selectemployee'];
                                               //   if(isset($emp)){
@@ -584,6 +585,7 @@ $dbh= NULL;
                                                 }
                                                 ?>
                                             </label>
+                                            <?php }?>
                                         </div>
                                     </div>
 
@@ -591,17 +593,22 @@ $dbh= NULL;
 
                                 <div class="modal-footer">
                                     <div class="col-md-6">
+                                        
                                         <div class="col text-left">
                                             <a type="button" class="btn btn-danger mr-auto"
                                                 href="ListEngiRepair.php">กลับ</a>
+                                                <?php if(array_search('M-000033',$_SESSION['menu'])!=null ){ ?>  
                                                 <button type="button" class="btn btn-warning mr-auto" data-toggle="modal" data-target="#insertModal">เพิ่มช่างซ่อม</button>
-                                        </div>
+                                                <?php }?>
+                                            </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col text-right">
                                             <input type="hidden" value="<?php echo $id?>" name='id'>
+                                            <?php if(array_search('M-000033',$_SESSION['menu'])!=null ){ ?>  
                                             <input type="submit" class="btn btn-success btndis" name="save"
                                                 value="บันทึก">
+                                            <?php }?>
                                         </div>
                                     </div>
                                 </div>

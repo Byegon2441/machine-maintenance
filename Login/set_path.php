@@ -19,19 +19,23 @@ session_start();
         $_SESSION['read']= array();//XBUmnIsRead
         $_SESSION['save']=array();//XBUmnIsSave
         $_SESSION['cancle']=array();//XBUmnIsCancel
+        if(isset($_SESSION['XVMnuCode'])){
             for ($i = 0;$i<count($_SESSION['XVMnuCode']);$i++){
                 $_SESSION['menu'][$i] = $_SESSION['XVMnuCode'][$i]['XVMnuCode'] ;
                 $_SESSION['read'][$i] = $_SESSION['XVMnuCode'][$i]['XBUmnIsRead'];
                 $_SESSION['save'][$i] = $_SESSION['XVMnuCode'][$i]['XBUmnIsSave'] ;
                 $_SESSION['cancle'][$i] = $_SESSION['XVMnuCode'][$i]['XBUmnIsCancel'] ;
-            }//ย้ายmenu code มาไว้อีกarary
-           
+            }//ย้ายmenu code มาไว้อีกarray
+        }
            
          
-            // echo  $_SESSION['read'][array_search('M-000024',$_SESSION['menu'])];
-            // echo  $_SESSION['save'][array_search('M-000024',$_SESSION['menu'])];
-            // echo  $_SESSION['cancle'][array_search('M-000024',$_SESSION['menu'])];
-          
+     
+        //   if(array_search('M-000050',$_SESSION['menu'])==null){
+        //     echo "null";
+        //   }
+        //     echo  $_SESSION['read'][array_search('M-000050',$_SESSION['menu'])];
+        //     echo  $_SESSION['save'][array_search('M-000050',$_SESSION['menu'])];
+        //     echo  $_SESSION['cancle'][array_search('M-000050',$_SESSION['menu'])];
 
 
             if(isset($_SESSION['XVRptCode'])){

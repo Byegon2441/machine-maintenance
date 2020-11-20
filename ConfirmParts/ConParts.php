@@ -210,7 +210,9 @@
                                         <table class="table table-bordered" id="tab_logic">
                                             <thead>
                                                 อนุมัติการซ่อม :
-                                                <?php if($row2["XVMajConfirm"]=="confirm"){ echo 'อนุมัติแล้ว';}else{echo 'ไม่อนุมัติ';}?>
+
+                                                 <?php if($row2["XVMajConfirm"]=="confirm"){ echo 'อนุมัติแล้ว';}else{echo 'ไม่อนุมัติ';}?>
+                                                 
                                                 <br>
 
                                                 รายการที่ : <?php echo $row2["XIMajdSeqNo"];?>
@@ -245,8 +247,10 @@
                                           $stmt3 = $dbh->query($sql3);
                                             while ($row3=$stmt3->fetch(PDO::FETCH_ASSOC)){
                                          $count ++ ;
-                                         ?>
-                                                    <?php if($row3["XVMajConfirm"]=="confirm"){?>
+                                         ?> 
+                                                    <?php 
+                                                      if($_SESSION['save'][array_search('M-000027',$_SESSION['menu'])]==true ){
+                                                    if($row3["XVMajConfirm"]=="confirm"){?>
                                                     <td style="width:100px; "><input
                                                             style="width:25px; height:25px; margin:5px 35px 0;"
                                                             type="checkbox"
@@ -258,7 +262,9 @@
                                                     </td>
                                                     <?php }else{?>
                                                     <td></td>
-                                                    <?php } ?>
+                                                    <?php } }else{ ?>
+                                                        <td></td>
+                                                    <?php  }?>
                                                     <td><?php echo $count;?></td>
 
                                                     <td>
@@ -276,6 +282,8 @@
                                                     </td>
 
                                                     <td style="width:60px;"> <?php echo $row3["XVAmount"]; ?></td>
+                                                    
+                                                    <?php if($_SESSION['save'][array_search('M-000027',$_SESSION['menu'])]==true ){ ?>    
                                                     <?php if($row3["XVMajConfirm"]=="confirm"){
 
                                               while ($row4=$stmt4->fetch(PDO::FETCH_ASSOC)){
@@ -336,7 +344,15 @@
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
-                                                    <?php } ?>
+                                                    <?php } }else{ ?>
+                                                     td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <?php }?>
                                                 </tr>
                                                 <?php
 
@@ -397,7 +413,10 @@
                                                           ?><input type="text" class="form-control" size="6" value="<?php echo $Dnew5;?>" disabled>
 
                                             </label>
-                                            <?php if(isset($row1['XDMajSpareDate']) && $row1['XDMajSpareDate'] != NULL){
+
+                                            <?php
+                                             if($_SESSION['save'][array_search('M-000027',$_SESSION['menu'])]==true ){   
+                                            if(isset($row1['XDMajSpareDate']) && $row1['XDMajSpareDate'] != NULL){
                                                  $datecon6 = $row1["XDMajSpareDate"];
                                                  $DN6 = str_replace('-', '/', $datecon6);
                                                  $Dnew6 =  date('d/m/Y', strtotime($DN6));
@@ -406,7 +425,7 @@
                                             <label for="numb">วันที่อะไหล่พร้อม : <input id="XDMajSpareDate" size="6"
                                                     name="XDMajSpareDate" class="form-control" data-toggle="datepicker">
                                             </label>
-                                            <?php }?>
+                                            <?php }}?>
                                         </div>
                                     </div>
 
@@ -458,8 +477,10 @@
                                             <input type="hidden" name="count_column"
                                                 value="<?php echo $row5['total'];?>" id='count_column'>
                                             <input type="hidden" value="<?php echo $id?>" name='id'>
+                                            <?php if($_SESSION['save'][array_search('M-000027',$_SESSION['menu'])]==true ){ ?>    
                                             <input type="submit" class="btn btn-success btndis" name="save"
                                                 value="บันทึก">
+                                            <?php }?>
                                         </div>
                                     </div>
                                 </div>

@@ -418,10 +418,11 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">ใบแจ้งซ่อมทั้งหมด
-                        <a  class="btn btn-success btn-circle" style="float: right;" href="insertMajor.php"
+                   <?php if($_SESSION['save'][array_search('M-000018',$_SESSION['menu'])]==true ){ ?>     
+                    <a  class="btn btn-success btn-circle" style="float: right;" href="insertMajor.php"
                             ><i class="fa fa-plus"></i>
                         </a>
-
+                     <?php } ?>  
 
                         </button>
                     </h1>
@@ -484,58 +485,91 @@
                                         ?>
                                         <td align="center"><a class='btn btn-primary editbtn' href="editMajor.php?id=<?php echo $row["XVMajDocNo"] ?>"
                                                 >รายละเอียด</a></td>
-                                                <td align="center"><button class='btn btn-danger canclebtn' type='button'
-                                                >ยกเลิก</button></td>
+                                                <td align="center">
+                                                <?php if($_SESSION['cancle'][array_search('M-000018',$_SESSION['menu'])]==true ){ ?>     
+                                                    <button class='btn btn-danger canclebtn' type='button'  >ยกเลิก</button>
+                                                <?php  }?> 
+                                                 </td>
                                     <?php }else if($row["XVMajStatus"] == 'แจ้งซ่อม' && $row["XVMajDocStatus"] != 3){ ?>
                                         <td align="center"><a class='btn btn-primary editbtn' href="../CheckCars/addDataCheck.php?id=<?php echo $row["XVMajDocNo"] ?>"
                                                 >รายละเอียด</a></td>
-                                                <td align="center"><button class='btn btn-danger canclebtn' type='button'
-                                                >ยกเลิก</button></td>
+                                                <td align="center">
+                                                <?php if($_SESSION['cancle'][array_search('M-000018',$_SESSION['menu'])]==true ){ ?>     
+                                                    <button class='btn btn-danger canclebtn' type='button'  >ยกเลิก</button>
+                                                <?php  }?> 
+                                                 </td>
                                     <?php }else if($row["XVMajStatus"] == 'รอนำรถประเมินอะไหล่' && $row["XVMajDocStatus"] != 3){ ?>
                                         <td align="center"><a class='btn btn-primary editbtn' href="../CheckCars/addEngiCheck.php?id=<?php echo $row["XVMajDocNo"] ?>"
                                                 >รายละเอียด</a></td>
-                                                <td align="center"><button class='btn btn-danger canclebtn' type='button'
-                                                >ยกเลิก</button></td>
+                                                <td align="center">
+                                                <?php if($_SESSION['cancle'][array_search('M-000018',$_SESSION['menu'])]==true ){ ?>     
+                                                    <button class='btn btn-danger canclebtn' type='button'  >ยกเลิก</button>
+                                                <?php  }?> 
+                                                 </td>
                                     <?php }else if($row["XVMajStatus"] == 'รออนุมัติซ่อม' && $row["XVMajDocStatus"] != 3){ ?>
                                         <td align="center"><a class='btn btn-primary editbtn' href="../AllowMainte/AllowMainte.php?id=<?php echo $row["XVMajDocNo"] ?>"
                                                 >รายละเอียด</a></td>
-                                                <td align="center"><button class='btn btn-danger canclebtn' type='button'
-                                                >ยกเลิก</button></td>
+                                                <td align="center">
+                                                <?php if($_SESSION['cancle'][array_search('M-000018',$_SESSION['menu'])]==true ){ ?>     
+                                                    <button class='btn btn-danger canclebtn' type='button'  >ยกเลิก</button>
+                                                <?php  }?> 
+                                                 </td>
                                     <?php }else if($row["XVMajStatus"] == 'รออะไหล่' && $row["XVMajDocStatus"] != 3){ ?>
                                         <td align="center"><a class='btn btn-primary editbtn' href="../ConfirmParts/ConParts.php?id=<?php echo $row["XVMajDocNo"] ?>"
                                                 >รายละเอียด</a></td>
-                                                <td align="center"><button class='btn btn-danger canclebtn' type='button'
-                                                >ยกเลิก</button></td>
+                                                <td align="center">
+                                                <?php if($_SESSION['cancle'][array_search('M-000018',$_SESSION['menu'])]==true ){ ?>     
+                                                    <button class='btn btn-danger canclebtn' type='button'  >ยกเลิก</button>
+                                                <?php  }?> 
+                                                 </td>
                                     <?php }else if($row["XVMajStatus"] == 'รอช่างรับอะไหล่' && $row["XVMajDocStatus"] != 3){ ?>
                                         <td align="center"><a class='btn btn-primary editbtn' href="../AllowMainte/addFixDate.php?id=<?php echo $row["XVMajDocNo"] ?>"
                                                 >รายละเอียด</a></td>
-                                                <td align="center"><button class='btn btn-danger canclebtn' type='button'
-                                                >ยกเลิก</button></td>
+                                                <td align="center">
+                                                <?php if($_SESSION['cancle'][array_search('M-000018',$_SESSION['menu'])]==true ){ ?>     
+                                                    <button class='btn btn-danger canclebtn' type='button'  >ยกเลิก</button>
+                                                <?php  }?> 
+                                                 </td>
                                     <?php }else if($row["XVMajStatus"] == 'รอนำรถเข้าซ่อม' && $row["XVMajDocStatus"] != 3){ ?>
                                         <td align="center"><a class='btn btn-primary editbtn' href="../CheckCars/addEngiRepair.php?id=<?php echo $row["XVMajDocNo"] ?>"
                                                 >รายละเอียด</a></td>
-                                                <td align="center"><button class='btn btn-danger canclebtn' type='button'
-                                                >ยกเลิก</button></td>
+                                                <td align="center">
+                                                <?php if($_SESSION['cancle'][array_search('M-000018',$_SESSION['menu'])]==true ){ ?>     
+                                                    <button class='btn btn-danger canclebtn' type='button'  >ยกเลิก</button>
+                                                <?php  }?> 
+                                                 </td>
                                     <?php }else if($row["XVMajStatus"] == 'ดำเนินการซ่อม' && $row["XVMajDocStatus"] != 3){ ?>
                                         <td align="center"><a class='btn btn-primary editbtn' href="../JobDone/JobDone.php?id=<?php echo $row["XVMajDocNo"] ?>"
                                                 >รายละเอียด</a></td>
-                                                <td align="center"><button class='btn btn-danger canclebtn' type='button'
-                                                >ยกเลิก</button></td>
+                                                <td align="center">
+                                                <?php if($_SESSION['cancle'][array_search('M-000018',$_SESSION['menu'])]==true ){ ?>     
+                                                    <button class='btn btn-danger canclebtn' type='button'  >ยกเลิก</button>
+                                                <?php  }?> 
+                                                 </td>
                                     <?php }else if($row["XVMajStatus"] == 'ซ่อมเสร็จ' && $row["XVMajDocStatus"] != 3){ ?>
                                                 <td align="center"><a class='btn btn-primary editbtn' href="../Finish/JobFinish.php?id=<?php echo $row["XVMajDocNo"] ?>"
                                                 >รายละเอียด</a></td>
-                                                <td align="center"><button class='btn btn-danger canclebtn' type='button'
-                                                >ยกเลิก</button></td>
+                                                <td align="center">
+                                                <?php if($_SESSION['cancle'][array_search('M-000018',$_SESSION['menu'])]==true ){ ?>     
+                                                    <button class='btn btn-danger canclebtn' type='button'  >ยกเลิก</button>
+                                                <?php  }?> 
+                                                 </td>
                                     <?php }else if($row["XVMajStatus"] == 'ปิดงาน' && $row["XVMajDocStatus"] != 3){ ?>
                                                 <td align="center"><a class='btn btn-primary editbtn' href="../Finish/JobFinishDone.php?id=<?php echo $row["XVMajDocNo"] ?>"
                                                 >รายละเอียด</a></td>
-                                                <td align="center"><button class='btn btn-danger canclebtn' type='button'
-                                                >ยกเลิก</button></td>
+                                                <td align="center">
+                                                <?php if($_SESSION['cancle'][array_search('M-000018',$_SESSION['menu'])]==true ){ ?>     
+                                                    <button class='btn btn-danger canclebtn' type='button'  >ยกเลิก</button>
+                                                <?php  }?> 
+                                                 </td>
                                     <?php }else if($row["XVMajDocStatus"]==2){ ?>
                                         <td align="center"><a class='btn btn-primary editbtn' href="../CheckCars/addEngiCheck.php?id=<?php echo $row["XVMajDocNo"] ?>"
                                                 >รายละเอียด</a></td>
-                                                <td align="center"><button class='btn btn-danger canclebtn' type='button'
-                                                >ยกเลิก</button></td>
+                                                <td align="center">
+                                                <?php if($_SESSION['cancle'][array_search('M-000018',$_SESSION['menu'])]==true ){ ?>     
+                                                    <button class='btn btn-danger canclebtn' type='button'  >ยกเลิก</button>
+                                                <?php  }?> 
+                                                 </td>
                                     <?php }else{ ?>
                                         <td align="center"><a class='btn btn-primary editbtn' href="showMajor.php?id=<?php echo $row["XVMajDocNo"] ?>"
                                                 >รายละเอียด</a></td>

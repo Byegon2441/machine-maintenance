@@ -459,6 +459,7 @@ $dbh = null;
                                                         }?>"
                                                     data-toggle="datepicker" disabled>
                                             </label>
+                                            <?php if($_SESSION['save'][array_search('M-000036',$_SESSION['menu'])]==true ){ ?>               
                                             <label for="numb">วันที่รับรถ : <input id="datepicker" size="6"
                                                     name="XDMajPickupActualDate" class="form-control"
                                                     data-toggle="datepicker">
@@ -467,6 +468,7 @@ $dbh = null;
                                                     name="XDMajFinishDate" class="form-control"
                                                     data-toggle="datepicker">
                                             </label>
+                                            <?php }?>
                                         </div>
                                     </div>
 
@@ -525,6 +527,7 @@ $dbh = null;
                                                 href="ListFinish.php">กลับ</a>
                                         </div>
                                     </div>
+                                    <?php if($_SESSION['save'][array_search('M-000036',$_SESSION['menu'])]==true ){ ?>     
                                     <div class="col-md-6">
                                         <div class="col text-right">
                                             <input type="hidden" value="<?php echo $id?>" name='id'>
@@ -543,6 +546,7 @@ $dbh = null;
                                                 value="ปิดงาน">
                                         </div>
                                     </div>
+                                            <?php }?>
                                 </div>
                             </form>
 

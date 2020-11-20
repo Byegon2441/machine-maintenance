@@ -433,6 +433,7 @@ while ($row3=$stmt3->fetch(PDO::FETCH_ASSOC)){
                                                             echo "-- / -- / ----";
                                                            }?>" data-toggle="datepicker" disabled>
                                             </label>
+                                            <?php if(array_search('M-000035',$_SESSION['menu'])!=null ){ ?> 
                                             <label for="numb">วันที่ซ่อมเสร็จ : <input id="datepicker" size="6"
                                                     name="XDMajFinishRepairDate" class="form-control"
                                                     data-toggle="datepicker">
@@ -441,6 +442,7 @@ while ($row3=$stmt3->fetch(PDO::FETCH_ASSOC)){
                                                     name="XDMaPickupAppPlanDate" class="form-control"
                                                     data-toggle="datepicker">
                                             </label>
+                                            <?php }?>
                                         </div>
                                     </div>
 
@@ -499,8 +501,10 @@ while ($row3=$stmt3->fetch(PDO::FETCH_ASSOC)){
                                     <div class="col-md-6">
                                         <div class="col text-right">
                                             <input type="hidden" value="<?php echo $id?>" name='id'>
+                                            <?php if(array_search('M-000035',$_SESSION['menu'])!=null ){ ?> 
                                             <input type="submit" class="btn btn-success btndis" name="save"
                                                 value="บันทึก">
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>

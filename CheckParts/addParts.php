@@ -390,7 +390,7 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                     <div class="col-md-7">
                                         <div class="col text-right">
                                         <input type="hidden" value="<?php echo $id?>" name='id'>
-                                            หมายเหตุปิดงาน : <input type="text" value="1" name="XVMajFinishRmk" class="form-control" >
+                                            หมายเหตุปิดงาน : <input type="text" value="" name="XVMajFinishRmk" class="form-control" >
                                             <input type="submit" class="btn btn-info" name="done"
                                                 value="ปิดงาน">
                                             <button type="submit" class="btn btn-primary submit_file"

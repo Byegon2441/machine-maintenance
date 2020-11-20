@@ -218,11 +218,13 @@
                                         <table class="table table-bordered" id="tab_logic">
                                             <thead>
                                                 <label for="">อนุมัติการซ่อม :</label>
-
+                                                <?php if(array_search('M-000026',$_SESSION['menu'])!=null ){ ?> 
                                                 <input style="width:25px; height:25px;" class="form-check-input"
                                                     type="checkbox" value="confirm"
                                                     id="check[<?php echo $row2["XIMajdSeqNo"];?>]"
-                                                    name='check[<?php echo $row2["XIMajdSeqNo"];?>]'> <br>
+                                                    name='check[<?php echo $row2["XIMajdSeqNo"];?>]'>
+                                                <?php } ?>
+                                                <br>
                                                 <label for="">รายการที่ : </label><?php echo $row2["XIMajdSeqNo"];?>
                                                 &nbsp;&nbsp;<label for="">เรื่องที่แจ้ง :
                                                 </label><?php echo $row2["XVMajdSubject"];?>
@@ -332,10 +334,12 @@
                                                     value="<?php echo $Dnew4;?>" disabled>
 
                                             </label>
+                                            <?php if(array_search('M-000026',$_SESSION['menu'])!=null ){ ?> 
                                             <label for="numb">วันที่อนุมัติซ่อม : <input id="datepicker" size="6"
                                                     name="XDMajConfirmDate" class="form-control"
                                                     data-toggle="datepicker">
                                             </label>
+                                            <?php }?>
                                         </div>
                                     </div>
 
@@ -373,8 +377,10 @@
                                     <div class="col-md-6">
                                         <div class="col text-right">
                                             <input type="hidden" value="<?php echo $id?>" name='id'>
+                                            <?php if(array_search('M-000026',$_SESSION['menu'])!=null ){ ?>    
                                             <input type="submit" class="btn btn-success btndis" name="save"
                                                 value="บันทึก">
+                                            <?php  }?>
                                         </div>
                                     </div>
                                 </div>
