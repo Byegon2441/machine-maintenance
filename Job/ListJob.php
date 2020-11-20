@@ -578,11 +578,7 @@
         $(document).ready(function() {
             $('#dataTables-example').DataTable({
                 responsive: true
-            });
-        });
-
-        $(document).ready(function() {
-            $('.canclebtn').on('click', function() {
+            }).on("click", ".canclebtn", function(){
                 $('#cancleModal').modal('show')
                 $tr = $(this).closest('tr')
 
@@ -592,8 +588,15 @@
 
                 console.log(data)
                 $('#cancle_id').val(data[0])
-            })
-        })
+            });
+        });
+        
+
+        // $(document).ready(function() {
+        //     $('.canclebtn').on('click', function() {
+                
+        //     })
+        // })
 
         </script>
 
