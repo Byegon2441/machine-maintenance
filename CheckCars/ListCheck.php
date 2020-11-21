@@ -81,7 +81,7 @@
                                         <td><?php echo $row["XVMajStatus"];?></td>
                                         <td align="center">
                                         <a class='btn btn-primary editbtn' href="addDataCheck.php?id=<?php echo $row["XVMajDocNo"] ?>"
-                                            >กำหนดวันประเมิน</a>
+                                            >กำหนดวันนัดประเมิน</a>
                                         </td>
                                     </tr>
                                     <?php $count++;}

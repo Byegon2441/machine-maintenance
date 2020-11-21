@@ -81,7 +81,7 @@
 <?php
 if(isset($_GET['id'])){
       $id=$_GET['id'];
-  $sql = " SELECT  m.XVMajDocNo, d.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus ,depart.XVDptCode,depart.XVDptName,m.XVMajNumber,m.XVMajSub_district,m.XVMajDistrict,m.XVMajProvince, m.XVMajWhoInformant
+  $sql = " SELECT  m.XVMajDocNo, d.XDMajDate, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus ,depart.XVDptCode,depart.XVDptName,m.XVMajNumber,m.XVMajSub_district,m.XVMajDistrict,m.XVMajProvince, m.XVMajWhoInformant,d.XDMajEstAppPlanDate
 FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v,tmstmdepartment depart
 WHERE m.XVMajDocNo = d.XVMajDocNo
 AND m.XVVehCode = v.XVVehCode
@@ -255,9 +255,22 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col text-left">
+                                        <?php if(array_search('M-000023',$_SESSION['menu'])!=null ){//หัวหน้าช่าง ?>        
                                             <label for="numb">วันนัดประเมิน : <input type="text" size="6" name="numDate"
                                                     class="form-control" data-toggle="datepicker">
                                                 </select>
+                                        <?php  } else{
+                                                $sql4 ="SELECT XDMajEstAppPlanDate FROM TDocTMaJobDate WHERE XVMajDocNo = '$id'";
+                                                $stmt = $dbh -> query($sql4);
+                                                $rowdate=$stmt->fetch(PDO::FETCH_ASSOC);
+                                                $oldDate = $rowdate['XDMajEstAppPlanDate'];
+                                                $newD = str_replace('-', '/', $oldDate);
+                                                $newDate =  date('d/m/Y', strtotime($newD));    
+                                            ?>
+                                            <label for="numb">วันนัดประเมิน : <input type="text" size="6" name="numDate" value="<?php echo $newDate ?>"
+                                                    class="form-control" data-toggle="datepicker">
+                                                </select>
+                                        <?php }?>
                                             </label>
                                         </div>
                                     </div>

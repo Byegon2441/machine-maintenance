@@ -107,7 +107,7 @@
                                     <a href="../Job/ListJob.php"><i class="fa fa-edit fa-fw"></i> ใบแจ้งซ่อมทั้งหมด</a>
                                 </li>
                                <?php } ?>
-                               <?php  if(in_array("M-000022",$_SESSION['menu']) || in_array("M-000023",$_SESSION['menu'])){//กำหนดวันนัดประเมิน
+                               <?php  if(in_array("M-000023",$_SESSION['menu'])){//กำหนดวันนัดประเมิน
                                    ?>
                                 <li>
                                     <a href="../CheckCars/ListCheck.php"><i class="fa fa-edit fa-fw"></i> กำหนดวันนัดประเมิน</a>   <!-- คือรายการที่ต้องใส่วันนัด-->

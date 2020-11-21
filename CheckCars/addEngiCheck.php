@@ -102,7 +102,7 @@
                                 <select name="selectemployee[]" class="selectpicker form-control"
                                     data-live-search="true" multiple>
                                     <?php
-                                    $emp_sql = "SELECT * FROM tmstmtemployee";
+                                    $emp_sql = "SELECT * FROM tmstmtemployee WHERE XVDptCode = 1 ";
                                     $stmt = $dbh->query($emp_sql);
                                     while ($emp_row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                ?>

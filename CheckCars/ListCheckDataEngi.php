@@ -38,7 +38,11 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
+                <?php if(array_search('M-000023',$_SESSION['menu'])!=null ){ ?>
                     <h1 class="page-header">กำหนดช่างประเมินและสถานะการซ่อมของรถ</h1>
+                <?php  }else{?>
+                    <h1 class="page-header">กำหนดวันนัดประเมินใหม่</h1>
+                <?php }?>
                 </div>
             </div>
             <div class="row">
@@ -83,8 +87,13 @@
                                         <td><?php echo $row["XVVehName"];?></td>
                                         <td><?php echo $row["XVMajStatus"];?></td>
                                         <td align="center">
+                                        <?php if(array_search('M-000023',$_SESSION['menu'])!=null ){//หัวหน้าช่าง ?>
                                         <a class='btn btn-primary editbtn' href="addEngiCheck.php?id=<?php echo $row["XVMajDocNo"] ?>"
                                             >กำหนดช่างประเมิน</a>
+                                        <?php }else{  //ธุรการ ?>
+                                            <a class='btn btn-primary editbtn' href="addDataCheck.php?id=<?php echo $row["XVMajDocNo"] ?>"
+                                            >กำหนดวันประเมินใหม่</a>
+                                        <?php  }?>
                                         </td>
                                     </tr>
                                     <?php $count++;}

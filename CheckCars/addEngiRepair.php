@@ -117,7 +117,7 @@ $stmt = $dbh->query($sql);
                                 <span class="required"></span> เลือกช่างประเมิน:</label>
                             <div class="col-sm-7">
                             <select name="selectemployee[]" class="selectpicker form-control" data-live-search="true" multiple>
-                              <?php $emp_sql = "SELECT * FROM tmstmtemployee";
+                              <?php $emp_sql = "SELECT * FROM tmstmtemployee WHERE XVDptCode = 1 ";
                                     // $emp_query = mysqli_query($connect,$emp_sql)or die(mysqli_query($connect));
                                     $stmt1 = $dbh->query($emp_sql);
     while ($emp_row=$stmt1->fetch(PDO::FETCH_ASSOC)){

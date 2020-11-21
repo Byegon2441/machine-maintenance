@@ -66,7 +66,7 @@
                                   
                                   
                 
-    echo $emp = $_SESSION['XVEmpCode'];
+     $emp = $_SESSION['XVEmpCode'];
 
     $sql = "SELECT m.XVMajDocNo, m.XVVehCode, v.XVVehName, m.XVMajStatus,FORMAT(j.XDMajDate, 'dd/MM/yyyy') AS DS
     FROM TDocTMaJob m, TDocTMaJobDate j, TMstVehicle v ,tdoctmaestimation_tnc tnc

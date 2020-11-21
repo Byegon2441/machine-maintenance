@@ -64,7 +64,7 @@
 
                                     <?php
                                     include "../database/connect.php";
-                                    echo $emp = $_SESSION['XVEmpCode'];
+                                     $emp = $_SESSION['XVEmpCode'];
      $sql = " SELECT m.XVMajDocNo, m.XVVehCode, v.XVVehName, m.XVMajStatus, m.XVMajDocStatus,FORMAT(d.XDMajDate, 'dd/MM/yyyy') AS DS
      FROM  tdoctmajob m, tdoctmajobdate d, tmstvehicle v,tdoctmaestimation_tnc tnc
      WHERE m.XVMajDocNo = d.XVMajDocNo 
