@@ -129,7 +129,7 @@
                         <?php 
                         if(in_array("M-000021",$_SESSION['menu']) || in_array("M-000018",$_SESSION['menu']) || in_array("M-000024",$_SESSION['menu'])){ ?>
                         <li>
-                            <a href="#"><i class="fa fa-bars  fa-fw"></i> ใบแจ้งซ่อม<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bars  fa-fw"></i> ธุรการ<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <?php if(in_array("M-000021",$_SESSION['menu']) || in_array("M-000018",$_SESSION['menu']) ){ //ใบแจ้งซ่อมทั้งหมด
                                    ?>
