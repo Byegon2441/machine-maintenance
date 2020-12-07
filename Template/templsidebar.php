@@ -186,6 +186,9 @@
                                     <a href="#"><i class="fa fa-edit fa-fw"></i> สถานะใบแจ้งซ่อม</a>
                                 </li>
                                 <li>
+                                    <a href="#"><i class="fa fa-edit fa-fw"></i> อนุมัติประเมินเครื่องจักร</a>
+                                </li>
+                                <li>
                                     <a href="#"><i class="fa fa-edit fa-fw"></i> อนุมัติการซ่อม</a>
                                 </li>
                                 <li>
