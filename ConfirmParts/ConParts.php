@@ -67,7 +67,17 @@
 
 <body>
 
-    <?php include '../Template/templsidebar.php';
+  <?php
+
+ if(!isset($_SESSION)){
+     session_start();
+ }
+
+     if($_SESSION['XVPrgCode'] == 'P-03'){
+
+         if(in_array("M-000027",$_SESSION['menu']) || in_array("M-000028",$_SESSION['menu'])){
+
+ include '../Template/templsidebar.php';
          include '../database/connect.php';
 
 
@@ -246,19 +256,23 @@
                                             while ($row3=$stmt3->fetch(PDO::FETCH_ASSOC)){
                                          $count ++ ;
                                          ?>
-                                                    <?php if($row3["XVMajConfirm"]=="confirm"){?>
+                                                    <?php
+                                                      if($_SESSION['save'][array_search('M-000027',$_SESSION['menu'])]==true ){
+                                                    if($row3["XVMajConfirm"]=="confirm"){?>
                                                     <td style="width:100px; "><input
                                                             style="width:25px; height:25px; margin:5px 35px 0;"
                                                             type="checkbox"
                                                             name="parts_ready[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
                                                             id="<?php echo $row3["XIMachinePartsSeqNo"];?>"
                                                             class="parts_ready" value="1"
-                                                            <?php if(isset($row3['XVPartsReady']) && $row3['XVPartsReady']=="1"){echo "checked";}?> 
+                                                            <?php if(isset($row3['XVPartsReady']) && $row3['XVPartsReady']=="1"){echo "checked";}?>
                                                             <?php if (isset($row3['XVPartsReady'])) {echo "disabled";}?>>
                                                     </td>
                                                     <?php }else{?>
                                                     <td></td>
-                                                    <?php } ?>
+                                                  <?php } }else{ ?>
+                                                    <td></td>
+                                                <?php  }?>
                                                     <td><?php echo $count;?></td>
 
                                                     <td>
@@ -276,6 +290,7 @@
                                                     </td>
 
                                                     <td style="width:60px;"> <?php echo $row3["XVAmount"]; ?></td>
+                                                    <?php if($_SESSION['save'][array_search('M-000027',$_SESSION['menu'])]==true ){ ?>
                                                     <?php if($row3["XVMajConfirm"]=="confirm"){
                                               while ($row4=$stmt4->fetch(PDO::FETCH_ASSOC)){
                                             ?>
@@ -283,6 +298,7 @@
                                                             type="radio"
                                                             name="check_source[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
                                                             value="คลัง"
+                                                            onchange="Iclick('<?php echo $row3["XIMachinePartsSeqNo"]; ?>')"
                                                             <?php if(isset($row3['XVSource']) && $row3['XVSource']=="คลัง"){echo "checked";}?>
                                                             <?php if (isset($row3['XVSource'])) {echo "disabled";}?>>
                                                     </td> <!-- คลัง -->
@@ -290,6 +306,7 @@
                                                             type="radio"
                                                             name="check_source[<?php echo $row3["XIMachinePartsSeqNo"];?>]"
                                                             value="สั่งซื้อ"
+                                                            onchange="Kclick('<?php echo $row3["XIMachinePartsSeqNo"]; ?>')"
                                                             <?php if(isset($row3['XVSource']) && $row3['XVSource']=="สั่งซื้อ"){echo "checked";}?>
                                                             <?php if (isset($row3['XVSource'])) {echo "disabled";}?>>
                                                     </td> <!-- สั่งซื้อ -->
@@ -332,7 +349,14 @@
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
-                                                    <?php } ?>
+                                                  <?php } }else{ ?>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <?php }?>
                                                 </tr>
                                                 <?php
 
@@ -362,7 +386,7 @@
                                     <div class="col-md-7">
                                         <div class="col text-right">
                                             <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="40"
-                                                    name="nameofuser" id="nameofuser" value="ธุรการ"
+                                                    name="nameofuser" id="nameofuser" value="<?php echo $row1['XVMajWhoInformant']?>"
                                                     class="form-control" readonly></label>
                                         </div>
                                     </div>
@@ -393,7 +417,9 @@
                                                           ?><input type="text" class="form-control" size="6" value="<?php echo $Dnew5;?>" disabled>
 
                                             </label>
-                                            <?php if(isset($row1['XDMajSpareDate']) && $row1['XDMajSpareDate'] != NULL){
+                                            <?php
+                                            if($_SESSION['save'][array_search('M-000027',$_SESSION['menu'])]==true ){
+                                           if(isset($row1['XDMajSpareDate']) && $row1['XDMajSpareDate'] != NULL){
                                                  $datecon6 = $row1["XDMajSpareDate"];
                                                  $DN6 = str_replace('-', '/', $datecon6);
                                                  $Dnew6 =  date('d/m/Y', strtotime($DN6));
@@ -402,7 +428,7 @@
                                             <label for="numb">วันที่อะไหล่พร้อม : <input id="XDMajSpareDate" size="6"
                                                     name="XDMajSpareDate" class="form-control" data-toggle="datepicker">
                                             </label>
-                                            <?php }?>
+                                            <?php }}?>
                                         </div>
                                     </div>
 
@@ -454,8 +480,10 @@
                                             <input type="hidden" name="count_column"
                                                 value="<?php echo $row5['total'];?>" id='count_column'>
                                             <input type="hidden" value="<?php echo $id?>" name='id'>
+                                            <?php if($_SESSION['save'][array_search('M-000027',$_SESSION['menu'])]==true ){ ?>
                                             <input type="submit" class="btn btn-success btndis" name="save"
                                                 value="บันทึก">
+                                             <?php }?>
                                         </div>
                                     </div>
                                 </div>
@@ -477,6 +505,33 @@
         <!-- /#wrapper -->
         <?php
     }
+  }
+
+}else{//if check menu
+  echo '<script>';
+echo "Swal.fire({
+  title: 'แจ้งเตือน',
+  text: 'คุณไม่มีสิทธ์เข้าถึงเมนูนี้',
+  icon: 'warning',
+  confirmButtonText: 'Back'
+  }).then(function() {
+      window.history.back();
+});";
+echo '</script>';
+}
+
+}else{
+//if check program
+echo '<script>';
+echo "Swal.fire({
+title: 'คุณยังไม่ได้ลงชื่อเข้าใช้!',
+text: 'กรุณาลงชื่อเข้าใช้',
+icon: 'warning',
+confirmButtonText: 'Back'
+}).then(function() {
+window.location = '../Login/login.php';
+});";
+echo '</script>';
 }
         ?>
 
@@ -516,6 +571,14 @@
 
 
         });
+        function Iclick(a) {
+         document.getElementById('dateforcoming'+'['+a+']').disabled = true;
+         document.getElementById('XDMachinePartsReady'+'['+a+']').disabled = true;
+       }
+       function Kclick(a) {
+         document.getElementById('dateforcoming'+'['+a+']').disabled = false;
+         document.getElementById('XDMachinePartsReady'+'['+a+']').disabled = false;
+       }
         // $('#XDMachinePartsReady').change(() => {
         //      $('#XDMachinePartsReady').val()
         //     const date1 = new Date('7/13/2010');
