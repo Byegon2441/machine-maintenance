@@ -229,12 +229,10 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                                     </td>
                                                     <td><input type="text" name="sub[]" placeholder="กรุณากรอกสาเหตุ"
                                                             value="<?php echo $row2["XVMajdCause"];?>" readonly></td>
-                                                   
                                                             <td>
                                                             <?php if($_SESSION['save'][array_search('M-000018',$_SESSION['menu'])]==true ){ ?>     
                                                                 <button type="button"
-                                                            class="btn btn-danger btn-circle increase-row RemoveRow "><i
-                                                                class="fa fa-minus"></button>
+                                                            class="btn btn-danger btn-circle increase-row RemoveRow fa fa-minus"><include></button>
                                                             <?php  }?>
                                                             </td>
                                                                 
@@ -259,9 +257,7 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col text-right">
-                                            <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="40"
-                                                    name="nameofuser" id="nameofuser" value="<?php echo $row['XVMajWhoInformant']?>"
-                                                    class="form-control" readonly></label>
+                                            <label for="numb">ชื่อผู้แจ้งซ่อม : <input type="text" size="40" name="nameofuser" id="nameofuser" value="<?php echo $row['XVMajWhoInformant']?>" class="form-control" readonly></label>
                                         </div>
                                     </div>
                                 </div>
@@ -347,9 +343,6 @@ while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
             $(this).closest('tr').remove();
         });
         </script>
-
-
-
         <?php
 include '../database/connect.php';
 if(isset($_POST['save'])){
@@ -411,7 +404,7 @@ if ( $stmt ) {
         }
     }//save
 
-
+ 
 }else if(isset($_POST['sendjob'])){
     $XVMajDocNo = $_POST['XVMajDocNo'];
 $name = $_POST['nameofuser'];
