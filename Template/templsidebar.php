@@ -167,10 +167,10 @@
                             <a href="#"><i class="fa fa-bars  fa-fw"></i> ช่าง<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#"><i class="fa fa-edit fa-fw"></i> ประเมินการซ่อม</a>
+                                    <a href="../CheckParts/listEvaluate.php"><i class="fa fa-edit fa-fw"></i> ประเมินการซ่อม</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-edit fa-fw"></i> รับอะไหล่</a>
+                                    <a href="../GetParts/ListGetParts.php"><i class="fa fa-edit fa-fw"></i> รับอะไหล่</a>
                                 </li>
                             </ul>
                         </li>
