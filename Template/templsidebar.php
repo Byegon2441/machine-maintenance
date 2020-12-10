@@ -60,7 +60,7 @@
                    echo  "<a class='navbar-brand' href='../Job/ListJob.php'>ระบบซ่อมบำรุงเครื่องจักร</a>";
                 }else if (in_array("R-000008",$_SESSION['report'])) {
                     echo "<a class='navbar-brand' href='../Report/AdminReport.php'>ระบบซ่อมบำรุงเครื่องจักร</a>";
-                }
+                }//nav home
               ?>
 
 
@@ -117,8 +117,7 @@
                                         อะไหล่</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i
-                                            class="fa fa-edit fa-fw"></i> ช่าง</a>
+                                    <a href="../Employee/ListEmployee.php"><i class="fa fa-edit fa-fw"></i> ช่าง</a>
                                 </li>
                             </ul>
                         </li>
@@ -127,7 +126,7 @@
 
                         <!-- ธุรการ -->
                         <?php 
-                        if(in_array("M-000021",$_SESSION['menu']) || in_array("M-000018",$_SESSION['menu']) || in_array("M-000024",$_SESSION['menu'])){ ?>
+                        if(in_array("M-000018",$_SESSION['menu'])){ ?>
                         <li>
                             <a href="#"><i class="fa fa-bars  fa-fw"></i> ธุรการ<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -145,9 +144,9 @@
                                 </li>
                                 <?php  } ?>
                                 <?php if(in_array("M-000036",$_SESSION['menu']) || in_array("M-000037",$_SESSION['menu'])){//ปิดงาน   ?>
-                                <li>
+                                <!-- <li>
                                     <a href="../Finish/ListFinish.php"><i class="fa fa-edit fa-fw"></i> ปิดงาน</a>
-                                </li>
+                                </li> -->
                                 <?php }?>
 
                                 <?php if(in_array("M-000038",$_SESSION['menu']) || in_array("M-000039",$_SESSION['menu'])){//ปิดงานแล้ว   ?>
@@ -162,7 +161,7 @@
                         <!-- ธุรการ -->
 
                         <!-- ช่าง -->
-                        <?php if(in_array("M-000040",$_SESSION['menu'])){ ?>
+                        <?php if(in_array("M-000024",$_SESSION['menu'])){ ?>
                         <li>
                             <a href="#"><i class="fa fa-bars  fa-fw"></i> ช่าง<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -178,24 +177,24 @@
                         <!-- ช่าง -->
 
                         <!-- หัวหน้าช่าง -->
-                        <?php if(in_array("M-000040",$_SESSION['menu'])){ ?>
+                        <?php if(in_array("M-000023",$_SESSION['menu'])){ ?>
                         <li>
                             <a href="#"><i class="fa fa-bars  fa-fw"></i> หัวหน้าช่าง<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#"><i class="fa fa-edit fa-fw"></i> สถานะใบแจ้งซ่อม</a>
+                                    <a href="../CheckCars/ListCheck.php"><i class="fa fa-edit fa-fw"></i> สถานะใบแจ้งซ่อม</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-edit fa-fw"></i> อนุมัติประเมินเครื่องจักร</a>
+                                    <a href="../CheckCars/ListCheckDataEngi.php"><i class="fa fa-edit fa-fw"></i> อนุมัติประเมินเครื่องจักร</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-edit fa-fw"></i> อนุมัติการซ่อม</a>
+                                    <a href="../AllowMainte/ListAllowMainte.php"><i class="fa fa-edit fa-fw"></i> อนุมัติการซ่อม</a>
                                 </li>
                                 <li>
                                     <a href="#"><i class="fa fa-edit fa-fw"></i> กำหนดวันรับรถ</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-edit fa-fw"></i> แจ้งซ่อมเสร็จ</a>
+                                    <a href="../JobDone/ListDone.php"><i class="fa fa-edit fa-fw"></i> แจ้งซ่อมเสร็จ</a>
                                 </li>
                             </ul>
                         </li>

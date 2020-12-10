@@ -51,7 +51,7 @@ session_start();
 
   
   
-    if(in_array("M-000024",$_SESSION['menu'])){
+    if(in_array("M-000024",$_SESSION['menu'])){//ช่าง
         echo '<script>';
             echo "Swal.fire({
                 title: 'ยินดีต้อนรับ',
@@ -62,7 +62,7 @@ session_start();
                 window.location = '../CheckParts/listEvaluate.php';
             });";
             echo '</script>';
-    }else if(in_array("M-000021",$_SESSION['menu']) || in_array("M-000018",$_SESSION['menu']) ){
+    }else if(in_array("M-000018",$_SESSION['menu']) ){
         echo '<script>';
         echo "Swal.fire({
             title: 'ยินดีต้อนรับ',
@@ -71,6 +71,17 @@ session_start();
             confirmButtonText: 'OK'
         }).then(function() {
             window.location = '../Job/ListJob.php';
+        });";
+        echo '</script>';
+    }else if(in_array("M-000023",$_SESSION['menu'])){
+        echo '<script>';
+        echo "Swal.fire({
+            title: 'ยินดีต้อนรับ',
+            text: 'เข้าสู่ระบบเรียบร้อยแล้ว',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        }).then(function() {
+            window.location = '../CheckCars/ListCheck.php';
         });";
         echo '</script>';
     }else if (in_array("R-000008",$_SESSION['report'])) {
