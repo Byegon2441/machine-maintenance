@@ -48,13 +48,18 @@ $(document).ready(function(){
                         "XVUsrCode": '<?php echo $user;?>',
                         "XVUsrPwd" : '<?php echo $pass;?>'
                     }),
-                    'success': function (token) {
-                    var data = JSON.stringify(token);
-                    var decoded = jwt_decode(data);
-                
-                    console.log( decoded)//obj
+                    'success': function (token) {//get token
+                        //2 para token and full token
+                    
+                    var data = JSON.stringify(token);//stringify
                    
-                     //console.log(decoded.TSysSUserMenu[0].XVMnuCode)  
+                    var token_1 =  data.split(',');
+                   
+                    var decoded = jwt_decode(token_1[1]);
+                    console.log(decoded);
+                
+                   
+                    // console.log(decoded.TSysSUserMenu[0].XVMnuCode)  
                     // console.log(decoded.TSysSUserProgram[0].XVPrgCode)
                     // console.log(decoded.TSysSUserReport[0].XVRptCode)  
 
