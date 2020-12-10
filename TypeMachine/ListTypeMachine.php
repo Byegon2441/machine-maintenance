@@ -170,9 +170,13 @@ if(!isset($_SESSION)){
 ?>
                                     <tr class="odd gradeA">
                                         <td><?php echo $count;?></td>
-                                        <td><?php echo $row['XVVehTypeCode'] ?></td>
-                                        <td><?php echo $row['XVVehTypeName'] ?></td>
-
+                                        <td><?php echo $row['XVJtyCode'] ?></td>
+                                        <td><?php echo $row['XVJtyName'] ?></td>
+                                        <td><?php echo $row['XBJtyIsActive'] ?></td>
+                                        <td><?php echo $row['XVWhoCreate'] ?></td>
+                                        <td><?php echo $row['XVWhoEdit'] ?></td>
+                                        <td><?php echo $row['XTWhenCreate'] ?></td>
+                                        <td><?php echo $row['XTWhenEdit'] ?></td>
                                         <td align="center"><input class='btn btn-primary editbtn' type='button'
                                                 value='แก้ไข'></td>
                                         <td align="center"><input class='btn btn-danger deletebtn' type='button'
