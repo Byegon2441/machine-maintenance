@@ -406,15 +406,15 @@ if(!isset($_SESSION)){
 
                                         <tr class="odd gradeA">
                                             <td><?php echo $count;?></td>
-                                            <td><?php echo $row["XVVehCode"];?></td>
-                                            <td><?php echo $row["XVVehName"];?></td>
-                                            <td style="display:none;"><?php echo $row["XVVehRegistration"];?></td>
-                                            <td style="display:none;"><?php echo $row["XVVehNumber"];?></td>
-                                            <td style="display:none;"><?php echo $row["XVVehMango"];?></td>
-                                            <td style="display:none;"><?php echo $row["XVVehBrand"];?></td>
-                                            <td style="display:none;"><?php echo $row["XVVehModel"];?></td>
-                                            <td style="display:none;"><?php echo $row["XVVehChassisNumber"];?></td>
-                                            <td style="display:none;"><?php echo $row["XVVehEngineNumber"];?></td>
+                                            <td><?php echo $row["XVTemCode"];?></td>
+                                            <td><?php echo $row["XVTemName"];?></td>
+                                            <td style="display:none;"><?php echo $row["XVTemCurrentProject"];?></td>
+                                            <td style="display:none;"><?php echo $row["XBTemIsActive"];?></td>
+                                            <td style="display:none;"><?php echo $row["XVWhoCreate"];?></td>
+                                            <td style="display:none;"><?php echo $row["XVWhoEdit"];?></td>
+                                            <td style="display:none;"><?php echo $row["XTWhenCreate"];?></td>
+                                            <td style="display:none;"><?php echo $row["XTWhenEdit"];?></td>
+                                            <td style="display:none;"><?php echo $row["XVTemAfterCheckOut"];?></td>
                                             <td><?php if($row['XVVehTypeCode']==NULL){echo "ไม่สามารถระบุประเภทได้";}else {echo $row["XVVehTypeName"];}?>
                                             </td>
                                             <td style="display:none;"><?php echo $row["XVVehTypeCode"];?></td>
