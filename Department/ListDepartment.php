@@ -236,10 +236,8 @@ include "../database/connect.php";?>
                                         <th>ลำดับ</th>
                                         <th>รหัสไซต์งาน</th>
                                         <th>ชื่อไซต์งาน</th>
-                                        <th>เลขที่</th>
-                                        <th>ตำบล</th>
-                                        <th>อำเภอ</th>
-                                        <th>จังหวัด</th>
+                                        <th>วันที่เริ่ม</th>
+                                        <th>วันที่สิ้นสุด</th>
                                         <th>แก้ไข</th>
                                         <th>ลบ</th>
                                     </tr>
@@ -258,15 +256,7 @@ include "../database/connect.php";?>
                                         <td><?php echo $row["XVPrjName"];?></td>
                                         <td><?php echo $row["XDPrjStartDate"];?></td>
                                         <td><?php echo $row["XDPrjEndDate"];?></td>
-                                        <td><?php echo $row["XBActive"];?></td>
-                                        <td><?php echo $row["XVWhoCreate"];?></td>
-                                        <td><?php echo $row["XVWhoEdit"];?></td>
-                                        <td><?php echo $row["XTWhenCreate"];?></td>
-                                        <td><?php echo $row["XTWhenEdit"];?></td>
-                                        <td><?php echo $row["XIPrjTotalSTA"];?></td>
-                                        <td><?php echo $row["XIPrjAvgSTA"];?></td>
-                                        <td><?php echo $row["XIPrjStartKms"];?></td>
-                                        <td><?php echo $row["XIPrjStartMeters"];?></td>
+                                        
                                         <td align="center"><input class='btn btn-primary editbtn' type='button'
                                                 value='แก้ไข'></td>
                                         <td align="center"><input class='btn btn-danger deletebtn' type='button'

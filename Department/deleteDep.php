@@ -26,7 +26,7 @@ include '../database/connect.php';
 if ( isset( $_POST['deletedata'] ) ) {
     $id = $_POST['delete_id'];
     // $name = $_POST['XVVehTypeName'];
-    $sql = "DELETE FROM tmstmdepartment WHERE XVDptCode = '$id'";
+    $sql = "DELETE FROM TMstMProject_202012080859 WHERE XVDptCode = '$id'";
     $result = $dbh->query($sql);
 
     if ( $result ) {

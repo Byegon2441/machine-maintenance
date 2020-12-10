@@ -161,7 +161,9 @@ if(!isset($_SESSION)){
                                 <tbody>
 
                                     <?php
-    $sql = " SELECT vt.XVVehTypeCode,vt.XVVehTypeName FROM tmstmvehicletype vt ORDER BY vt.XVVehTypeCode ASC";
+                                     $sql = " SELECT *
+                                     FROM TMstMMachineJobType_202012080901 ";
+    //$sql = " SELECT XVJtyCode,XVJtyName FROM TMstMMachineJobType_202012080901  ORDER BY XVJtyCode ASC";
     //$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
     $stmt = $dbh->query($sql);
     // $stmt->execute();
@@ -170,9 +172,9 @@ if(!isset($_SESSION)){
 ?>
                                     <tr class="odd gradeA">
                                         <td><?php echo $count;?></td>
-                                        <td><?php echo $row['XVVehTypeCode'] ?></td>
-                                        <td><?php echo $row['XVVehTypeName'] ?></td>
-
+                                        <td><?php echo $row['XVJtyCode'] ?></td>
+                                        <td><?php echo $row['XVJtyName'] ?></td>
+                                        
                                         <td align="center"><input class='btn btn-primary editbtn' type='button'
                                                 value='แก้ไข'></td>
                                         <td align="center"><input class='btn btn-danger deletebtn' type='button'

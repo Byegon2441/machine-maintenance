@@ -25,7 +25,7 @@ if ( isset( $_POST['updatedata'] ) ) {
     $XVDptSub = $_POST['XVDptSub-district'];
     $XVDptProvince = $_POST['XVDptProvince'];
 
-  $sql = "UPDATE tmstmdepartment
+  $sql = "UPDATE TMstMProject_202012080859
      SET  XVDptname ='$XVDptname',
      XVDptNumber ='$XVDptNumber',
      XVDptProvince ='$XVDptProvince',
