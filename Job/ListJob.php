@@ -466,13 +466,11 @@
           ?>
 
                                     <tr class="odd gradeA">
-                                        <td><?php echo $row["XVJtyCode"];?></td>
-                                        <td><?php echo $row["XVJtyName"];?></td>
-                                        <td><?php echo $row["XBJtyIsActive"];?></td>
-                                        <td><?php echo $row["XVWhoCreate"];?></td>
-                                        <td><?php echo $row["XVWhoEdit"];?></td>
-                                        <td><?php echo $row["XTWhenCreate"];?></td>
-                                        <td><?php echo $row["XTWhenEdit"];?></td>
+                                        <td><?php echo $row["z"];?></td>
+                                        <td><?php echo $row["XDMajDate"];?></td>
+                                        <td><?php echo $row["XVVehCode"];?></td>
+                                        <td><?php echo $row["XVVehName"];?></td>
+                                        <td><?php echo $row["XVMajStatus"];?></td>
                                         <td><?php if($row["XVMajDocStatus"] == 1){
                                             echo 'แบบร่าง';
                                             }else if($row["XVMajDocStatus"] == 2){
