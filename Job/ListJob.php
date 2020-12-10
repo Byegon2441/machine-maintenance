@@ -466,7 +466,7 @@
           ?>
 
                                     <tr class="odd gradeA">
-                                        <td><?php echo $row["z"];?></td>
+                                        <td><?php echo $row["XVMajDocNo"];?></td>
                                         <td><?php echo $row["XDMajDate"];?></td>
                                         <td><?php echo $row["XVVehCode"];?></td>
                                         <td><?php echo $row["XVVehName"];?></td>
