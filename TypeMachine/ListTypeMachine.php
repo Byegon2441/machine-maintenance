@@ -161,7 +161,9 @@ if(!isset($_SESSION)){
                                 <tbody>
 
                                     <?php
-    $sql = " SELECT vt.XVVehTypeCode,vt.XVVehTypeName FROM tmstmvehicletype vt ORDER BY vt.XVVehTypeCode ASC";
+                                     $sql = " SELECT *
+                                     FROM TMstMMachineJobType_202012080901 ";
+    //$sql = " SELECT XVJtyCode,XVJtyName FROM TMstMMachineJobType_202012080901  ORDER BY XVJtyCode ASC";
     //$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
     $stmt = $dbh->query($sql);
     // $stmt->execute();
@@ -172,11 +174,7 @@ if(!isset($_SESSION)){
                                         <td><?php echo $count;?></td>
                                         <td><?php echo $row['XVJtyCode'] ?></td>
                                         <td><?php echo $row['XVJtyName'] ?></td>
-                                        <td><?php echo $row['XBJtyIsActive'] ?></td>
-                                        <td><?php echo $row['XVWhoCreate'] ?></td>
-                                        <td><?php echo $row['XVWhoEdit'] ?></td>
-                                        <td><?php echo $row['XTWhenCreate'] ?></td>
-                                        <td><?php echo $row['XTWhenEdit'] ?></td>
+                                        
                                         <td align="center"><input class='btn btn-primary editbtn' type='button'
                                                 value='แก้ไข'></td>
                                         <td align="center"><input class='btn btn-danger deletebtn' type='button'
