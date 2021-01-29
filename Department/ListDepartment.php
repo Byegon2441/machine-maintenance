@@ -131,12 +131,12 @@ include "../database/connect.php";?>
                 <form class="form-horizontal" id="insert" role="form" method="POST"
                     action="updateDep.php" enctype="multipart/form-data">
                     <div class="modal-body mx-3">
-                        <input type="hidden" name="XVJtyCode" id="XVJtyCode">
+                        <input type="hidden" name="XVDptCode" id="XVDptCode">
                         <div class="form-group">
                             <label for="name" class="col-sm-4 control-label">
                                 <span class="required"></span> ชื่อไซต์งาน:</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" id="XVJtyName" name="XVJtyName"
+                                <input type="text" class="form-control" id="XVDptname" name="XVDptname"
                                     placeholder="" required>
                             </div>
                         </div>
@@ -236,8 +236,10 @@ include "../database/connect.php";?>
                                         <th>ลำดับ</th>
                                         <th>รหัสไซต์งาน</th>
                                         <th>ชื่อไซต์งาน</th>
-                                        <th>วันที่เริ่ม</th>
-                                        <th>วันที่สิ้นสุด</th>
+                                        <th>เลขที่</th>
+                                        <th>ตำบล</th>
+                                        <th>อำเภอ</th>
+                                        <th>จังหวัด</th>
                                         <th>แก้ไข</th>
                                         <th>ลบ</th>
                                     </tr>
@@ -245,18 +247,19 @@ include "../database/connect.php";?>
                                 <tbody>
                                 <?php
     $sql = " SELECT *
-    FROM TMstMProject_202012080859 ";
+    FROM tmstmdepartment ";
     $result = $dbh->query($sql);
     $count = 1;
     while ($row=$result->fetch(PDO::FETCH_ASSOC)){
 ?>
                                     <tr class="odd gradeA">
                                         <td><?php echo $count;?></td>
-                                        <td><?php echo $row["XVPrjCode"];?></td>
-                                        <td><?php echo $row["XVPrjName"];?></td>
-                                        <td><?php echo $row["XDPrjStartDate"];?></td>
-                                        <td><?php echo $row["XDPrjEndDate"];?></td>
-                                        
+                                        <td><?php echo $row["XVDptCode"];?></td>
+                                        <td><?php echo $row["XVDptname"];?></td>
+                                        <td><?php echo $row["XVDptNumber"];?></td>
+                                        <td><?php echo $row["XVDptDistrict"];?></td>
+                                        <td><?php echo $row["XVDptSub_district"];?></td>
+                                        <td><?php echo $row["XVDptProvince"];?></td>
                                         <td align="center"><input class='btn btn-primary editbtn' type='button'
                                                 value='แก้ไข'></td>
                                         <td align="center"><input class='btn btn-danger deletebtn' type='button'
@@ -334,8 +337,8 @@ include "../database/connect.php";?>
             }).get()
 
             console.log(data)
-            $('#XVJtyCode').val(data[1])
-            $('#XVJtyName').val(data[2])
+            $('#XVDptCode').val(data[1])
+            $('#XVDptname').val(data[2])
             $('#XVDptNumber').val(data[3])
             $('#XVDptDistrict').val(data[4])
             $('#XVDptSub-district').val(data[5])

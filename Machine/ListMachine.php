@@ -383,9 +383,9 @@ if(!isset($_SESSION)){
                                             <th style="display:none;">รุ่นรถ</th>
                                             <th style="display:none;">หมายเลขคัทซี</th>
                                             <th style="display:none;">หมายเลขเครื่อง</th>
-                                            
+                                            <th>ชื่อประเภทเครื่องจักร</th>
                                             <th style="display:none;">รหัสประเภทเครื่องจักร</th>
-                                            
+                                            <th>ชื่อไซต์งาน</th>
                                             <th style="display:none;">รหัสไซต์งาน</th>
                                             <th>แก้ไข</th>
                                             <th>ลบ</th>
@@ -395,12 +395,10 @@ if(!isset($_SESSION)){
 
                                         <?php
           include '../database/connect.php';
-          $sql = " SELECT *
-          FROM TMstMMachineTeam_202012080902 ";
-         /* $sql = " SELECT v.XVVehCode,v.XVVehName,v.XVVehRegistration,v.XVVehNumber,v.XVVehMango,v.XVVehBrand,v.XVVehModel,v.XVVehChassisNumber,v.XVVehEngineNumber,vt.XVVehTypeName,v.XVVehTypeCode,v.XVDptCode,d.XVDptname
+          $sql = " SELECT v.XVVehCode,v.XVVehName,v.XVVehRegistration,v.XVVehNumber,v.XVVehMango,v.XVVehBrand,v.XVVehModel,v.XVVehChassisNumber,v.XVVehEngineNumber,vt.XVVehTypeName,v.XVVehTypeCode,v.XVDptCode,d.XVDptname
           FROM tmstvehicle v
           LEFT JOIN tmstmvehicletype vt ON v.XVVehTypeCode = vt.XVVehTypeCode
-          LEFT JOIN tmstmdepartment d ON v.XVDptCode = d.XVDptCode";*/
+          LEFT JOIN tmstmdepartment d ON v.XVDptCode = d.XVDptCode";
           $stmt = $dbh->query($sql);
           $count = 1;
           while ($row=$stmt->fetch(PDO::FETCH_ASSOC)){
@@ -408,20 +406,20 @@ if(!isset($_SESSION)){
 
                                         <tr class="odd gradeA">
                                             <td><?php echo $count;?></td>
-                                            <td><?php echo $row["XVTemCode"];?></td>
-                                            <td><?php echo $row["XVTemName"];?></td>
-                                            <td style="display:none;"><?php echo $row["XVTemCurrentProject"];?></td>
-                                            <td style="display:none;"><?php echo $row["XBTemIsActive"];?></td>
-                                            <td style="display:none;"><?php echo $row["XVWhoCreate"];?></td>
-                                            <td style="display:none;"><?php echo $row["XVWhoEdit"];?></td>
-                                            <td style="display:none;"><?php echo $row["XTWhenCreate"];?></td>
-                                            <td style="display:none;"><?php echo $row["XTWhenEdit"];?></td>
-                                            <td style="display:none;"><?php echo $row["XVTemAfterCheckOut"];?></td>
-                                            <!-- <td><//?php if($row['XVVehTypeCode']==NULL){echo "ไม่สามารถระบุประเภทได้";}else {echo $row["XVVehTypeName"];}?> -->
-                                            <!-- </td>
-                                            <td style="display:none;"><//?php echo $row["XVVehTypeCode"];?></td>
-                                            <!<//?php if($row['XVDptCode']==NULL){echo "ไม่สามารถระบุไซต์งานได้";}else {echo $row["XVDptname"];}?> -->
-                                            <!-- <td style="display:none;"><//?php echo $row["XVDptCode"];?></td> --> 
+                                            <td><?php echo $row["XVVehCode"];?></td>
+                                            <td><?php echo $row["XVVehName"];?></td>
+                                            <td style="display:none;"><?php echo $row["XVVehRegistration"];?></td>
+                                            <td style="display:none;"><?php echo $row["XVVehNumber"];?></td>
+                                            <td style="display:none;"><?php echo $row["XVVehMango"];?></td>
+                                            <td style="display:none;"><?php echo $row["XVVehBrand"];?></td>
+                                            <td style="display:none;"><?php echo $row["XVVehModel"];?></td>
+                                            <td style="display:none;"><?php echo $row["XVVehChassisNumber"];?></td>
+                                            <td style="display:none;"><?php echo $row["XVVehEngineNumber"];?></td>
+                                            <td><?php if($row['XVVehTypeCode']==NULL){echo "ไม่สามารถระบุประเภทได้";}else {echo $row["XVVehTypeName"];}?>
+                                            </td>
+                                            <td style="display:none;"><?php echo $row["XVVehTypeCode"];?></td>
+                                            <td><?php if($row['XVDptCode']==NULL){echo "ไม่สามารถระบุไซต์งานได้";}else {echo $row["XVDptname"];}?>
+                                            <td style="display:none;"><?php echo $row["XVDptCode"];?></td>
 
                                             <td align="center"><input class='btn btn-primary editbtn' type='button'
                                                     value='แก้ไข'></td>
