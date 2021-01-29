@@ -48,9 +48,14 @@ $(document).ready(function(){
                         "XVUsrCode": '<?php echo $user;?>',
                         "XVUsrPwd" : '<?php echo $pass;?>'
                     }),
-                    'success': function (token) {
-                    var data = JSON.stringify(token);
-                    var decoded = jwt_decode(data);
+                    'success': function (token) {//get token
+                        //2 para token and full token
+
+                    var data = JSON.stringify(token);//stringify
+
+                    var token_1 =  data.split(',');
+
+                    var decoded = jwt_decode(token_1[1]);
                 
                     console.log( decoded)//obj
                    
